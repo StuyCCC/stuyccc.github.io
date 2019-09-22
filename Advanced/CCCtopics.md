@@ -11,6 +11,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Arrays (static size)
 	- Python lists / Java ArrayLists / c++ vectors (dynamic size)
 	- Linked lists
+	- Hash Sets, Hash Maps
 
 - Simple algorithms (covered in APCS):
 	- Binary search
@@ -60,6 +61,9 @@ Please note that understanding everything on this list isn't a free pass to beco
 - [Knapsack problems](https://en.wikipedia.org/wiki/Knapsack_problem)
 	- Continuous and discrete variations
 	- Multiple knapsack versions
+
+- Sliding Window Problems
+	- Rolling Hashes
 
 - Shortest Path Algorithms
 	- [Dijkstra's Algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
