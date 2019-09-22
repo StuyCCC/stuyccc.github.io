@@ -1,4 +1,5 @@
-### Stuyvesant Competitive Coding Club: Recommended Topics (Advanced Section)
+### Recommended Topics (Advanced Section)
+##### Stuyvesant Competitive Coding Club
 
 The USACO training website contains a list of topics they think are important. This list is partially based on that one. This list is arranged in roughly increasing order of difficulty, though there will inevitably be some disagreement on this front.
 
