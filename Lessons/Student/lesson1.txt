@@ -1,0 +1,161 @@
+Lesson 1: What even is Python
+
+First, I want everyone to log in to the desktop in front of you.
+Open up IDLE. If you don't know how to, a teacher will come around to help you.
+!!h3!!You will need to get Python 3 on your home system if you want to do things at home. If you need any help, please don't hesitate to contact me, a VP, or a teacher!
+
+We have logic in Python
+We do logic using booleans, which just mean variables that are True or False
+
+We also have logical comparators
+!!ulist!!
+or
+and
+!!endulist!!
+
+!!html!!
+
+<table style="border: 1px solid black; border-collapse: collapse;">
+            <tr>
+                <th>boolean p</th>
+                <th>boolean q</th>
+                <th>not p</th>
+                <th>not q</th>
+                <th>p and q</th>
+                <th>p or q</th>
+            </tr>
+            <tr>
+                <td>T</td>
+                <td>T</td>
+                <td>F</td>
+                <td>F</td>
+                <td>T</td>
+                <td>T</td>
+            </tr>
+            <tr>
+                <td>T</td>
+                <td>F</td>
+                <td>F</td>
+                <td>T</td>
+                <td>F</td>
+                <td>T</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>T</td>
+                <td>T</td>
+                <td>F</td>
+                <td>F</td>
+                <td>T</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>F</td>
+                <td>T</td>
+                <td>T</td>
+                <td>F</td>
+                <td>F</td>
+            </tr>
+        </table>
+
+!!endhtml!!
+
+What are:
+!!olist!!
+(a and b) or a
+(a and b) and b
+(a or (a and a)) or a
+(b and b) or a
+(b and b) and b
+And maybe some more if there are too easy
+!!endolist!!
+
+Where will this be useful???
+Logic statements!
+
+Nani? What are logic statements?
+
+They're really useful blocks of code in CS that make the computer decide whether or not to do a thing
+How to?
+
+A simple if statement goes like this
+if (<boolean expression>):
+	<do this>
+
+What if you want the computer to do something else if <boolean expression> isn't true
+And if-else statment does this!
+if (<boolean expression>):
+	<do this>
+else:
+	<do this instead>
+
+And if you have multiple conditions:
+if (<boolean expression>):
+	<do this>
+elif (<another boolean expression>):
+	<do this instead>
+else:
+	<do this if none of the <boolean expression>s are true>
+
+!!h3!!I know this lesson has a lot of stuff but most of it is fairly simple so bear with me
+
+Now on to math!!!
+We can do math in Python kind of similarly to how we do it irl
+!!ulist!!
+5 + 5 = 10
+4 - 7 = -3
+5 * 4 = 20
+6 / 4 = ?????
+!!endulist!!
+
+What are the question marks there for? Well, CS can be weird
+In Python 2, 6/4 returns 1. In Python 3, 6/4 returns 1.5
+
+Questions?
+
+So when you're dividing, be sure to take this into account. When you always want an answer with a decimal point, use the function float(<num>)
+
+Anyway, we can also do math with floating point numbers (this means it has a decimal point)
+We can also convert between floats and integers
+!!ulist!!
+float(5) = 5.0
+int(5.5) = 5
+int(5.4) = 5
+!!endulist!!
+
+Finally, we can also define variables (just like in math)
+If I wanted "a" to be 5, I would write
+	a = 5
+
+Knowing that, do these problems
+
+Given a = 5, b = 6
+!!olist!!
+a + b
+a - b
+a * b
+a / b
+b / a
+a / 6.0
+!!endolist!!
+
+One last thing about variables: we can change their values
+	a = 5 #now a is 5
+	a = 6 #now a is 6
+	a = a + 1 #now a is 7
+	a += 1 #now a is 8
+
+What's this += thing? When you want to change a variable relative to itself, we use special operators
+Given a and x are numbers
+!!ulist!!
+a = a + x <---> a += x
+a = a - x <---> a -= x
+a = a * x <---> a *= x
+a = a / x <---> a /= x
+!!endulist!!
+
+!!h2!!I will now take questions and stuff
+
+And that's all folks. Thanks for coming and come back next time to learn about Strings!!!
+
+!!h3!!Note that this (and every) lesson will be updated with code snippets and further details (hopefully) on the night of the meeting

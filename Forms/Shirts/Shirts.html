@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Shirts</title>
+    <style>
+        img {
+            max-width: 50vw;
+            max-height: 50vh;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- onload="load_images();"> -->
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Shirt Form</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Please vote for your favorite shirt design here:</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method="post" action="shirtform.py">
+                    <div class="form-check">
+                        <img src="/~jchirinos/StuyCCC/data/imgs/loading.gif" id="img1"><br>
+                        <input type="radio" name="shirt" value="1" class="form-check-input" required>
+                        <label class="form-check-label" for="shirt1">Shirt 1 ($7.00)</label>
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <div class="form-check">
+                        <img src="/~jchirinos/StuyCCC/data/imgs/loading.gif" id="img2"><br>
+                        <input type="radio" name="shirt" value="2" class="form-check-input" required>
+                        <label class="form-check-label" for="shirt2">Shirt 2 ($6.00) (I might be able to get them to clean up the lines so they're not sloppy)</label>
+                    </div>
+                    <div class="form-check">
+                        <img src="/~jchirinos/StuyCCC/data/imgs/loading.gif" id="img3"><br>
+                        <input type="radio" name="shirt" value="3" class="form-check-input" required>
+                        <label class="form-check-label" for="shirt3">Shirt 3 ($7.00)</label>
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <input type="submit" class="btn btn-success" value="Submit">
+                </form>
+            </div>
+        </div>
+        <div style="height: 20px;"></div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+Lesson 3: What even are loops?
+
+K, everyone count to 10
+K, everyone count backwards from 10 to 0
+!!h3!!Any questions?
+!!breaks!!45
+Hopefully there is enough space so that y'all don't immediately see this
+Anyway, we are going to introduce loops
+They are exactly what they sound like. They loop from one value to another until they finish or crash
+
+!!h3!!The while loop
+
+Ignore the stuff below 'till I demo on the board
+
+ctr = 10
+while (ctr > 0):
+	print(ctr)
+	ctr--
+
+!!h3!!The for loop
+
+Again ignore the stuff below 'till I demo on the board
+
+for i in range(10):
+	print(i)
+
+!!h3!!When to use each one
+
+Anyone have any ideas?
+!!breaks!!30
+!!html!!
+<center><table border="1" style="max-width: 700px; width: 50vw;">
+	<tr>
+		<th>While</th>
+		<th>For</th>
+	</tr>
+	<tr>
+		<td>User input</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Don't know how many times loop will iterate, but know the endpoint</td>
+		<td>Know how many times the loop will iterate, but not the endpoint</td>
+	</tr>
+</table></center>
+!!endhtml!!
+
+!!h3!!I shall now take questions and comments and whatever
+
+If we have time remaining, we could start with lesson 4

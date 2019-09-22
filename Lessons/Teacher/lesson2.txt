@@ -1,0 +1,8 @@
+Lesson 2: Continuing our CC edumacation
+We will be doing a bunch of CS competition problem sets, so continue the one from lesson 1:
+a[SJC Set 2017](https://www.sjcny.edu/files/images/hs-programming-problems-2017.pdf)
+
+If you finish, call over a Teacher
+
+If that's all done, start the 2016 problem set
+

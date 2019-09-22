@@ -1,0 +1,68 @@
+<html><head><style>body {background-image: url(/StuyCCC/data/leaves/leaves.png);} table, tr, th, td {border: 1px solid black; border-collapse: collapse;}</style></head><body><h1>Lesson 5: What even are lists?</h1>
+<p>I think we all know what lists are right guys?</p>
+<br>
+<p>To define a list in Python</p>
+<p>&emsp;l = [] # empty list</p>
+<p>&emsp;l = [1, 2, 3] # list populated by ints</p>
+<p>&emsp;l = ['yo', "what's", 'up?'] # list of strings</p>
+<p>&emsp;l = [69, 'xD'] # list of stuff</p>
+<br>
+<p>We access list elements like we do strings</p>
+<p>&emsp;Given l = [1, 2, 3]</p>
+<p>&emsp;&emsp;l[0] = 1</p>
+<p>&emsp;&emsp;l[2] = 3</p>
+<p>&emsp;&emsp;l[-1] = ????</p>
+<br>
+<p>We can have lists of lists. They're kinda like tables. For example:</p>
+<p>If we wanted this table as a list of lists</p>
+<center><table border="1">
+	<tr>
+		<td>Name</td>
+		<td>Age</td>
+	</tr>
+	<tr>
+		<td>Joan</td>
+		<td>17</td>
+	</tr>
+	<tr>
+		<td>Jesus</td>
+		<td>2018</td>
+	</tr>
+	<tr>
+		<td>A-aron</td>
+		<td>12</td>
+	</tr>
+</table></center>
+<p>We would do this</p>
+<p>&emsp;l = [</p>
+<p>&emsp;&emsp;['Joan', 17],</p>
+<p>&emsp;&emsp;['Jesus', 2018],</p>
+<p>&emsp;&emsp;['A-aron', 12]</p>
+<p>&emsp;]</p>
+<br>
+<p>We call this a 2D array (yes there are 3D, 4D, etc. arrays)</p>
+<br>
+<p>You can do plenty of stuff with these lists/arrays (I will use the terms interchangably unless anyone can name a reason not to xD)</p>
+<br>
+<p>Given l = [1, 2, 3]</p>
+<p>&emsp;l += [4] ---&gt; l = [1, 2, 3, 4]</p>
+<p>&emsp;h = [5, 6, 7]</p>
+<p>&emsp;l += h ---&gt; l = [1, 2, 3, 4, 5, 6, 7]</p>
+<br>
+<p>&emsp;b = ['Hello', 'my', 'name', 'is', 'Joan']</p>
+<p>&emsp;' '.join(b) ---&gt; 'Hello my name is Joan'</p>
+<p>&emsp;</p>
+<p>&emsp;st = "Yo what's up?"</p>
+<p>&emsp;st.split(' ') ---&gt; ["Yo", "what's", "up"]</p>
+<p>&emsp;'yo-yo'.split('-') ---&gt; ['yo', 'yo']</p>
+<br>
+
+<h3>Here's something really useful!</h3>
+
+<p>&emsp;l = [1, 2, 3, 4]</p>
+<p>&emsp;','.join(l) ---&gt; ERROR</p>
+<br>
+<p>&emsp;l = [str(i) for i in l] ---&gt; l  = ['1', '2', '3', '4']</p>
+<p>&emsp;','.join(l) ---&gt; "1, 2, 3, 4"</p>
+<br>
+</body></html>

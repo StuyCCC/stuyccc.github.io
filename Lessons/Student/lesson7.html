@@ -1,0 +1,153 @@
+<html><head><style>body {background-image: url(/StuyCCC/data/leaves/leaves.png);} table, tr, th, td {border: 1px solid black; border-collapse: collapse;}</style></head><body><h1>Lesson 7: Some Python Syntax and Function Basics</h1>
+<p>Let's solidify our knowledge on Python syntax so we can solve cool problems with syntactic accuracy (and with aesthetic)!!</p>
+<br>
+<h3>Comments</h3>
+<p>A comment begins with a hash character (#). They are useful for increasing the readability of your code so that you can reference them later.</p>
+<p>There are NO multi-lines or block comments in Python</p>
+<br>
+<h3>Multiple Statements on a Single Line</h3>
+<p>You can write two separate statements into a single line using the semicolon (;)</p>
+
+<br>
+<h3> Indentation (VERY VERY IMPORTANT) </h3>
+<p>Python uses whitespace (spaces and tabs) to define program blocks whereas other languages like C, C++ use braces ({}) to indicate blocks of codes for class, functions or flow control.</p>
+<p>The number of whitespaces (spaces and tabs) in the indentation is not fixed, but all statements within the block must be the indented same amount.</p>
+<p>Convention is 4 spaces per indentation and NO tabs</p>
+
+<br>
+<h3>Reserved Python Words</h3>
+<p>The following identifiers are used as reserved words of the Python language, and cannot be used as ordinary variable or function names.</p>
+      <table class="table table-bordered">
+      <tr>
+      <td>False</td>
+      <td>class</td>
+      <td>finally</td>
+      <td>is</td>
+      <td>return</td>
+      </tr>
+      <tr>
+      <td>None</td>
+      <td>continue</td>
+      <td>for</td>
+      <td>lambda</td>
+      <td>try</td>
+      </tr>
+      <tr>
+      <td>True</td>
+      <td>def</td>
+      <td>from</td>
+      <td>nonlocal</td>
+      <td>while</td>
+      </tr>
+      <tr>
+      <td>and</td>
+      <td>del</td>
+      <td>global</td>
+      <td>not</td>
+      <td>with</td>
+      </tr>
+      <tr>
+      <td>as</td>
+      <td>el</td>
+      <td>if</td>
+      <td>or</td>
+      <td>yield</td>
+      </tr>
+      <tr>
+      <td>assert</td>
+      <td>else</td>
+      <td>import</td>
+      <td>pass</td>
+      <td>&nbsp;</td>
+      </tr>
+      <tr>
+      <td>break</td>
+      <td>except</td>
+      <td>in</td>
+      <td>raise</td>
+      <td>&nbsp;</td>
+      </tr>
+      </table>
+
+<br>
+<h2 class="heading" itemscope itemtype="http://schema.org/WebPageElement/Heading">User defined function </h2>
+<ul>
+<li>In Python, a user-defined function's declaration begins with the keyword def and followed by the function name. </li>
+<li>The function may take arguments(s) as input within the opening and closing parentheses, just after the function name followed by a colon.</li>
+<li>After defining the function name and arguments(s) a block of program statement(s) start at the next line and these statement(s) must be indented.</li>
+</ul>
+<p>Here is the syntax of a user defined function.</p>
+<p><strong>Syntax:</strong></p>
+<pre class='well_syntax'> def function_name(argument1, argument2, ...) :
+  &nbsp;&nbsp;&nbsp; statement_1
+  &nbsp;&nbsp;&nbsp; statement_2
+  &nbsp;&nbsp;&nbsp; ....</pre>
+<h2 class="heading" itemscope itemtype="http://schema.org/WebPageElement/Heading">Call a function</h2>
+<p>Calling a function in Python is similar to other programming languages, using the function name, parenthesis
+(opening and closing) and parameter(s). See the syntax, followed by an example. </p>
+<p><strong>Syntax:</strong></p>
+<pre class='well_syntax'>
+function_name(arg1, arg2)
+</pre>
+<p><strong>Example:</strong></p>
+<pre class="line-numbers"><code class="language-python">def avg_number(x, y):
+    print("Average of ",x," and ",y, " is ",(x+y)/2)
+avg_number(3, 4)
+</code></pre>
+<p>Output: </p>
+<pre class="output">Average of  3  and  4  is  3.5</pre>
+<p><strong>Explanation:</strong></p>
+<p>1. Lines 1-2 : Details (definition) of the function. <br>
+2. Line 3 : Call the function.<br>
+3. Line 1 : Pass parameters : x = 3, y = 4<br>
+4. Line 2 : Print the value of two parameters as well as their average value.</p>
+<p><strong>Function without arguments:</strong></p>
+<p>The following function has no arguments.</p>
+<div class='well'><p>def function_name() :<br>
+&nbsp;&nbsp;&nbsp; statement_1 <br>
+&nbsp;&nbsp;&nbsp; statement_2<br>
+&nbsp;&nbsp;&nbsp; ....</p>
+</div>
+<p><strong>Example:</strong></p>
+<pre class="line-numbers"><code class="language-python">def printt():
+    print("This is Python 3.2 Tutorial")
+    print("This is Python 3.2 Tutorial")
+    print("This is Python 3.2 Tutorial")
+printt()
+</code></pre>
+<p>Output: </p>
+<pre class="output">This is Python 3.2 Tutorial
+               This is Python 3.2 Tutorial
+               This is Python 3.2 Tutorial</pre>
+<p><strong>Explanation:</strong></p>
+<p>1. Lines 1-4 : Details (definition) of the function. <br>
+2. Line 5 : Call the function.<br>
+3. Line 1 : No parameter passes.<br>
+4. Line 2-4 : Execute three print statements.</p>
+
+<br>
+
+
+<p>And that's that. Y'all should be ready to tackle some Coding Bat problems now!</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body></html>
