@@ -3,5 +3,3 @@
 [List of Topics](/Advanced/CCCtopics)
 
 #### Resources
-
-- 
