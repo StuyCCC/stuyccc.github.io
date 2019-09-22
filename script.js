@@ -3,27 +3,17 @@
 
 var student_lessons = [
 
-    ['Lesson 0: What even is this club?', 'Lessons/Student/lesson0_1.html'],
-    ['Lesson 1: What even is Python?', 'Lessons/Student/lesson1_1.html'],
-    ['Lesson 2: What even are Strings?', 'Lessons/Student/lesson2_1.html'],
-    ['Lesson 3: What even are loops?', 'Lessons/Student/lesson3_1.html'],
-    ['Lesson 4: What even are lists?', 'Lessons/Student/lesson5.html'],
-    ['Lesson 5: What even are Fibonacci sequences?', 'Lessons/Student/lesson6_1.html'],
-    ['Lesson 6: What are regular expressions?', 'Lessons/Student/lesson7_1.html']
+    ['Lesson 0: What even is this club?', 'Beginners/Student/lesson0_1.html'],
+    ['Lesson 1: What even is Python?', 'Beginners/Student/lesson1_1.html'],
+    ['Lesson 2: What even are Strings?', 'Beginners/Student/lesson2_1.html'],
+    ['Lesson 3: What even are loops?', 'Beginners/Student/lesson3_1.html'],
+    ['Lesson 4: What even are lists?', 'Beginners/Student/lesson5.html'],
+    ['Lesson 5: What even are Fibonacci sequences?', 'Beginners/Student/lesson6_1.html'],
+    ['Lesson 6: What are regular expressions?', 'Beginners/Student/lesson7_1.html']
 
-];
-
-var teacher_lessons = [
-
-    ['Lesson 0: What even is this club?', 'Lessons/Teacher/lesson0.html'],
-    ['Lesson 1: How to start thinking in efficient CS?', 'Lessons/Teacher/lesson1.html'],
-    ['Lesson 2: Continuing our CC Edumacation', 'Lessons/Teacher/lesson2.html'],
-    ['Lesson 3: PClassic', 'Lessons/Teacher/lesson3.html']
 ];
 
 var utils = [
-
-
 
 ];
 
@@ -85,15 +75,10 @@ function pop_lessons() {
     console.log('\n\n=====  populating lessons =====\n');
     var l = ""
     if (!showing_lessons) {
-        l = "<div class=\"row\">\n<div class=\"col\"><b>Beginner Lessons</b><ul>\n";
+        l = "<div class=\"row\">\n<div class=\"col\"><b>Beginner Beginners</b><ul>\n";
         for (var i = 0; i < student_lessons.length; i++) {
             l += "<li><a target=\"_blank\" href=\"" + student_lessons[i][1] + "\">" + student_lessons[i][0] + "</a></li>\n";
             console.log("<li><a target=\"_blank\" href=\"" + student_lessons[i][1] + "\">" + student_lessons[i][0] + "</a></li>\n");
-        }
-        l += '</ul><b>Advanced Lessons</b><ul>'
-        for (var i = 0; i < teacher_lessons.length; i++) {
-            l += "<li><a target=\"_blank\" href=\"" + teacher_lessons[i][1] + "\">" + teacher_lessons[i][0] + "</a></li>\n";
-            console.log("<li><a target=\"_blank\" href=\"" + teacher_lessons[i][1] + "\">" + teacher_lessons[i][0] + "</a></li>\n");
         }
         l += "</ul></div></div>\n";
         showing_lessons = true;
