@@ -1,3 +1,3 @@
 ### StuyCCC Advanced Section
 
-[List of Topics](/Advanced/CCCtopics.html)
+[List of Topics](/Advanced/CCCtopics)

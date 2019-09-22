@@ -42,7 +42,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Recursive search, but with overlap amongst sub-problems
 	- How to generate a unique characterization of each sub-problem, as well as a relationship between sub-problems.
 	- [Memoization](https://en.wikipedia.org/wiki/Memoization) vs. bottom-up techniques
-	- Highly recommended: watch MIT OpenCourseWare 6.006, [videos 19 through 22](https://www.youtube.com/watch?v=OQ5jsbhAv_M&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=19). (about 4 hrs of content)
+	- Recommended: MIT OpenCourseWare 6.006, [lectures 19 through 22](https://www.youtube.com/watch?v=OQ5jsbhAv_M&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=19). (about 4 hrs of content)
 
 - Divide-and-Conquer Algorithms
 	- Splitting a problem into much smaller subproblems
@@ -57,24 +57,24 @@ Please note that understanding everything on this list isn't a free pass to beco
 
 #### Advanced Topics:
 
-- Shortest Path Algorithms
-	- Dijkstra's Algorithm
-	- A* Search
-	- Bellman-Ford
-	- Floyd-Warshall
-
-- Minimum Spanning Trees
-	- Prim's Algorithm
-
-- Knapsack problems
+- [Knapsack problems](https://en.wikipedia.org/wiki/Knapsack_problem)
 	- Continuous and discrete variations
 	- Multiple knapsack versions
 
+- Shortest Path Algorithms
+	- [Dijkstra's Algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
+	- [A* Search](https://en.wikipedia.org/wiki/A*_search_algorithm)
+	- [Bellman-Ford Algorithm](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm)
+	- [Floyd-Warshall Algorithm](https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm)
+
+- Minimum Spanning Trees
+	- [Prim's Algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
+
 - Eulerian Tours
-	- Cycle finding algorithm
+	- [Cycle finding algorithm](https://www.algorithmist.com/index.php/Euler_tour)
 
 - Network Flow
-	- Ford-Fulkerson Algorithm
+	- [Ford-Fulkerson Algorithm](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm)
 	- Min Cut Max Flow Theorem
 	- Applications (there are many)
 
@@ -84,7 +84,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 
 - Palindromic Substrings
 	- For some reason, this comes up in competitions a LOT, which is why it's on the list.
-	- Manacher's Algorithm (difficult!)
+	- [Manacher's Algorithm](https://en.wikipedia.org/wiki/Longest_palindromic_substring) (difficult!)
 
 - Optimized Search
 	- Understanding how and where to prune recursive search
