@@ -1,1 +1,0 @@
-[List of Topics](https://stuyccc.github.io/Advanced/bin/CCCtopics.html)
