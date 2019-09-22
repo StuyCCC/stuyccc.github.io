@@ -1,4 +1,1 @@
-# StuyCCC
-Repo for Stuyvesant's Competitive Computing Club
-
-joanchirinos.github.io/StuyCCC
+repo for [this website](stuyccc.github.io)
