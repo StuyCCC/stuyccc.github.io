@@ -1,1 +1,1 @@
-repo for [this website](https://stuyccc.com)
+repo for [this website](http://www.stuyccc.com)
