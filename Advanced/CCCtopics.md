@@ -14,11 +14,11 @@ Please note that understanding everything on this list isn't a free pass to beco
 
 - Simple algorithms (covered in APCS):
 	- Binary search
-	- Sorting algorithms (most languages provide them for you, so you just need to know how to use them)
+	- Sorting algorithms (most languages provide them for you, so you just need to know how to use them.)
 	- Basically anything that's easy to learn from Wikipedia in a few minutes
 
 - [Computational Complexity](https://en.wikipedia.org/wiki/Time_complexity)
-	- APCS students may only be familiar with basic big O, like O(1) and O(n). Everyone should become familiar with determining big O complexity in all scenarios
+	- APCS students may only be familiar with basic big O, like O(1) and O(n). Everyone should become familiar with determining big O complexity in all scenarios.
 	- People should also understand space complexity (not just time complexity).
 
 #### More topics:

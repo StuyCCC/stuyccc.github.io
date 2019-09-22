@@ -28,17 +28,8 @@ var links = [
 ];
 
 var leadership = [
-    ['Joan Chirinos', 'Senior', 'President', 'joan.jpg', 'NetLogo Master'],
-    ['Cathy Cai', 'Senior', 'Vice President', 'None', ''],
-    ['Fiona Cai', 'Senior', 'Vice President', 'fiona.jpg', 'ogre achiever'],
-    ['Maryann Foley', 'Senior', 'Vice President', 'None', ''],
-    ['Aaron Li', 'Senior', 'Teacher', 'None', ''],
-    ['Alexander Liu', 'Senior', 'Teacher', 'None', ''],
-    ['Bill Ni', 'Senior', 'Teacher', 'bill.jpg', 'yes'],
-    ['Johnny Wong', 'Senior', 'Teacher', 'johnny.jpg', 'Join Ultimate to throw an exception(al Frisbee)!!!!'],
-    ['Meredith Hu', 'Senior', 'Teacher', 'None', ''],
-    ['Ricky Lin', 'Senior', 'Teacher', 'None', ''],
-    ['Leilei Hao', 'Junior', 'Teacher', 'leilei.jpg', '']
+    ['Leilei Hao', 'Senior', 'President', 'leilei.jpg', ''],
+    ['Ethan Morgan', 'Senior', 'Adv. Section', 'blank-profile-picture-973460_1280.png', '']
 ];
 
 var forms = [
