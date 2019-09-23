@@ -66,7 +66,7 @@ function pop_lessons() {
     console.log('\n\n=====  populating lessons =====\n');
     var l = ""
     if (!showing_lessons) {
-        l = "<div class=\"row\">\n<div class=\"col\"><b>Beginner Beginners</b><ul>\n";
+        l = "<div class=\"row\">\n<div class=\"col\"><ul>\n";
         for (var i = 0; i < student_lessons.length; i++) {
             l += "<li><a target=\"_blank\" href=\"" + student_lessons[i][1] + "\">" + student_lessons[i][0] + "</a></li>\n";
             console.log("<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + student_lessons[i][1] + "\">" + student_lessons[i][0] + "</a></li>\n");
