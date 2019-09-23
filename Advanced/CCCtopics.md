@@ -85,8 +85,8 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Applications (there are many)
 
 - Computational Geometry
-	- Easily the most annoying topic on the list, not fun at all
-	- Convex Hulls
+	- [Convex Hulls](https://en.wikipedia.org/wiki/Convex_hull)
+	- [Sweep Line Algorithms](https://en.wikipedia.org/wiki/Sweep_line_algorithm)
 
 - Palindromic Substrings
 	- For some reason, this comes up in competitions a LOT, which is why it's on the list.
