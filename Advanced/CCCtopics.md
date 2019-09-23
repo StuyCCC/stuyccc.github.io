@@ -74,8 +74,9 @@ Please note that understanding everything on this list isn't a free pass to beco
 - Minimum Spanning Trees
 	- [Prim's Algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
 
-- Eulerian Tours
-	- [Cycle finding algorithm](https://www.algorithmist.com/index.php/Euler_tour)
+- Cycle Detection
+	- [Eulerian Tours](https://www.algorithmist.com/index.php/Euler_tour)
+	- Minimal Weight Cycles
 
 - Network Flow
 	- [Ford-Fulkerson Algorithm](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm)
