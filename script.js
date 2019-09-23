@@ -22,8 +22,8 @@ var links = [
     ['Rosalind', 'http://rosalind.info/'],
     ['SJC Problem Sets', 'https://www.sjcny.edu/long-island/academics/programs-departments/mathematics-and-computer-science/programming-competition'],
     ['CodingBat Python Practice', 'https://codingbat.com/python'],
-    ['w3schools Python Reference', 'https://www.w3schools.com/python/'],
-    ['PClassic Info', 'http://bert.stuy.edu/pbrooks/pclassic']
+    ['PClassic Info', 'http://bert.stuy.edu/pbrooks/pclassic'],
+    ['Python Quick Reference', 'http://rgruet.free.fr/PQR27/PQR2.7.html']
 
 ];
 
