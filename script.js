@@ -68,7 +68,7 @@ function pop_lessons() {
     if (!showing_lessons) {
         l = "<div class=\"row\">\n<div class=\"col\"><ul>\n";
         for (var i = 0; i < student_lessons.length; i++) {
-            l += "<li><a target=\"_blank\" href=\"" + student_lessons[i][1] + "\">" + student_lessons[i][0] + "</a></li>\n";
+            l += "<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + student_lessons[i][1] + "\">" + student_lessons[i][0] + "</a></li>\n";
             console.log("<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + student_lessons[i][1] + "\">" + student_lessons[i][0] + "</a></li>\n");
         }
         l += "</ul></div></div>\n";
@@ -84,7 +84,7 @@ function pop_utils() {
     if (!showing_utils) {
         l = "<div class=\"row\">\n<div class=\"col\"><ul>\n";
         for (var i = 0; i < utils.length; i++) {
-            l += "<li><a target=\"_blank\" href=\"" + utils[i][1] + "\">" + utils[i][0] + "</a></li>\n";
+            l += "<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + utils[i][1] + "\">" + utils[i][0] + "</a></li>\n";
             console.log("<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + utils[i][1] + "\">" + utils[i][0] + "</a></li>\n");
         }
         l += "</ul></div></div>\n";
@@ -100,7 +100,7 @@ function pop_links() {
     if (!showing_links) {
         l = "<div class=\"row\">\n<div class=\"col\"><ul>\n";
         for (var i = 0; i < links.length; i++) {
-            l += "<li><a target=\"_blank\" href=\"" + links[i][1] + "\">" + links[i][0] + "</a></li>\n";
+            l += "<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + links[i][1] + "\">" + links[i][0] + "</a></li>\n";
             console.log("<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + links[i][1] + "\">" + links[i][0] + "</a></li>\n");
         }
         l += "</ul></div></div>\n";
@@ -116,7 +116,7 @@ function pop_forms() {
     if (!showing_forms) {
         l = "<div class=\"row\">\n<div class=\"col\"><ul>\n";
         for (var i = 0; i < forms.length; i++) {
-            l += "<li><a target=\"_blank\" href=\"" + forms[i][1] + "\">" + forms[i][0] + "</a></li>\n";
+            l += "<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + forms[i][1] + "\">" + forms[i][0] + "</a></li>\n";
             console.log("<li><a class=\"btn btn-lg btn-block btn-link\" target=\"_blank\" href=\"" + forms[i][1] + "\">" + forms[i][0] + "</a></li>\n");
         }
         l += "</ul></div></div>\n";
