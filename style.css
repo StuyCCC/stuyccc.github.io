@@ -15,7 +15,7 @@
     font-size: 5em;
 }
 
-.ul {
+ul {
     list-style: none;
     padding-left: 0;
 }
@@ -26,12 +26,11 @@
 }
 
 .btn-link {
-    background-color: white;
+    background-color: transparent;
     color: black;
     margin-top: 5px;
     line-height: 0.8;
     font-size: 1.0rem;
-    background-opacity: .50;
 }
 
 body {
