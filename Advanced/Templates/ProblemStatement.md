@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" media="all" href="/Advanced/style.css" />
 ### Probability Permutations
 ##### Point Value: 33
 
