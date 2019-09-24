@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" media="all" href="/Advanced/style.css" />
 ### Recommended Topics (Advanced Section)
 ##### Stuyvesant Competitive Coding Club
 
