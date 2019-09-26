@@ -29,7 +29,7 @@ var links = [
 
 var leadership = [
     ['Leilei Hao', 'Senior', 'President', 'leilei.jpg', ''],
-    ['Ethan Morgan', 'Senior', 'Adv. Section', 'blank-profile-picture-973460_1280.png', '']
+    ['Ethan Morgan', 'Senior', 'Adv. Section', 'ethan.png', '']
 ];
 
 var forms = [
