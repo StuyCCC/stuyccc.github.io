@@ -76,19 +76,16 @@ Please note that understanding everything on this list isn't a free pass to beco
 
 - Cycle Detection
 	- [Eulerian Tours](https://www.algorithmist.com/index.php/Euler_tour)
+	- Minimal Weight Cycles
 
 - Computational Geometry
 	- [Convex Hulls](https://en.wikipedia.org/wiki/Convex_hull)
 	- [Sweep Line Algorithms](https://en.wikipedia.org/wiki/Sweep_line_algorithm)
-	- Minimal Weight Cycles
 
 - Network Flow
 	- [Ford-Fulkerson Algorithm](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm)
 	- Min Cut Max Flow Theorem
 	- Applications (there are many)
-
-- Substring / Subsequence Problems
-	- [Manacher's Algorithm](https://en.wikipedia.org/wiki/Longest_palindromic_substring) (difficult!)
 
 - Optimized Search
 	- Understanding how and where to prune recursive search
