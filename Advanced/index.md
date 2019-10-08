@@ -1,4 +1,4 @@
 ### StuyCCC Advanced Section Gateway
 
-[List of Topics](/Advanced/CCCtopics)  
+[List of Topics](/Advanced/Topics)  
 [Recommended Resources](/Advanced/Resources)

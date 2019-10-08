@@ -95,15 +95,15 @@ Please note that understanding everything on this list isn't a free pass to beco
 
 These can and should be researched on your own time. Nothing in this section is especially difficult.
 
-- c++
+- C++
 	- This is the unofficial language of competitive programming. Highly recommended for anyone who wants to compete past USACO bronze.
-	- If you know Java (from APCS), you already know most c++ syntax.
+	- If you know Java (from APCS), you already know most C++ syntax.
 	- You really don't need to know classes and templates and stuff for competitive programming.
 
-- c++ [STL Headers](https://en.cppreference.com/w/cpp/header)
+- C++ [STL Headers](https://en.cppreference.com/w/cpp/header)
 	- fstream, iostream, cmath, cassert, algorithm (only the most important ones)
 
-- c++ [STL Containers](http://www.cplusplus.com/reference/stl/)
+- C++ [STL Containers](http://www.cplusplus.com/reference/stl/)
 	- vector, deque, unordered_map, map, unordered_set, set, list, priority_queue, pair
 
 - Bitwise Optimizations
