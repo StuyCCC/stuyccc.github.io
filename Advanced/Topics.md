@@ -3,17 +3,18 @@
 
 The [USACO training website](https://train.usaco.org/usacogate) contains a list of topics they think are important. This list is partially based on that one. This list is arranged in roughly increasing order of difficulty, though there will inevitably be some disagreement on this front.
 
-Please note that understanding everything on this list isn't a free pass to becoming an expert at competitive programming. Each of these sections is a complex and nuanced field of potential problems. During a club meeting, we can only really dip our toes in the water of what these problems are like and how to solve them.
+Please note that understanding everything on this list isn't a free pass to becoming an expert at competitive programming. Each of these sections is a complex and nuanced field of potential problems. During a club meeting, we can only really dip our toes into the water of what these problems are like and how to solve them.
 
 #### Basic topics (should be mostly review):
 
-- Simple data structures:
+- Simple Data Structures:
 	- Arrays (static size)
 	- Python lists / Java ArrayLists / c++ vectors (dynamic size)
-	- Linked lists
-	- Hash Sets, Hash Maps
+	- [Linked lists](https://en.wikipedia.org/wiki/Linked_list)
+	- [Stacks](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)), [Queues](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
+	- [Hash Maps](https://en.wikipedia.org/wiki/Hash_table), (Hash Sets)
 
-- Simple algorithms (covered in APCS):
+- Simple Algorithms (covered in APCS):
 	- Binary search
 	- Sorting algorithms (most languages provide them for you, so you just need to know how to use them.)
 	- Basically anything that's easy to learn from Wikipedia in a few minutes
@@ -33,11 +34,10 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Directed vs. Undirected Graphs
 	- Special trees, e.g. binary trees
 
-- Recursive Search Algorithms
+- Simple Recursive Search Algorithms
 	- This is covered in APCS (at least for some teachers)
-	- Breadth-first vs. Depth-first
 	- Pruning
-	- Iterative Deepening
+	- [Iterative Deepening](https://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search)
 
 - Dynamic Programming (very important)
 	- Recursive search, but with overlap amongst sub-problems
@@ -49,18 +49,15 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Splitting a problem into much smaller subproblems
 
 - Simple Graph Algorithms
+	- [Breadth-first Search](https://en.wikipedia.org/wiki/Breadth-first_search)
 	- [Flood Fill](https://en.wikipedia.org/wiki/Flood_fill)
-
-- More Data Structures
-	- [Stacks](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)), [Queues](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
-	- [Heaps](https://en.wikipedia.org/wiki/Heap_(data_structure)), Priority Queues
-	- [Tries](https://en.wikipedia.org/wiki/Trie)
 
 #### Advanced Topics:
 
-- [Knapsack problems](https://en.wikipedia.org/wiki/Knapsack_problem)
-	- Continuous and discrete variations
-	- Multiple knapsack versions
+- More Data Structures
+	- [Heaps](https://en.wikipedia.org/wiki/Heap_(data_structure)), Priority Queues
+	- [Tries](https://en.wikipedia.org/wiki/Trie)
+	- [Quad Trees](https://en.wikipedia.org/wiki/Quadtree)
 
 - Sliding Window Problems
 	- Rolling Hashes
@@ -70,6 +67,10 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- [A* Search](https://en.wikipedia.org/wiki/A*_search_algorithm)
 	- [Bellman-Ford Algorithm](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm)
 	- [Floyd-Warshall Algorithm](https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm)
+
+- [Knapsack problems](https://en.wikipedia.org/wiki/Knapsack_problem)
+	- Continuous and discrete variations
+	- Multiple knapsack versions
 
 - Minimum Spanning Trees
 	- [Prim's Algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
@@ -107,6 +108,6 @@ These can and should be researched on your own time. Nothing in this section is 
 	- vector, deque, unordered_map, map, unordered_set, set, list, priority_queue, pair
 
 - Bitwise Optimizations
-	- [Bitwise operators](https://en.cppreference.com/w/cpp/language/operator_arithmetic) (|, &, <<, >>, etc.)
+	- [Bitwise operators](https://en.cppreference.com/w/cpp/language/operator_arithmetic) (|, &, ^, <<, >>, etc.)
 	- Using integral types to store states (e.g. storing several small integers in a single unsigned int or ULL)
 	- Representing a state as a hashable data type (with strategy in previous point, or with a string)
