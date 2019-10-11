@@ -1069,22 +1069,22 @@ body .markdown-body
 	<article class="markdown-body">
 		<h3 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link"></a></h3>
 <h5 id="stuyvesant-competitive-coding-club">Stuyvesant Competitive Coding Club<a class="headerlink" href="#stuyvesant-competitive-coding-club" title="Permanent link"></a></h5>
+<div id="listing"></div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
 
-    $.get('/Advanced/Exercises/', (data) => {
-        console.log(data);
-        let listing = initDirectory(data);
-        console.log(listing);
-        $('body').append(JSON.stringify(listing));
-    });
-
-    function initDirectory(text) {
-        return text
-            .match(/href="([\w]+)/g) // pull out the hrefs
-            .map((x) => x.replace('href="', '')); // clean up
-    }
+    (async () => {
+        const response = await fetch('https://api.github.com/repos/StuyCCC/stuyccc.github.io/contents/Advanced/Exercises');
+        const data = await response.json();
+        let htmlString = '<ul>';
+        for (let file of data) {
+            htmlString += `<li><p><a href="///C://CS/stuyccc.github.io/Advanced/%24%7Bfile.path%7D">${file.name}</a></p></li>`;
+        }
+        htmlString += '</ul>';
+        document.getElementById('listing').innerHTML = htmlString;
+    })()
 
 </script>
 	</article>
