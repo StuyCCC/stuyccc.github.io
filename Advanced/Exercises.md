@@ -10,7 +10,8 @@
 		const data = await response.json();
 		let htmlString = '<ul>';
 		for (let file of data) {
-			htmlString += `<li><p><a href="/Advanced/Exercises/${file.name.replace(".md", "")}">${file.name.replace(".md", "").replace("_", " ")}</a></p></li>`;
+			if (file.name.includes(".html"))
+				htmlString += `<li><p><a href="/Advanced/Exercises/${file.name.replace(".html", "")}">${file.name.replace(".html", "").replace("_", " ")}</a></p></li>`;
 		}
 		htmlString += '</ul>';
 		document.getElementById('listing').innerHTML = htmlString;
