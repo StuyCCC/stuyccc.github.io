@@ -1,6 +1,6 @@
 {
     "folders": [{
         "path": ".",
-        "file_exclude_patterns": ["Advanced/*.html"]
+        //"file_exclude_patterns": ["Advanced/*.html"]
     }]
 }
