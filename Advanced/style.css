@@ -13,3 +13,11 @@ body {
       max-width: 980px;
       border: 1px solid #ddd;
 }
+
+summary:focus {
+	outline: none;
+}
+
+summary:hover {
+	cursor: pointer;
+}
