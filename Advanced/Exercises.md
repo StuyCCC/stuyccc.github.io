@@ -1,20 +1,7 @@
 ### Exercises
 ##### Stuyvesant Competitive Coding Club
 
-<div id="listing"><ul><li>Loading Directory...<li><ul></div>
+- Concept Review
 
-<script>
-
-	(async () => {
-		const response = await fetch('https://api.github.com/repos/StuyCCC/stuyccc.github.io/contents/Advanced/Exercises');
-		const data = await response.json();
-		let htmlString = '<ul>';
-		for (let file of data) {
-			if (file.name.includes(".html"))
-				htmlString += `<li><a href="/Advanced/Exercises/${file.name.replace(".html", "")}">${file.name.replace(".html", "").replace("_", " ")}</a></li>`;
-		}
-		htmlString += '</ul>';
-		document.getElementById('listing').innerHTML = htmlString;
-	})()
-
-</script>
+	- [Computational Complexity](/Advanced/Exercises/Computational_Complexity)
+	- [Array and Linked Lists](/Advanced/Exercises/Arrays_and_Linked_Lists)
