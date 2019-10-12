@@ -1068,6 +1068,112 @@ body .markdown-body
 <body>
 	<article class="markdown-body">
 		<h3 id="computational-complexity">Computational Complexity<a class="headerlink" href="#computational-complexity" title="Permanent link"></a></h3>
+<h5 id="suggested-reading">Suggested Reading:<a class="headerlink" href="#suggested-reading" title="Permanent link"></a></h5>
+<ul>
+<li>
+<p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Computational_complexity">Computational Complexity</a></p>
+<ul>
+<li>Be sure to understand the difference between best-case, worst-case and average-case complexity. Generally, what we care about is worst-case complexity (since people who design test cases for your code will usually try to come up with the most nefarious data possible).</li>
+</ul>
+</li>
+<li>
+<p>Geeks for Geeks: <a href="https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/">Big-O notation</a></p>
+<ul>
+<li>Most people in APCS should already be familiar with this.</li>
+</ul>
+</li>
+<li>
+<p>Geeks for Geeks: <a href="https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/">Amortized Analysis</a></p>
+<ul>
+<li>This isn&rsquo;t that important for competitive programming, but it&rsquo;s good piece of knowledge to have under your belt.</li>
+</ul>
+</li>
+</ul>
+<h5 id="practice">Practice:<a class="headerlink" href="#practice" title="Permanent link"></a></h5>
+<p>Calculate the big-O time complexity of the following (python) functions:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">3</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">*=</span> <span class="mi">10</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">*=</span> <span class="n">x</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">3</span>
+        <span class="k">while</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+
+<p>For the following, &ldquo;n&rdquo; is the size of the input list:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">+=</span> <span class="n">x</span>
+
+    <span class="k">if</span> <span class="n">L</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="n">half_a</span> <span class="o">=</span> <span class="n">input_list</span><span class="p">[:</span><span class="n">L</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">half_b</span> <span class="o">=</span> <span class="n">input_list</span><span class="p">[</span><span class="n">L</span><span class="o">//</span><span class="mi">2</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">out</span> <span class="o">+</span> <span class="n">func</span><span class="p">(</span><span class="n">half_a</span><span class="p">)</span> <span class="o">+</span> <span class="n">func</span><span class="p">(</span><span class="n">half_b</span><span class="p">)</span>
+</pre></div>
+
+<p>This one is especially difficult:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_list</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
+
+    <span class="k">if</span> <span class="n">L</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="n">half_a</span> <span class="o">=</span> <span class="n">input_list</span><span class="p">[:</span><span class="n">L</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">half_b</span> <span class="o">=</span> <span class="n">input_list</span><span class="p">[</span><span class="n">L</span><span class="o">//</span><span class="mi">2</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">out</span> <span class="o">+</span> <span class="n">func</span><span class="p">(</span><span class="n">half_a</span><span class="p">)</span> <span class="o">+</span> <span class="n">func</span><span class="p">(</span><span class="n">half_b</span><span class="p">)</span>
+</pre></div>
+
+<p><details>
+<summary>Answers</summary></p>
+<div class="codehilite"><pre>O(n), O(log(n)), O(log(log(n))), O(n), O(n*log(n)), O(n^2)
+</pre></div>
+
+
+<p></details></p>
 	</article>
 </body>
 </html>

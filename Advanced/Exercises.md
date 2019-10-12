@@ -1,7 +1,7 @@
 ### Exercises
 ##### Stuyvesant Competitive Coding Club
 
-<div id="listing"></div>
+<div id="listing"><ul><li>Loading Directory...<li><ul></div>
 
 <script>
 
