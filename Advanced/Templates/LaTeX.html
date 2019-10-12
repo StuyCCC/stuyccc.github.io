@@ -1069,99 +1069,15 @@ body .markdown-body
 .codehilite .vi{color:teal}
 .codehilite .il{color:#009999}
 .codehilite .gc{color:#999;background-color:#EAF2F5}
-</style><title>Arrays_and_Linked_Lists</title>
+</style><title>LaTeX</title>
 </head>
 <link rel="stylesheet" type="text/css" media="all" href="/Advanced/style.css" />
 <body>
 	<article class="markdown-body">
-		<h3 id="arrays-and-linked-lists">Arrays and Linked Lists<a class="headerlink" href="#arrays-and-linked-lists" title="Permanent link"></a></h3>
-<p>The three basic types of linear data we&rsquo;re going to use are Arrays, Dynamic Arrays, and Linked Lists.</p>
-<h5 id="suggested-reading">Suggested Reading:<a class="headerlink" href="#suggested-reading" title="Permanent link"></a></h5>
-<ul>
-<li>
-<p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Dynamic_array">Dynamic Arrays</a></p>
-<ul>
-<li>Lists in python, ArrayLists in Java, and vectors in C++ are dynamic arrays.</li>
-</ul>
-</li>
-<li>
-<p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Linked_list">Linked Lists</a></p>
-<ul>
-<li>This is the most rarely used of the three, but still useful to know.</li>
-</ul>
-</li>
-<li>
-<p>Geeks for Geeks: <a href="https://www.geeksforgeeks.org/linked-list-vs-array/">Linked Lists vs. Arrays</a></p>
-</li>
-</ul>
-<h5 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link"></a></h5>
-<p>Time complexities of common operations on Dynamic Arrays and Linked Lists:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Dynamic Array (length m)</th>
-<th>Linked List (length m)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Access by index n</td>
-<td><strong>O(1)</strong></td>
-<td>Go through each element until you reach the nth <strong>O(n)</strong></td>
-</tr>
-<tr>
-<td>Access by value v</td>
-<td>Loop through array until you reach the value <strong>O(m)</strong></td>
-<td>Loop through list until you reach the value <strong>O(m)</strong></td>
-</tr>
-<tr>
-<td>Set value at index n to value v</td>
-<td><strong>O(1)</strong></td>
-<td>Go to the nth element, set its data value to v <strong>O(n)</strong></td>
-</tr>
-<tr>
-<td>Insert value (0, m-1)</td>
-<td>Shift elements n-(m-1) <strong>O(m-n)</strong> (1 is a constant, doesn’t matter)</td>
-<td>Insert a value between the n-1th &amp; n+1th elements <strong>O(n)</strong></td>
-</tr>
-<tr>
-<td>Insert value at back</td>
-<td>No shifting elements <strong>O(1)</strong></td>
-<td>Have to go through whole list <strong>O(m)</strong>, (n ≈ m in this case)</td>
-</tr>
-<tr>
-<td>Insert value at front</td>
-<td>Shift all elements <strong>O(m)</strong></td>
-<td>Make the new element the head of the list <strong>O(1)</strong></td>
-</tr>
-<tr>
-<td>Remove first element</td>
-<td>Shift all elements <strong>O(m)</strong></td>
-<td>Destroy link from head to next element, make the next element the head <strong>O(1)</strong></td>
-</tr>
-<tr>
-<td>Remove index n</td>
-<td>Shift elements n-m <strong>O(m-n)</strong></td>
-<td>Reach element n, then remove link to next element and replace with link between n-1th &amp; n+1th elements <strong>O(n)</strong></td>
-</tr>
-<tr>
-<td>Remove by value</td>
-<td>Shift all elements <strong>O(m)</strong></td>
-<td>Search for value <strong>O(m)</strong></td>
-</tr>
-<tr>
-<td>Split into two lists at index n</td>
-<td>Create two arrays, copy elements over <strong>O(m)</strong></td>
-<td>Go to nth element, separate the two adjacent elements, set the first element of the second list as head and add a link to null at the end of the first list <strong>O(n)</strong></td>
-</tr>
-<tr>
-<td>Join two lists, one of length m1 and one of length m2</td>
-<td>Create an array of length m1 + m2, copy elements over from each list <strong>O(m1+m2)</strong></td>
-<td>Move to the last element of the first list, then link the last element to the head of the next list <strong>O(m1)</strong></td>
-</tr>
-</tbody>
-</table>
+		<h5 id="latex-test">LaTeX test:<a class="headerlink" href="#latex-test" title="Permanent link"></a></h5>
+<p>Here is a mathematical expression on a newline:</p>
+<p>\[ \frac{1}{2} \]</p>
+<p>Here is some inline LaTeX: $ e^{i \pi} = -1 $</p>
 	</article>
 </body>
 </html>

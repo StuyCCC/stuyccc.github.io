@@ -105,5 +105,10 @@ def func(input_list):
 <details>
 <summary>Answers</summary>
 
-	O(n), O(log(n)), O(log(log(n))), O(n), O(n*log(n)), O(n^2)
+1. $O(n)$
+2. $O(\log n)$
+3. $O(\log \log n)$
+4. $O(n)$
+5. $O(n \log n)$
+6. $O(n^2)$
 </details>

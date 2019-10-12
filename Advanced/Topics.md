@@ -5,7 +5,7 @@ The [USACO training website](https://train.usaco.org/usacogate) contains a list 
 
 Please note that understanding everything on this list isn't a free pass to becoming an expert at competitive programming. Each of these sections is a complex and nuanced field of potential problems. During a club meeting, we can only really dip our toes into the water of what these problems are like and how to solve them.
 
-#### Basic topics (should be mostly review):
+##### Basic topics (should be mostly review):
 
 - Simple Data Structures:
 	- Arrays (static size)
@@ -23,7 +23,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- APCS students may only be familiar with basic big O, like O(1) and O(n). Everyone should become familiar with determining big O complexity in all scenarios.
 	- People should also understand space complexity (not just time complexity).
 
-#### More topics:
+##### More topics:
 
 - Greedy Algorithms
 	- Most importantly, when to use them. It's an easy trap to think a problem is solvable greedily, when it gives you the wrong answer.
@@ -52,7 +52,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- [Breadth-first Search](https://en.wikipedia.org/wiki/Breadth-first_search)
 	- [Flood Fill](https://en.wikipedia.org/wiki/Flood_fill)
 
-#### Advanced Topics:
+##### Advanced Topics:
 
 - More Data Structures
 	- [Heaps](https://en.wikipedia.org/wiki/Heap_(data_structure)), Priority Queues
@@ -93,10 +93,13 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- [Convex Hulls](https://en.wikipedia.org/wiki/Convex_hull)
 	- [Sweep Line Algorithms](https://en.wikipedia.org/wiki/Sweep_line_algorithm)
 
+- Statistics
+	- [Odds Algorithm](https://en.wikipedia.org/wiki/Odds_algorithm)
+
 - Optimized Search
 	- Understanding how and where to prune recursive search
 
-#### Auxiliary Topics (practical as opposed to theoretical):
+##### Auxiliary Topics (practical as opposed to theoretical):
 
 These can and should be researched on your own time. Nothing in this section is especially difficult.
 
