@@ -59,7 +59,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- [Tries](https://en.wikipedia.org/wiki/Trie)
 	- [Quad Trees](https://en.wikipedia.org/wiki/Quadtree)
 
-- Sliding Window Problems
+- Sliding Window Algorithms
 	- Rolling Hashes
 
 - Shortest Path Algorithms
@@ -68,29 +68,33 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- [Bellman-Ford Algorithm](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm)
 	- [Floyd-Warshall Algorithm](https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm)
 
-- [Knapsack problems](https://en.wikipedia.org/wiki/Knapsack_problem)
-	- Continuous and discrete variations
-	- Multiple knapsack versions
-
 - Minimum Spanning Trees
 	- [Prim's Algorithm](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
+	- [Kruskal's Algorithm](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm)
 
 - Cycle Detection
 	- [Eulerian Tours](https://www.algorithmist.com/index.php/Euler_tour)
 	- Minimal Weight Cycles
-
-- Computational Geometry
-	- [Convex Hulls](https://en.wikipedia.org/wiki/Convex_hull)
-	- [Sweep Line Algorithms](https://en.wikipedia.org/wiki/Sweep_line_algorithm)
 
 - Network Flow
 	- [Ford-Fulkerson Algorithm](https://en.wikipedia.org/wiki/Ford%E2%80%93Fulkerson_algorithm)
 	- Min Cut Max Flow Theorem
 	- Applications (there are many)
 
+- More Graph Theory
+	- [Topological Sort](https://en.wikipedia.org/wiki/Topological_sorting)
+	- [Union-Find](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
+
+- [Knapsack problems](https://en.wikipedia.org/wiki/Knapsack_problem)
+	- Continuous and discrete variations
+	- Multiple knapsack versions
+
+- Computational Geometry
+	- [Convex Hulls](https://en.wikipedia.org/wiki/Convex_hull)
+	- [Sweep Line Algorithms](https://en.wikipedia.org/wiki/Sweep_line_algorithm)
+
 - Optimized Search
 	- Understanding how and where to prune recursive search
-	- Probably the most difficult topic on the list. Can range from trivial to mind-bogglingly difficult.
 
 #### Auxiliary Topics (practical as opposed to theoretical):
 
