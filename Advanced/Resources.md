@@ -14,3 +14,6 @@
 
 - [GeeksforGeeks](https://www.geeksforgeeks.org/)
 	- Detailed articles about many common algorithms
+
+- [Carnegie Mellon CS 15-121](https://www.cs.cmu.edu/~adamchik/15-121/lectures/)
+	- Really visual and intuitive

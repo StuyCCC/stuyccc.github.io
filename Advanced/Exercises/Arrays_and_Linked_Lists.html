@@ -5,12 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> StuyCCC Advanced Section Gateway </title>
 	<link rel="icon" href="data/favicon.ico" type="image/x-icon">
-	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-	<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({
-		  tex2jax: {inlineMath: [['$','$'], ['\\[','\\]']]}
-		});
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script>
+	  MathJax = {
+	    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+	  };
 	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
 	<style>body {
   max-width: 980px;
@@ -1085,7 +1086,7 @@ body .markdown-body
 </ul>
 </li>
 <li>
-<p>Wikipedia: <a href="https://en.wikipedia.org/wiki/Linked_list">Linked Lists</a></p>
+<p>CMU: <a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html">Linked Lists</a></p>
 <ul>
 <li>This is the most rarely used of the three, but still useful to know.</li>
 </ul>

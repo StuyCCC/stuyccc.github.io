@@ -8,7 +8,7 @@ The three basic types of linear data we're going to use are Arrays, Dynamic Arra
 
 	- Lists in python, ArrayLists in Java, and vectors in C++ are dynamic arrays.
 
-- Wikipedia: [Linked Lists](https://en.wikipedia.org/wiki/Linked_list)
+- CMU: [Linked Lists](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html)
 
 	- This is the most rarely used of the three, but still useful to know.
 

@@ -6,7 +6,7 @@
 
 	- Be sure to understand the difference between best-case, worst-case and average-case complexity. Generally, what we care about is worst-case complexity (since people who design test cases for your code will usually try to come up with the most nefarious data possible).
 
-- Geeks for Geeks: [Big-O notation](https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/)
+- CMU: [Big-O notation](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Algorithmic%20Complexity/complexity.html)
 
 	- Most people in APCS should already be familiar with this.
 
