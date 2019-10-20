@@ -10,7 +10,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 - Simple Data Structures:
 	- Arrays (static size)
 	- Python lists / Java ArrayLists / c++ vectors (dynamic size)
-	- [Linked lists](https://en.wikipedia.org/wiki/Linked_list)
+	- [Linked lists](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html)
 	- [Stacks](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)), [Queues](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
 	- [Hash Maps](https://en.wikipedia.org/wiki/Hash_table), (Hash Sets)
 
@@ -19,7 +19,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Sorting algorithms (most languages provide them for you, so you just need to know how to use them.)
 	- Basically anything that's easy to learn from Wikipedia in a few minutes
 
-- [Computational Complexity](https://en.wikipedia.org/wiki/Time_complexity)
+- [Computational Complexity](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Algorithmic%20Complexity/complexity.html)
 	- APCS students may only be familiar with basic big O, like O(1) and O(n). Everyone should become familiar with determining big O complexity in all scenarios.
 	- People should also understand space complexity (not just time complexity).
 
@@ -98,6 +98,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 
 - Optimized Search
 	- Understanding how and where to prune recursive search
+	- [Branch and Bound](https://en.wikipedia.org/wiki/Branch_and_bound)
 
 ##### Auxiliary Topics (practical as opposed to theoretical):
 

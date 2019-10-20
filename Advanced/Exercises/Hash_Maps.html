@@ -1070,45 +1070,62 @@ body .markdown-body
 .codehilite .vi{color:teal}
 .codehilite .il{color:#009999}
 .codehilite .gc{color:#999;background-color:#EAF2F5}
-</style><title>Resources</title>
+</style><title>Hash_Maps</title>
 </head>
 <link rel="stylesheet" type="text/css" media="all" href="/Advanced/style.css" />
 <body>
 	<article class="markdown-body">
-		<h3 id="recommended-resources">Recommended Resources<a class="headerlink" href="#recommended-resources" title="Permanent link"></a></h3>
-<h5 id="stuyvesant-competitive-coding-club">Stuyvesant Competitive Coding Club<a class="headerlink" href="#stuyvesant-competitive-coding-club" title="Permanent link"></a></h5>
+		<h3 id="hash-maps-and-sets">Hash Maps and Sets<a class="headerlink" href="#hash-maps-and-sets" title="Permanent link"></a></h3>
+<h5 id="suggested-reading">Suggested Reading:<a class="headerlink" href="#suggested-reading" title="Permanent link"></a></h5>
 <ul>
 <li>
-<p><a href="https://train.usaco.org/usacogate">USACO Training Pages</a></p>
+<p>CMU: <a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Hashing/hashing.html">Hashing</a></p>
 <ul>
-<li>Probably the #1 resource for practice problems.</li>
+<li>You don&rsquo;t need to know all the details of how hashing works. We just need to be able to use maps and sets in our code.</li>
 </ul>
 </li>
 <li>
-<p><a href="https://leetcode.com/problemset/all/">LeetCode</a></p>
+<p>W3schools: <a href="https://www.w3schools.com/python/python_dictionaries.asp">Python Dictionaries</a></p>
 <ul>
-<li>Don&rsquo;t waste time on the easy/medium problems, pick a hard problem and spend time thinking about it.</li>
-<li>Has a practically infinite supply of problems</li>
+<li>Dictionaries in Python are hash maps.</li>
+</ul>
+</li>
+</ul>
+<h5 id="practice">Practice:<a class="headerlink" href="#practice" title="Permanent link"></a></h5>
+<p>For these problems, you can either write code in your favorite programming language, or just describe an algorithm in pseudo-code (or just come up with the algorithm in your head and move on).</p>
+<ul>
+<li>
+<p>Given an array of strings, return whether the array contains any duplicates. Do it in $O(n)$ time.
+<div class="codehilite"><pre><span class="n">Sample</span> <span class="nl">Input</span><span class="p">:</span>  <span class="p">[</span><span class="s">&quot;hey&quot;</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;hey&quot;</span><span class="p">,</span> <span class="s">&quot;hi&quot;</span><span class="p">]</span>
+<span class="n">Sample</span> <span class="nl">Output</span><span class="p">:</span> <span class="nb">true</span>
+</pre></div></p>
+</li>
+<li>
+<p>Given an array of strings, return the numbers of occurences of the string which occurs most frequently in the array. Do it in $O(n)$ time.
+<div class="codehilite"><pre><span class="n">Sample</span> <span class="nl">Input</span><span class="p">:</span>  <span class="p">[</span><span class="s">&quot;hey&quot;</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;hey&quot;</span><span class="p">,</span> <span class="s">&quot;hi&quot;</span><span class="p">,</span> <span class="s">&quot;hey&quot;</span><span class="p">,</span> <span class="s">&quot;hi&quot;</span><span class="p">]</span>
+<span class="n">Sample</span> <span class="nl">Output</span><span class="p">:</span> <span class="mi">3</span>
+</pre></div></p>
+</li>
+<li>
+<p>Suppose you have a string composed solely of &ldquo;a&rdquo;s and &ldquo;b&rdquo;s, for example: &ldquo;abbbab&rdquo;. We will say that the &ldquo;complement&rdquo; of each string is another string where &ldquo;a&rdquo;s have been replaced with &ldquo;b&rdquo;s and vice-versa. So the complement of &ldquo;abbbab&rdquo; is &ldquo;baaaba&rdquo;. Given an array of strings made of &ldquo;a&rdquo;s and &ldquo;b&rdquo;s, without any duplicate strings, return the number of strings in the array who also have their complement in the array (note that this is always an even number). Do it in $O(n)$ time.
+<div class="codehilite"><pre><span class="n">Sample</span> <span class="nl">Input</span><span class="p">:</span>  <span class="p">[</span><span class="s">&quot;abb&quot;</span><span class="p">,</span> <span class="s">&quot;aba&quot;</span><span class="p">,</span> <span class="s">&quot;baa&quot;</span><span class="p">,</span> <span class="s">&quot;bba&quot;</span><span class="p">,</span> <span class="s">&quot;bab&quot;</span><span class="p">,</span> <span class="s">&quot;aaa&quot;</span><span class="p">]</span>
+<span class="n">Sample</span> <span class="nl">Output</span><span class="p">:</span> <span class="mi">4</span>
+</pre></div></p>
+</li>
+<li>
+<p>All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, for example: &ldquo;ACGAATTCCG&rdquo;. When studying DNA, it is sometimes useful to identify repeated sequences within the DNA. Write a function to find all the 10-letter-long sequences (substrings) that occur more than once in a DNA molecule. Do it in $O(n)$ time. (<a href="https://leetcode.com/problems/repeated-dna-sequences/">source</a>)
+<div class="codehilite"><pre><span class="n">Sample</span> <span class="nl">Input</span><span class="p">:</span>  <span class="s">&quot;AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT&quot;</span>
+<span class="n">Sample</span> <span class="nl">Output</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;AAAAACCCCC&quot;</span><span class="p">,</span> <span class="s">&quot;CCCCCAAAAA&quot;</span><span class="p">]</span>
+</pre></div></p>
+<ul>
+<li>Follow-up question: can you solve this problem, but instead of finding sequences of 10 letters, you find sequences of $k$ letters, while still running in $O(n)$ time (not $O(nk)$)? This is a much harder problem which uses techniques we haven&rsquo;t covered yet.</li>
 </ul>
 </li>
 <li>
-<p>MIT OpenCourseWare</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=HtSuA80QTyo&amp;list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb">6.006: Introduction to Algorithms</a></li>
-<li><a href="https://www.youtube.com/watch?v=2P-yW7LQr08&amp;list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp">6.046J: Design and Analysis of Algorithms</a></li>
-</ul>
-</li>
-<li>
-<p><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></p>
-<ul>
-<li>Detailed articles about many common algorithms</li>
-</ul>
-</li>
-<li>
-<p><a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/">Carnegie Mellon CS 15-121</a></p>
-<ul>
-<li>Really visual and intuitive</li>
-</ul>
+<p>Given a rectangular 2D array consisting of 0s and 1s, we may choose any number of columns in the array and flip every cell in that column. Flipping a cell changes the value of that cell from 0 to 1 or from 1 to 0. Return the maximum number of rows that have all values equal after some number of flips. Do it in $O(mn)$ time, where $m$ and $n$ are the dimensions of the array. (<a href="https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/">source</a>)
+<div class="codehilite"><pre><span class="n">Sample</span> <span class="nl">Input</span><span class="p">:</span>  <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">Sample</span> <span class="nl">Output</span><span class="p">:</span> <span class="mi">2</span>
+</pre></div></p>
 </li>
 </ul>
 	</article>

@@ -5,6 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> StuyCCC Advanced Section Gateway </title>
 	<link rel="icon" href="data/favicon.ico" type="image/x-icon">
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script>
+	  MathJax = {
+	    tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+	  };
+	</script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 	<style>body {
   max-width: 980px;
   border: 1px solid #ddd;
@@ -1071,14 +1079,14 @@ body .markdown-body
 <h5 id="stuyvesant-competitive-coding-club">Stuyvesant Competitive Coding Club<a class="headerlink" href="#stuyvesant-competitive-coding-club" title="Permanent link"></a></h5>
 <p>The <a href="https://train.usaco.org/usacogate">USACO training website</a> contains a list of topics they think are important. This list is partially based on that one. This list is arranged in roughly increasing order of difficulty, though there will inevitably be some disagreement on this front.</p>
 <p>Please note that understanding everything on this list isn&rsquo;t a free pass to becoming an expert at competitive programming. Each of these sections is a complex and nuanced field of potential problems. During a club meeting, we can only really dip our toes into the water of what these problems are like and how to solve them.</p>
-<h4 id="basic-topics-should-be-mostly-review">Basic topics (should be mostly review):<a class="headerlink" href="#basic-topics-should-be-mostly-review" title="Permanent link"></a></h4>
+<h5 id="basic-topics-should-be-mostly-review">Basic topics (should be mostly review):<a class="headerlink" href="#basic-topics-should-be-mostly-review" title="Permanent link"></a></h5>
 <ul>
 <li>
 <p>Simple Data Structures:</p>
 <ul>
 <li>Arrays (static size)</li>
 <li>Python lists / Java ArrayLists / c++ vectors (dynamic size)</li>
-<li><a href="https://en.wikipedia.org/wiki/Linked_list">Linked lists</a></li>
+<li><a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html">Linked lists</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stacks</a>, <a href="https://en.wikipedia.org/wiki/Queue_(abstract_data_type)">Queues</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Hash_table">Hash Maps</a>, (Hash Sets)</li>
 </ul>
@@ -1092,14 +1100,14 @@ body .markdown-body
 </ul>
 </li>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/Time_complexity">Computational Complexity</a></p>
+<p><a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Algorithmic%20Complexity/complexity.html">Computational Complexity</a></p>
 <ul>
 <li>APCS students may only be familiar with basic big O, like O(1) and O(n). Everyone should become familiar with determining big O complexity in all scenarios.</li>
 <li>People should also understand space complexity (not just time complexity).</li>
 </ul>
 </li>
 </ul>
-<h4 id="more-topics">More topics:<a class="headerlink" href="#more-topics" title="Permanent link"></a></h4>
+<h5 id="more-topics">More topics:<a class="headerlink" href="#more-topics" title="Permanent link"></a></h5>
 <ul>
 <li>
 <p>Greedy Algorithms</p>
@@ -1147,7 +1155,7 @@ body .markdown-body
 </ul>
 </li>
 </ul>
-<h4 id="advanced-topics">Advanced Topics:<a class="headerlink" href="#advanced-topics" title="Permanent link"></a></h4>
+<h5 id="advanced-topics">Advanced Topics:<a class="headerlink" href="#advanced-topics" title="Permanent link"></a></h5>
 <ul>
 <li>
 <p>More Data Structures</p>
@@ -1216,13 +1224,19 @@ body .markdown-body
 </ul>
 </li>
 <li>
+<p>Statistics</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Odds_algorithm">Odds Algorithm</a></li>
+</ul>
+</li>
+<li>
 <p>Optimized Search</p>
 <ul>
 <li>Understanding how and where to prune recursive search</li>
 </ul>
 </li>
 </ul>
-<h4 id="auxiliary-topics-practical-as-opposed-to-theoretical">Auxiliary Topics (practical as opposed to theoretical):<a class="headerlink" href="#auxiliary-topics-practical-as-opposed-to-theoretical" title="Permanent link"></a></h4>
+<h5 id="auxiliary-topics-practical-as-opposed-to-theoretical">Auxiliary Topics (practical as opposed to theoretical):<a class="headerlink" href="#auxiliary-topics-practical-as-opposed-to-theoretical" title="Permanent link"></a></h5>
 <p>These can and should be researched on your own time. Nothing in this section is especially difficult.</p>
 <ul>
 <li>
