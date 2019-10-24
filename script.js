@@ -3,6 +3,14 @@
 
 var student_lessons = [
 
+    ['Lesson 0: What even is this club?', 'Beginners/Student/lesson0_1.html'],
+    ['Lesson 1: What even is Python?', 'Beginners/Student/lesson1_1.html'],
+    ['Lesson 2: What even are Strings?', 'Beginners/Student/lesson2_1.html'],
+    ['Lesson 3: What even are loops?', 'Beginners/Student/lesson3_1.html'],
+    ['Lesson 4: What even are lists?', 'Beginners/Student/lesson5.html'],
+    ['Lesson 5: What even are Fibonacci sequences?', 'Beginners/Student/lesson6_1.html'],
+    ['Lesson 6: What are regular expressions?', 'Beginners/Student/lesson7_1.html']
+
 ];
 
 var utils = [
