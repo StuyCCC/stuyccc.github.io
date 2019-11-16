@@ -20,7 +20,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Basically anything that's easy to learn from Wikipedia in a few minutes
 
 - [Computational Complexity](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Algorithmic%20Complexity/complexity.html)
-	- APCS students may only be familiar with basic big O, like O(1) and O(n). Everyone should become familiar with determining big O complexity in all scenarios.
+	- APCS students may only be familiar with basic big $O$, like $O(1)$ and $O(n)$. Everyone should become familiar with determining big $O$ complexity in all scenarios.
 	- People should also understand space complexity (not just time complexity).
 
 ##### More topics:
@@ -29,13 +29,21 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Most importantly, when to use them. It's an easy trap to think a problem is solvable greedily, when it gives you the wrong answer.
 
 - Graph Theory (very important)
-	- Vertices / Nodes, Edges, Weights, basically understanding what a graph is
+	- Vertices / Nodes, Edges, basically understanding what a graph is
 	- Cycles, Cyclic Graphs vs. Trees
 	- Directed vs. Undirected Graphs
+	- Weighted vs. Unweighted Graphs
 	- Special trees, e.g. binary trees
+	- Storing graphs on a computer
+
+- Simple Graph Algorithms
+	- [Flood Fill](https://en.wikipedia.org/wiki/Flood_fill)
+	- [Breadth-first Search](https://en.wikipedia.org/wiki/Breadth-first_search)
+	- Shortest Paths on an unweighted graph
 
 - Simple Recursive Search Algorithms
 	- This is covered in APCS (at least for some teachers)
+	- Modeling state-space searches as directed graphs
 	- Pruning
 	- [Iterative Deepening](https://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search)
 
@@ -47,10 +55,6 @@ Please note that understanding everything on this list isn't a free pass to beco
 
 - Divide-and-Conquer Algorithms
 	- Splitting a problem into much smaller subproblems
-
-- Simple Graph Algorithms
-	- [Breadth-first Search](https://en.wikipedia.org/wiki/Breadth-first_search)
-	- [Flood Fill](https://en.wikipedia.org/wiki/Flood_fill)
 
 ##### Advanced Topics:
 
@@ -92,9 +96,6 @@ Please note that understanding everything on this list isn't a free pass to beco
 - Computational Geometry
 	- [Convex Hulls](https://en.wikipedia.org/wiki/Convex_hull)
 	- [Sweep Line Algorithms](https://en.wikipedia.org/wiki/Sweep_line_algorithm)
-
-- Statistics
-	- [Odds Algorithm](https://en.wikipedia.org/wiki/Odds_algorithm)
 
 - Optimized Search
 	- Understanding how and where to prune recursive search
