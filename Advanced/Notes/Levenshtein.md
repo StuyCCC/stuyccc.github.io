@@ -30,7 +30,7 @@ What you should notice is that we've now described a recursive way of solving th
 3. With option (3), $f(i,j)=1+f(i,j+1)$, again using the second observation above.
 4. Finally, if $A[i]=B[j]$, then we can simply say $f(i,j)=f(i+1,j+1)$.
 
-This is enough to create a complete formula for $f$. We notice that there are only $|A||B|$ possible inputs for $f$, meaning we can create an $O(|A||B|) DP algorithm to solve this problem. We'll use a 2D array with a bottom-up DP approach. Here's a solution in Python. Note that in this solution, I started from the end of the strings and worked my way backwards. The algorithm works the exact same way.
+This is enough to create a complete formula for $f$. We notice that there are only $|A||B|$ possible inputs for $f$, meaning we can create an $O(|A||B|)$ DP algorithm to solve this problem. We'll use a 2D array with a bottom-up DP approach. Here's a solution in Python. Note that in this solution, I started from the end of the strings and worked my way backwards. The algorithm works the exact same way.
 
 
 ```python
