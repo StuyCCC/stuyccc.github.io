@@ -21,3 +21,7 @@ summary:focus {
 summary:hover {
 	cursor: pointer;
 }
+
+.MathJax {
+	font-size: 105% !important;
+}

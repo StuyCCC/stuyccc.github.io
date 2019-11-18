@@ -7,3 +7,5 @@
 	- [Arrays and Linked Lists](/Advanced/Exercises/Arrays_and_Linked_Lists)
 	- [Hash Maps and Sets](/Advanced/Exercises/Hash_Maps)
 	- [Stacks and Queues](/Advanced/Exercises/Stacks_and_Queues)
+
+- [Greedy Algorithms](/Advanced/Exercises/Greedy)
