@@ -1084,7 +1084,7 @@ body .markdown-body
 <li>Replace any character with any other character</li>
 </ol>
 <p>Suppose we are given two strings, $A$ and $B$. We want to design a function, called $dist(A,B)$, which will return the &ldquo;edit distance&rdquo; between $A$ and $B$. The edit distance is defined as the minimum number of operations required to convert one string to the other.</p>
-<p>For instance, $dist(&ldquo;cat&rdquo;,&rdquo;art&rdquo;)=2$, since we can convert $&rdquo;cat&rdquo;$ into $&rdquo;art&rdquo;$ by deleting the $&rdquo;c&rdquo;$ and then adding an $&rdquo;r&rdquo;$.</p>
+<p>For instance, $dist(\text{&ldquo;cat&rdquo;},\text{&ldquo;art&rdquo;})=2$, since we can convert &ldquo;cat&rdquo; into &ldquo;art&rdquo; by deleting the &ldquo;c&rdquo; and then adding an &ldquo;r&rdquo;.</p>
 <h5 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"></a></h5>
 <p>As always, the best way to approach this problem is to try and make some observations about the problem that we can use to help us arrive at a solution. Let&rsquo;s begin:</p>
 <ul>
@@ -1104,7 +1104,7 @@ body .markdown-body
 <li>With option (3), $f(i,j)=1+f(i,j+1)$, again using the second observation above.</li>
 <li>Finally, if $A[i]=B[j]$, then we can simply say $f(i,j)=f(i+1,j+1)$.</li>
 </ol>
-<p>This is enough to create a complete formula for $f$. We notice that there are only $|A||B|$ possible inputs for $f$, meaning we can create an $O(|A||B|) DP algorithm to solve this problem. We&rsquo;ll use a 2D array with a bottom-up DP approach. Here&rsquo;s a solution in Python. Note that in this solution, I started from the end of the strings and worked my way backwards. The algorithm works the exact same way.</p>
+<p>This is enough to create a complete formula for $f$. We notice that there are only $|A||B|$ possible inputs for $f$, meaning we can create an $O(|A||B|)$ DP algorithm to solve this problem. We&rsquo;ll use a 2D array with a bottom-up DP approach. Here&rsquo;s a solution in Python. Note that in this solution, I started from the end of the strings and worked my way backwards. The algorithm works the exact same way.</p>
 <div class="codehilite"><pre><span class="kn">import</span> <span class="nn">itertools</span>
 
 <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>

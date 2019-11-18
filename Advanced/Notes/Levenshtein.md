@@ -10,7 +10,7 @@ There are $3$ operations we can perform on a string:
 
 Suppose we are given two strings, $A$ and $B$. We want to design a function, called $dist(A,B)$, which will return the "edit distance" between $A$ and $B$. The edit distance is defined as the minimum number of operations required to convert one string to the other.
 
-For instance, $dist("cat","art")=2$, since we can convert $"cat"$ into $"art"$ by deleting the $"c"$ and then adding an $"r"$.
+For instance, $dist(\text{"cat"},\text{"art"})=2$, since we can convert "cat" into "art" by deleting the "c" and then adding an "r".
 
 ##### Solution
 
