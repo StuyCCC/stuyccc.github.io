@@ -4,6 +4,16 @@ A good way to go about solving problems is to start by asking yourself what obse
 
 ##### Practice:
 
+###### Easier Difficulty
+
+- Leetcode: [Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
+
+- Leetcode: [Lemonade Change](https://leetcode.com/problems/lemonade-change/)
+
 - Codeforces: [Minimize the Permutation](https://codeforces.com/problemset/problem/1256/B). Try to do it in $O(n)$ time.
 
-- 
+###### Harder Difficulty
+
+- Leetcode: [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/)
+
+- Codeforces: [Sweets Eating](https://codeforces.com/problemset/problem/1253/C)
