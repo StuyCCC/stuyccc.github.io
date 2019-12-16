@@ -10,7 +10,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 - Simple Data Structures:
 	- Arrays (static size)
 	- Python lists / Java ArrayLists / c++ vectors (dynamic size)
-	- [Linked lists](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html)
+	- [Linked lists](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html) (not that important)
 	- [Stacks](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)), [Queues](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
 	- [Hash Maps](https://en.wikipedia.org/wiki/Hash_table), (Hash Sets)
 
@@ -85,13 +85,21 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Min Cut Max Flow Theorem
 	- Applications (there are many)
 
-- More Graph Theory
-	- [Topological Sort](https://en.wikipedia.org/wiki/Topological_sorting)
-	- [Union-Find](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
-
 - [Knapsack problems](https://en.wikipedia.org/wiki/Knapsack_problem)
 	- Continuous and discrete variations
 	- Multiple knapsack versions
+
+- Subsequence-based Things
+	- [Range Trees](https://en.wikipedia.org/wiki/Range_tree)
+	- [Segment Trees](https://en.wikipedia.org/wiki/Segment_tree)
+	- [Fenwick Trees](https://en.wikipedia.org/wiki/Fenwick_tree)
+	- [Range Query Minimum Algorithms](https://www.geeksforgeeks.org/range-minimum-query-for-static-array/)
+
+- More Graph Theory
+	- [Topological Sort](https://en.wikipedia.org/wiki/Topological_sorting)
+	- [Union-Find](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)
+	- Euler Walks
+	- [Least Common Ancestor Algorithms](https://www.geeksforgeeks.org/lca-n-ary-tree-constant-query-o1/)
 
 - Computational Geometry
 	- [Convex Hulls](https://en.wikipedia.org/wiki/Convex_hull)

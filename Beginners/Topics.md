@@ -55,7 +55,20 @@ This is a list of recommended topics for the beginner section.
 - Functions
 	- start with functions that don't return anything
 	- note similarity in calling functions we already know how to use, like len, range, etc.
+	- parameters and return values
 
-#### Problem Solving in Python
+- Simple Classes
+	- self
+	- methods, member variables
+	- special methods: \_\_init\_\_, \_\_str\_\_
 
-- To be continued...
+#### Programming Techniques
+
+- Higher Dimensional Arrays
+	- nested lists in Python
+	- looping over higher dimensional arrays
+	- rectangular vs. jagged arrays
+
+- Linked Data Structures
+	- linked lists
+	- binary trees
