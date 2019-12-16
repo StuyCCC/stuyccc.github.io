@@ -34,7 +34,12 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- Directed vs. Undirected Graphs
 	- Weighted vs. Unweighted Graphs
 	- Special trees, e.g. binary trees
-	- Storing graphs on a computer
+
+- Graph Representations
+	- Adjacency Matrices
+	- Adjacency Lists
+	- Edge Lists
+	- Conversion between types
 
 - Simple Graph Algorithms
 	- [Flood Fill](https://en.wikipedia.org/wiki/Flood_fill)
@@ -112,6 +117,10 @@ Please note that understanding everything on this list isn't a free pass to beco
 ##### Auxiliary Topics (practical as opposed to theoretical):
 
 These can and should be researched on your own time. Nothing in this section is especially difficult.
+
+- Bitwise Operations
+	- AND, OR, XOR
+	- Commutativity and Associativity
 
 - C++
 	- This is the unofficial language of competitive programming. Highly recommended for anyone who wants to compete past USACO bronze.
