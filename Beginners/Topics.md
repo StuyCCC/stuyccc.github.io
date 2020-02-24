@@ -57,7 +57,7 @@ This is a list of recommended topics for the beginner section.
 	- note similarity in calling functions we already know how to use, like len, range, etc.
 	- parameters and return values
 
-- Higher Dimensional Arrays (new)
+- Higher Dimensional Arrays
 	- nested lists in Python
 	- looping over higher dimensional arrays
 	- rectangular vs. jagged arrays
@@ -72,7 +72,7 @@ This is a list of recommended topics for the beginner section.
 - Typical Problem Structure
 	- in-file and out-file
 	- practice reading different data types from formatted files
-		- note that this is kind of tedious in Python, so practice is important
+		- note that this is kind of tedious in Python, so understanding it is important
 
 - Program Efficiency and Speed
 	- limitations of the machine (about 10,000,000 computations per second)
@@ -85,6 +85,14 @@ This is a list of recommended topics for the beginner section.
 	- review some of the most common big-O categories
 	- if neccessary, logarithms
 
-- Sorting
-	- we won't learn any sorting algorithms
-	- just be aware of the built-in sort() function in Python, and the fact that it takes $O(N\\log N)$ time
+#### General Problem Solving Techniques
+
+- Recursion
+	- subproblem structure: expressing the answers to problems in terms of the same problem
+	- local vs. global memory
+
+- Exhaustive Search
+	- given a set of possible states and a goal state, check every possible state (recursion typically applies)
+
+- Incremental Approach
+	- given a problem of size $N$, solve it for size $N-1$ (think: mathematical induction)
