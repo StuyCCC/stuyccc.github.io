@@ -98,7 +98,7 @@ Please note that understanding everything on this list isn't a free pass to beco
 	- [Range Trees](https://en.wikipedia.org/wiki/Range_tree)
 	- [Segment Trees](https://en.wikipedia.org/wiki/Segment_tree)
 	- [Fenwick Trees](https://en.wikipedia.org/wiki/Fenwick_tree)
-	- [Range Query Minimum Algorithms](https://www.geeksforgeeks.org/range-minimum-query-for-static-array/)
+	- [Range Minimum Query Algorithms](https://www.geeksforgeeks.org/range-minimum-query-for-static-array/)
 
 - More Graph Theory
 	- [Topological Sort](https://en.wikipedia.org/wiki/Topological_sorting)

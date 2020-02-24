@@ -57,18 +57,34 @@ This is a list of recommended topics for the beginner section.
 	- note similarity in calling functions we already know how to use, like len, range, etc.
 	- parameters and return values
 
-- Simple Classes
-	- self
-	- methods, member variables
-	- special methods: \_\_init\_\_, \_\_str\_\_
-
-#### Programming Techniques
-
-- Higher Dimensional Arrays
+- Higher Dimensional Arrays (new)
 	- nested lists in Python
 	- looping over higher dimensional arrays
 	- rectangular vs. jagged arrays
 
-- Linked Data Structures
-	- linked lists
-	- binary trees
+- Simple Classes (not important, save for later)
+	- methods, member variables
+	- self
+	- special methods: \_\_init\_\_, \_\_str\_\_
+
+#### Intro to Competitive Programming
+
+- Typical Problem Structure
+	- in-file and out-file
+	- practice reading different data types from formatted files
+		- note that this is kind of tedious in Python, so practice is important
+
+- Program Efficiency and Speed
+	- limitations of the machine (about 10,000,000 computations per second)
+	- problem input constraints
+
+- Run Time Complexity
+	- introductory example: binary search
+	- big-O notation
+	- using big-O to estimate whether your code will pass the time constraints
+	- review some of the most common big-O categories
+	- if neccessary, logarithms
+
+- Sorting
+	- we won't learn any sorting algorithms
+	- just be aware of the built-in sort() function in Python, and the fact that it takes $O(N\\log N)$ time
