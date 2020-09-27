@@ -19,7 +19,6 @@ var utils = [
 
 var links = [
 
-    ['Beginners\' Topic List', '/Beginners/Topics'],
     ['Rosalind', 'http://rosalind.info/'],
     ['SJC Problem Sets', 'https://www.sjcny.edu/long-island/academics/programs-departments/mathematics-and-computer-science/programming-competition'],
     ['CodingBat Python Practice', 'https://codingbat.com/python'],
@@ -30,8 +29,10 @@ var links = [
 
 var leadership = [
 
-    ['Leilei Hao', 'Senior', 'Beginners Section Director', 'leilei.jpg', ''],
-    ['Ethan Morgan', 'Senior', 'Advanced Section Director', 'ethan.png', '']
+    ['Amit Prasad', 'Senior', 'President', '', ''],
+    ['Arib Chowdhury', 'Senior', 'President', '', ''],
+    ['Carlos Hernandez', 'Senior', 'Vice President', '', ''],
+    ['Ishita Gupta', 'Senior', 'Vice President', '', '']
     
 ];
 
