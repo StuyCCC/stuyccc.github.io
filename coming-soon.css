@@ -1,0 +1,101 @@
+/*!
+ * Start Bootstrap - Coming Soon v5.0.8 (https://startbootstrap.com/themes/coming-soon)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-coming-soon/blob/master/LICENSE)
+ */
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  min-height: 35rem;
+  position: relative;
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  background: #2c3e50; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2c3e50, #fd746c); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2c3e50, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Merriweather';
+  font-weight: 700;
+}
+
+.masthead {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 3rem;
+  z-index: 2;
+}
+
+.masthead .masthead-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  min-height: 35rem;
+  height: 100%;
+  background-color: rgba(0, 46, 102, 0.8);
+  transform: skewY(4deg);
+  transform-origin: bottom right;
+}
+
+.masthead .masthead-content h1 {
+  font-size: 2.5rem;
+}
+
+.masthead .masthead-content p {
+  font-size: 1.2rem;
+}
+
+.masthead .masthead-content p strong {
+  font-weight: 700;
+}
+
+.masthead .masthead-content .input-group-newsletter input {
+  height: auto;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.masthead .masthead-content .input-group-newsletter button {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .masthead {
+    height: 100%;
+    min-height: 0;
+    width: 40.5rem;
+    padding-bottom: 0;
+  }
+  .masthead .masthead-bg {
+    min-height: 0;
+    transform: skewX(-8deg);
+    transform-origin: top right;
+  }
+  .masthead .masthead-content {
+    padding-left: 3rem;
+    padding-right: 10rem;
+  }
+  .masthead .masthead-content h1 {
+    font-size: 3.5rem;
+  }
+  .masthead .masthead-content p {
+    font-size: 1.3rem;
+  }
+}
