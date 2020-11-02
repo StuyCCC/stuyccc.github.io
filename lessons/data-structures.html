@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Time And Space Complexity</title><!--Codemirror imports-->
+<title>Basic Data Structures</title><!--Codemirror imports-->
 <script src="codemirror.js"></script>
 <link rel="stylesheet" href="codemirror.css">
 <script src="highlight/python.js"></script>  
@@ -4024,80 +4024,28 @@ a.anchor-link {
 <div class="jp-Cell jp-Notebook-cell" data-type="markdown">
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
-    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown"># Time and Space Complexity  
-`Lessons[0]`  
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown"># Basic Data Structures  
+`Lessons[1]`  
 *This document contains runnable python examples. You may edit and run code blocks by pressing `Shift-Enter`*
 
 ---
-#### What is Time Complexity?
-Time complexity is a function describing the amount of time an algorithm takes in terms of the amount of input to the algorithm. Time complexity is usually defined using "Big O notation" - The upper and lower bounds of the number of operations taken. In other words, you can use Big-O notation to estimate the upper, lower and average number of operations taken. 
+#### What are Data Structures?
+Data structures store data in the computer's memory. They each have their own use, depending on the problem/task at hand. You may already be familiar with arrays, which are a type of data structure.  
 
-Big O Notation ignores coeffiecient, and only takes into account the leading term:
-```
-O(2N)→O(N)
-O(N² +3N + 4)→O(N²)
-```
-`N` refers to the input size of the algorithm, though sometimes other variables are introduced, depending on the algorithm being measured, and the problem at hand.  
-  
-By calculating the time complexity of an algorithm, it is possible to check if an algorithm is efficient enough for the problem. For example, if a problem has an input with size of `N=10⁵`, it is reasonable to assume that the expected algorithm runs in `O(N)` or `O(NlogN)` rather than something much more complex.
+We'll be going over the concepts of Linked Lists, Vectors, HashMaps, Sets/HashSets,  Stacks, and Queues.
 
-#### Examples of specific time complexities
-Constant time is notated as `O(1)`, and does not depend on the size of the input, `N`:</textarea>
+#### Arrays
+Arrays are lists that store one type of objects or primitives. In Python arrays are called lists, and can store multiple types of things. They may also be called Vectors.  
+
+In many languages, the maximum length of an array is set at its initialization. In Python arrays are automatically resized to fit the data they contain.</textarea>
 </div>
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h1 id="Time-and-Space-Complexity">Time and Space Complexity<a class="anchor-link" href="#Time-and-Space-Complexity">&#182;</a></h1><p><code>Lessons[0]</code><br>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h1 id="Basic-Data-Structures">Basic Data Structures<a class="anchor-link" href="#Basic-Data-Structures">&#182;</a></h1><p><code>Lessons[1]</code><br>
 <em>This document contains runnable python examples. You may edit and run code blocks by pressing <code>Shift-Enter</code></em></p>
 <hr>
-<h4 id="What-is-Time-Complexity?">What is Time Complexity?<a class="anchor-link" href="#What-is-Time-Complexity?">&#182;</a></h4><p>Time complexity is a function describing the amount of time an algorithm takes in terms of the amount of input to the algorithm. Time complexity is usually defined using "Big O notation" - The upper and lower bounds of the number of operations taken. In other words, you can use Big-O notation to estimate the upper, lower and average number of operations taken.</p>
-<p>Big O Notation ignores coeffiecient, and only takes into account the leading term:</p>
-
-<pre><code>O(2N)→O(N)
-O(N² +3N + 4)→O(N²)</code></pre>
-<p><code>N</code> refers to the input size of the algorithm, though sometimes other variables are introduced, depending on the algorithm being measured, and the problem at hand.</p>
-<p>By calculating the time complexity of an algorithm, it is possible to check if an algorithm is efficient enough for the problem. For example, if a problem has an input with size of <code>N=10⁵</code>, it is reasonable to assume that the expected algorithm runs in <code>O(N)</code> or <code>O(NlogN)</code> rather than something much more complex.</p>
-<h4 id="Examples-of-specific-time-complexities">Examples of specific time complexities<a class="anchor-link" href="#Examples-of-specific-time-complexities">&#182;</a></h4><p>Constant time is notated as <code>O(1)</code>, and does not depend on the size of the input, <code>N</code>:</p>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   " data-type="python">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">x = [3,1,4,7,-1,5,0]
-x[3] # A Constant time operation, try changing the index and re-running this block to see how you can run it yourself!</textarea>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>7</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-Notebook-cell" data-type="markdown">
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
-    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">`O(N)`, or Linear, is when an algorithm scales linearly with input size:</textarea>
-</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p><code>O(N)</code>, or Linear, is when an algorithm scales linearly with input size:</p>
+<h4 id="What-are-Data-Structures?">What are Data Structures?<a class="anchor-link" href="#What-are-Data-Structures?">&#182;</a></h4><p>Data structures store data in the computer's memory. They each have their own use, depending on the problem/task at hand. You may already be familiar with arrays, which are a type of data structure.</p>
+<p>We'll be going over the concepts of Linked Lists, Vectors, HashMaps, Sets/HashSets,  Stacks, and Queues.</p>
+<h4 id="Arrays">Arrays<a class="anchor-link" href="#Arrays">&#182;</a></h4><p>Arrays are lists that store one type of objects or primitives. In Python arrays are called lists, and can store multiple types of things. They may also be called Vectors.</p>
+<p>In many languages, the maximum length of an array is set at its initialization. In Python arrays are automatically resized to fit the data they contain.</p>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   " data-type="python">
@@ -4105,14 +4053,8 @@ x[3] # A Constant time operation, try changing the index and re-running this blo
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">#This function runs in linear time to find a value in an input array, and return its index:
-def linear_search(value_to_find, array):
-    for i,val in enumerate(array):
-        if val==value_to_find:
-            return i
-    #Value was not found
-    return -1
-print('There is a 7 at index:',linear_search(7,x))</textarea>
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">x = [1,2,3,4,5] # A 1-dimensional vector/array with 5 members, all ints
+print(x[3])</textarea>
 </div>
 </div>
 </div>
@@ -4129,7 +4071,7 @@ print('There is a 7 at index:',linear_search(7,x))</textarea>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>There is a 7 at index: 3
+<pre>4
 </pre>
 </div>
 </div>
@@ -4142,34 +4084,21 @@ print('There is a 7 at index:',linear_search(7,x))</textarea>
 <div class="jp-Cell jp-Notebook-cell" data-type="markdown">
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
-    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">`O(logN)` is the notation for logarithmic functions. Generally the `log` will have a base of 2. A common example of this is binary search, which works by recursively slicing an array into halves to find a value. If you don't understand the algorithm, don't worry we'll be going over it later.</textarea>
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">Since arrays can store any object, they can store other arrays. An array of arrays is often called a multi-dimensional array. A simple visualization of a 2D array is a 2D table/grid.</textarea>
 </div>
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p><code>O(logN)</code> is the notation for logarithmic functions. Generally the <code>log</code> will have a base of 2. A common example of this is binary search, which works by recursively slicing an array into halves to find a value. If you don't understand the algorithm, don't worry we'll be going over it later.</p>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p>Since arrays can store any object, they can store other arrays. An array of arrays is often called a multi-dimensional array. A simple visualization of a 2D array is a 2D table/grid.</p>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   " data-type="python">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">#This function runs in logarithmic time to find a value in a sorted input array, and return its index:
-def binary_search(value_to_find, array):
-    mid = 0
-    start = 0
-    end = len(array)
-    while end>=start:
-        mid = (start+end)//2
-        if array[mid]==value_to_find:
-            return mid
-        if value_to_find < array[mid]:
-            end = mid - 1
-        else:
-            start = mid + 1
-    #Value was not found
-    return -1
-x = sorted(x)
-print(x)
-print('There is a 1 at index:',binary_search(1,x))</textarea>
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">y = [[1,2,3], #A 3x3 2D array.
+     [4,5,6],
+     [7,8,9]]
+
+print(y[2][1])</textarea>
 </div>
 </div>
 </div>
@@ -4186,8 +4115,7 @@ print('There is a 1 at index:',binary_search(1,x))</textarea>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[-1, 0, 1, 3, 4, 5, 7]
-There is a 1 at index: 2
+<pre>8
 </pre>
 </div>
 </div>
@@ -4200,63 +4128,83 @@ There is a 1 at index: 2
 <div class="jp-Cell jp-Notebook-cell" data-type="markdown">
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
-    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">Below we've made a table of the most common Time Complexities:  
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">#### Linked Lists
+A linked list is a data structure values, each having a reference to the next value in the list. This is called a **singly linked list**. Likewise, a linked list with value having references to the preceding *and* succeeding values is called a **doubly linked list**.  Accessing a linked list's values runs in `O(n)`, or linear time (As opposed to constant time for many other lists).  
+![image.png](attachment:image.png)  
+*A diagram of singly linked list*
 
-| Notation | Description |
-| --- | --- |
-| `O(1)` | Constant, e.g. Accessing an array |
-| `O(N)` | Linear, e.g. Iterating through a list |
-| `O(logN)` | Logarithmic, e.g. Binary Search |
-| `O(NlogN)` | Linearithmic, e.g. Merge Sort |
-| `O(N^k)` | Polynomial, e.g. nested `for` loops |
-| `O(k^N)` | Exponential, e.g. Finding all subsets of a list |
-| `O(N!)` | Factorial, e.g. All permutations of a string |
+#### Stacks & Queues
+A stack is a data structure used to store objects by following the last-in first-out (LIFO) principle. Think of it like a stack of books: You can easily add and remove from the top of the stack, but not from anywhere else. You **push** objects onto the top of the stack, and **pop** to remove them from the top.  
 
-#### Space Complexity
-Space complexity is nearly exactly the same as time complexity, in terms of notation. However, space complexity refers to the amount of memory an algorithm uses over the course of execution, rather than the number of operations that are undertaken. For example, a fibonacci sequence only needs the previous two numbers, since this is a constant number, it is `O(N)`. However, a sort operation needs `O(N)` memory, or more, to store the array.  
+Conversely, a queue stores objects by following the first-in first-out (FIFO) principles. Just like queues in real-life, the first person in a line will be the first person to come out of the line. You push objects to the back of the queue, and pop them off the front.  
 
-That's it for this lesson. As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</textarea>
+A linked list can be used to implement both stacks, queues and dequeues (A queue where you can pop and push from either side).
+
+#### Sets
+Sets are data structures similar to arrays, but unordered. While an array will preserve the order of insertion, a set doesn't necessarily maintain any order. In some languages, sets may be ordered in some way or the other. Additionally, sets do not distinguish between duplicate elements. For example, adding a `2` to the set of `{3,5,2,7}` would do nothing, since the `2` would be duplicated.
+
+A HashSet is a set using hash-based implementation. For brevity, we won't talk about hashing, but the important part is that the access operations for Hash-based data structures are amortized `O(1)`, or **constant time** on average.  
+
+#### Maps
+A map is an array consisting of key-value pairs, with each key corresponding to a value. A key is a unique identifier used to retrieve some value. You could think of arrays consisting of key-value pairs where the key is the index of the value. In Python, the builtin dictionaries are a type of map.</textarea>
 </div>
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p>Below we've made a table of the most common Time Complexities:</p>
-<table>
-<thead><tr>
-<th>Notation</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>O(1)</code></td>
-<td>Constant, e.g. Accessing an array</td>
-</tr>
-<tr>
-<td><code>O(N)</code></td>
-<td>Linear, e.g. Iterating through a list</td>
-</tr>
-<tr>
-<td><code>O(logN)</code></td>
-<td>Logarithmic, e.g. Binary Search</td>
-</tr>
-<tr>
-<td><code>O(NlogN)</code></td>
-<td>Linearithmic, e.g. Merge Sort</td>
-</tr>
-<tr>
-<td><code>O(N^k)</code></td>
-<td>Polynomial, e.g. nested <code>for</code> loops</td>
-</tr>
-<tr>
-<td><code>O(k^N)</code></td>
-<td>Exponential, e.g. Finding all subsets of a list</td>
-</tr>
-<tr>
-<td><code>O(N!)</code></td>
-<td>Factorial, e.g. All permutations of a string</td>
-</tr>
-</tbody>
-</table>
-<h4 id="Space-Complexity">Space Complexity<a class="anchor-link" href="#Space-Complexity">&#182;</a></h4><p>Space complexity is nearly exactly the same as time complexity, in terms of notation. However, space complexity refers to the amount of memory an algorithm uses over the course of execution, rather than the number of operations that are undertaken. For example, a fibonacci sequence only needs the previous two numbers, since this is a constant number, it is <code>O(N)</code>. However, a sort operation needs <code>O(N)</code> memory, or more, to store the array.</p>
-<p>That's it for this lesson. As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</p>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h4 id="Linked-Lists">Linked Lists<a class="anchor-link" href="#Linked-Lists">&#182;</a></h4><p>A linked list is a data structure values, each having a reference to the next value in the list. This is called a <strong>singly linked list</strong>. Likewise, a linked list with value having references to the preceding <em>and</em> succeeding values is called a <strong>doubly linked list</strong>.  Accessing a linked list's values runs in <code>O(n)</code>, or linear time (As opposed to constant time for many other lists).<br>
+<img src="data:image/png;base64,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" alt="image.png"><br>
+<em>A diagram of singly linked list</em></p>
+<h4 id="Stacks-&amp;-Queues">Stacks &amp; Queues<a class="anchor-link" href="#Stacks-&amp;-Queues">&#182;</a></h4><p>A stack is a data structure used to store objects by following the last-in first-out (LIFO) principle. Think of it like a stack of books: You can easily add and remove from the top of the stack, but not from anywhere else. You <strong>push</strong> objects onto the top of the stack, and <strong>pop</strong> to remove them from the top.</p>
+<p>Conversely, a queue stores objects by following the first-in first-out (FIFO) principles. Just like queues in real-life, the first person in a line will be the first person to come out of the line. You push objects to the back of the queue, and pop them off the front.</p>
+<p>A linked list can be used to implement both stacks, queues and dequeues (A queue where you can pop and push from either side).</p>
+<h4 id="Sets">Sets<a class="anchor-link" href="#Sets">&#182;</a></h4><p>Sets are data structures similar to arrays, but unordered. While an array will preserve the order of insertion, a set doesn't necessarily maintain any order. In some languages, sets may be ordered in some way or the other. Additionally, sets do not distinguish between duplicate elements. For example, adding a <code>2</code> to the set of <code>{3,5,2,7}</code> would do nothing, since the <code>2</code> would be duplicated.</p>
+<p>A HashSet is a set using hash-based implementation. For brevity, we won't talk about hashing, but the important part is that the access operations for Hash-based data structures are amortized <code>O(1)</code>, or <strong>constant time</strong> on average.</p>
+<h4 id="Maps">Maps<a class="anchor-link" href="#Maps">&#182;</a></h4><p>A map is an array consisting of key-value pairs, with each key corresponding to a value. A key is a unique identifier used to retrieve some value. You could think of arrays consisting of key-value pairs where the key is the index of the value. In Python, the builtin dictionaries are a type of map.</p>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   " data-type="python">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">lightsabers = {"Yoda":"Green",
+               "Luke":"Blue",
+               "Darth Vader":"Red",
+               "Mace Windu":"Purple"}
+
+print(lightsabers["Luke"])</textarea>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Blue
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-Notebook-cell" data-type="markdown">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">HashMaps are maps that are hash-based.  
+
+That's about it for this lesson! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p>HashMaps are maps that are hash-based.</p>
+<p>That's about it for this lesson! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</p>
 </div>
 </div>
 </div>
