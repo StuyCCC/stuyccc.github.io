@@ -30,6 +30,12 @@
         color: #212121;
         font-weight: 400;
     }
+    a {
+        color: #526fff;
+    }
+    a:focus {
+        color: #e45649;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -63,6 +69,12 @@
     h1, h2, h3, h4, h5, h6 {
         color: #abb2bf;
         font-weight: 400;
+    }
+    a {
+        color: #528bff;
+    }
+    a:focus {
+        color: #e06c75;
     }
 }
 

@@ -1,51 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!--USING THE "COMING SOON" TEMPLATE FROM startbootstrap.com-->
+<html>
 
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stuyvesant Competitive Computing Club website">
+  <meta name="author" content="Amit Prasad">
+  <link rel="icon" type="image/png" href="/data/favicon.png">
 
   <title>StuyCCC Landing Page</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-  <!-- Custom styles for this template -->
-  <link href="coming-soon.css" rel="stylesheet">
+  <!--Codemirror imports-->
+  <script src="/static/codemirror.js"></script>
+  <script src="/static/simplescrollbars.js"></script>
+  <link rel="stylesheet" href="/static/codemirror.css">
+  <link rel="stylesheet" href="/static/simplescrollbars.css">
+  <link rel="stylesheet" href="/static/one-theme.css">
+  <script src="/static/highlight/python.js"></script>
+  <script src="/static/highlight/markdown.js"></script>
+  <!--Marked - Markdown Renderer-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+  <!--Pyodide imports-->
+  <script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@300;400&family=Fira+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/main.css">
+  <style type="text/css">
+    a.anchor-link {
+      display: none;
+    }
+  </style>
+  </script>
 
 </head>
 
-<body>
-  <div class="masthead">
-    <div class="masthead-bg"></div>
-    <div class="container h-100">
-      <div class="row h-100">
-        <div class="col-12 my-auto">
-          <div class="masthead-content text-white py-5 py-md-0">
-            <h1 class="mb-3">StuyCCC Resources</h1>
-            <p class="mb-5">As we start our year, we'll be opening more lessons through this page. We'll be <strong>continually updating</strong> this page with materials and other information, so be sure to check up here.</p>
-            <p>Lessons:<br><a href="/lessons/time-space-complexity.html">Time and Space Complexity</a><br><a href="/lessons/data-structures.html">Data Structures Overview</a><br><a href="/lessons/sorting.html">Sorting Overview</a></p>
-            <p><a href="/old/index.html">Portal to the old website</a></p>
-          </div>
-        </div>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+  <div class="Cell-container">
+
+    <div class="Cell" data-type="markdown">
+      <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown"
+        ondblclick="toggleMarkdownCell(this)">
+        <h1 id="Stuyvesant-Competitive-Computing-Club">Stuyvesant Competitive Computing Club<a class="anchor-link"
+            href="#Stuyvesant-Competitive-Computing-Club">&#182;</a></h1>
+        <hr>
+        <p>This site contains Stuyvesant Competitive Computing Club's lessons and resources. New lessons will be added
+          to the site, with a recording of each meeting uploaded to the club's <a
+            href="https://www.youtube.com/channel/UC0DBFywQl87JlsFSdvFWbZQ">YouTube account</a>.</p>
+        <h2 id="Lessons">Lessons<a class="anchor-link" href="#Lessons">&#182;</a></h2>
+        <ol>
+          <li><a href="/lessons/time-space-complexity.html">Time and Space Complexity</a></li>
+          <li><a href="/lessons/data-structures.html">Data Structures Overview</a></li>
+          <li><a href="/lessons/sorting.html">Sorting Overview</a> </li>
+        </ol>
+        <p>Lesson pages have <em>runnable</em> python fragments that can be interacted with. Be sure to follow along
+          with the lesson by tinkering with the associated code fragments, and running them by using
+          <em>Shift-Enter</em>.</p>
+        <h2 id="Members">Members<a class="anchor-link" href="#Members">&#182;</a></h2>
+        <p>We have over 100 people as part of the club's discord server - where we discuss problems, concepts, and
+          various other topics. Additionally, our leadership this year consists of:</p>
+        <ul>
+          <li>Amit Prasad (President, 2019-2020)</li>
+          <li>Arib Chowdhury (President, 2019-2020)</li>
+          <li>Carlos Hernandez (Vice-President, 2019-2020)</li>
+          <li>Jeremy Ku-benjet (Vice-President, 2019-2020)</li>
+        </ul>
+        <h2 id="Past-Leadership">Past Leadership<a class="anchor-link" href="#Past-Leadership">&#182;</a></h2>
+        <ul>
+          <li>Ethan Morgan (President, 2019-2020)</li>
+          <li>Leilei Hao (President, 2019-2020) </li>
+        </ul>
+        <h2 id="Contact-Us">Contact Us<a class="anchor-link" href="#Contact-Us">&#182;</a></h2>
+        <p>If you want to contact the leadership, you can email us at <a
+            href="mailto:stuyccc@gmail.com">stuyccc@gmail.com</a>. You can also contact any of the current leadership
+          through their stuy.edu emails. If you want to join the club's community, you can also join our <a
+            href="https://discord.gg/Wd2FxeE">discord here</a>.</p>
       </div>
     </div>
   </div>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="jquery/jquery.min.js"></script>
-  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  </div>
 </body>
+
+
+
+
+
+
+
+
+<script>
+  // Creates the code editor from a target textarea using the CodeMirror library.
+  var codeCells = document.getElementsByClassName("CodeMirror-textarea");
+  for (var i = 0; i < codeCells.length; i++) {
+    var editor = CodeMirror.fromTextArea(codeCells.item(i), {
+      mode: {
+        name: codeCells.item(i).dataset["mimeType"],
+        version: 3,
+        singleLineStringErrors: false,
+        fencedCodeBlockDefaultMode: 'python'
+      },
+      extraKeys: {
+        'Tab': function (cm) {
+          var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+          cm.replaceSelection(spaces);
+        },
+        'Shift-Enter': function (cm) {
+          cellManager.handleRunCommand(cm.getWrapperElement());
+        },
+      },
+      indentUnit: 4,
+      matchBrackets: true,
+      theme: 'one-theme',
+      scrollbarStyle: 'overlay',
+      viewportMargin: Infinity,
+      lineNumbers: true,
+    });
+  }/*
+    var md = document.getElementsByClassName("Cell-MarkdownSource");
+    for (var i = 0; i < md.length; i++) {
+      md2html = marked(md.item(i).querySelector('pre').textContent);
+      md.item(i).parentElement.querySelector('.jp-RenderedMarkdown').innerHTML=md2html;
+    }*/
+</script>
 
 </html>
