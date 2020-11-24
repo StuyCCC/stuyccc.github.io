@@ -201,7 +201,7 @@ def bfs(start_node) -> int:
     while q: # check to see if deque is empty
         r, c = q.popleft()
         for node_r, node_c in [(r+1, c), (r-1, c), (r, c+1), (r, c-1)]: # checks each neighboring node
-            if validate_node(visited, node_r, node_c):
+            if validate_node(node_r, node_c):
                 q.append((node_r, node_c))
                 visited[node_r][node_c] = True # updates the boolean matrix
                 distance[node_r][node_c] = distance[r][c]+1 # distance to previous node plus one
