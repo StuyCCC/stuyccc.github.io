@@ -154,6 +154,88 @@ To solve this maze, we're trying to find the shortest path we can check every re
 <!--                   Q.enqueue(w) -->
 <!-- ``` --></div>
 </div>
+</div><div class="Cell Code-cell   " data-type="python">
+<div class="Cell-input">
+<div class="Cell-input-actions">
+    <button class="Code-cell-run" onclick="cellManager.handleRunCommand(this)">
+        <h3>Run</h3>
+    </button>
+</div>
+<div class="jp-CodeMirrorEditor jp-Editor Input-editor" data-type="inline">
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">from collections import deque # data structures library for python
+# For demonstration purposes we are making the maze smaller
+implicit_graph = ['###############E##',
+                  '# # #  #         #',
+                  '#     ## ## # # ##',
+                  '# # #     #   #  #',
+                  '# # # # # # #   ##',
+                  '###S##############']
+									
+
+rows=len(implicit_graph)
+columns=len(implicit_graph[0])
+for i,row in enumerate(implicit_graph): #Find locations of start and end node
+    for j,item in enumerate(row):
+        if item == "S":
+            start_node=(i,j)
+        if item == "E":
+            end_node=(i,j)
+
+# makes a boolean matrix for this graph
+visited = [[False]*columns for i in range(rows)]
+distance = [['  +']*columns for i in range(rows)]
+
+# helper function to validate if you can travel to a node
+# checks if you are the graph, not a wall, and you haven't visited that node.
+def validate_node(r, c):
+    return (0 <= r < rows and 0 <= c < columns and implicit_graph[r][c]!="#" and not(visited[r][c]))
+
+# set starting point to True in the boolean matrix
+visited[start_node[0]][start_node[1]] = True
+# does the same for distance
+distance[start_node[0]][start_node[1]] = 0
+
+# bfs returns the shortest path
+def bfs(start_node) -> int:
+    q = deque([start_node]) # deque is a python's double ended queue
+    while q: # check to see if deque is empty
+        r, c = q.popleft()
+        for node_r, node_c in [(r+1, c), (r-1, c), (r, c+1), (r, c-1)]: # checks each neighboring node
+            if validate_node(visited, node_r, node_c):
+                q.append((node_r, node_c))
+                visited[node_r][node_c] = True # updates the boolean matrix
+                distance[node_r][node_c] = distance[r][c]+1 # distance to previous node plus one
+    # pretty prints the distance matrix
+    print('\n'.join([''.join(['{:3}'.format(item) for item in row]) 
+      for row in distance]))
+    return (distance[end_node[0]][end_node[1]]) # return the distance to the end node
+
+print("Answer:", bfs(start_node))</textarea>
+</div>
+</div>
+
+<div class="Cell-output">
+
+
+
+
+    
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>  +  +  +  +  +  +  +  +  +  +  +  +  +  +  + 19  +  +
+  +  6  +  4  +  6  7  + 11 12 13 14 15 16 17 18 19  +
+  +  5  4  3  4  5  +  + 10  +  + 15  + 17  + 19  +  +
+  +  6  +  2  +  6  7  8  9 10  + 16 17 18  + 20 21  +
+  +  7  +  1  +  7  +  9  + 11  + 17  + 19 20 21  +  +
+  +  +  +  0  +  +  +  +  +  +  +  +  +  +  +  +  +  +
+Answer: 19
+</pre>
+</div>
+
+
+</div>
+
 </div>
 <div class="Cell" data-type="markdown">
 <div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
