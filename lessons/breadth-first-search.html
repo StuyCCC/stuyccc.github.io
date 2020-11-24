@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Breadth of the Wild: Breadth First Search</title>
+
+<!--Codemirror imports-->
+<script src="/static/codemirror.js"></script>
+<script src="/static/simplescrollbars.js"></script>
+<link rel="stylesheet" href="/static/codemirror.css">
+<link rel="stylesheet" href="/static/simplescrollbars.css">
+<link rel="stylesheet" href="/static/one-theme.css">
+<script src="/static/highlight/python.js"></script>
+<script src="/static/highlight/markdown.js"></script>
+<!--Marked - Markdown Renderer-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+<!--Pyodide imports-->
+<script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+<script src="/static/pyodideWrapper.js"></script>
+<script src="/static/cellManager.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@300;400&family=Fira+Sans:wght@300;400;500&display=swap"
+  rel="stylesheet">
+<script>
+  cellManager = new CellManager();
+  window.toggleMarkdownCell = function (e) {
+    e.parentNode.querySelector('.Cell-MarkdownSource').style.display = '';
+    e.parentNode.querySelector('.CodeMirror').CodeMirror.refresh();
+    e.style.display = 'none';
+  }
+</script>
+<link rel="stylesheet" href="/static/main.css">
+<style type="text/css">
+  a.anchor-link {
+     display: none;
+  }
+  </style>
+</script>
+
+</head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+  <div class="Cell-container">
+
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown"># Breadth of the Wild: Breadth First Search
+`Lessons[4]`  
+*This document contains runnable python examples. You may edit and run code blocks by pressing `Shift-Enter`*
+
+---
+
+#### Implicit Graph
+An implicit graph is a graph where you don't explicitly store each edge and node. For example, an ASCII maze counts as a implicit graph:
+```
+##################################################################### e #
+#   #               #               #           #                   #   #
+#   #   #########   #   #####   #########   #####   #####   #####   #   #
+#               #       #   #           #           #   #   #       #   #
+#########   #   #########   #########   #####   #   #   #   #########   #
+#       #   #               #           #   #   #   #   #           #   #
+#   #   #############   #   #   #########   #####   #   #########   #   #
+#   #               #   #   #       #           #           #       #   #
+#   #############   #####   #####   #   #####   #########   #   #####   #
+#           #       #   #       #   #       #           #   #           #
+#   #####   #####   #   #####   #   #########   #   #   #   #############
+#       #       #   #   #       #       #       #   #   #       #       #
+#############   #   #   #   #########   #   #####   #   #####   #####   #
+#           #   #           #       #   #       #   #       #           #
+#   #####   #   #########   #####   #   #####   #####   #############   #
+#   #       #           #           #       #   #   #               #   #
+#   #   #########   #   #####   #########   #   #   #############   #   #
+#   #           #   #   #   #   #           #               #   #       #
+#   #########   #   #   #   #####   #########   #########   #   #########
+#   #       #   #   #           #           #   #       #               #
+#   #   #####   #####   #####   #########   #####   #   #########   #   #
+#   #                   #           #               #               #   #
+# s #####################################################################
+```
+What are the nodes and what are the edges?
+In this maze, the blank spaces would represent the nodes, and two nodes are connected by an edge if there is no **#** between them.
+To solve this maze, we're trying to find the shortest path we can check every reasonable move from every node otherwise you would need to go backwards. How would we accomplish this?
+
+#### BFS
+Breadth First Search is a method to traverse a graph by visting every node. 
+
+The algorithm assumes we start at S, and in ascending order we append each node depending on its distance from the starting node.
+
+<!-- The pseudo-code from wikipedia: -->
+<!-- ``` -->
+<!-- Given: A graph G and a starting vertex root of G -->
+<!-- procedure BFS(G, root) is -->
+<!--       let Q be a queue -->
+<!--       label root as discovered -->
+<!--       Q.enqueue(root) -->
+<!--       while Q is not empty do -->
+<!--           v := Q.dequeue() -->
+<!--           if v is the goal then -->
+<!--               return v -->
+<!--           for all edges from v to w in G.adjacentEdges(v) do -->
+<!--               if w is not labeled as discovered then -->
+<!--                   label w as discovered -->
+<!--                   Q.enqueue(w) -->
+<!-- ``` -->
+
+</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h1 id="Breadth-of-the-Wild:-Breadth-First-Search">Breadth of the Wild: Breadth First Search<a class="anchor-link" href="#Breadth-of-the-Wild:-Breadth-First-Search">&#182;</a></h1><p><code>Lessons[4]</code><br>
+<em>This document contains runnable python examples. You may edit and run code blocks by pressing <code>Shift-Enter</code></em></p>
+<hr>
+<h4 id="Implicit-Graph">Implicit Graph<a class="anchor-link" href="#Implicit-Graph">&#182;</a></h4><p>An implicit graph is a graph where you don't explicitly store each edge and node. For example, an ASCII maze counts as a implicit graph:</p>
+
+<pre><code>##################################################################### e #
+#   #               #               #           #                   #   #
+#   #   #########   #   #####   #########   #####   #####   #####   #   #
+#               #       #   #           #           #   #   #       #   #
+#########   #   #########   #########   #####   #   #   #   #########   #
+#       #   #               #           #   #   #   #   #           #   #
+#   #   #############   #   #   #########   #####   #   #########   #   #
+#   #               #   #   #       #           #           #       #   #
+#   #############   #####   #####   #   #####   #########   #   #####   #
+#           #       #   #       #   #       #           #   #           #
+#   #####   #####   #   #####   #   #########   #   #   #   #############
+#       #       #   #   #       #       #       #   #   #       #       #
+#############   #   #   #   #########   #   #####   #   #####   #####   #
+#           #   #           #       #   #       #   #       #           #
+#   #####   #   #########   #####   #   #####   #####   #############   #
+#   #       #           #           #       #   #   #               #   #
+#   #   #########   #   #####   #########   #   #   #############   #   #
+#   #           #   #   #   #   #           #               #   #       #
+#   #########   #   #   #   #####   #########   #########   #   #########
+#   #       #   #   #           #           #   #       #               #
+#   #   #####   #####   #####   #########   #####   #   #########   #   #
+#   #                   #           #               #               #   #
+# s #####################################################################</code></pre>
+<p>What are the nodes and what are the edges?
+In this maze, the blank spaces would represent the nodes, and two nodes are connected by an edge if there is no <strong>#</strong> between them.
+To solve this maze, we're trying to find the shortest path we can check every reasonable move from every node otherwise you would need to go backwards. How would we accomplish this?</p>
+<h4 id="BFS">BFS<a class="anchor-link" href="#BFS">&#182;</a></h4><p>Breadth First Search is a method to traverse a graph by visting every node.</p>
+<p>The algorithm assumes we start at S, and in ascending order we append each node depending on its distance from the starting node.</p>
+<!-- The pseudo-code from wikipedia: -->
+<!-- ``` -->
+<!-- Given: A graph G and a starting vertex root of G -->
+<!-- procedure BFS(G, root) is -->
+<!--       let Q be a queue -->
+<!--       label root as discovered -->
+<!--       Q.enqueue(root) -->
+<!--       while Q is not empty do -->
+<!--           v := Q.dequeue() -->
+<!--           if v is the goal then -->
+<!--               return v -->
+<!--           for all edges from v to w in G.adjacentEdges(v) do -->
+<!--               if w is not labeled as discovered then -->
+<!--                   label w as discovered -->
+<!--                   Q.enqueue(w) -->
+<!-- ``` --></div>
+</div>
+</div>
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">How long would this algorithm take to run?
+
+That's about it for this lesson! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p>How long would this algorithm take to run?</p>
+<p>That's about it for this lesson! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</p>
+</div>
+</div>
+</div>
+  </div>
+</body>
+
+
+
+
+
+
+
+
+<script>
+  // Creates the code editor from a target textarea using the CodeMirror library.
+  var codeCells = document.getElementsByClassName("CodeMirror-textarea");
+  for (var i = 0; i < codeCells.length; i++) {
+    var editor = CodeMirror.fromTextArea(codeCells.item(i), {
+      mode: {
+        name: codeCells.item(i).dataset["mimeType"],
+        version: 3,
+        singleLineStringErrors: false,
+        fencedCodeBlockDefaultMode: 'python'
+      },
+      extraKeys: {
+        'Tab': function (cm) {
+          var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+          cm.replaceSelection(spaces);
+        },
+        'Shift-Enter': function (cm) {
+          cellManager.handleRunCommand(cm.getWrapperElement());
+        },
+      },
+      indentUnit: 4,
+      matchBrackets: true,
+      theme: 'one-theme',
+      scrollbarStyle: 'overlay',
+      viewportMargin: Infinity,
+      lineNumbers: true,
+    });
+  }/*
+    var md = document.getElementsByClassName("Cell-MarkdownSource");
+    for (var i = 0; i < md.length; i++) {
+      md2html = marked(md.item(i).querySelector('pre').textContent);
+      md.item(i).parentElement.querySelector('.jp-RenderedMarkdown').innerHTML=md2html;
+    }*/
+</script>
+</html>
