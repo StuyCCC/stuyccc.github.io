@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adjacency Lists</title>
+<title>Notebook</title>
 
 <!--Codemirror imports-->
 <script src="/static/codemirror.js"></script>
@@ -201,7 +201,10 @@ The next `M` lines in the input each describe a connection between a
 pair of different fields, specified by the integer indices of the two
 fields.  Connections are bi-directional.  It is always possible to
 travel from field `1` to field `N`, and field `2` to field `N`, along a series
-of such connections.  </textarea>
+of such connections.  
+  
+### BFS Sample Problem 2  
+The second problem is [Leetcode's Open the Lock problem](https://leetcode.com/problems/open-the-lock/).</textarea>
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h3 id="BFS-Sample-Problem">BFS Sample Problem<a class="anchor-link" href="#BFS-Sample-Problem">&#182;</a></h3><p>Problem 1: Piggy Back [Brian Dean, 2014]</p>
 <p>Bessie and her sister Elsie graze in different fields during the day,
@@ -237,6 +240,7 @@ pair of different fields, specified by the integer indices of the two
 fields.  Connections are bi-directional.  It is always possible to
 travel from field <code>1</code> to field <code>N</code>, and field <code>2</code> to field <code>N</code>, along a series
 of such connections.</p>
+<h3 id="BFS-Sample-Problem-2">BFS Sample Problem 2<a class="anchor-link" href="#BFS-Sample-Problem-2">&#182;</a></h3><p>The second problem is <a href="https://leetcode.com/problems/open-the-lock/">Leetcode's Open the Lock problem</a>.</p>
 </div>
 </div>
 </div>
@@ -268,7 +272,9 @@ to `4`.  Then, they travel together from `4` to `7` to `8`.
 SAMPLE OUTPUT:
 
 22
-```</textarea>
+```
+
+</textarea>
 </div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p>Test Case:</p>
 
@@ -294,6 +300,98 @@ to <code>4</code>.  Then, they travel together from <code>4</code> to <code>7</c
 22</code></pre>
 </div>
 </div>
+</div><div class="Cell Code-cell jp-mod-noOutputs  " data-type="python">
+<div class="Cell-input">
+<div class="Cell-input-actions">
+    <button class="Code-cell-run" onclick="cellManager.handleRunCommand(this)">
+        <h3>Run</h3>
+    </button>
+</div>
+<div class="jp-CodeMirrorEditor jp-Editor Input-editor" data-type="inline">
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">#Solution to USACO problem -- This solution won't run on the website, since it requires file inputs.
+from collections import deque
+lines = [line.strip() for line in open("piggyback.in").readlines()],
+b,e,p,n,m = eval(lines[0].replace(' ',',')),
+adj={}
+for m in lines[1:]:
+    l,r=eval(m.replace(' ',','))
+    adj[l]=adj.get(l,[])+[r]
+    adj[r]=adj.get(r,[])+[l]
+
+def bfs(source):
+    vis={}
+    dist={}
+    q = deque([source])
+    vis[source] = True
+    dist[source] = 0
+    while q:
+        s = q.popleft()
+        for u in adj[s]:
+            if vis.get(u,False): continue
+            dist[u] = 1+dist[s]
+            vis[u] = True
+            q.append(u)
+    return dist
+
+x_1 = bfs(1)
+x_2 = bfs(2)
+x_N = bfs(n)
+ans=float("inf")
+for i in range(1,n+1):
+    ans=min(ans, x_1[i]*b + x_2[i]*e + x_N[i]*p)
+
+f=open("piggyback.out","x")
+f.write(str(ans)+'\n')
+f.close()</textarea>
+</div>
+</div>
+
+</div><div class="Cell Code-cell jp-mod-noOutputs  " data-type="python">
+<div class="Cell-input">
+<div class="Cell-input-actions">
+    <button class="Code-cell-run" onclick="cellManager.handleRunCommand(this)">
+        <h3>Run</h3>
+    </button>
+</div>
+<div class="jp-CodeMirrorEditor jp-Editor Input-editor" data-type="inline">
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">#The solution to the Leetcode problem
+from collections import deque
+
+class Solution:
+    def openLock(self, deadends: List[str], target: str) -> int:
+        
+        goal = tuple(int(i) for i in target)
+        deadends = {tuple(int(i) for i in deadend) for deadend in deadends}
+        
+        if (0, 0, 0, 0) in deadends:
+            return -1
+        
+        visited = {(0, 0, 0, 0)}
+        # current_state, number_move sto get here
+        queue = deque([((0, 0, 0, 0), 0)])
+        
+        def neighbors(current):
+            
+            for wheel_number in range(4):
+                for delta in [-1, 1]:
+                    new = list(current)
+                    new[wheel_number] = (new[wheel_number] + delta + 10) % 10
+                    nei = tuple(new)
+                    if nei not in deadends:
+                        yield nei
+                    
+        while queue:
+            node, no_moves = queue.popleft()
+            if node == goal:
+                return no_moves
+            for nei in neighbors(node):
+                if nei not in visited:
+                    visited.add(nei)
+                    queue.append((nei, no_moves + 1))
+        return -1</textarea>
+</div>
+</div>
+
 </div>
 <div class="Cell" data-type="markdown">
 <div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
