@@ -186,3 +186,10 @@ button {
 .Code-cell-run i {
     font-size: 3em;
 }
+
+a {
+    color: #526fff;
+}
+a:focus {
+    color: #e45649;
+}

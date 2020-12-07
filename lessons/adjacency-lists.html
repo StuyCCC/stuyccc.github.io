@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adjacency Lists</title>
+
+<!--Codemirror imports-->
+<script src="/static/codemirror.js"></script>
+<script src="/static/simplescrollbars.js"></script>
+<link rel="stylesheet" href="/static/codemirror.css">
+<link rel="stylesheet" href="/static/simplescrollbars.css">
+<link rel="stylesheet" href="/static/one-theme.css">
+<script src="/static/highlight/python.js"></script>
+<script src="/static/highlight/markdown.js"></script>
+<!--Marked - Markdown Renderer-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+<!--KaTeX - LaTeX Renderer-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLaTeX()"></script>
+<!--Pyodide imports-->
+<script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+<script src="/static/pyodideWrapper.js"></script>
+<script src="/static/cellManager.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@300;400&family=Fira+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script>
+  cellManager = new CellManager();
+  window.toggleMarkdownCell = function (e) {
+    e.parentNode.querySelector('.Cell-MarkdownSource').style.display = '';
+    e.parentNode.querySelector('.CodeMirror').CodeMirror.refresh();
+    e.style.display = 'none';
+  }
+  function renderLaTeX() {
+    window.renderMathInElement(document.body,
+      {
+        ignoredTags: [],
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true }
+        ]
+      });
+  }
+</script>
+<link rel="stylesheet" href="/static/main.css">
+<style type="text/css">
+  a.anchor-link {
+     display: none;
+  }
+  </style>
+</script>
+
+</head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+  <div class="Cell-container">
+
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown"># Adjacency Lists/Matrices
+`Lessons[5]`  
+*This document contains runnable python examples. You may edit and run code blocks by pressing `Shift-Enter`*
+
+---
+
+In our [lesson on graphs](https://www.stuyccc.com/lessons/graph-intro.html), we learned about how we can visualize graphs by eye. We can't exactly do the same thing when writing programs that interact with graphs. We have to create a *representation* of the graph in our programs so that our algorithm can process the graph. There are dozens of different ways to represent graphs, each having its use in certain problems.  
+Today we'll be learning about **Adjacency Lists**, a simple way to represent graphs in memory. Most algorithms can effectively utilize adjacency lists. In a graph, each node would be assigned an adjacency list consisting of other nodes it shares an edge with. 
+  
+![image.png](attachment:image.png)
+For example, to build the adjacency list for this graph</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h1 id="Adjacency-Lists/Matrices">Adjacency Lists/Matrices<a class="anchor-link" href="#Adjacency-Lists/Matrices">&#182;</a></h1><p><code>Lessons[5]</code><br>
+<em>This document contains runnable python examples. You may edit and run code blocks by pressing <code>Shift-Enter</code></em></p>
+<hr>
+<p>In our <a href="https://www.stuyccc.com/lessons/graph-intro.html">lesson on graphs</a>, we learned about how we can visualize graphs by eye. We can't exactly do the same thing when writing programs that interact with graphs. We have to create a <em>representation</em> of the graph in our programs so that our algorithm can process the graph. There are dozens of different ways to represent graphs, each having its use in certain problems.<br>
+Today we'll be learning about <strong>Adjacency Lists</strong>, a simple way to represent graphs in memory. Most algorithms can effectively utilize adjacency lists. In a graph, each node would be assigned an adjacency list consisting of other nodes it shares an edge with.</p>
+<img src="data:image/png;base64,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" alt="image.png">
+<p>For example, to build the adjacency list for this graph</p>
+</div>
+</div>
+</div><div class="Cell Code-cell   " data-type="python">
+<div class="Cell-input">
+<div class="Cell-input-actions">
+    <button class="Code-cell-run" onclick="cellManager.handleRunCommand(this)">
+        <h3>Run</h3>
+    </button>
+</div>
+<div class="jp-CodeMirrorEditor jp-Editor Input-editor" data-type="inline">
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">adjacency_list = {1: [2, 3, 4],
+         2: [1, 4, 5],
+         3: [1, 4],
+         4: [1, 2, 3, 5],
+         5: [2, 4]}
+print(adjacency_list[1]) #Print all the nodes connected to Node 1</textarea>
+</div>
+</div>
+
+<div class="Cell-output">
+
+
+
+
+    
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[2, 3, 4]
+</pre>
+</div>
+
+
+</div>
+
+</div>
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">If one wanted to represent a weighted version of this graph, they would simply store the weights alongside the nodes.  
+  
+![image.png](attachment:image.png)    
+and it's representation:</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p>If one wanted to represent a weighted version of this graph, they would simply store the weights alongside the nodes.</p>
+<p><img src="data:image/png;base64,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" alt="image.png"><br>
+and it's representation:</p>
+</div>
+</div>
+</div><div class="Cell Code-cell   " data-type="python">
+<div class="Cell-input">
+<div class="Cell-input-actions">
+    <button class="Code-cell-run" onclick="cellManager.handleRunCommand(this)">
+        <h3>Run</h3>
+    </button>
+</div>
+<div class="jp-CodeMirrorEditor jp-Editor Input-editor" data-type="inline">
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">adjacency_list = {1: [(2,5), (3,1)],
+         2: [(1,5), (4,6), (5,7)],
+         3: [(1,1), (4,7)],
+         4: [(2,6), (3,7), (5,3)],
+         5: [(2,7), (4,3)]}
+print(adjacency_list[1]) #Print all the nodes, and the edge weights, connected to Node 1</textarea>
+</div>
+</div>
+
+<div class="Cell-output">
+
+
+
+
+    
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[(2, 5), (3, 1)]
+</pre>
+</div>
+
+
+</div>
+
+</div>
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">### BFS Sample Problem
+Problem 1: Piggy Back [Brian Dean, 2014]
+
+Bessie and her sister Elsie graze in different fields during the day,
+and in the evening they both want to walk back to the barn to rest.
+Being clever bovines, they come up with a plan to minimize the total
+amount of energy they both spend while walking.
+
+Bessie spends B units of energy when walking from a field to an
+adjacent field, and Elsie spends `E` units of energy when she walks to
+an adjacent field.  However, if Bessie and Elsie are together in the
+same field, Bessie can carry Elsie on her shoulders and both can move
+to an adjacent field while spending only `P` units of energy (where P
+might be considerably less than `B+E`, the amount Bessie and Elsie would
+have spent individually walking to the adjacent field).  If `P` is very
+small, the most energy-efficient solution may involve Bessie and Elsie
+traveling to a common meeting field, then traveling together piggyback
+for the rest of the journey to the barn.  Of course, if `P` is large, it
+may still make the most sense for Bessie and Elsie to travel
+separately.  On a side note, Bessie and Elsie are both unhappy with
+the term "piggyback", as they don't see why the pigs on the farm
+should deserve all the credit for this remarkable form of
+transportation.
+
+Given `B`, `E`, and `P`, as well as the layout of the farm, please compute
+the minimum amount of energy required for Bessie and Elsie to reach
+the barn.
+
+INPUT: (file piggyback.in)
+
+The first line of input contains the positive integers `B`, `E`, `P`, `N`, and
+`M`.  All of these are at most `40,000`.  `B`, `E`, and `P` are described above.
+`N` is the number of fields in the farm (numbered `1..N`, where `N >= 3`),
+and `M` is the number of connections between fields.  Bessie and Elsie
+start in fields `1` and `2`, respectively.  The barn resides in field `N`.
+
+The next `M` lines in the input each describe a connection between a
+pair of different fields, specified by the integer indices of the two
+fields.  Connections are bi-directional.  It is always possible to
+travel from field `1` to field `N`, and field `2` to field `N`, along a series
+of such connections.  </textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h3 id="BFS-Sample-Problem">BFS Sample Problem<a class="anchor-link" href="#BFS-Sample-Problem">&#182;</a></h3><p>Problem 1: Piggy Back [Brian Dean, 2014]</p>
+<p>Bessie and her sister Elsie graze in different fields during the day,
+and in the evening they both want to walk back to the barn to rest.
+Being clever bovines, they come up with a plan to minimize the total
+amount of energy they both spend while walking.</p>
+<p>Bessie spends B units of energy when walking from a field to an
+adjacent field, and Elsie spends <code>E</code> units of energy when she walks to
+an adjacent field.  However, if Bessie and Elsie are together in the
+same field, Bessie can carry Elsie on her shoulders and both can move
+to an adjacent field while spending only <code>P</code> units of energy (where P
+might be considerably less than <code>B+E</code>, the amount Bessie and Elsie would
+have spent individually walking to the adjacent field).  If <code>P</code> is very
+small, the most energy-efficient solution may involve Bessie and Elsie
+traveling to a common meeting field, then traveling together piggyback
+for the rest of the journey to the barn.  Of course, if <code>P</code> is large, it
+may still make the most sense for Bessie and Elsie to travel
+separately.  On a side note, Bessie and Elsie are both unhappy with
+the term "piggyback", as they don't see why the pigs on the farm
+should deserve all the credit for this remarkable form of
+transportation.</p>
+<p>Given <code>B</code>, <code>E</code>, and <code>P</code>, as well as the layout of the farm, please compute
+the minimum amount of energy required for Bessie and Elsie to reach
+the barn.</p>
+<p>INPUT: (file piggyback.in)</p>
+<p>The first line of input contains the positive integers <code>B</code>, <code>E</code>, <code>P</code>, <code>N</code>, and
+<code>M</code>.  All of these are at most <code>40,000</code>.  <code>B</code>, <code>E</code>, and <code>P</code> are described above.
+<code>N</code> is the number of fields in the farm (numbered <code>1..N</code>, where <code>N &gt;= 3</code>),
+and <code>M</code> is the number of connections between fields.  Bessie and Elsie
+start in fields <code>1</code> and <code>2</code>, respectively.  The barn resides in field <code>N</code>.</p>
+<p>The next <code>M</code> lines in the input each describe a connection between a
+pair of different fields, specified by the integer indices of the two
+fields.  Connections are bi-directional.  It is always possible to
+travel from field <code>1</code> to field <code>N</code>, and field <code>2</code> to field <code>N</code>, along a series
+of such connections.</p>
+</div>
+</div>
+</div>
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">Test Case:
+```
+SAMPLE INPUT:
+
+4 4 5 8 8
+1 4
+2 3
+3 4
+4 7
+2 5
+5 6
+6 8
+7 8
+```
+
+OUTPUT: (file piggyback.out)
+
+A single integer specifying the minimum amount of energy Bessie and
+Elsie collectively need to spend to reach the barn.  In the example
+shown here, Bessie travels from `1` to `4` and Elsie travels from `2` to `3`
+to `4`.  Then, they travel together from `4` to `7` to `8`.
+
+```
+SAMPLE OUTPUT:
+
+22
+```</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p>Test Case:</p>
+
+<pre><code>SAMPLE INPUT:
+
+4 4 5 8 8
+1 4
+2 3
+3 4
+4 7
+2 5
+5 6
+6 8
+7 8</code></pre>
+<p>OUTPUT: (file piggyback.out)</p>
+<p>A single integer specifying the minimum amount of energy Bessie and
+Elsie collectively need to spend to reach the barn.  In the example
+shown here, Bessie travels from <code>1</code> to <code>4</code> and Elsie travels from <code>2</code> to <code>3</code>
+to <code>4</code>.  Then, they travel together from <code>4</code> to <code>7</code> to <code>8</code>.</p>
+
+<pre><code>SAMPLE OUTPUT:
+
+22</code></pre>
+</div>
+</div>
+</div>
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">That's all folks! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><p>That's all folks! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</p>
+</div>
+</div>
+</div>
+  </div>
+</body>
+
+
+
+
+
+
+
+
+<script>
+  // Creates the code editor from a target textarea using the CodeMirror library.
+  var codeCells = document.getElementsByClassName("CodeMirror-textarea");
+  for (var i = 0; i < codeCells.length; i++) {
+    var editor = CodeMirror.fromTextArea(codeCells.item(i), {
+      mode: {
+        name: codeCells.item(i).dataset["mimeType"],
+        version: 3,
+        singleLineStringErrors: false,
+        fencedCodeBlockDefaultMode: 'python'
+      },
+      extraKeys: {
+        'Tab': function (cm) {
+          var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+          cm.replaceSelection(spaces);
+        },
+        'Shift-Enter': function (cm) {
+          cellManager.handleRunCommand(cm.getWrapperElement());
+        },
+      },
+      indentUnit: 4,
+      matchBrackets: true,
+      theme: 'one-theme',
+      scrollbarStyle: 'overlay',
+      viewportMargin: Infinity,
+      lineNumbers: true,
+    });
+  }/*
+    var md = document.getElementsByClassName("Cell-MarkdownSource");
+    for (var i = 0; i < md.length; i++) {
+      md2html = marked(md.item(i).querySelector('pre').textContent);
+      md.item(i).parentElement.querySelector('.jp-RenderedMarkdown').innerHTML=md2html;
+    }*/
+</script>
+</html>
