@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Greedy Algorithms - If Instant Gratification Worked</title>
+
+<!--Codemirror imports-->
+<script src="/static/codemirror.js"></script>
+<script src="/static/simplescrollbars.js"></script>
+<link rel="stylesheet" href="/static/codemirror.css">
+<link rel="stylesheet" href="/static/simplescrollbars.css">
+<link rel="stylesheet" href="/static/one-theme.css">
+<script src="/static/highlight/python.js"></script>
+<script src="/static/highlight/markdown.js"></script>
+<!--Marked - Markdown Renderer-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+<!--KaTeX - LaTeX Renderer-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderLaTeX()"></script>
+<!--Pyodide imports-->
+<script src="https://pyodide-cdn2.iodide.io/v0.15.0/full/pyodide.js"></script>
+<script src="/static/pyodideWrapper.js"></script>
+<script src="/static/cellManager.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@300;400&family=Fira+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script>
+  cellManager = new CellManager();
+  window.toggleMarkdownCell = function (e) {
+    e.parentNode.querySelector('.Cell-MarkdownSource').style.display = '';
+    e.parentNode.querySelector('.CodeMirror').CodeMirror.refresh();
+    e.style.display = 'none';
+  }
+  function renderLaTeX() {
+    window.renderMathInElement(document.body,
+      {
+        ignoredTags: [],
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true }
+        ]
+      });
+  }
+</script>
+<link rel="stylesheet" href="/static/main.css">
+<style type="text/css">
+  a.anchor-link {
+     display: none;
+  }
+  </style>
+</script>
+
+</head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+  <div class="Cell-container">
+
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown"># Greedy Algorithms - If Instant Gratification Worked
+`Lessons[6]`  
+*This document contains runnable python examples. You may edit and run code blocks by pressing `Shift-Enter`*
+
+---
+
+Today we'll be learning about about **Greedy Algorithms**. Greedy algorithms find solutions to problems by always making the optimal choice at the moment. While they may not always find the optimal solution, but for many problems the correct greedy strategy will result in the optimal solution. Because they choose optimal choices, they are generally considered to be efficient algorithms for most problems.  
+
+Optimal Chioce at the moment means: If you can choose between two piles of money, always choose the bigger one (even if it leads to you getting less money later on - we only care about the current moment)  
+
+### The Coin Problem
+The simplest example where we can use a greedy algorithm is known as the *coin problem*. Consider a situation where we have to figure out the least number of coins to total a sum of money `n`.
+For example:
+```
+# Sample Input
+coins = [1, 2, 5, 10, 20, 50, 100, 200]
+n = 520
+# Sample Output
+solve(coin,n)
+# >> [200,200,100,20]
+```
+The optimal solution would be using 4 coins: `200 + 200 + 100 + 20`
+
+**How would we use a greedy algorithm to find the solution?**  
+The optimal greedy algorithm strategy for this problem would be to repeatedly select the largest coin that wouldn't make the total exceed `n`.
+</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h1 id="Greedy-Algorithms----If-Instant-Gratification-Worked">Greedy Algorithms -  If Instant Gratification Worked<a class="anchor-link" href="#Greedy-Algorithms----If-Instant-Gratification-Worked">&#182;</a></h1><p><code>Lessons[6]</code><br>
+<em>This document contains runnable python examples. You may edit and run code blocks by pressing <code>Shift-Enter</code></em></p>
+<hr>
+<p>Today we'll be learning about about <strong>Greedy Algorithms</strong>. Greedy algorithms find solutions to problems by always making the optimal choice at the moment. While they may not always find the optimal solution, but for many problems the correct greedy strategy will result in the optimal solution. Because they choose optimal choices, they are generally considered to be efficient algorithms for most problems.</p>
+<p>Optimal Chioce at the moment means: If you can choose between two piles of money, always choose the bigger one (even if it leads to you getting less money later on - we only care about the current moment)</p>
+<h3 id="The-Coin-Problem">The Coin Problem<a class="anchor-link" href="#The-Coin-Problem">&#182;</a></h3><p>The simplest example where we can use a greedy algorithm is known as the <em>coin problem</em>. Consider a situation where we have to figure out the least number of coins to total a sum of money <code>n</code>.
+For example:</p>
+
+<pre><code># Sample Input
+coins = [1, 2, 5, 10, 20, 50, 100, 200]
+n = 520
+# Sample Output
+solve(coin,n)
+# &gt;&gt; [200,200,100,20]</code></pre>
+<p>The optimal solution would be using 4 coins: <code>200 + 200 + 100 + 20</code></p>
+<p><strong>How would we use a greedy algorithm to find the solution?</strong><br>
+The optimal greedy algorithm strategy for this problem would be to repeatedly select the largest coin that wouldn't make the total exceed <code>n</code>.</p>
+</div>
+</div>
+</div><div class="Cell Code-cell   " data-type="python">
+<div class="Cell-input">
+<div class="Cell-input-actions">
+    <button class="Code-cell-run" onclick="cellManager.handleRunCommand(this)">
+        <h3>Run</h3>
+    </button>
+</div>
+<div class="jp-CodeMirrorEditor jp-Editor Input-editor" data-type="inline">
+     <textarea class="CodeMirror-textarea" data-mime-type="text/x-python">def solve(coins, n):
+    coins = sorted(coins)[::-1] #Sort the coins into descending order
+    total = 0
+    c = []
+    while total<n:
+        for i in coins:
+            if total+i<=n:
+                total+=i
+                c.append(i)
+                break
+    return c
+coins = [1, 2, 5, 10, 20, 50, 100, 200]
+n = 520
+print(solve(coins,n))</textarea>
+</div>
+</div>
+
+<div class="Cell-output">
+
+
+
+
+    
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[200, 200, 100, 20]
+</pre>
+</div>
+
+
+</div>
+
+</div>
+<div class="Cell" data-type="markdown">
+<div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">### The Activity Selection Problem
+Another, similar, problem is the activity selection problem. Given a set `S` of tasks, and the start/end times of each task, find the maximum number of tasks that can be done if only one task can be undertaken at once.
+```
+# Sample Input
+S = [(1,3),(2,5),(3,9),(6,8),(0,8)] # Task 1 has start time of 1, end time of 3, and so on.
+# Sample Output
+# >> [(2,5), (6,8)]
+```  
+
+### More Problems
+You can find many more problems at [this link on codeforces](https://a2oj.com/category?ID=56). The problems get increasingly difficult.
+
+That's all folks! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</textarea>
+</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h3 id="The-Activity-Selection-Problem">The Activity Selection Problem<a class="anchor-link" href="#The-Activity-Selection-Problem">&#182;</a></h3><p>Another, similar, problem is the activity selection problem. Given a set <code>S</code> of tasks, and the start/end times of each task, find the maximum number of tasks that can be done if only one task can be undertaken at once.</p>
+
+<pre><code># Sample Input
+S = [(1,3),(2,5),(3,9),(6,8),(0,8)] # Task 1 has start time of 1, end time of 3, and so on.
+# Sample Output
+# &gt;&gt; [(2,5), (6,8)]</code></pre>
+<h3 id="More-Problems">More Problems<a class="anchor-link" href="#More-Problems">&#182;</a></h3><p>You can find many more problems at <a href="https://a2oj.com/category?ID=56">this link on codeforces</a>. The problems get increasingly difficult.</p>
+<p>That's all folks! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</p>
+</div>
+</div>
+</div>
+  </div>
+</body>
+
+
+
+
+
+
+
+
+<script>
+  // Creates the code editor from a target textarea using the CodeMirror library.
+  var codeCells = document.getElementsByClassName("CodeMirror-textarea");
+  for (var i = 0; i < codeCells.length; i++) {
+    var editor = CodeMirror.fromTextArea(codeCells.item(i), {
+      mode: {
+        name: codeCells.item(i).dataset["mimeType"],
+        version: 3,
+        singleLineStringErrors: false,
+        fencedCodeBlockDefaultMode: 'python'
+      },
+      extraKeys: {
+        'Tab': function (cm) {
+          var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+          cm.replaceSelection(spaces);
+        },
+        'Shift-Enter': function (cm) {
+          cellManager.handleRunCommand(cm.getWrapperElement());
+        },
+      },
+      indentUnit: 4,
+      matchBrackets: true,
+      theme: 'one-theme',
+      scrollbarStyle: 'overlay',
+      viewportMargin: Infinity,
+      lineNumbers: true,
+    });
+  }/*
+    var md = document.getElementsByClassName("Cell-MarkdownSource");
+    for (var i = 0; i < md.length; i++) {
+      md2html = marked(md.item(i).querySelector('pre').textContent);
+      md.item(i).parentElement.querySelector('.jp-RenderedMarkdown').innerHTML=md2html;
+    }*/
+</script>
+</html>
