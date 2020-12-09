@@ -66,10 +66,27 @@
 
 Today we'll be learning about about **Greedy Algorithms**. Greedy algorithms find solutions to problems by always making the optimal choice at the moment. While they may not always find the optimal solution, but for many problems the correct greedy strategy will result in the optimal solution. Because they choose optimal choices, they are generally considered to be efficient algorithms for most problems.  
 
-Optimal Chioce at the moment means: If you can choose between two piles of money, always choose the bigger one (even if it leads to you getting less money later on - we only care about the current moment)  
+Optimal Choice at the moment means: If you can choose between two piles of money, always choose the bigger one (even if it leads to you getting less money later on - we only care about the current moment)  
+
+### The Activity Scheduling Problem
+One problem with a greedy-algorithm based solution is the activity selection problem. Given a set `S` of tasks, and the start/end times of each task, find the maximum number of tasks that can be done if only one task can be undertaken at once.
+```
+# Sample Input
+S = [(1,3),(2,5),(3,9),(6,8),(0,8)] # Task 1 has start time of 1, end time of 3, and so on.
+# Sample Output
+# >> [(2,5), (6,8)]
+```  
+Make sure your strategy doesn't fail on cases like:
+```
+# Selecting just the shortest task would only allow you one task!
+S = [(1,5),(4,6),(5,10)]
+
+# Selecting the earliest task could result in you selecting a very long early task.
+S = [(1,10),(3,6),(7,9)]
+```
 
 ### The Coin Problem
-The simplest example where we can use a greedy algorithm is known as the *coin problem*. Consider a situation where we have to figure out the least number of coins to total a sum of money `n`.
+Another seemingly simple example where we can use a greedy algorithm is known as the *coin problem*. Consider a situation where we have to figure out the least number of coins to total a sum of money `n`.
 For example:
 ```
 # Sample Input
@@ -79,18 +96,40 @@ n = 520
 solve(coin,n)
 # >> [200,200,100,20]
 ```
-The optimal solution would be using 4 coins: `200 + 200 + 100 + 20`
+The solution would be using 4 coins: `200 + 200 + 100 + 20`
 
 **How would we use a greedy algorithm to find the solution?**  
-The optimal greedy algorithm strategy for this problem would be to repeatedly select the largest coin that wouldn't make the total exceed `n`.
-</textarea>
+The greedy algorithm strategy for this problem would be to repeatedly select the largest coin that wouldn't make the total exceed `n`.  But will this strategy find the optimal solution in every problem? Consider this case:
+```
+# Sample Input
+coins = [1,3,4,5]
+n = 7
+# Greedy Output
+solve(coin,n)
+# >> [5,1,1]
+# Optimal Solution
+# >> [4,3]
+```</textarea>
 </div>
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h1 id="Greedy-Algorithms----If-Instant-Gratification-Worked">Greedy Algorithms -  If Instant Gratification Worked<a class="anchor-link" href="#Greedy-Algorithms----If-Instant-Gratification-Worked">&#182;</a></h1><p><code>Lessons[6]</code><br>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h1 id="Greedy-Algorithms---If-Instant-Gratification-Worked">Greedy Algorithms - If Instant Gratification Worked<a class="anchor-link" href="#Greedy-Algorithms---If-Instant-Gratification-Worked">&#182;</a></h1><p><code>Lessons[6]</code><br>
 <em>This document contains runnable python examples. You may edit and run code blocks by pressing <code>Shift-Enter</code></em></p>
 <hr>
 <p>Today we'll be learning about about <strong>Greedy Algorithms</strong>. Greedy algorithms find solutions to problems by always making the optimal choice at the moment. While they may not always find the optimal solution, but for many problems the correct greedy strategy will result in the optimal solution. Because they choose optimal choices, they are generally considered to be efficient algorithms for most problems.</p>
-<p>Optimal Chioce at the moment means: If you can choose between two piles of money, always choose the bigger one (even if it leads to you getting less money later on - we only care about the current moment)</p>
-<h3 id="The-Coin-Problem">The Coin Problem<a class="anchor-link" href="#The-Coin-Problem">&#182;</a></h3><p>The simplest example where we can use a greedy algorithm is known as the <em>coin problem</em>. Consider a situation where we have to figure out the least number of coins to total a sum of money <code>n</code>.
+<p>Optimal Choice at the moment means: If you can choose between two piles of money, always choose the bigger one (even if it leads to you getting less money later on - we only care about the current moment)</p>
+<h3 id="The-Activity-Scheduling-Problem">The Activity Scheduling Problem<a class="anchor-link" href="#The-Activity-Scheduling-Problem">&#182;</a></h3><p>One problem with a greedy-algorithm based solution is the activity selection problem. Given a set <code>S</code> of tasks, and the start/end times of each task, find the maximum number of tasks that can be done if only one task can be undertaken at once.</p>
+
+<pre><code># Sample Input
+S = [(1,3),(2,5),(3,9),(6,8),(0,8)] # Task 1 has start time of 1, end time of 3, and so on.
+# Sample Output
+# &gt;&gt; [(2,5), (6,8)]</code></pre>
+<p>Make sure your strategy doesn't fail on cases like:</p>
+
+<pre><code># Selecting just the shortest task would only allow you one task!
+S = [(1,5),(4,6),(5,10)]
+
+# Selecting the earliest task could result in you selecting a very long early task.
+S = [(1,10),(3,6),(7,9)]</code></pre>
+<h3 id="The-Coin-Problem">The Coin Problem<a class="anchor-link" href="#The-Coin-Problem">&#182;</a></h3><p>Another seemingly simple example where we can use a greedy algorithm is known as the <em>coin problem</em>. Consider a situation where we have to figure out the least number of coins to total a sum of money <code>n</code>.
 For example:</p>
 
 <pre><code># Sample Input
@@ -99,9 +138,18 @@ n = 520
 # Sample Output
 solve(coin,n)
 # &gt;&gt; [200,200,100,20]</code></pre>
-<p>The optimal solution would be using 4 coins: <code>200 + 200 + 100 + 20</code></p>
+<p>The solution would be using 4 coins: <code>200 + 200 + 100 + 20</code></p>
 <p><strong>How would we use a greedy algorithm to find the solution?</strong><br>
-The optimal greedy algorithm strategy for this problem would be to repeatedly select the largest coin that wouldn't make the total exceed <code>n</code>.</p>
+The greedy algorithm strategy for this problem would be to repeatedly select the largest coin that wouldn't make the total exceed <code>n</code>.  But will this strategy find the optimal solution in every problem? Consider this case:</p>
+
+<pre><code># Sample Input
+coins = [1,3,4,5]
+n = 7
+# Greedy Output
+solve(coin,n)
+# &gt;&gt; [5,1,1]
+# Optimal Solution
+# &gt;&gt; [4,3]</code></pre>
 </div>
 </div>
 </div><div class="Cell Code-cell   " data-type="python">
@@ -148,27 +196,12 @@ print(solve(coins,n))</textarea>
 </div>
 <div class="Cell" data-type="markdown">
 <div class="Cell-input"><div class="Cell-input-actions"></div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor Cell-MarkdownSource" data-type="inline" style="display: none;">
-    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">### The Activity Selection Problem
-Another, similar, problem is the activity selection problem. Given a set `S` of tasks, and the start/end times of each task, find the maximum number of tasks that can be done if only one task can be undertaken at once.
-```
-# Sample Input
-S = [(1,3),(2,5),(3,9),(6,8),(0,8)] # Task 1 has start time of 1, end time of 3, and so on.
-# Sample Output
-# >> [(2,5), (6,8)]
-```  
-
-### More Problems
+    <textarea class="CodeMirror-textarea" data-mime-type="text/x-markdown">### More Problems
 You can find many more problems at [this link on codeforces](https://a2oj.com/category?ID=56). The problems get increasingly difficult.
 
 That's all folks! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</textarea>
 </div>
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h3 id="The-Activity-Selection-Problem">The Activity Selection Problem<a class="anchor-link" href="#The-Activity-Selection-Problem">&#182;</a></h3><p>Another, similar, problem is the activity selection problem. Given a set <code>S</code> of tasks, and the start/end times of each task, find the maximum number of tasks that can be done if only one task can be undertaken at once.</p>
-
-<pre><code># Sample Input
-S = [(1,3),(2,5),(3,9),(6,8),(0,8)] # Task 1 has start time of 1, end time of 3, and so on.
-# Sample Output
-# &gt;&gt; [(2,5), (6,8)]</code></pre>
-<h3 id="More-Problems">More Problems<a class="anchor-link" href="#More-Problems">&#182;</a></h3><p>You can find many more problems at <a href="https://a2oj.com/category?ID=56">this link on codeforces</a>. The problems get increasingly difficult.</p>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown" ondblclick="toggleMarkdownCell(this)"><h3 id="More-Problems">More Problems<a class="anchor-link" href="#More-Problems">&#182;</a></h3><p>You can find many more problems at <a href="https://a2oj.com/category?ID=56">this link on codeforces</a>. The problems get increasingly difficult.</p>
 <p>That's all folks! As always, if you have any feedback feel free to contact one of the instructors, or email stuyccc@gmail.com</p>
 </div>
 </div>
