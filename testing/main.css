@@ -2,7 +2,6 @@
   --blue: #3282B8;
   --darkblue: #0F3C65;
   --darkgrey: #151515;
-  --white: #ffffff;
 }
 body {
 	background-color: var(--darkgrey);
@@ -24,7 +23,7 @@ h2 {
 	line-height: 4vw;
 }
 p {
-	font-family: Fira Mono;
+	font-family: Fira Sans;
 	margin: 0; padding: 0;
 }
 /* menu */
@@ -133,14 +132,13 @@ div.headerspace {
 	width: 100vw;
 	height: 5vw;
 }
-/* title */
-div.titlecontainer {
+div.container {
 	position: relative;
 	top: 0;
-	width: 100vw;
-	height: 90vh;
+	width: 100vw; height: 90vh;
 	margin: 0; padding: 0;
 }
+/* title */
 img.titleimg {
 	width: 100vw;
 	height: 90vh;
@@ -155,37 +153,31 @@ h1.titleheading {
 	position: absolute;
 	left: 0; top: 45vh;
 }
-/* about */
-div.cpcontainer {
-	position: relative;
-	top: 0;
-	width: 100vw; height: 90vh;
-	margin: 0; padding: 0;
-}
+/* about cp */
 div.cpcontent {
 	position: absolute;
 	transform: translate(-50%, -50%);
-	width: 85vw; height: 30vw;
-	top: 45vh; left: 55vw;
+	width: 100vw; height: 30vw;
+	top: 45vh; left: 50vw;
 }
 h2.cpheading {
 	position: absolute;
 	width: 18vw;
 	margin: 0; padding: 0;
 	transform: translateY(-50%);
-	top: 10vw; left: 0;
+	top: 10vw; left: 10vw;
 }
 span.cpline {
 	background: white;
 	position: absolute;
-	left: 22vw; top: 0;
+	left: 34vw; top: 0;
 	width: 2px; height: 30vw;
 }
 p.cptext {
 	position: absolute;
 	font-size: 1.5vw;
 	transform: translateX(-50%);
-	top: 3vw; left: 55vw;
+	top: 3vw; left: 67vw;
 	width: 32vw;
 	text-align: center;
 }
@@ -195,13 +187,11 @@ div.cpfactor {
 	width: 17vw;
 	top: 11vw;
 }
-#factor1 { left: 35vw; }
-#factor2 { left: 55vw; }
-#factor3 { left: 75vw; }
+#factor1 { left: 47vw; }
+#factor2 { left: 67vw; }
+#factor3 { left: 87vw; }
 p.cplbl {
 	position: absolute;
-	font-family: Fira Mono;
-	margin: 0; padding: 0;
 	font-size: 2vw;
 	width: 100%;
 	top: 0;
@@ -209,10 +199,51 @@ p.cplbl {
 }
 p.cpdescription {
 	position: absolute;
-	font-family: Fira Mono;
-	margin: 0; padding: 0;
 	font-size: 1.3vw;
 	width: 100%;
 	top: 5vw;
+	text-align: center;
+}
+
+/* competitions */
+div.compcontent {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	width: 100vw; height: 30vw;
+	top: 45vh; left: 50vw;
+}
+h2.compheading {
+	position: absolute;
+	width: 100%; text-align: center;
+	top: 0;
+}
+span.underline {
+	position: absolute;
+	transform: translateX(-50%);
+	top: 6vw; left: 50%;
+	width: 40vw; height: 2px;
+	background: white;
+}
+div.comp {
+	position: absolute;
+	transform: translateX(-50%);
+	width: 25vw;
+	top: 12vw;
+}
+#comp1 {left: 20vw;}
+#comp2 {left: 50vw;}
+#comp3 {left: 80vw;}
+p.complbl {
+	position: absolute;
+	font-size: 2vw;
+	width: 100%;
+	text-align: center;
+	top: 0;
+}
+p.comptxt {
+	position: absolute;
+	font-size: 1.3vw;
+	width: 100%;
+	top: 4vw;
 	text-align: center;
 }
