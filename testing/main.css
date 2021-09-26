@@ -5,67 +5,52 @@
 }
 body {
 	background-color: var(--darkgrey);
-	margin: 0; padding: 0;
+    position: absolute;
+    left: 50%;
+    margin-left: -390px;
+    width: 780px;
+
 }
 p, a, h1, h2 {
 	color: white;
+	font-family: Fira Mono;
 }
 h1 {
-	font-family: Fira Mono;
 	text-align: center;
-	margin: 0; padding: 0;
-	font-size: 3vw;
 }
 h2 {
-	font-family: Fira Mono;
-	margin: 0; padding: 0;
-	font-size: 2.5vw;
-	line-height: 4vw;
 }
 p {
 	font-family: Fira Sans;
-	margin: 0; padding: 0;
 }
 /* menu */
 div.header {
-	padding: 0px; margin: 0px;
-	position: fixed;
-	top: 0px;
-	width: 100vw;
-	height: 5vw;
-	background-color: var(--darkblue);
-	z-index: 10;
+	position: relative;
+    margin: 100px;
 }
 img.menu {
-	transform: translate(-50%, -50%);
-	position: absolute;
-	top: 2.5vw; left: 4vw;
-	width: 4vw;
+    float: left;
+    margin-left: 100px;
+	position: relative;
+    top: 80px;
+	width: 60px;
 }
 table.menu {
 	border-collapse: collapse;
-	position: absolute;
-	left: 30vw; top: 0;
-	width: 40vw; height: 5vw;
+	position: relative;
+    left: 40%;
+	/*width: 40vw; height: 5vw;*/
 }
 td.menu {
-	padding: 0px;
 	width: 33%;
-	border-width: 0px;
-	margin: 0px;
 }
 a.menu {
 	display: inline-block;
 	font-family: Fira Mono;
-	width: 100%;
 	text-align: center;
-	height: 5vw;
-	line-height: 5vw;
-	font-size: 1.5vw;
 	text-decoration: none;
-	transition: 0.3s;
+	transition: 0.1s;
 	color: #dddddd;
-	text-shadow: 0;
 }
 a.menu:hover, a.menu:active {
 	color: #ffffff;
@@ -73,86 +58,25 @@ a.menu:hover, a.menu:active {
 }
 a.current {
 	text-decoration: underline;
-	cursor: default;
-}
-/* The switch - the box around the slider */
-label.toggle {
-	position: absolute;
-	display: inline-block;
-	width: 5.4vw;
-	height: 3vw;
-	transform: translateY(-50%);
-	right: 3vw; top: 2.5vw;
-}
-/* Hide default HTML checkbox */
-input.toggle {
-	opacity: 0;
-	width: 0;
-	height: 0;
-}
-/* The slider */
-span.toggle {
-	position: absolute;
-	cursor: pointer;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: #ccc;
-	-webkit-transition: .4s;
-	transition: .4s;
-	border-radius: 3vw;
-}
-span.toggle:before {
-	position: absolute;
-	content: "";
-	height: 2.4vw;
-	width: 2.4vw;
-	left: 0.3vw;
-	bottom: 0.3vw;
-	background-color: white;
-	-webkit-transition: .4s;
-	transition: .4s;
-	border-radius: 50%;
-	background-image: url('data/moon.svg');
-	background-size: 1.7vw 1.7vw;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-input:checked + span.toggle {
-	background-color: var(--blue);
-}
-input:checked + span.toggle:before {
-	-webkit-transform: translateX(2.4vw);
-	-ms-transform: translateX(2.4vw);
-	transform: translateX(2.4vw);
-}
-div.headerspace {
-	position: relative;
-	width: 100vw;
-	height: 5vw;
 }
 div.container {
 	position: relative;
-	top: 0;
-	width: 100vw; height: 90vh;
-	margin: 0; padding: 0;
+    display: left;
+    width: 300px;
+    margin: 100px;
 }
 /* title */
-img.titleimg {
-	width: 100vw;
-	height: 90vh;
-	object-fit: cover;
-	opacity: 0.4;
-	position: absolute;
-	left: 0; top: 0;
+div.titleheading {
+    margin-left: 100px;
+    float: left;
 }
-h1.titleheading {
-	transform: translateY(-50%);
-	width: 100vw;
-	position: absolute;
-	left: 0; top: 45vh;
+
+div.calender {
+    margin-right: 100px;
+    position: relative;
+    float: right;
 }
+
 /* about cp */
 div.cpcontent {
 	position: absolute;
