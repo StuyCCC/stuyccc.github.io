@@ -3,14 +3,46 @@
   --darkblue: #0F3C65;
   --darkgrey: #151515;
 }
+
+/*
 body {
-	background-color: var(--darkgrey);
     position: absolute;
     left: 50%;
     margin-left: -390px;
     width: 780px;
 
 }
+*/
+
+body{
+	background-color: var(--darkgrey);
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    width: 780px;
+    margin-left: -390px;
+}
+
+#top-container {
+    width: 780px;
+    position: relative;
+}
+
+a.header {
+    margin: 50px;
+
+	font-family: Fira Mono;
+	text-decoration: none;
+	transition: 0.1s;
+	color: #dddddd;
+}
+
+a.header:hover, a.header:active {
+	color: #ffffff;
+	text-shadow: 0 0 10px #ddd, 0 0 20px #999, 0 0 30px #222;
+}
+
+
 p, a, h1, h2 {
 	color: white;
 	font-family: Fira Mono;
@@ -28,30 +60,29 @@ div.header {
 	position: relative;
     margin: 100px;
 }
-img.menu {
-    float: left;
-    margin-left: 100px;
-	position: relative;
-    top: 80px;
-	width: 60px;
+
+#top-container header.a {
+    margin: 30px;
 }
+
+img.menu {
+    /*margin-left: 100px;*/
+	position: relative;
+	width: 60px;
+    top: 30px;
+}
+
 table.menu {
 	border-collapse: collapse;
 	position: relative;
     left: 40%;
 	/*width: 40vw; height: 5vw;*/
 }
+
 td.menu {
 	width: 33%;
 }
-a.menu {
-	display: inline-block;
-	font-family: Fira Mono;
-	text-align: center;
-	text-decoration: none;
-	transition: 0.1s;
-	color: #dddddd;
-}
+
 a.menu:hover, a.menu:active {
 	color: #ffffff;
 	text-shadow: 0 0 10px #ddd, 0 0 20px #999, 0 0 30px #222;
@@ -66,9 +97,27 @@ div.container {
     margin: 100px;
 }
 /* title */
+#main-content-box {
+    position: relative;
+
+}
+
 div.titleheading {
-    margin-left: 100px;
+    position: relative;
+    width: 780em;
+    height: 200px;
+}
+
+div.leftbox {
+    width: 300px;
     float: left;
+    position: relative;
+}
+
+div.rightbox {
+    width: 300px;
+    float: right;
+    position: relative;
 }
 
 div.calender {
