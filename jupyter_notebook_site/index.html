@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stuyvesant Competitive Computing Club website">
+  <meta name="author" content="Amit Prasad">
+  <link rel="icon" type="image/png" href="/data/favicon.png">
+
+  <title>StuyCCC Landing Page</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@300;400&family=Fira+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/main.css">
+  <style type="text/css">
+    a.anchor-link {
+      display: none;
+    }
+  </style>
+  </script>
+
+</head>
+
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+  <div class="Cell-container">
+
+    <div class="Cell" data-type="markdown">
+      <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown"
+        ondblclick="toggleMarkdownCell(this)">
+        <h1 id="Stuyvesant-Competitive-Computing-Club">Stuyvesant Competitive Computing Club<a class="anchor-link"
+            href="#Stuyvesant-Competitive-Computing-Club">&#182;</a></h1>
+        <hr>
+		<p>Note: this page will be updated soon, this is all content from last year.</p>
+        <p>This site contains Stuyvesant Competitive Computing Club's lessons and resources. New lessons will be added
+          to the site, with a recording of each meeting uploaded to the club's <a
+            href="https://www.youtube.com/channel/UC0DBFywQl87JlsFSdvFWbZQ">YouTube account</a>.</p>
+        <h2 id="Lessons">Lessons<a class="anchor-link" href="#Lessons">&#182;</a></h2>
+        <ol start="0">
+          <li><a href="/lessons/time-space-complexity.html">Time and Space Complexity</a></li>
+          <li><a href="/lessons/data-structures.html">Data Structures Overview</a></li>
+          <li><a href="/lessons/sorting.html">Sorting Overview</a> </li>
+          <li><a href="/lessons/graph-intro.html">Introduction to Graphs - A Node to Joy</a> </li>
+          <li><a href="/lessons/breadth-first-search.html">Breadth of the Wild: Breadth First Search</a> </li>
+          <li><a href="/lessons/adjacency-lists.html">Adjacency Lists and BFS Problems</a> </li>
+          <li><a href="/lessons/greedy-algorithms.html">Greedy Algorithms - If Instant Gratification Worked</a> </li>
+          <li><a href="/lessons/usaco-practice-1.html">USACO Practice</a> </li>
+        </ol>
+        <p>Lesson pages have <em>runnable</em> python fragments that can be interacted with. Be sure to follow along
+          with the lesson by tinkering with the associated code fragments, and running them by using
+          <em>Shift-Enter</em>.</p>
+        <h2 id="Members">Members<a class="anchor-link" href="#Members">&#182;</a></h2>
+        <p>We have over 100 people as part of the club's discord server - where we discuss problems, concepts, and
+          various other topics. Additionally, our leadership this year consists of:</p>
+        <ul>
+          <li>Amit Prasad (President, 2020-2021)</li>
+          <li>Arib Chowdhury (President, 2020-2021)</li>
+          <li>Carlos Hernandez (Vice-President, 2020-2021)</li>
+          <li>Jeremy Ku-benjet (Vice-President, 2020-2021)</li>
+        </ul>
+        <h2 id="Past-Leadership">Past Leadership<a class="anchor-link" href="#Past-Leadership">&#182;</a></h2>
+        <ul>
+          <li>Ethan Morgan (President, 2019-2020)</li>
+          <li>Leilei Hao (President, 2019-2020) </li>
+        </ul>
+        <h2 id="Contact-Us">Contact Us<a class="anchor-link" href="#Contact-Us">&#182;</a></h2>
+        <p>If you want to contact the leadership, you can email us at <a
+            href="mailto:stuyccc@gmail.com">stuyccc@gmail.com</a>. You can also contact any of the current leadership
+          through their stuy.edu emails. If you want to join the club's community, you can also join our <a
+            href="https://discord.gg/Wd2FxeE">discord here</a>.</p>
+        <p>The old website can be accessed through <a href="/old/index.html">this link.</a></p>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+
+
+
+
+
+
+
+<script>
+  // Creates the code editor from a target textarea using the CodeMirror library.
+  var codeCells = document.getElementsByClassName("CodeMirror-textarea");
+  for (var i = 0; i < codeCells.length; i++) {
+    var editor = CodeMirror.fromTextArea(codeCells.item(i), {
+      mode: {
+        name: codeCells.item(i).dataset["mimeType"],
+        version: 3,
+        singleLineStringErrors: false,
+        fencedCodeBlockDefaultMode: 'python'
+      },
+      extraKeys: {
+        'Tab': function (cm) {
+          var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+          cm.replaceSelection(spaces);
+        },
+        'Shift-Enter': function (cm) {
+          cellManager.handleRunCommand(cm.getWrapperElement());
+        },
+      },
+      indentUnit: 4,
+      matchBrackets: true,
+      theme: 'one-theme',
+      scrollbarStyle: 'overlay',
+      viewportMargin: Infinity,
+      lineNumbers: true,
+    });
+  }/*
+    var md = document.getElementsByClassName("Cell-MarkdownSource");
+    for (var i = 0; i < md.length; i++) {
+      md2html = marked(md.item(i).querySelector('pre').textContent);
+      md.item(i).parentElement.querySelector('.jp-RenderedMarkdown').innerHTML=md2html;
+    }*/
+</script>
+
+</html>
