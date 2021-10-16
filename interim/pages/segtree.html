@@ -8,8 +8,8 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/interim/data/gruvbox-dark-pale.min.css">
-    <script src="/interim/data/highlight.min.js"></script>
+    <link rel="stylesheet" href="../data/gruvbox-dark-pale.min.css">
+    <script src="../data/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
     <title>StuyCCC</title>
@@ -29,19 +29,22 @@
     <div id="main">
         <h4>2021-10-11</h4>
         <fieldset>
-            <legend>PAST LESSONS</legend>
+            <legend>SEGMENT TREES</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
-            <h3>Beginner</h3>
-            <ul>
-            </ul>
-            <h3>Intermediate</h3>
-            <ul>
-            </ul>
-            <h3>Advanced</h3>
-            <ul>
-				<li>10/4: <a href="segtree.html">Segment Trees</a></li>
-            </ul>
+            <h3>Motivation</h3>
+			<p>Let's imagine the following problem, where we start with a given array A and want to process the following queries:</p>
+			<p>1: set the value at index K to X.</p>
+			<p>2: given indices L and R, calculate A[L] + A[L+1] + ... + A[R]</p>
+			<p>If the array has length N and there are Q queries, we can easily solve this problem in O(NQ) by doing what the problem tells us to do. But we can do better!</p>
+			<p>The simple approach is inefficient because it has to process every element in the range. So let's try recording the sum of adjacent pairs of numbers as well. Using this method, we can calculate the sum potentially twice as fast. This is still O(NQ), however, so we can do better.</p>
+			<p>The key is that we can keep doing this extra calculation for every power of two. We can calculate segments of 4 numbers by summing the segments of 2 numbers below it, do the same for 8, and so on. The following diagram describes this:</p>
+			<img src="../data/segtree1.png" width="520">
+			<p>This is called a segment tree because it is composed of segments, and can be viewed as a tree where each segment has two children that divide it in half. Notice that the number of layers is </p>
+			<script type="math/tex">\log _{2}(n)</script>
+			<pre><code class="language-cpp">#include&lt;bits/stdc++.h>
+using namespace std;
+			</code></pre>
         </fieldset>
     </div>
 </body>
