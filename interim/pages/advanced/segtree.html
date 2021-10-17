@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../leaders.html">leaders</a></p>
+        <p><a href="../calender.html">calender</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+    </div>
+    <div id="main">
+        <h4>2021-10-11</h4>
+        <fieldset>
+            <legend>SEGMENT TREES</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Motivation</h3>
+			<p>Let's imagine the following problem, where we start with a given array A and want to process the following queries:</p>
+			<p>1: set the value at index K to X.</p>
+			<p>2: given indices L and R, calculate A[L] + A[L+1] + ... + A[R]</p>
+			<p>If the array has length N and there are Q queries, we can easily solve this problem in <script type="math/tex">O(NQ)</script> by doing what the problem tells us to do. But we can do better!</p>
+			<p>The simple approach is inefficient because it has to process every element in the range. So let's try recording the sum of adjacent pairs of numbers as well. Using this method, we can calculate the sum potentially twice as fast. This is still <script type="math/tex">O(NQ)</script> however, so we can do better.</p>
+			<p>The key is that we can keep doing this extra calculation for every power of two. We can calculate segments of 4 numbers by summing the segments of 2 numbers below it, do the same for 8, and so on. The following diagram describes this:</p>
+			<img src="../../data/advanced/segtree1.png" width="520">
+			<p>This is called a segment tree because it is composed of segments, and can be viewed as a tree where each segment has two children that divide it in half. Notice that the number of layers is <script type="math/tex">\log _{2}(n)+1</script>.</p>
+			<h3>Answering Queries</h3>
+			<p>Let's first tackle the update query. In order to set an element to a different value, we have to update every segment containing that element. Since the number of layers is <script type="math/tex">\log_2(n)+1</script> and only one range from each layer contains the element to be updated, an update takes <script type="math/tex">O(\log_2(n))</script> time.</p>
+			<p>Now we can tackle the sum query. Let's first consider the range from L to R. We can imagine this as a sum of segments in the bottom row. If we can move up a row so the range can be expressed as a sum of segments in the second row, we have halved the work we need to do. However, if the endpoints split the segment above it in half, we need to add the element at the endpoint so we can move the endpoint over. We can use this process to continue moving the range up a level. Since the number of levels is logarithmic and at each level we need to do at most one operation at either end, the range query also takes <script type="math/tex">O(\log_2(n))</script>.</p>
+			<h3>Implementation</h3>
+			<p>Now we can start implementing. Let's label the segments of the diagram above from 1 to 15, in descending order from left to right. So the first row has segment 1, the second row has segments 2 and 3, the third row has segments 4, 5, 6, 7, and so on. Notice that if a segment has index <script type="math/tex">i</script>, then its left child will have index <script type="math/tex">2i</script>, its right child will have index <script type="math/tex">2i+1</script>, and its parent will have index <script type="math/tex">\lfloor{\frac{i}{2}}\rfloor</script>. If the original array has an element at index <script type="math/tex">i</script>, then the segment tree will have the corresponding element at index <script type="math/tex">i+N</script></p>
+			<p>To update an index K, we first add N to K and set that value to the new value X. Then, at each step, we go to the parent node by dividing by 2 and then setting the value of the parent to the sum of its children.</p>
+			<pre><code class="language-cpp">void update(int K, int X) {
+    K += N;
+    seg[K] = X;
+    K /= 2;
+    while (K>0) {
+        seg[K] = seg[2*K] + seg[2*K+1];
+        K /= 2;
+    }
+}
+			</code></pre>
+            <p>To get the sum of a range, we first add N to each of the endpoints. For each step, if the left endpoint is a right child of its parent (ie if it's odd), we shift it over. Likewise, if the right endpoint is a left child of its parent (ie if it's even), we shift it over. Then, we divide both endpoints by 2.</p>
+            <pre><code class="language-cpp">int query(int L, int R) {
+    L += N;
+    R += N;
+    int ans = 0;
+    while (L <= R) {
+        if (L%2 != 0) {
+            ans += seg[L];
+            L++;
+        }
+        if (R%2 == 0) {
+            ans += seg[R];
+            R--;
+        }
+        L /= 2;
+        R /= 2;
+    }
+    return ans;
+}
+			</code></pre>
+            <h3>Commutativity</h3>
+            <p>We aren't limited to only using a segment tree to find sums -- we can use it to find minimums, or even greatest common divisors of a range. So which operations are allowed? Our current implementation requires that the operation is both commutative and associative - that is, <script type="math/tex">a+b = b+a</script> and <script type="math/tex">(a+b)+c = a+(b+c)</script>. But sometimes we want to do this for non-commutative operations. We can do this as follows:</p>
+            <p>Notice that the query operation will shift the left endpoint from left to right, and the right endpoint from right to left. So if we can do the left and right endpoint operations separately, in order, then combine the results, then we won't require commutativity. The implementation looks like this -- obviously it's not necessary for the sum operation, but it can be applied to other operations as well.</p>
+            <pre><code class="language-cpp">int query(int L, int R) {
+    L += N;
+    R += N;
+    int left_ans = 0, right_ans = 0;
+    while (L <= R) {
+        if (L%2 != 0) {
+            left_ans = left_ans + seg[L];
+            L++;
+        }
+        if (R%2 == 0) {
+            right_ans = seg[R] + right_ans;
+            R--;
+        }
+        L /= 2;
+        R /= 2;
+    }
+    return left_ans + right_ans;
+}
+			</code></pre>
+            <h3>Practice</h3>
+            <ul>
+                <li><a href="https://cses.fi/problemset/task/1648">Dynamic Range Sum Queries</a>: original motivating problem.</li>
+                <li><a href="https://cses.fi/problemset/task/1145">Increasing Subsequence</a>: introduces the use of segment trees with dynamic programming.</li>
+                <li><a href="https://cses.fi/problemset/task/1190">Subarray Sum Queries</a>: requires a creative segment tree operation.</li>
+            </ul>
+        </fieldset>
+    </div>
+</body>
