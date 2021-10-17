@@ -47,6 +47,10 @@ a:hover {
     text-decoration: none;
 }
 
+img.logo:hover {
+    filter: brightness(50%);
+}
+
 #main {
     background-color: #262626;
     padding: 1em;

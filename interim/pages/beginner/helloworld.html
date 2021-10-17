@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../leaders.html">leaders</a></p>
+        <p><a href="../calender.html">calender</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+    </div>
+    <div id="main">
+        <h4>2021-10-17</h4>
+        <fieldset>
+            <legend>Hello World!</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Why C++?</h3>
+            <p>C++ is uber fast, relatively flexible, and has a large standard library. Even if that doesn’t make sense, just know that C++ is the most popular coding language used in competitive programming for very good reasons. So if we are going to teach you guys a coding language, why not teach the best of the best. </p>
+
+            <h3>Function Definition</h3>
+            <p>(Math) Accepts inputs, produces a unique output for each set of inputs.</p>
+            <p>(English) The ability to do something.</p>
+            <p>(Programming) A function is a part of code that just <u>does something</u>; it doesn’t necessarily need inputs or outputs but it can have both. These functions will contain <u>algorithms</u>. You don’t have to fully understand how to create functions yet!</p>
+
+            <h3>Algorithms</h3>
+            <p>An algorithm is a series of well defined steps that can be followed to produce a result. The following are some examples of algorithms</p>
+            <p><b><i>The Multiplication Algorithm</i></b></p>
+            <p>When you do long multiplication on paper you are actually using an algorithm. Consider 999 * 154.</p>
+            <p>To multiply these two numbers we first take the 4 and then multiply it with all the digits of 999, then we shift to the left and take the 5 and multiply it against all the digits of 999, and so on.</p>
+            <p><b><i>Problem A: Given a list of numbers A, find the range of A using an algorithm</i></b></p>
+            <p>Solution: Go through A once to find the maximum, then go through A again to find the minimum, and find the difference between the two.</p>
+            <p><b><i>Problem B: Given 2 lists of numbers A and B, determine whether an element in A and an element in B sum to some number k.</i></b></p>
+            <p>Solution: For each element a in A, for each element b in B, if a + b = k, it is possible. At the end of the process, if we have found no valid pairs, then it is not possible.</p>
+            <p>The explanations for each of these three problems above are in what’s called pseudo code: the explanation of an algorithm in English. It can then be translated into code.</p>
+
+            <h3>Creating Hello World</h3>
+            <p>You need two things to start writing C++ files. The first is a text editor, an application that allows you to write text to files.. Some commonly used ones are <a href="https://atom.io/">Atom</a>, <a href="https://www.vim.org/">Vim</a>, <a href="https://code.visualstudio.com/">VSCode</a>, <a href="https://notepad-plus-plus.org/downloads/">Notepad++</a>, and <a href="https://wiki.gnome.org/Apps/Gedit">Gedit</a>. It doesn’t matter what you use as long as you’re comfortable with it. Secondly, you need access to a <a href="https://code.tutsplus.com/tutorials/command-line-basics-and-useful-tricks-with-the-terminal--cms-29356">terminal</a>, which every computer has.</p>
+            <p>The code for your first file, which is typically Hello World (copy and paste this into your editor and save it):</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    cout << “Hello World!\n”;
+}
+			</code></pre>
+            <p>The first line “includes” a large file with prewritten functions. Programmers are lazy! They don’t want to rewrite commonly used functions over and over again. The bits/stdc++.h file is included in the C++ compiler we suggest you to use.</p>
+            <p>This include file has a HUGE number of functions—the names of these functions could easily overlap with those from other libraries. Thus, another level of organization we use is <b>namespaces</b>. The second line identifies that we’re using a specific family of functions: in this case, functions from the standard library.</p>
+            <p>`int main()` is always the first function that’s called when the program is run. It is also the computer’s only point of entry—all other functions must be called from main. Thus, this is where we put the contents of our code.</p>
+            <p>The one line we have inside the main program is just an instruction to print “Hello World!”. We will talk more about printing in the future.</p>
+
+            <h3>Running Programs</h3>
+            <p>To run a program, we first need to download and use a <i>compiler</i> (typically <a href="https://gcc.gnu.org/">g++</a>, for C++ files) to translate the code you’ve written into a language that’s unreadable to us, but legible to a computer. This is put into a file called a.out. Running that file will execute the code. The terminal commands to execute code are g++ fileName.cpp and ./a.out</p>
+            <p>Where fileName is what you named your file. It is important that it is saved with the .cpp file extension. When that’s done, then viola! You’ve made your first C++ program.</p>
+            <p>If you are a bit confused on how to run look at the image below.</p>
+            <img src="../../data/beginner/compiling.jpeg" width="520">
+</p>
+        </fieldset>
+    </div>
+</body>
