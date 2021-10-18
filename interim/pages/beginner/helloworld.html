@@ -31,7 +31,7 @@
     <div id="main">
         <h4>Last Updated 2021-10-18</h4>
         <fieldset>
-            <legend>Hello World!</legend>
+            <legend>HELLO WORLD!</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
             <h3>Why C++?</h3>
@@ -68,6 +68,7 @@ int main() {
             <p>This include file has a HUGE number of functions—the names of these functions could easily overlap with those from other libraries. Thus, another level of organization we use is <b>namespaces</b>. The second line identifies that we’re using a specific family of functions: in this case, functions from the standard library.</p>
             <p>`int main()` is always the first function that’s called when the program is run. It is also the computer’s only point of entry—all other functions must be called from main. Thus, this is where we put the contents of our code.</p>
             <p>The one line we have inside the main program is just an instruction to print “Hello World!”. We will talk more about printing in the future.</p>
+            <p>Note that this line is ended with a ';'. Notice as well that using namespace std is also ended with a ';'. ;'s are used to mark the end of a line in a c++ program, and almost every line you type will be ended with a ';', so better get used to them soon.</p>
 
             <h3>Running Programs</h3>
             <p>To run a program, we first need to download and use a <i>compiler</i> (typically <a href="https://gcc.gnu.org/install/">g++</a>, for C++ files) to translate the code you’ve written into a language that’s unreadable to us, but legible to a computer. This is put into a file called a.out. Running that file will execute the code. The terminal commands to execute code are g++ fileName.cpp and ./a.out</p>

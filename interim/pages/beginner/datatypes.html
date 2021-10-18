@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../leaders.html">leaders</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-10-18</h4>
+        <fieldset>
+            <legend>DATA TYPES</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Printing VS Returning</h3>
+            <p>Previously, we showed that a C++ program can ‘print’ a value, such as “Hello World!”, to the terminal. What it’s doing is <i>showing</i> the programmer what a specific value <i>is</i>-—for instance, if a variable changes, it’s helpful to see how it’s changing as the program runs. This is different from <i>returning</i>, which is the value taken on by a function y = f(x). Note that functions can only return a single value each time it’s run, but we can print values as many times as we want.</p>
+            <p>The values returned by functions can be used again elsewhere in the program. On the other hand, printed values cannot be used or stored. They are only shown to the user.</p>
+            <p>When submitting code to an automated grader, answers must be <b>printed</b>. There is no other way to <b>show</b> the grader an answer; if it’s returned internally, an outside source would have no way of knowing.</p>
+
+            <h3>Syntax For Printing</h3>
+            <p>The syntax for printing is ‘cout << x;’, where x can be any value from a number to a word. Because cout doesn’t care about what x is, it’s <i>type blind.</i></p>
+            <p>We can also print multiple things in a chain with cout << x << y. Note that it will print <i>exactly</i> what we tell it to; so this would print xy with no space between them. If we wanted to put a space in between x and y and add a newline at the end, we would have to type ‘cout << x << “ “ << y << “\n”;’.</p>
+
+            <h3>Types</h3>
+            <p>There are many types of numbers and other objects used in computer science.</p>
+            <p>Integers (int): <script type="math/tex">\mathbb{Z} = \{-\infty, \dots, -3, -2, -1, 0, 1, 2, 3, \dots, \infty \}</script></p>
+            <p>Doubles (double): <script type="math/tex">\mathbb{R} = \{-\infty, \dots, -3, -2.5, 0, \sqrt{2}, 2, e, \pi, \dots, \infty \}</script></p>
+            <p>Strings (string): <script type="math/tex">\mathbb{S} = \{ \text{``Hello"}, \text{``Bob was here"}, \dots \}</script></p>
+            <p>Characters (char): <script type="math/tex">c = \{\text{‘a’}, \text{‘b’}, \text{‘c’}, \text{‘1’}, \text{‘2’}, \text{‘3’}, \text{‘ ‘}, \dots\}</script></p>
+            <p>Booleans (bool): <script type="math/tex">\mathbb{B} = \{ \text{true}, \text{false} \}</script></p>
+
+            <h3>Variables</h3>
+            <p>In math, we might declare a variable like ‘let x = 5’. However, the computer doesn’t know what x is unless we declare its type. We can do it as such: <br> int x = 5;</p>
+            <p>This allocates a box named ‘x’ which the computer now knows will store an integer. Once we declare its type once, we don’t have to specify it again, and we can just refer to it as ‘x’. Of course, the type and name can be changed into anything the user wants. In general, the syntax is <br>type name = value;<br>where the value can be a number, string, boolean, or another variable.</p>
+            <p><b>A note on the equals sign:</b> in math, an equals sign indicates that the left and right sides of the equation are equal in value. However, in C++ it’s more of an assignment operator, meaning we are putting the value on the right side into the variable on the left. We can think of like this:<br>int x ← 5;</p>
+            <p>We are putting the value 5 inside of x. As such, variables can be reassigned multiple times, with different values being put in each time.</p>
+            <p>The actual equivalency operator in C++ that is like in math is the double equal sign: '=='</p>
+
+            <h3>Type Commutativity</h3>
+            <p>After a bit of experimentation, we can show that the types {int, double, char, bool} are all commutable, meaning that they can be converted into each other. There are some things to look out for:</p>
+            <ul>
+                <li>When putting a double into an int, the values after the decimal point are truncated (basically removed).</li>
+                <li>Putting values into bools turns it into either a 0 or a 1.</li>
+                <li>The integer value of chars are its values in the <a href="https://www.asciitable.com/">ASCII table.</a></li>
+            </ul>
+            <p>Standard arithmetic operations work on these values, which we will explore more later, but for now you can experiment on your own.</p>
+        </fieldset>
+    </div>
+</body>
