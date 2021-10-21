@@ -76,3 +76,10 @@ img.logo:hover {
 legend {
     color: #d65d0e;
 }
+
+details {
+    border: 3px;
+    border-style: solid;
+    border-color #83a598;
+    padding: 0.5em;
+}

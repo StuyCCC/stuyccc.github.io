@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <script src="../template.js"></script>
+    <link rel="icon" href="../../data/favicon.ico">
+
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../leaders.html">leaders</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-10-21</h4>
+        <fieldset>
+            <legend>ARITHMETIC OPERATIONS</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Arithmetic Operators</h3>
+            <p>To make calculations with values and variables, we use arithmetic operators. Each data type has its own set of operators, but since many of the primitive types overlap as integer values, the operators also mostly overlap. In this lesson we will give an overview of the main operators used in C++ ordered by data type.</p>
+
+            <h3>Integers</h3>
+            <p>The operators [+, -, * (multiplication)] work as you would expect them to, and it’s used like the following:</p>
+            <pre><code class="language-cpp">
+int x = 5 + 3;
+// or
+int x = y + z;
+// or
+cout << x+y << "\n";
+			</code></pre>
+            <p>where y and z are integers, and the + can be replaced with any of the other operators.</p>
+            <p>Division is done using the ‘/’ symbol, but it's a little different than regular mathematical division. When C++ divides two integers it wants the answer to also be an integer so it truncates everything past the decimal point, so 5 / 3 = 1 not 1.66.</p>
+            <p>There is also another standard operator ‘%’, the remainder operator. The value of a % b is the remainder when a is divided b. For instance, 13 % 5 = 3.</p>
+            <p>The one restriction for integer operators is that we cannot divide by 0.</p>
+
+            <h3>Characters</h3>
+            <p>Recall that characters are also integers; operators on characters are the same as on integers. However, expressions will not be evaluated back to characters; they will become integers. We can turn it back into characters through type casting, but we will deal with this later.</p>
+
+            <h3>Doubles</h3>
+            <p>The same operators that work on integers work on doubles, except for % (remainder). Divisions of real numbers don’t have remainders so the modulo would always be 0, which is useless. Remember that all operations on two doubles will result in a double as well.</p>
+
+            <h3>Booleans</h3>
+            <p>Any expression that evaluates to either true or false is a boolean expression. The common boolean operators are && (and), || (or), ! (not). These are exactly the same as the logical expressions you have learned in geometry class, so true and false = false.</p>
+
+            <h3>Strings</h3>
+            <p>The only operator that works on strings is addition (+), which glues (concatenates) the two strings together. Note that it only works after we store the strings inside of variables. In other words, trying to evaluate “hi” + “bye” doesn’t work. We need to do the following:</p>
+            <pre><code class="language-cpp">
+string hi = “hi”;
+string bye = “bye”;
+string hibye = hi + bye;
+            </code></pre>
+            <p>To get the concatenated string.</p>
+
+            <h3>Operators On Different Data Types</h3>
+            <p>In the meeting we showed experimentally that C++ has the following order of preference char &lt; int &lt; double. This means that whenever two or three of these types are used in the same arithmetic expression, the final result will be represented as the datatype with the highest preference. So 5 / 3.0 = 1.66 not 1 and 10000 / ‘a’ = 103 not ‘g’.</p>
+            <p>Strings also take preference over chars when they are added together, i.e. you can add a char to a string by doing the following:</p>
+            <pre><code class="language-cpp">
+string s = “abc”;
+char c = ‘d’
+string s2 = s+c;
+            </code></pre>
+            <p>But also notice that you can’t add a string to a char because a char is limited to one value.</p>
+            <p>There are four more boolean operators: > (greater than), >= (greater than or equal to), < (less than), <= (less than or equal to). These can be used to compare two compatible data types and return a true or false value. For example (1 <= 3) evaluates to true.</p>
+
+            <h3>If Statements</h3>
+            <p>The basic syntax of an if statement is the following:</p>
+            <pre><code class="language-cpp">
+if (condition) {
+    // do something here
+}
+            </code></pre>
+            <p>Where condition is a boolean expression, i.e. a >= b or 5 <= 3 or true && false. If this condition expression evaluates to true then the code inside the curly braces is run otherwise it is completely skipped.</p>
+            <p>There is another form of the if statement that looks like the following:</p>
+            <pre><code class="language-cpp">
+if (condition) {
+    // do something here
+} else {
+    // do something else here
+}
+            </code></pre>
+            <p>The way this form works is that if the condition is true it runs the code inside the first pair of curly braces, but if it's false it runs the code inside the second pair of curly braces.</p>
+            <p><b>Problem:</b> Write a program that takes the age of a user (an integer) as an input, and then outputs “Yes” if they can drink or “No” if they can’t drink. Remember the legal drinking age is 21.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int age;
+    cin >> age;
+    if (age >= 21) {
+        cout << "Yes";
+    } else {
+        cout << "No";
+    }
+}
+                </code></pre>
+                <p> Here is why this works: the code inside of the if statement is the "yes" branch. If it's true that the age is greater than or equal to 21, then it executes, printing "Yes". Otherwise, it goes to the code inside of the else block, which is the "no" branch. If the age is not greater than or equal to 21, it would print "No".
+            </details>
+
+        </fieldset>
+    </div>
+</body>
