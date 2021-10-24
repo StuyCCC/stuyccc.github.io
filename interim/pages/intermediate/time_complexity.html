@@ -122,7 +122,7 @@
             We can guess this from it being inside the three for loops.<br><br>
             <code>sm += A[i]</code> runs once every time we add an element from a subarray to <code>sm</code>. 
             As we iterate over every subarray, the line runs once for every element in every possible subarray.<br><br>
-            To calcualte how many times we find how many total elements there are in every posible subarray. Lets do casework on the length of a subarray:<br><br>
+            To calculate how many times we find how many total elements there are in every posible subarray. Lets do casework on the length of a subarray:<br><br>
 
             A subarray of length <script type="math/tex">1</script> has <script type="math/tex">1</script> element 
             and there are <script type="math/tex">n</script> possible subarrays of length <script type="math/tex">1</script>. <br>
@@ -144,7 +144,14 @@
             <p>
             The linear solution iterates through the array keeping track of a current sum and a maximum overall sum.
             The one by one elements of the array are added to the current sum.<br><br>
-            If the current sum ever goes negative we might as well start a new subarray with current sum <script type="math/tex">0</script> so we do so.
+            If the current sum ever goes negative we might as well start a new subarray with current sum <script type="math/tex">0</script> so we do so.<br><br>
+
+            Consider what happens when we add a new element, <code>a</code> to our current sum <code>sm</code>. 
+            If <code>a</code> is positive then adding it to <code>sm</code> would increase <code>sm</code> so this is what we should do.<br><br>
+            Even if <code>a</code> is negative, if <code>sm + a</code> is non-negative we should still add it to <code>sm</code>. <br><br>
+            Not adding it would force us to then have <code>sm = 0</code> as we have to have our subarrays are contiguous. 
+            Having <code>sm = 0</code> can't be better then the non-negative <code>sm + a</code> even if <code>a</code> is negative so we should add <code>a</code> to <code>sm</code>.
+
             This creates the code:
             </p>
             <pre><code>
