@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../leaders.html">leaders</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-10-24</h4>
+        <fieldset>
+            <legend>TIME COMPLEXITY AND A PROBLEM</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3> Time Complexity </h3>
+            <p>Time Complexity is describes how long it will take an algorithm to run as the size of the input grows. 
+            In other time complexity is the <em>rate of growth</em> or <em>order of growth</em> of an algorithm.</p>
+
+            <p>For competitive programming we focus on the worst case running time. 
+            Given evil inputs which will make our algorithm run as slow as possible what is the runtime's rate of growth?</p>
+
+            <p>We notate the worst case time complexity with big O notation.
+            For example if our we say the size of our input (say the length of an input list) is <script type="math/tex">n</script>
+            and our algorithm's runtime grows linearly with respect to <script type="math/tex">n</script> 
+            <em>we say the complexity of the algorithm is <script type="math/tex">\mathcal{O}(n)</script></em>.</p>
+
+            <p>In this example some sample runtimes for different <script type="math/tex">n</script> might be:
+            <table>
+                <tr>
+                    <th><script type="math/tex">n</script></th>
+                    <th>runtime</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>100ms</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>200ms</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>300ms</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>400ms</td>
+                </tr>
+            </table>
+            </p>
+            <h4>Big O Notation Rules</h4>
+            <p>We can <em>drop constant factors</em> as they don't change the order of growth.
+            A cubic will for sufficiently large <script type="math/tex">n</script> grow faster than any quadratic no matter any constant factors on either polynomial.<br><br>
+            ex: <script type="math/tex">2n^2 \text{ is }\mathcal{O}(n^2)</script>.</p>
+            
+            <p>We can <em>drop all terms in an expression but the fastest growing term</em>. For sufficiently large <script type="math/tex">n</script>, 
+            <script type="math/tex">n^3 + n^2 + n + 1</script> will grow slower than <script type="math/tex">n^4</script>, for example.<br><br>
+            ex: <script type="math/tex">n^2 + n + 1 \text{ is }\mathcal{O}(n^2)</script>.</p>
+            
+            <p>To calculate time complexity count operations (sort of). Something like an addition of two ints will always take the same amount of time
+            so counting how many additions happen (in terms of <script type="math/tex">n</script>) can give an idea of the time complexity.
+            Additions, variable instantiation, increments, array indexing, and many other things <em>generally</em> take the same amount of time no matter what.
+            We call these <em>constant time</em> or <script type="math/tex">\mathcal{O}(1)</script> operations. <br><br>
+            Making time complexities feel intuitive and getting good at analyzing algorithms is just practice.</p>
+
+            <h3>Maximum Subarray Sum</h3>
+            <h4>Question</h4>
+            <p>
+            Given an array, <code>A</code>, of integers with size <script type="math/tex">n</script> find the contigouse (possibly empty) subarray with maximum sum. <br><br>
+            The sum of a subarray is the sum of all the elements in that array. The sum of an empty subarray is <script type="math/tex">0</script>.
+            <br><br>
+            ex: the maximum subarray sum of <code>[1,2,-4,2,4]</code> is <script type="math/tex">6</script> with the subarray <code>[2,4]</code>.
+            ex: the maximum subarray sum of <code>[-1,-1,-1]</code> is <script type="math/tex">0</script> with the empty subarray.
+            </p>
+
+            <h4>Simple Solution</h4>
+            <p>
+            The most straightforward solution is to simply find the subarray sum of every single possible subarray and then take the maximum of all of these.
+            To implement this, define a subarray via a left index <code>l</code> and a right index <code>r</code>. The left index is inclusive and the right index is exclusive.<br><br>
+            If we have the array <code>[1,2,3,4,5]</code> an <code>l=2</code> and <code>r=4</code> would define the subarray <code>[3,4]</code>.<br><br>
+            Now iterate over all possible <code>l</code> and <code>r</code> and find sums and take maximums:
+            <pre><code>
+                let A be the array
+                Let n be the length of the array
+                mx = 0
+                for l in 0 to n:
+                    for r in l+1 to n+1:
+                        sm = 0
+                        for i in l to r:
+                            sm += A[i]
+                        mx = max(mx, sm)
+                mx is the answer
+            </code></pre>
+            </p>
+
+            <p>
+            What is important for competitive programming is to figure out te time compexity.
+            Notice the line which the algorithm will run the most (and thus spend the majority of its time running is)
+            <code>sm += A[i]</code>.<br>
+            We can guess this from it being inside the three for loops.<br><br>
+            <code>sm += A[i]</code> runs once every time we add an element from a subarray to <code>sm</code>. 
+            As we iterate over every subarray, the line runs once for every element in every possible subarray.<br><br>
+            To calcualte how many times we find how many total elements there are in every posible subarray. Lets do casework on the length of a subarray:<br><br>
+
+            A subarray of length <script type="math/tex">1</script> has <script type="math/tex">1</script> element 
+            and there are <script type="math/tex">n</script> possible subarrays of length <script type="math/tex">1</script>. <br>
+            ex: <code>A=[1,2,3]</code> has the length <script type="math/tex">1</script> subarrays <code>[1], [2], [3]</code>.<br>
+            Similarly for length <script type="math/tex">2</script> subarrays, there are <script type="math/tex">n-1</script> of them.<br><br>
+
+            In general, if the length of a subarray is <script type="math/tex">m</script> then there are <script type="math/tex">n-m+1</script> of those subarrays.<br>
+            To find the amount of elements in all of these subarrays, we sum for all <script type="math/tex">m</script> from <script type="math/tex">1</script> to <script type="math/tex">n</script>, <script type="math/tex">(m)(n-m+1)=mn-m^2+m</script>.<br><br>
+
+            Breaking this up we want to compute: <br><script type="math/tex">(1n+2n+3n+\dots+nn) - (1^2+2^2+3^2+\dots+n^2) + (1 + 2 + 3 +\dots + n) = n(1+2+3+\dots+n) - (1^2+2^2+3^2+\dots+n^2) + (1 + 2 + 3 +\dots+ n)</script>.<br><br>
+
+            Using the knowledge <script type="math/tex">1+2+3+\dots+n = \frac{n(n+1)}{2} \\ \text{ and }1^2+2^2+3^2+\dots+n^2=\frac{n(n+1)(2n+1)}{6}</script><br>
+            the above simplifies to <script type="math/tex">\frac{n^2(n+1)}{2} - \frac{n(n+1)(2n+1)}{6} + \frac{n(n+1)}{2} = \frac{n^3}{6} + \frac{n^2}{2} + \frac{n}{3}
+                =\mathcal{O}(n^3)</script>.<br><br>
+
+            This means the simple solution is a cubic algorithm which is pretty slow.</p>
+
+            <h4>Linear Solution</h4>
+            <p>
+            The linear solution iterates through the array keeping track of a current sum and a maximum overall sum.
+            The one by one elements of the array are added to the current sum.<br><br>
+            If the current sum ever goes negative we might as well start a new subarray with current sum <script type="math/tex">0</script> so we do so.
+            This creates the code:
+            </p>
+            <pre><code>
+            let A be the array
+            let n be the length of A
+            sm = 0
+            mx = 0
+            for i in 0 to n:
+                if sm + A[i] >= 0:
+                    sm += A[i]
+                else if sm + A[i] < 0:
+                    sm = 0
+                mx = max(mx, sm)
+            mx is the answer
+            </pre></code>
+            <p>
+            This solution is linear or <script type="math/tex">\mathcal{O}(n)</script>, as it runs the inside of the for loop, an <script type="math/tex">\mathcal{O}(1)</script> operation, <script type="math/tex">n</script> times.
+            </p>
+        </fieldset>
+    </div>
+</body>
