@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../leaders.html">leaders</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-11-02</h4>
+        <fieldset>
+            <legend>IF, FOR, AND WHILE</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>If-Else Branching</h3>
+            <p>Recall that last time, we explored how to use an if-statement to make a decision on what to do based on a single yes or no question. But what if we wanted to make a decision with multiple options? For example, let’s say we were giving letter grades to Stuy students. The range 90-100 gets an E, 80-90 gets an S, 70-80 gets an N, and anything less than 70 gets a U.</p>
+            <p>It turns out that we can make this decision by asking multiple yes or no questions in succession. The first question we can ask is, “is the grade greater than equal to 90?” If the answer is yes, we know the letter grade has to be an E. Otherwise, it is subject to further classification. We can then ask, “is the grade greater than or equal to 80?” If the answer is yes, given that the answer to the previous question is no, we know that the grade is between 80 and 90, indicating that it’s an S. Otherwise, we can keep going until we ask if the grade is greater than or equal to 70. If the answer to this is no, then it goes to our catch-all, i.e. the answer is no to every single question we have to ask. In our case, the <i>catch-all</i> is the letter grade of U.</p>
+            <p>In general, in our chain of yes-or-no questions, the decision is made any time the answer is “yes.” Some code is executed, and lower branches are not considered. The syntax looks something like this:</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main () {
+	// prompts user to enter a grade to consider
+	int grade; cin >> grade;
+
+	// branching starts here
+	if (grade >= 90) {
+		cout << “E\n”;
+	} else if (grade >= 80) {
+		cout << “S\n”;
+	} else if (grade >= 70) {
+		cout << “N\n”;
+	} else {
+		cout << “U\n”;
+	}
+}
+            </code></pre>
+            <p>Note that the first branch begins with “if,” but every subsequent branch starts with “else if” with the condition inside parentheses. If the answer is yes to any branch, it executes the code that immediately follows it. The catch-all is put inside of the “else” statement at the end.</p>
+
+            <h3>For Loops</h3>
+            <p>In general, a <i>loop</i> is a segment of code that runs repeatedly until a condition is met. We will first examine <i>for loops</i>. It is split into three main parts split by semicolons:</p>
+            <pre><code class="language-cpp">
+for ([INITIALIZATION]; [CONDITION]; [OPERATION]) {
+	// code that is run repeatedly
+}
+            </code></pre>
+            <p>We examine these parts one by one. The [INIT] is executed only once before the loop starts. Usually, we declare some counter variable that we let run through some range of numbers. For instance, it can be <b><i>int i = 0</i></b>, where i is short for index. Note that i can only be used within the body of the for loop.</p>
+            <p>The loop is then repeated until [CONDITION] is false, where [CONDITION] is some boolean expression. Since the counter variable we declared in [INIT] will be changed, it often involves that counter variable. For example, this condition can be <b><i>i < 50</i></b>. So long as i is less than 50, the loop will keep running.</p>
+            <p>The [OPERATION] part is executed after each run-through of the code within the loop. Since we’re using the counter i to keep track of iterations or something else, we usually make some changes to i as the loop progresses, like increasing it by 1, shown as follows: <b><i>i = i + 1</b></i>.</p>
+
+            <h3>Syntactic Sugar</h3>
+            <p>To make our lives a bit easier, we can shorten the operation described above. Typing i += 1 and i = i + 1  serve the exact same function: increasing i by 1. This works for any operation (-, *, /, %) and any number or variable on the right. For instance, if a = 7, then running a %= 5 will turn it into 2.</p>
+            <p>If we’re increasing or decreasing by 1 in particular, we can do even better. a++ is the exact same as a += 1, and a-- is the same as a -= 1. This is the most commonly used notation when changing counter variables in for loops.</p>
+            <p>Now, let’s say we wanted to find the sum of all integers from 1 to 50. We can do it as follows:</p>
+            <pre><code class="language-cpp">
+int sum = 0;
+for (int i = 1; i <= 50; i++) {
+	sum += i;
+}
+cout << sum << ‘\n’;
+            </code></pre>
+            <p>We first initialize a counter variable called i, which starts from 1. Then, for each pass of the loop, we add the value of i to a variable sum. Finally, we increment i by 1. This runs until i exceeds 50, in which case the loop stops.</p>
+            <p><b>The <i>break</i> and <i>continue</i> keywords</b></p>
+            <p>The keywords <i>break</i> and <i>continue</i> have an effect on the flow of a loop. When <i>break</i> is run, the loop exits entirely, and whatever code comes after the loop starts running. When <i>continue</i> is run, it skips the remainder of the looped code to the [OPERATION] portion, after which the <i>next iteration</i> of the loop is run.</p>
+            <p>Putting <i>break</i> and <i>continue</i> directly within the loop is a bit pointless. They’re usually put within if-statements so the skipping of iterations or exiting the loop is controlled by some condition.</p>
+
+            <h3>While Loops</h3>
+            <p>While loops are a bit simpler than for loops. It is formulated as such:</p>
+            <pre><code class="language-cpp">
+while ([CONDITION]) {
+	// code that is run repeatedly
+}
+            </code></pre>
+            <p>As it suggests, the code inside the body of the while loop runs <i>while</i> the condition is true. It checks the condition each time before the body is run. Note that break and continue work here too, but it’s a bit easier to mess up and have it run forever.</p>
+            <p>While loops and for loops are completely analogous, meaning anything you can do with one loop you can do with another. The only real difference between the two is that in the while loop the [INITIALIZATION] and [OPERATION] are not defined outside the structure, while in the for loop they are defined inside of the structure. This causes a difference in <i>scope</i>.</p>
+
+            <h3>Scope</h3>
+            <p>Defining something in a structure means that thing can only be used in the structure. For example, if I had the following for loop:</p>
+            <pre><code class="language-cpp">
+for (int i = 0; i < 10; i++) {
+    // do something
+}
+            </code></pre>
+            <p>The variable i would only be able to be used inside the for loop and not in anything after it. However, this is different if we declared a while loop like the following:</p>
+            <pre><code class="language-cpp">
+int i = 0;
+while (i < 10) {
+    // code that is run repeatedly
+    i++;
+}
+            </code></pre>
+            <p>In this case i is declared outside of the while loop so it can be used even after the while loop has finished</p>
+            <p>Once you understand this difference in scope, you can basically use for and while loops interchangeably.</p>
+        </fieldset>
+    </div>
+</body>

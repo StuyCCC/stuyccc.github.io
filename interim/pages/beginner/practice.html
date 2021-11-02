@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../leaders.html">leaders</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-11-02</h4>
+        <fieldset>
+            <legend>PRACTICE PROBLEMS</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Practice Problems</h3>
+            <p> All these problems are found from a website called <a href="https://codeforces.com/">codeforces</a>. This is going to be one of the 4 main places where we will be giving practice problems from, so it is suggested that you make an account (you need an account to test your solution). If you are interested, the other 3 websites are <a href="https://cses.fi/problemset/">cses</a>, <a href="https://atcoder.jp/">atcoder</a>, and <a href="http://www.usaco.org/index.php">usaco</a>.</p>
+
+            <p><a href="https://codeforces.com/problemset/problem/4/A">Problem 1</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int w; cin >> w;
+    if (w % 2 == 1 || w == 2) {
+        cout << "NO\n";
+    } else {
+        cout << "YES\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>We need to split the melon into 2 evens parts, first observation is that no odd number can be split into 2 even numbers, so all odd numbers return NO. 2nd observation is that any even number works except 2, because all even numbers except 2 can be split into n/2 and n/2 which are both even. So our final answer is if n is odd or 2 return NO else return YES.</p>
+            </details>
+
+            <p><a href="https://codeforces.com/problemset/problem/1325/A">Problem 2</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t; cin >> t;
+    while (t--) {
+        int n; cin >> n;
+        cout << 1 << " " << n-1 << "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>The GCD of 1 and a number n is 1, and the LCM of 1 and a number n is n. So if we add these two equations, we get n+1 = x, so we can just make the pair 1, x-1 as our answer always.</p>
+            </details>
+
+            <p><a href="https://codeforces.com/problemset/problem/1389/A">Problem 3</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t; cin >> t;
+    while (t--) {
+        int n, m; cin >> n >> m;
+        if (2*n > m) {
+            cout << -1 << " " << -1 << "\n";
+            continue;
+        }
+        cout << n << " " << 2*n << "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>The optimal strategy for this problem is to make x = l, because the smaller x is the more multiples of x(ie x*2,x*3,x*4) that can be found the in range [l,r]. Now that we have x = l, the smallest multiple of x that is in the range and isn't x itself (x can't be lcm(x,y), because y > x from the problem) is 2*x. Since this is the smallest value of multiple possible, if this value is in the range we can just return x and 2x because the lcm of (x,2x) = 2x, However, if 2x is not in the range, then no other multiple of x is possible, and so just return -1 -1. </p>
+            </details>
+
+            <p><a href="https://codeforces.com/problemset/problem/1451/A">Problem 4</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t; cin >> t;
+    while (t--) {
+        int n; cin >> n;
+        if (n <= 3) {
+            cout << n-1 << "\n";
+        } else if (n % 2 == 0) {
+            cout << 2 << "\n";
+        } else {
+            cout << 3 << "\n";
+        }
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>Lets try to split this up into cases, first lets find a pattern, if n is even we can divide by n/2, get 2, and then subtract 1 to get 1, so for evens it looks like the answer is always 2. However, this does not work for all evens, we have the case of n=2, where the solution is 1 instead of 2. For odds, we can see that we can subtract 1 to get an even then do the same process as for evens and get the answer seems like it is always 3. Except for n=1 and n=3, this always works because they only need 0 and 2 moves for this problem. Anyhow now that we have the cases we can say if n <= 3 the answer is n-1, else if its even the answer is 2, else if its odd the answer is 3. </p>
+            </details>
+
+            <p><a href="https://codeforces.com/problemset/problem/965/A">Problem 5</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // note if we have two integers x and y.
+    // ceil(x/y) = (x+y-1)/y.
+    // Try to figure out why this is true yourself.
+    int k, n, s, p;
+    cin >> k >> n >> s >> p;
+    int x = k * ((n+s-1) / s);
+    cout << ((x+p-1) / p) << "\n";
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>Each person has to make n planes and they can make s per sheet, also people can't share paper so this means each person need ceil(n/s) sheets of paper for their airplanes. There are k people, so we need k*ceil(n/s) sheets, lets call this x for short. Each packet of paper has p sheets of paper, so our final answer is ceil(x/p) packets of paper are needed.</p>
+            </details>
+
+            <p>If you want more problems, you can check out our problems page or our discord.</p>
+        </fieldset>
+    </div>
+</body>
