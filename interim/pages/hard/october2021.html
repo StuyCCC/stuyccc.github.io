@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+        <p><a href="../problems.html">problems</a></p>
+        <p><a href="../resources.html">resources</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-11-04</h4>
+        <fieldset>
+            <legend>HARD OCTOBER 2021</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a href="https://atcoder.jp/contests/agc034/tasks/agc034_b">Problem 31</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc174/tasks/abc174_e">Problem 30</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/arc116/tasks/arc116_c">Problem 29</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/agc046/tasks/agc046_c">Problem 28</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Notice that you can break up the initial string into intervals of 1s and 0s. An example interval array is [2,0,3,0,1] from [1,1,0,1,1,1,0,0,1] (notice how you store the sums of the intervals). The operation presented in the problem simply moves a 1 from some interval to another interval on the left. In the context of this array, it would subtract one from some element and add one to an element on the left. To keep track of these changes we can use dynamic programming. We can create a 3D dp array (dp[i][j][k]) where i represents the current interval, j represents the number of operations used to add one to this interval, and k represents the total number of operations. But wait, why can I have a dimension for k when k goes up to 10**9?. This is because you only ever need to use n operations at most to create a new sequence. Imagine the most difficult case where you have to move all of the 1s to the very beginning individually. Notice that the number of 1s is bounded by the length of the input string, so you can have at most 300 1s. If the number of 1s is at most 300 and it takes one operation to move it as far as possible, then you only ever need 300 or N operations to form a new sequence. So this dp array will have a size of [N][N][N]. To perform a transition operation, simply do dp[i][j+interval [i-1]-potential_increase][k+interval[i-1] - potential_increase] = dp[i-1][j][k]. You may need to make sure that potential_increase <= k and to check the sign for interval[i-1] - potential_increase. One way that could work is to subtract in the second dimension and add the max of 0 and this value for the third dimension.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc141/tasks/abc141_d">Problem 27</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Notice that each ticket is priced at floor(x/2^y), or floor(x/2^(y-1))/2. This last part should technically be proved, but just assume that floor(x/(a*b)) is just floor(x/a)/b. From this we can arrive at a normal greedy solution of just choosing the most expensive item and dividing it by 2. However, an item that was the largest at first isn’t always the largest, as dividing by 2 would reduce its value, so we would need to recalculate the most expensive item for every one of the M tickets you have giving a time complexity of N*M. However if we use a max priority queue, we can simply take the top value as the maximum element. This will run in 0(1), but you will also need to remove this old value and add its value divided by 2. These two operations run in logN time, so the time complexity here is MlogN.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/arc112/tasks/arc112_c">Problem 26</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This problem is definitely on the more difficult side as it combines two major cs ideas, dynamic programming and trees. I can’t go over the actual implementation of the search algorithm to save space (such as DFS) but I will go over the general idea behind choosing an optimal path among the children of some vertex. To examine optimal paths, we can simply handle the subtrees in a recursive fashion from the bottom up. To show that we can analyze the subtrees separately, notice that you need to take every coin in that subtree to leave, and you won't ever come back as you need a coin to go back to a child. To check how “good” a path is, I used a check function which returns two pieces of information, the current state of the subtree, which is given as an integer 0,1, or 2 and the number of coins the first player in the subtree can take - number of coins the second player in the subtree can take. The weird part is that the state is actually computed using this last expression(I will refer to this as dp[c]). For now, I will make some assertions. If dp[c] < 0 and the number of elements in the subtree is even then the path is optimal. If you have the last condition but dp[c]>=0, then this is a bad path. Otherwise if the number of elements in the subtree is odd, then you can treat it as a filler path. The reason the last case serves as a filler case is because whoever first entered into the subtree can simply come back to the parent of the vertex of the subtree and choose another child all over again. Now, for the first two cases, why would you prefer dp[c] to be negative? This is because after Takahashi chooses the coin in Vertex 1, Aoki actually has the choice of choosing the next subtree, so the results are actually flipped to her perspective(we want the second player, Takahashi, to have more coins so dp[c] < 0). When dealing with the last case, you can sort its occurrences by its value for dp[c] and examine those subtrees in that order.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc148/tasks/abc148_e">Problem 25</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This problem is very similar to the classic Trailing Zeroes problem (an earlier potd). The only difference is that here you are only considering the product of every other term for the double factorial. So we can still look at the idea of splitting 10 into factors of 5 to look at trailing zeroes, while also considering factors of 2 for specific instances. When N is odd, there will be no factors of 2, implying that there will be no trailing zeroes, giving an answer of 0. If N is even, notice that the double factorial can be written as 2*4*6*...N. In the original problem, you needed to calculate the number of factors of 5 from 1-N. Here we need to only consider the number of factors of 10 to remove all of the even factors of 5 at the beginning. Afterwards, carry on with the same approach used for the classic version of this problem. Here the final expression should be floor(N/10) + floor(N/50) + floor(N/250)...</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc178/tasks/abc178_d">Problem 24</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The quadratic solution for this problem is just a standard form of dp. If you have a dp array, such that dp[i] represents the number of sequences you can form whose sum is i and such that every one of their elements is >=3. So if we already have some valid sequences for some value, j, if we can just add i-j to the subsequence, if i-j>=3, to form a valid for i. Thus, we can compute dp[i] with the following formula: dp[i-3]+dp[i-4]+...dp[0](We can add 3,4,...i if there is a valid sequence). Initialize dp[0] as 1 to finish off the quadratic solution. Still, we can do better. Notice that dp[i-4]+dp[i-5]+...dp[0] can be written as dp[(i-1)-3]+dp[(i-1)-4)+...dp[0]. This is simply the exact same formula as before except we have dp[i-1] instead of dp[i]. Thus, to avoid unnecessary computation, the new dp transition is dp[i]=dp[i-1]+dp[i-3], a linear solution to finish off the problem.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc173/tasks/abc173_e">Problem 23</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The main idea of this problem is to keep track of the signs. First assume that the answer is non-negative, as when it has to be negative you can simply minimize the absolute value of the product(this is the case when there are no non-negatives and K is odd or potentially when N=K). To update S, we can split the negative and non-negative values and sort them in non-increasing order based on their absolute value. To change this current answer, simply check if two non-negative values (p1,p2) have a greater product than the value with the largest abs value not chosen yet, and do the same thing for two negative values(n1,n2). If the first condition is true or if you are on the last element, multiply the answer by p1, otherwise multiply by n1n2. Note that two negatives make a positive and one positive is obviously positive.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/986/A">Problem 22</a>
+            <details>
+                <summary>Solution</summary>
+                <p>For each town we need to find the sum of the s cheapest transportation costs of the k goods. We can accomplish this by first iterating through all values i from 1 to k. Then we can bfs through the entire graph and find for each town the smallest amount of time it takes to transports the ith good to each town. All towns that produce the ith good should have a time of 0, and should be pushed on the queue first. After bfsing through the entire graph once, we can save this values in a 2d array A[q][i], which represents the time to get the ith good to the qth town. Now after we finish all our bsfs, our entire A array should be filled, and we can find out answer for each town, by sorting each array A[q] and then summing the s smallest values. Make sure to bfs properly and not segfault and you should be fine. </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/437/C">Problem 21</a>
+            <details>
+                <summary>Solution</summary>
+                <p>First observation to notice in order to solve this problem we need to remove all nodes, and in order to do this we need to remove all edges from the nodes. Notice that this means that each edge is going to get cut no matter what. So now consider an edge from x to y, with weights W_x and W_y. If we remove the x node we have to add a cost of W_y, and if we have to remove the y node we have to add a cost of W_x. So it is pretty clear to see that it is optimal for each edge to choose the node with a higher weight to be destroyed, which would add the smaller weight to our sum. So our final answer becomes the sum of min(W_x, W_y) for all edges x y. </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1036/D">Problem 20</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This is a greedy solution with two pointers. First lets notice that if the sum of the elements of the two lists aren't equal then the answer is -1. Now that the base case is out of the way, lets do the two pointer solution. Start with two pointers at the beginning of the list, we will partition the two arrays until we find two partitions that have the same sum. Once we have found these two partitions we can reduce them into 1 element in the final list. And we continue this process until we get to the end of the array and find the final array size. This is hard to explain but lets say we have [11, 2, 3, 5, 7] and [11, 7, 3, 7]. Starting from 11, 11 we see that these two are already equal so we add 1 to size. Then 2 3 5 and 7 3 are equal so that is another one, and 7 and 7 are also equal so thats another 1 to the size, for a total size of 3. Now as for the proof of this greedy solution, I am too lazy to do it, so I am going to just leave it as an exercise to the reader. </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/707/C">Problem 19</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The first observation to solve this problem is to realize that the number "a" we get should be one of the legs of a pythagorean triple. So this means a^2 + b^2 = c^2 ==> a^2 = c^2-b^2 ==> a^2 = (c+b)(c-b). Lets assume a^2 = c+b and c-b = 1 then we can solve for c and b and get that b = (n^2-1)/2 while c = (n^2+1)/2. However this formula only works for a = odd because if a = even then c and b will not be integers. So for an even formula we shall make c+b = a^2/2 and c-b = 2, solving for b and c we get b = (n^2/4 - 1) and c = (n^2/4 + 1). Now we have some edge cases: a = 1 and a = 2 never work because when plugged into these equations one of the sides becomes 0. Follow all these cases carefully and you will definitely be able to solve this problem.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1461/C">Problem 18</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The first step to solving this problem is to find the last element x, such that x is not already sorted (ie the last element x such that position of x != x). Now we can see that if an experiment sorts a prefix that does not include x then the array does not become sorted no matter the outcome. Only experiments that sort x (ie r_i >= pos of x) have the chance to full sort the array. Now we have limited our range of experiments to only the ones that include x, lets call these E_1, E_2, and so on. At least one of these experiments have to work for the entire array to become sorted. The probability of this is equal to 1 - the probability of none of them working. So this probability is the product of (1-prob(E_i)) for all i in the limited range of experiments, lets call this p. Our final answer is 1-p.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/607/A">Problem 17</a>
+            <details>
+                <summary>Solution</summary>
+                <p>First lets observe that we want to find the minimum amount of beacons destroyed which is equivalent to n - maximum number of beacons not destroyed. Now lets find the maximum number of beacons not destroyed. We are going to solve this using dp. Let DP[i] = the maximum number of beacons not destroyed, when considering the range [0,i] where i is not affected by the explosion, and everything past i does not matter (ie already destroyed by explosion). If pos i does not contain a beacon then DP[i] = DP[i-1]. However, if pos i contains a beacon lets call it x, then everything from pos i-b_x to i-1 is destroyed, so DP[i] = DP[i-b_x-1]+1. Now observe that with the tower that Genos places we can destroy any range [i+1, 1000000], so our maximum survived can be considered from any range [0, i], which is DP[i]. So our maximum beacons not destroyed is the max value of DP[i] for all i in 0 to 1000000. Now that we have this max we just have to subtract it from n to get our answer.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc196/tasks/abc196_e">Problem 16</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This problem looks intimidating, but we can first try to rewrite the given function in a form that encompasses all of the possible values for t in the piecewise function, f(x). To put it more simply, any of the results of f(x) could be returned with this new interpretation. After playing around with the different ways you can order the pieces of f(x), you find that min(c,max(b,x+a)) will always have some a,b, and c such that this function can represent f(x). This can be shown by considering each value of t separately and by using some extreme values for a,b, or c. When t = 1, min(inf,max(-inf,x+a_i)) will produce the desired result of x+a and so will min(inf,max(a_i,x))/min(a_i,max(-inf,x)) for t =2,3 respectively. We can also show that this format holds even inside a nested collections of f(x)'s. Suppose that we have f_m(x)=min(c_1,max(b_1,x+a_1)) and f_n(x) = min(c_2,(max(b_2,x+a_2)). Note that these functions will not be used in computing the answer, just to show the next observation. If you take f_2(f_1(x)), then after some expansion you will be left with a big mess, that can be represented in the form min(c,max(b,x+a)). The actual result of this composition is left as an exercise to the reader, no space in the post. Thus, we have shown that if you take the composition of two function that are written in this format, you will be left with the same format, implying that taking the composition N times (or just two at a time N-1 times) will also give you a result in the established format. We can use the previously obtained result from f_2(f_1(x)) and simply update the placeholders for a, b, and c accordingly as you iterate through the input lists. Notice by the first observation, that b and c can start as -inf and +inf, and you are done.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1288/C">Problem 15</a>
+            <details>
+                <summary>Solution</summary>
+                <p>So we have 2 arrays A, and B, and from the conditions that these arrays have to follow we can obtain the following: A1 <= A2 <= ... <= AM <= BM <= ... <= B2 <= B1. So whatever 2m values we choose have to follow this arrangement. However, we can see that whatever we make the 2m values as, if we sort them, and split the sorted array into 2, it becomes a valid arrangement. So this means our answer will be the number of combinations of choosing 2m numbers from n valid numbers. This is exactly the Stars and Bars problem, which you can look at here: https://cp-algorithms.com/combinatorics/stars_and_bars.html, if you aren't familiar with it. We have n bars and 2m stars so our final answer is (2m+n-1)C(2m). </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1272/D">Problem 14</a>
+            <details>
+                <summary>Solution</summary>
+                <p>We will be using two "dp" arrays to solve this problem, even though they are more like prefix arrays than DP arrays. Let L[i] be the size of the largest contiguous increasing sequence ending at pos i, while R[i] is the size of the largest contiguous increasing sequence starting at pos i. We calculate L[i] and R[i] like the following: L[i] = (V[i-1] < V[i] ? L[i-1]+1 : 1) and R[i] = (V[i+1] > V[i] ? R[i+1]+1 : 1), where V[i] = the value at pos i. Basically this logic is if we are currently in a increasing sequence and we can continue add 1 to previous length, else make it the default 1 (just the element itself). Now if we did not make any removals our answer would just be the largest value in L[i]. However if we do remove some pos i, our answer becomes max of itself and L[i-1]+R[i+1] if V[i-1] < V[i+1]. Finally output this answer and you have solved the problem. </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1249/E">Problem 13</a>
+            <details>
+                <summary>Solution</summary>
+                <p>First observation of this problem is to see we are already starting at the bottom floor so we will never need to go down. This allows us to limit this problem from a dijkstra problem to a dp problem. Lets create our dp state, dp[i]\[0] will be the time to reach the ith floor if we are currently not in the elevator and dp[i]\[1] will be the time to reach the ith floor if we are currently on the elevator. Our initial states are the following dp[1]\[0] = 0 and dp[1]\[1] = c (takes c to enter the elevator).</p>
+                <p>Our transitions will be the following dp[i+1]\[0] = min(dp[i]\[0]+ai, dp[i]\[1]+ai). The first scenario is it takes ai time to go from ith floor to i+1th floor using stairs from an original position of the stairs, and the second scenario is it takes ai time to go from ith floor to i+1th floor using stairs from an original position of the elevator. Second transition is dp[i+1]\[1] = min(dp[i]\[0]+bi+c, dp[i]\[1]+bi). The first scenario is it takes bi+c time to go from ith floor to i+1th floor using elevator from an original position of the stairs, and the second scenario is it takes bi time to go from ith floor to i+1th floor using elevator from an original position in the elevator. Using these transitions we can find the minimum time to reach the ith floor as min(dp[i]\[0],dp[i]\[1]).</p>
+                <p>Make sure to not segment fault or overflow and you can definitely solve this problem.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1105/C">Problem 12</a>
+            <details>
+                <summary>Solution</summary>
+                <p>So the first thing we need to do to solve this problem is to find k0, k1, and k2, where ki represents the amount of numbers between l and r that are equivalent to i after being modded by 3. Now we are going to do some standard dp. Lets define DP\[i][q] as the number of ways to make an array of size i with numbers between l and r, such that the sum is equivalent to q % 3. The initial states are the following: DP\[1][0] = k0, DP\[1][1] = k1, and DP\[1][2] = k2. And the transitions work like the following DP\[i][q] = DP\[i-1][q%3]*k0 + DP\[i-1][(q-1)%3]*k1 + DP\[i-1][(q-2)%3]*k2. This logic works because the addition of a number at the end of a sequence can change the sum by 0, 1 or 2 % 3 and it can do each of these changes using the k1, k2, and k3 numbers we calculated beforehand. Remember to not overflow and you have solved this problem. </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1299/A">Problem 11</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The first observation to solve this problem is to realize that f(a, b) is equivalent to a&(~b) for all a and b. This means we can rewrite the nested function: f(f(...f(f(a1,a2),a3),...an-1),an) as a1 & (~a2) & (~a3) & ... & (~an). We can see from this expression and laws of & that only the value at position 1 matters for our ordering, and the rest can be randomized. So now we need to find the most optimal value for a1. The observation for this part of the problem is that if we have a1 set to a certain value. For each bit position i in a1 it will only be counted in the final value if it is the only number in the array that has a 1 in bit position i. So we will pre calculate the number of 1s in each bit position. And then for each number a in the array we will calculate the sum of only the bit positions where a has a 1 bit and no other number has a 1 bit, and the a that maximizes this sum will be our first number, while the rest can be outputted in random order. </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1350/B">Problem 10</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This is a fairly standard dp problem, lets define DP[i] as the maximum number of models in an arrangement that ends with index i. The initial state is DP[1] = 1, and the transitions can be thought of in the following way: If DP[i] is included in an arrangement that must mean the previous term in the arrangement has an index j that is a divisor of i, and that the DP[i] arrangement is one more in length than the DP[j] arragement. So to calculate DP[i] we can go through all of i's divisors j other than itself and find the max of (DP[j]+1) and set DP[i] to that. You can find all the divisors of a number in O(sqrt(n)) time by looping from 1 to sqrt(n) and seeing if it divides n. Our answer will be DP[n].</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/arc084/tasks/arc084_b">Problem 09</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This problem is very misleading as it both appears much easier than it actually is and isn't even a math problem. Instead we can treat this as a graph problem where we consider K vertex, where the nth vertex represents a number that is congruent to n mod m. We also need to keep track of a dist array which for any value dist[n] represents the minimum digit sum needed to acquire n mod m. We can initialize this array such that dist[1] = 1(this the smallest digit sum you can have and the smallest number with it) and every other element as infinity. However we still need to interpret the concept of a digit sum in terms of a graph. To do this, first consider how we could traverse this graph. This can be done in two ways. If you currently at the xth vertex, you can move to the (x+1)th vertex and the (10*x) vertex. Notice that the first operation increases the digit sum by 1 and the second doesn't increase it at all. So, we can treat the increase of a digit sum, as an increase of a cost to get to that node, so the first operation will have a cost of 1, and the second will have a cost of 0. As a result, we can now see that the underlying idea for this problem is to find the path with the smallest cost from 1 (the smallest value with the smallest digit sum) to a multiple of K. This can be obviously done with Dijkstra's algorithm in mlogn time (m is the number of edges), but if all of the costs are 0 or 1, you can also use 0/1 BFS which is linear. To use the latter method, make sure to have a deque, and update dist[10*vertex] when it's greater than dist[vertex]+1 and do the same for dist[vertex+1] whenever its greater than dist[node].</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1228/C">Problem 08</a>
+            <details>
+                <summary>Solution</summary>
+                <p>There is a lot of mathematical formula so I am just going to restate the problem statement in words, so you can figure it out a bit better. So we have a number x and a number n. Lets say x has a the following prime factors: p_1, p_2, ..., p_y. For every number i from 1 to n, we want to find the product A_i of the g(i, p_q)s for all prime factors of x. g(i, p_q) returns the largest power of p_q that divides i. Our answer is the product of all A_i's module 1e9+7.</p>
+                <p>Now that we know what we are solving for the first observation is that if p_q is not a factor of i, then g(i, p_q) returns 1, which does not affect our multiplication, so we can ignore it. And if p_1 is a factor of i, then g(i, p_q) returns a power of p_q. So this means after all our multiplication our answer will be in the form (p_1^k_1) * (p_2 ^ k_2 * ... * (p_y^k_y), where k_q is the sum of the number of times p_q divides each number i from 1 to N. We can see k_q is the same as finding the number of times p_q divides n! (think about this lets says p_q is 2, and we have n = 4, the number of 2s that divide the numbers from 1 to 4 is 3, which is the same as the number of 2s that divide 4! or 24, you can do more cases in your head).</p>
+                <p>In order to solve the number of p_q's that divide n!, we can use a similar strategy to this cses problem that we have done a potd for before: https://cses.fi/problemset/task/1618, 8/12 recap. So each k_q is equivalent to the sum of floor(n! / p^r), until p^r gets bigger than n!. So we can calculate k_q and thusly calculate the answer: (p_1^k_1) * (p_2 ^ k_2 * ... * (p_y^k_y). Don't overflow and you can solve this problem.</p>
+            </details>
+            <br>
+            <a href="https://cses.fi/problemset/task/1652/">Problem 07</a>
+            <details>
+                <summary>Solution</summary>
+                <p>To solve this problem we are going to introduce the method of 2d prefix sums. For each tree we are going present in the input we are going to mark the position of that tree as 1 in our 2d prefix array. Now to add up our prefixes we are going to do P\[i][q] += P\[i][q-1] + P\[i-1][q] - P\[i-1][q-1]. We have to do this because if we just add up the two prefixes adjacent to our current cell we are going to double count the rectangle 0,0 to i-1,q-1, so we have to subtract P\[i-q][q-1]. Now in order to answer queries in the following form: a, b, c, d. We will just output P\[i][q] - P\[i][q-1] - P\[i-1][q] + P\[i-1][q-1]. We need to add P\[i-1][q-1] in this case because subtracting the 2nd and 3rd terms dobule counts P\[i-1][q-1] again. If you are confused with this indexing, try drawing the rectangle out yourself somewhere. Make sure to not seg fault and you will be able to do this problem.</p>
+            </details>
+            <br>
+            <a href="https://cses.fi/problemset/task/1651/">Problem 06</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This problem takes a little trick to solve, first you can see that if you individuall update each value in the range, the program will be way too slow. So we use a trick to get around that, and that trick is instead of using a value array in the segment tree, we will use a difference array where dif[i] represents the difference between val[i] and val[i-1]. We will create a sum segment tree with this dif array as its values. For the lookup query: 2 k we can just return val[0] + the sum of all dif[i] from 0 to k.-1 To update: 1 a b u, we only have to update dif[a-1] with +u and dif[b] with -u (Remember CSES one indexes things). Make sure to not seg fault and you should be fine. </p>
+            </details>
+            <br>
+            <a href="https://cses.fi/problemset/task/1650">Problem 05</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Before you ask, yes you don't have to use seg trees to solve this problem, regular prefix sums is enough. But we are going to use seg trees to solve this just for practice. So we first add all n values to a seg tree with the comparison operator as t[i] = t[2*i] ^ t[2*i+1]. Then we build the seg tree using this comparison operator. Then finally we used the query function to output the ranges given in the input of the problem.</p>
+            </details>
+            <br>
+            <a href="https://cses.fi/problemset/task/1143">Problem 04</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The idea for this problem is to use your segtree to keep track of the max hotel size found in a certain range. Then for each query you can binary search across the segtree until you find the smallest hotel that can fit the query. We can binary search because keeping the max of the array will make the array sorted. And we know choosing the smallest hotel available is optimal because bigger hotels could be later used to dorm bigger queries. Once we binary search for this smallest hotel, if it exists we subtract the query value x from hotel and update its value in the segtree with value-x, and if it doesn't exist return 0. Continue this process until all queries are done.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/agc020/tasks/agc020_b">Problem 03</a>
+            <details>
+                <summary>Solution</summary>
+                <p>As we know the final number of kids left on the ring, we can work backwards to compute the number at the beginning or N. Suppose we have two arrays, mi and ma where mi[j] represents the minimum number of kids left after j rounds and ma[j] is the max (can be done with just two variables). We know that mi[k] = ma[k] =2 and we need to find mi[0],ma[0]. So all we need is to find a way to transition from mi[j] to mi[j-1] and the same for ma. This can be done with a greedy strategy. If we think about the interval [mi[i], ma[i]], we can say that the smallest value mi[i-1] will be a multiple of a_i, namely the smallest in the prior range. The largest value ma[i-1] must also be connected to the largest multiple of a_i in this range, but you also have to add a_i -1 as this will not affect the number of kids after the next round. Notice that the smallest multiple can be computed with ceil(mi[i]/a_i)*a_i and the largest is floor(ma[i]/a[i])*a[i]). If there is no multiple of a_i, print -1. Continue this process until you compute mi[0] and ma[0], your final answers. Also, this problem can be done with binary search, as this problem represents a monotonic function. So simply binary search for the smallest value and the largest value by simulating for each value if they can reach >=2 or <=2 respectively. This method however has an extra log factor in the complexity.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/584/B">Problem 02</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The probability of something occurring equals the 1 - the probability of it not happening. In our case our "1" is 3^(3n) because we have 3n numbers and they each have 3 possibilities. The probability we are looking for is that there exists at least one triple that doesn't add up to 6. The opposite of this is the probability that all triples add to 6. There are 7 permutations where the 3 numbers add to 6 (ie 2 2 2, 1 permutation, 1 2 3, 6 permutations). Since there are n of these triples, there is a 7^n chance of them all adding to 6. So our final answer is 3^(3n) - 7^n.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/888/D">Problem 01</a>
+            <details>
+                <summary>Solution</summary>
+                <p>So we know all valid permutations have m values where p_i != i, and m < k. So we can iterate over m from 0 to k, and figure the amount of permutations for each m. Now for each m, there are m numbers out of n that can be chosen to be different from their index so this is nCm. Now the other n-m numbers are fixed so there is only 1 permutation possible for them, but the m non fixed numbers can be in any position that is not their own. This subproblem uses something called a derangement, and we have used it earlier in the potd for 9/23. Go read up on that to understand how to calculate them. Now then, we can say d(m) is the number of derangements of m numbers, and so our final answer will be the sum of nCm * d(m) for m from 0 to k. </p>
+            </details>
+        </fieldset>
+    </div>
+</body>
