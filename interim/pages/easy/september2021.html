@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+        <p><a href="../problems.html">problems</a></p>
+        <p><a href="../resources.html">resources</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-11-04</h4>
+        <fieldset>
+            <legend>EASY SEPTEMBER 2021</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a href="https://codeforces.com/problemset/problem/1389/A">Problem 30</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The optimal strategy for this problem is to make x = l, because the smaller x is the more multiples of x(ie x*2,x*3,x*4) that can be found the in range [l,r]. Now that we have x = l, the smallest multiple of x that is in the range and isn't x itself (x can't be lcm(x,y), because y > x from the problem) is 2*x. Since this is the smallest value of multiple possible, if this value is in the range we can just return x and 2x because the lcm of (x,2x) = 2x, However, if 2x is not in the range, then no other multiple of x is possible, and so just return -1 -1.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1433/A">Problem 29</a>
+            <details>
+                <summary>Solution</summary>
+                <p>If an the apartment number we receive as input has size n and made of the digit d, then for all x < d we add 10 because we know that all apartments before the digit d were rung, so we add a total of 10 digits for every number x < d. And once we reach d, we know that all apartments with size 1, 2, ..., m were rung, so the total number of digits is n(n+1)/2. We also know that all apartments that come after this point wont be rung. So we get a final formula of (d-1)*10 + n(n+1)/2.</p>
+            </details>
+        </fieldset>
+    </div>
+</body>
