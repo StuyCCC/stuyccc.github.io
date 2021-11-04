@@ -36,13 +36,13 @@
             <a href="https://codeforces.com/problemset/problem/453/A">Problem 31</a>
             <details>
                 <summary>Solution</summary>
-                <img src="../../../data/problems/hard/august31.png" width="525" height="600">
+                <img src="../../data/hard/august31.png" width="525" height="600">
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/312/B">Problem 30</a>
             <details>
                 <summary>Solution</summary>
-                <img src="../../../data/problems/hard/august30.png" width="525" height="600">
+                <img src="../../data/hard/august30.png" width="525" height="600">
             </details>
             <br>
             <a href="https://community.topcoder.com/stat?c=problem_statement&pm=11359">Problem 29</a>
@@ -115,31 +115,31 @@
             <a href="https://codeforces.com/problemset/problem/1543/D1">Problem 20</a>
             <details>
                 <summary>Solution</summary>
-                <img src="../../../data/problems/hard/august20.png" width="525" height="600">
+                <img src="../../data/hard/august20.png" width="525" height="600">
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/1362/C">Problem 19</a>
             <details>
                 <summary>Solution</summary>
-                <img src="../../../data/problems/hard/august19.png" width="525" height="600">
+                <img src="../../data/hard/august19.png" width="525" height="600">
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/1420/B">Problem 18</a>
             <details>
                 <summary>Solution</summary>
-                <img src="../../../data/problems/hard/august18.png" width="525" height="600">
+                <img src="../../data/hard/august18.png" width="525" height="600">
             </details>
             <br>
             <a href="https://codeforces.com/contest/1547/problem/D">Problem 17</a>
             <details>
                 <summary>Solution</summary>
-                <img src="../../../data/problems/hard/august17.png" width="525" height="600">
+                <img src="../../data/hard/august17.png" width="525" height="600">
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/1362/B">Problem 16</a>
             <details>
                 <summary>Solution</summary>
-                <img src="../../../data/problems/hard/august16.png" width="525" height="600">
+                <img src="../../data/hard/august16.png" width="525" height="600">
             </details>
             <br>
             <a href="https://codeforces.com/contest/1554/problem/C">Problem 15</a>
@@ -181,7 +181,7 @@
                 <p>The first solution takes advantage of one of the constraints: since it's given that the values can range between -200 and 200, we can record how many times each value appears and use that to efficiently calculate how many times each squared difference should be added to the sum. It will get the points, but it's not particularly elegant and won't help us approach other, more complicated problems. So let's try to solve it assuming that the elements can be anything. We can first expand (Ai - Aj)^2 as Ai^2 - 2 * Ai * Aj + Aj^2. The Ai^2 and Aj^2 terms are the easiest to take care of: any entry Ai will contribute an Ai^2 term exactly n-1 times (when paired with n-1 other numbers). Next, we have to deal with the -2 * Ai * Aj term. If we fix the index i, the sum of these terms will be -2 * Ai * (A1 + A2 + ... + A(i-1)). We can interpret the third factor as a prefix sum, which we can efficiently calculate as we iterate through the elements. And so after expanding and considering each term, we're able to efficiently calculate this sum.</p>
             </details>
             <br>
-            <a href="https://www.spoj.com/problems/APS/">Problem 10</a>
+            <a href="https://www.spoj.com/APS/">Problem 10</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem used an adaptation of the Sieve of Eratosthenes (if you're not familiar with the original algorithm, you can read about it <a href="https://www.geeksforgeeks.org/sieve-of-eratosthenes/">here</a>). For this problem, we want to efficiently calculate the smallest prime that divides each number. When we use the sieve, instead of marking numbers as prime or composite, we can mark them with the smallest prime that divides it by only marking numbers that haven't already been labelled with a smallest prime yet. After running the sieve, we can sum up the values of the sieve up to each n and output that value.</p>
