@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+        <p><a href="../problems.html">problems</a></p>
+        <p><a href="../resources.html">resources</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-11-04</h4>
+        <fieldset>
+            <legend>INTRO TO BITWISE</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Bitwise Operators</h3>
+			<p>Bitwise operators act on the bits in a binary number. Here are the important operators:</p>
+			<ul>
+				<li>AND: Represented by the & operator, takes two numbers and returns the number composed of the bits that are in both inputs. For example, <script type="math/tex">5\& 3 = 101_2\& 011_2 = 001_2 = 1</script>.</li>
+				<br>
+				<li>OR: Represented by the | operator, takes two numbers and returns the number composed of the bits that are in either input. For example, <script type="math/tex">5|3 = 101_2|011_2 = 111_2 = 7</script></li>
+				<ul>
+					<li>It's worth noting that for any two integers a and b, <script type="math/tex">(a\&b) + (a|b) = a + b</script>. This is because OR will capture all the bits that need to be counted, then AND will capture the bits that need to be added twice.</li>
+				</ul>
+				<br>
+				<li>XOR: Represented by the ^ operator, takes two numbers and returns the number composed of the bits that are in one input but not the other. It helps to imagine this operation as taking the positions of 1-bits in the second input and flipping those bits in the first input. For example, <script type="math/tex">5^{\wedge} 3 = 101_2\text{ } ^{\wedge} 011_2 = 110_2 = 6</script>. XOR maybe unfamiliar, so let's go over some properties:</li>
+				<ul>
+					<li>Commutativity: <script type="math/tex">a^{\wedge}b = b^{\wedge}a</script></li>
+					<li>Associativity: <script type="math/tex">a^{\wedge}(b^{\wedge}c) = (a^{\wedge}b)^{\wedge}c</script></li>
+					<li>Identity: <script type="math/tex">a^{\wedge}0=a</script></li>
+					<li>Inverse: <script type="math/tex">a^{\wedge}a = 0</script></li>
+					<li>Not sure if this has a name: if <script type="math/tex">a^{\wedge}b = c</script>, then <script type="math/tex">a^{\wedge}c = b</script></li>
+				</ul>
+				<br>
+				<li>LEFT SHIFT: Returns the result when shifting the bits of the first input to the left by the second input number of places. For example, <script type="math/tex">5<<2=101_2<<2=10100_2=20</script>.</li>
+				<br>
+				<li>RIGHT SHIFT: Returns the result when shifting the bits of the first input to the right by the second input number of places. For example, <script type="math/tex">5>>2=101_2>>2=1_2=1</script>. Notice that excess bits at the end are discarded.</li>
+				<br>
+				<li>__builtin_popcount: counts the number of 1-bits in the input. For example, __builtin_popcount(5) = 2.</li>
+				<br>
+				<li>__builtin_clz: counts the number of leading zeroes in the input, based on the fact that C++ data types have a fixed number of bits.</li>
+				<br>
+				<li>__builtin_ctz: counts the number of trailing zeroes in the input.</li>
+			</ul>
+			<h3>Raising Bacteria</h3>
+			<p>Original Problem: <a href="https://codeforces.com/problemset/problem/579/A">Raising Bacteria</a></p>
+			<p>(make sure you read and understand the problem before continuing)</p>
+			<p>First, we can prove that the number of bacteria added is at least the number of bits in the binary representation of X. That's because doubling a number doesn't change the number of bits, and adding 1 to a number adds at most one bit to its binary representation. Therefore, to reach the number of bits in X, there must have been at least that many bacteria added.</p>
+			<p>It's also possible to add exactly the number of bits in the binary representation in X. The process to achieve this ensures that the number of bacteria every morning is always a prefix of the intended number of bacteria. This way, you only have to add 1 bacteria when the corresponding bit in X is 1.</p>
+			<p>Implementation-wise, it's enough to just output __builtin_popcount(X).</p>
+			<h3>Array Elimination</h3>
+			<p>Original Problem: <a href="https://codeforces.com/problemset/problem/1601/A">Array Elimination</a></p>
+			<p>(make sure you read and understand the problem before continuing)</p>
+			<p>This problem introduces an important strategy of considering one bit at a time. Often, it's too difficult to consider all 30 bits in conjunction, so if you can deal with a single bit and show how it expands to multiple bits, then you can succeed.</p>
+			<p>Let's consider one bit at a time. If the array could only consist of 1's and 0's, an elimination process only achieves anything if k 1's are selected, and all k are erased. Therefore, the number of 1's must be a multiple of k.</p>
+			<p>This observation can be extended to numbers with 30 bits: the number of 1-bits in every position must be a multiple of k. If this is true, we can eliminate all entries of the array by consistently selecting k values with a 1-bit in the same position. Since we either eliminate all k 1-bits in a position or don't eliminate anything in that position, the number of bits in each position will always still be a multiple of k, and we can reach the 0 array.</p>
+			<p>Finally, if k divides the number of 1-bits in every position, then k must divide the GCD of the number of 1-bits in every position. So calculate this GCD, then loop over every number from 1 to the GCD, outputting every value that divides the GCD.</p>
+        </fieldset>
+    </div>
+</body>
