@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../template.css" type="text/css">
+    <link rel="icon" href="../../data/favicon.ico">
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
+    <script src="../../data/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side">
+        <div id="icon">
+            <h1><a href="../../../index.html">
+                <img src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
+            </a></h1>
+        </div>
+        <br>
+        <p><a href="../about.html">about</a></p>
+        <p><a href="../calendar.html">calendar</a></p>
+        <p><a href="../lessons.html">lessons</a></p>
+        <p><a href="../problems.html">problems</a></p>
+        <p><a href="../resources.html">resources</a></p>
+    </div>
+    <div id="main">
+        <h4>Last Updated 2021-11-04</h4>
+        <fieldset>
+            <legend>SEGMENT TREES</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Increasing Subsequence</h3>
+            <p>Original Problem: <a href="https://cses.fi/problemset/task/1145">Increasing Subsequence</a></p>
+            <p>(Note: this problem was covered in the previous meeting, but the explanation will be placed here for coherence)</p>
+            <p>In this problem, you start with an array A[1], A[2], ..., A[N] (<script type="math/tex">N<2\cdot 10^5</script>) and want to find the length of the longest strictly increasing subsequence.</p>
+            <p>We'll use LIS as an abbreviation for longest increasing subsequence. This problem introduces the idea of using a segment tree to optimize a dynamic programming approach. Let's first describe the DP approach. Let's define DP[i] as the length fo the LIS that ends at index i (and must include index i). Then there are two possibilities for this subsequence: either it consists of only the index i, or it consists of index i as well as the LIS ending at some earlier index j. So we'll initialize DP[i] to <script type="math/tex">1</script>, and then loop over all indices j &lt; i such that A[j] &lt; A[i], setting DP[i] equal to max(DP[i], DP[j]+1). The time complexity is <script type="math/tex">\mathcal{O}(N^2)</script>.</p>
+            <p>We can do better, though! Let's start by using coordinate compression to ensure that all values A[i] are in the range from 0 to N-1. If you don't know what coordinate compression, it's not critical to this solution, but you can google it if you'd like. Now let's define DP2[x] as the maximum value of DP[i] for all indices i where A[i] = x. Then to calculate DP[i], we want to find the maximum value of DP2[x] for all x &lt; A[i]. Also, in order to update DP2 after calculating DP[i], we'll just set DP2[A[i]] = DP[i]. Notice that these operations are a range maximum and point update, which we can do with a segment tree. Each operation takes <script type="math/tex">\mathcal{O}(\log_2(N))</script> time, and we have to perform this operation N times, so the time complexity is <script type="math/tex">\mathcal{O}(N\cdot \log_2(N))</script></p>
+
+            <h3>Subarray Sum Queries</h3>
+            <p>Original Problem: <a href="https://cses.fi/problemset/task/1190">Subarray Sum Queries</a></p>
+            <p>In this problem, we start with an array of integers A[1], A[2], ..., A[N] and M queries (<script type="math/tex">N, M \leq 2 \cdot 10^5</script>). Each query asks to change the value at index K to X. After each query, you must output the maximum sum of any contiguous subarray.</p>
+            <p>This problem uses a new way of thinking about segment trees. We can use segtrees to perform operations like getting the range sum or min, but we can also use them to somehow represent a range of the original array in each node. Let's first decide what information needs to be stored in each node to capture the corresponding array range.</p>
+            <p>MAXIMUM SUBARRAY SUM: If we want to find the maximum subarray sum in the entire array, it makes sense to record the maximum subarray sum in each segment. When combining two subarrays, the new maximum could be a subarray contained in either segment, or a subarray that uses both segments. So we'll need more information...</p>
+            <p>MAXIMUM PREFIX & SUFFIX: In order to find the maximum subarray that uses both ranges, we'll need to use the maximum suffix of the left range and the maximum prefix of the right range. When combining two subarrays, the new maximum prefix could be the maximum prefix of the left subarray, or it could be the entire left subarray with the maximum prefix of the right subarray. So we'll also need the...</p>
+            <p>TOTAL SUM: The other candidate for the new maximum prefix is the total sum of the left subarray, plus the maximum prefix of the right subarray.</p>
+            <p>With all of this information in conjuction (which can be represented as an array of four elements), we can successfully combine any two ranges. Notice that this operation is associative, because it doesn't matter which order we combine subarrays in to form the larger array, but it is not commutative, because it does matter which range is on the left or right. Refer to the last lesson on how to correctly implement in order to make this work.</p>
+            <p>For the identity, we can fill out information that corresponds to the empty array, since combining a subarray with the empty array will give the same information. All of the above properties will just be 0 for an empty array.</p>
+            <p>For an individual element, the maximum subarray sum, prefix, and suffix are all either 0 or the element itself. The total sum is the element itself.</p>
+            <p>One final implementation detail: it might be helpful to create a comb() operation that combines two subarrays. That way, instead of rewriting the same piece of code many times, you can just call the comb function on two nodes to get their combination. It also allows you to reuse segment tree code more easily, since the comb function is one of the few things that changes between segment tree implementations.</p>
+            <pre><code class="language-cpp">// structure: {max subarray sum, max prefix, max suffix, total sum}
+array&lt;int, 4> comb(array&lt;int, 4> a, array&lt;int, 4> b) {
+    array&lt;int, 4> ans;
+    // add total sums
+    ans[3] = a[3]+b[3];
+    // max prefix is either left prefix or left sum + right prefix
+    ans[1] = max(a[1], a[3] + b[1]);
+    // max suffix is either right suffix or right sum + left suffix
+    ans[2] = max(b[2], b[3] + a[2]);
+    // max subarray sum is either left/right subarray sum, or left suffix + right prefix
+    ans[0] = max({a[0], b[0], a[2] + b[1]});
+    return ans;
+}</code></pre>
+            <h3>Bit Inversions</h3>
+            <p>Original Problem: <a href="https://cses.fi/problemset/task/1188">Bit Inversions</a></p>
+            <p>We start with a bit string with N bits and M queries (<script type="math/tex">N, M \leq 2 \cdot 10^5</script>). Each query asks to flip the bit at position K. After each query, the length of the longest uniform substring (composed of the same bits) must be outputted.</p>
+            <p>This uses a similar idea where each element of a segtree corresponds to a range. Once again, we can start listing the information about each range we need.</p>
+            <p>MAXIMUM UNIFORM SUBSTRING: The answer should always be the first thing we record in each node. This max can be the maximum substring in either range, but could also be a substring in both ranges. But we need information on whether we can form this intermediate string...</p>
+            <p>FIRST & LAST ELEMENT: If the last element of the left range and the first element of the right range are the same, we can create a uniform string in the middle. But we'll need to find the length of this string...</p>
+            <p>MAXIMUM UNIFORM PREFIX & SUFFIX: A substring in both ranges will be a suffix of the left range and a prefix of the right range. To recalculate the prefix, it could either be the left prefix or the entire left range with the right prefix. So we'll also need...</p>
+            <p>TOTAL LENGTH: If we can combine the entire left range with the right prefix, then we can add the total length to the right prefix.</p>
+            <p>With all of this information, we can complete the problem. Once again, this operation is associative but not commutative. It turns out that any identity would involve changing our combination function, so the easiest approach is to just set the length of the identity to 0 and test if one of the elements has length 0 at the start of our combination function.</p>
+<pre><code class="language-cpp">// structure: {max uniform string, first elem, last elem, prefix, suffix, length}
+array&lt;int, 6> comb(array&lt;int, 6> a, array&lt;int, 6> b) {
+    // check if one is the identity
+    if (a[5]==0) return b;
+    if (b[5]==0) return a;
+
+    array&lt;int, 6> ans;
+    ans[5] = a[5]+b[5]; // set length;
+    ans[1] = a[1]; // set first elem
+    ans[2] = b[2]; // set last elem
+    // set prefix
+    if (a[3]==a[5] && a[2]==b[1]) ans[3] = a[5] + b[3];
+    else ans[3] = a[3];
+    // set suffix
+    if (b[4]==b[5] && a[2]==b[1]) ans[4] = b[5] + a[4];
+    else ans[4] = b[4];
+    ans[0] = max(a[0], b[0]); // set max substring
+    if (a[2]==b[1]) ans[0] = max(ans[0], a[4] + b[3]); // account for middle string
+    return ans;
+}</code></pre>
+            <h3>Pizzeria Queries</h3>
+            <p>Original Problem: <a href="https://cses.fi/problemset/task/2206">Pizzeria Queries</a></p>
+            <p>N buildings each contain both a pizzeria and an apartment. The price of pizza from building a is P[a], and the cost of getting pizza from building a to building b is <script type="math/tex">P[a] + |a-b|</script>. There are Q queries with two types: one type asks to set P[K] = X for given K and X, and the other type asks to calculate the minimum cost of delivering pizza from any building to building K (<script type="math/tex">N, Q \leq 2 \cdot 10^5</script>).</p>
+            <p>Here, we want to use a segment tree to calculate the minimum cost. But the presence of the absolute value makes it hard to assign a single value to each building to enter into a segment tree. So we'll use a strategy that you can apply to most questions involving absolute value. Notice that when <script type="math/tex">a\geq b</script>, <script type="math/tex">|a-b| = a-b</script>, and when <script type="math/tex">a\leq b</script>, <script type="math/tex">|a-b| = b-a</script>. So we can treat these as two separate cases.</p>
+            <p>In the first case, where <script type="math/tex">a\geq b</script>, we want to find the minimum of <script type="math/tex">P[a] + a - b</script>. So we can use a segtree to record <script type="math/tex">P[a]-a</script> for each building, and then calculate <script type="math/tex">\text{min}_{a\geq K}(P[a] + a) - K</script> for a query.</p>
+            <p>We'll handle the second case similarly. We need to find the minimum of <script type="math/tex">P[a] - a + b</script>, so we'll keep a segtree that records <script type="math/tex">P[a] - a</script> and then calculate <script type="math/tex">\text{min}_{a\leq K}(P[a]-a) + K</script> for each query.</p>
+            <p>Now we can successfully answer the second type of query. Now the update query is simple: just update both segtrees based on which value each one stores. With that, you should be able to solve this problem.</p>
+        </fieldset>
+    </div>
+</body>
