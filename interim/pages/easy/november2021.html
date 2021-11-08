@@ -30,33 +30,51 @@
         <p><a href="../resources.html">resources</a></p>
     </div>
     <div id="main">
-        <h4>Last Updated 2021-11-04</h4>
+        <h4>Last Updated 2021-11-07</h4>
         <fieldset>
             <legend>EASY NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=835">Problem 04</a>
+            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1084">Problem 07</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/gym/352982/problem/A1">Problem 06</a>
+            <details>
+                <summary>Solution</summary>
+                <p>There are several ways to solve this problem, but I'll explain the jury's linear solution. You can first create an array size n+1, so you can work with every day 1-indexed. Then, you can create another array with the same length that stores the number of bones broken on the i'th day. Now, you can simulate. On the 0-th day you will have k bones. For every day after that, the number of bones will be equal to the number of bones on the previous day minus the bones broken on that day. If he did not break any bones and has less than k bones he will regenerate one. The first time the bone count hits below or equal to zero, print the day number and exit your program.</p>
+            </details>
+            <br>
+            <a href="http://usaco.org/index.php?page=viewproblem2&cpid=1085">Problem 05</a>
+            <details>
+                <summary>Solution</summary>
+                <p>First, you can sort the stall height limits in ascending order. For every stall, check how many cows could fit in that stall. Notice that for the b_i-th stall, if there are x_i cows that could fit, then all of those cows could have also fit in a previous stall. So in order for every stall to have a cow, i-1 of those cows must have already gone to an earlier stall. Thus, the final answer is x_1*(x_2-1)*(x_3-2)*...</p>
+            </details>
+            <br>
+            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=835">Problem 04</a>
+            <details>
+                <summary>Solution</summary>
+                <p>One quick way of doing this problem is to sort the cows in reverse order(descending). From here just loop through the array, and whenever the cow’s waiting tolerance is greater than or equal to its index, increment the answer by 1. You can also break whenever you find a cow that doesn’t satisfy this condition, but this is not needed.</p>
             </details>
             <br>
             <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1011">Problem 03</a>
             <details>
                 <summary>Solution</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>We can first loop over all triples of pastures. As one of the fence posts is parallel to the x-axis and the other is parallel to the y-axis, then the triangle formed must be right. For a triangle to be right in this scenario, two of the y-coordinates of the points must be the same and two of the x-coordinates must be the same. Once you have validated a triangle, compute double the area by using the base*formula for a triangle (no dividing by 2). Take the max of all areas to get the final answer.</p>
             </details>
             <br>
             <a href="http://usaco.org/index.php?page=viewproblem2&cpid=1107">Problem 02</a>
             <details>
                 <summary>Solution</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>For every cow, instead of keeping track of their year, try to keep track of their cycle value relative to Bessie. To make things simpler, suppose that Bessie was born on cycle 0. Still, we need to parse the input properly. We can simply split each string by spaces and only look at the 1st,4th,5th, and 8th words as they are the only ones that provide any valuable information. While parsing the input, we can assign each cow its cycle. Suppose that the second cow mentioned was born on cycle C. There are four cases: either the new cow was born in the same cycle but on an earlier year (lower index in the array [Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig, Rat]), it is in the same cycle but on a later year, it is in the cycle directly before C, and it is in the cycle directly after C. After this we can split the computation into two parts: the cycle difference and  the year difference. The cycle difference between Bessie and Elsie is just abs(C1-C2)*12 and the year difference is the difference of their indices in the array. Here we can add the value to the cycle difference or subtract, depending on Elsie if was born earlier.</p>
             </details>
             <br>
             <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=966">Problem 01</a>
             <details>
                 <summary>Solution</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>Here a simple simulation will be too slow. Instead, notice that the pattern of numbers and Moos repeats every 15 numbers. In other words, every number with a value mod 15 that isn't a multiple of 3 or 5, will be itself in the sequence. There are eight such residues, so for every interval of 15 there are eight valid numbers. So you can simply add n*15/8 (to skip past the previous sets of 15 numbers) and add what the mod 8th number in the sequence is. Notice that the 15 value is not a number, so when N divides 8, subtract 1 from the expression.</p>
             </details>
         </fieldset>
     </div>

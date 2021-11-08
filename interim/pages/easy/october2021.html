@@ -30,7 +30,7 @@
         <p><a href="../resources.html">resources</a></p>
     </div>
     <div id="main">
-        <h4>Last Updated 2021-11-04</h4>
+        <h4>Last Updated 2021-11-07</h4>
         <!-- use <script type="math/tex"> to use latex
             and <pre><code class="language-cpp"> (or whatever language) for code-->
         <fieldset>
@@ -38,19 +38,19 @@
             <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=784">Problem 31</a>
             <details>
                 <summary>Solution</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>For this problem, it is enough to remove each of the lifeguards one at a time and see the number of time intervals that are covered. To do this, process the intervals given for each lifeguard and for every lifeguard removed, create a new array full of 0s. For every i in an interval covered by a lifeguard, increment arr[i] by 1. The number of covered periods of time is the number of values in the array greater than 1.</p>
             </details>
             <br>
             <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=568">Problem 30</a>
             <details>
                 <summary>Solution</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>One approach is to simply create two arrays, one detailing Bessie’s speed at any point in time and the other detailing the spread limit at that point. You can either create two arrays of size 100 and simply increment the index representing Bessie’s current location for each segment and then update Bessie’s speed until you reach 100. The same process can be done for the speed limit. You can also use a dynamic array and simply append the speed limit and Bessie’s current speed. Then simply loop through the arrays and record the max value of Bessie’s speed - Speed Limit.</p>
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/479/A">Problem 29</a>
             <details>
                 <summary>Solution</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>Here there are only four cases(two operations with two choices for them), so we can just choose the one that results in the largest value. The possible cases are a+b+c, a*b+c, a+b*c, and a*b*c. You can also notice that having a 1 is the only case where you’d prefer addition, and then you just try out some cases.</p>
             </details>
             <br>
             <a href="https://codeforces.com/contest/478/problem/A">Problem 28</a>
