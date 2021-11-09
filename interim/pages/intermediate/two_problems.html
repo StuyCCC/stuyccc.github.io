@@ -37,7 +37,7 @@
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
             <h3>Pairing Up Parentheses</h3>
             <p>
-            Given some string of parentheses, determine every open parentheses has a matching close parentheses and vice versa.<br><br>
+            Given some string of parantheses determine whether or not every open parantheses has a matching close parantheses and vice versa.<br><br>
             For example, "(()()())()" fulfills the given condition. Every "(" has a matching ")".<br>
             "))((" does not fulfill the given condition. There is are "("s without matching ")"s.
             </p>
@@ -75,7 +75,7 @@
             Therefore after seeing what is left over after pairing up unique elements we check to see if what is left over is the majority element.<br><br>
 
             To simulate pairing up unique elements, we will iterate though <code>A</code> keeping track if we have anything we can pair.
-            Precisely, we will have a conunter variable and another variable to represent a type of element. 
+            Precisely, we will have a counter variable and another variable to represent a type of element. 
             The counter will keep track of how many elements of a certain type we have seen and not paired. 
             The other variable will represent the type of element which we can pair with something.<br><br>
 
@@ -94,7 +94,7 @@
             let x currently be empty but be used to store an element of A later
             counter = 0
             for i in 0..n:
-                if i == 0:
+                if counter == 0:
                     x = A[i] //get a new number for x
                     counter = 1
                 else if m == x:
@@ -114,7 +114,7 @@
             <h4>Note</h4>
             <p>
             This algorithm is called the <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm">Boyer-Moore majority vote algorithm</a>. 
-            That is a like to the wikipedia page, it has a different description and explination of the algorithm then what I put here. It's worth taking a look at.
+            That is a like to the wikipedia page, it has a different description and explanation of the algorithm then what I put here. It's worth taking a look at.
             The algorithm isn't really something to memorize, like in a competition you wouldn't need to be able to be able to recall it and write it out.
             But it is something to keep in mind exists, and to understand so if you maybe you could figure it out if you so desired to.
             </p>
