@@ -30,11 +30,44 @@
         <p><a href="../resources.html">resources</a></p>
     </div>
     <div id="main">
-        <h4>Last Updated 2021-11-07</h4>
+        <h4>Last Updated 2021-11-13</h4>
         <fieldset>
             <legend>EASY NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a href="https://codeforces.com/problemset/problem/1260/A">Problem 12</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The optimal strategy for this problem is to make all the heater have close to the same number of sections. You can see this by realizing (x-1)^2 + 1^2 > (x/2)^2 + (x/2)^2. So now we have "sum" sections and "c" heaters and we need to find the optimal way to split sum into c numbers such that the c numbers are really close together. We can do this by having sum%c heaters with value of sum/c + 1, and having the rest be sum/c. This adds up to sum, and keeps the c heaters close together. Now with this distribution our final anwer becomes (sum%c)*(sum/c+1)*(sum/c+1) + (c-sum%c)*(sum/c)*(sum/c).</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1245/A">Problem 11</a>
+            <details>
+                <summary>Solution</summary>
+                <p>First observation to solve this problem is to realize that all multiples of a and b are painted white (ie anything with the form ax or by, where x,y are integers will be painted white). From there we can realize that anything in the form ax+by will also be painted white, because ax is painted white and ax is by (multiple of b) away from ax+by, so ax+by is also white. Now notice that ax+by is a multiple of gcd(a,b). I won't prove this fact, but just know that any number greater than ab and is a multiple of gcd(a,b) can be written as ax+by (try some examples in your head).</p>
+                <p>So this means that if gcd(a,b) = 1, then the result would be finite because every number greater than ab would be white, which would leave a finite number of black spots in the range [0,ab]. Now if gcd(a,b) != 1, then there would be numbers greater than ab that aren't painted white, and since we are going off to infinity, this means that there would be an infinite number of black numbers.</p>
+                <p>Notice we can check the gcd of two numbers using the c++ library function __gcd(a,b). If __gcd(a,b) == 1 print "Finite", else print "Infinite".</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1008/B">Problem 10</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The optimal strategy for this problem is for a current rectangle it is optimal to orientate it in such a way that its height is maximal but not greater than the previous rectangle. This is optimal because if the current height is larger than its more likely that the next rectangle is shorter than it. The way to program this optimal strategy is to first create a max = max(width, height) of first rectangle, and then for every rectangle afterward, set the max to the largest side that is still smaller than or equal to the max. If this is not possible for all rectangles print NO else print YES. </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1411/B">Problem 09</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Notice that we only have to consider digits, so 1-9, so notice that the lcm of of the first 9 digits is 2520. This means that any multiple of 2520 is definitely fair, and this means that the most we have to loop from x to find the next number is 2520, because after 2520 iterations we will find a multiple of 2520 that most definitely works. So now that we know our for loop won't time out (2520 * 10^3 works fast enough), we can just do a for loop from x and increment by 1 until we find a fair number, and then return that fair number.</p>
+                <p>Now I'll explain how to check if a number is a fair. To get the digits of the number we can make a copy of it and then repeatedly modulo it by 10 and then divide it by 10 until we get 0. For example 282 modulo 10 = 2, divide it by 10 and you get 28, 28 modulo 10 = 8, divide it by 10 and you get 2, 2 modulo 10 = 2, and we have gotten all our digits (note this works because of integer division). Then we can just check if our original number is divisible by all these digits that we have gotten to see if its fair.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1342/A">Problem 08</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Notice that the second operation just performs the first operation twice, but does it in one move. So from this fact we can see that if 2a <= b, then it performing the second operation is not optimal at all, so we just perform the first operation the entire time to get a final answer of (x+y)*a. However if 2a > b, then it is optimal to use the second operation as much as possible, but we also don't want to make one of the numbers go below 0 because this wastes an extra move going back up, so our answer becomes min(x,y)*b+(max(x,y)-min(x,y))*a.</p>
+            </details>
+            <br>
             <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1084">Problem 07</a>
             <details>
                 <summary>Solution</summary>

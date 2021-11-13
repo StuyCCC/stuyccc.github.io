@@ -30,11 +30,45 @@
         <p><a href="../resources.html">resources</a></p>
     </div>
     <div id="main">
-        <h4>Last Updated 2021-11-07</h4>
+        <h4>Last Updated 2021-11-13</h4>
         <fieldset>
             <legend>HARD NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a href="https://codeforces.com/problemset/problem/1514/C">Problem 12</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The first observation of this problem is to notice that if we include a number x < n such that gcd(x, n) != 1 then the prod wont be 1 mod N. To see this in action, imagine we have n = 9 and we include 3 in the product. Prod % 9, must be either be 0, 3, or 6 (ie a multiple of 3), and thus it will never be 1, and that is not what we want. So now we know we should only include numbers that have gcd(x, n) == 1. Lets call p the product of all numbers that have gcd(x, n) == 1 modulo n. If p == 1 we can just output all those numbers, however if p != 1, we can just remove the number p itself and output the rest of the numbers. </p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/329/B">Problem 11</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The optimal strategy for the user in this problem is to take the shortest path to the exit cell. This is because if you take a non-shortest path this gives the other trainers an extra move to try to get to you. Now notice that the optimal play for the trainers is to get to the exit cell before or at the same time as you. This is because if they can get to the exit cell, you are forced to battle them before you can leave.</p>
+                <p>Notice that since you are taking the shortest path to the exit cell, only trainers that have a closer or the same length shortest path to the exit cell can battle you, while others can not. This is because if they can battle you on cell X on your route to the exit, this means they can reach cell X before or at the same time as you. And cell X is on the shortest path so they can take the shortest path from cell X and reach the exit cell before you.</p>
+                <p>So now this problem boils down to checking if the shortest path to the exit of the trainers are shorter than or equal to your shortest path to the exit. If they are you have to battle them, and if they aren't you don't have to battle them. You can find the shortest path to the exit for each trainer and yourself by doing a single bfs starting at the exit cell. Once you are done with the bfs just compare distances and add up trainers and output your answer.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1538/F">Problem 10</a>
+            <details>
+                <summary>Solution</summary>
+                <p>There are a ton of overly difficult ways to solve this problem using dp, binary search, and the such, but I am going to give the simplest solution I found here. The total number of changed digits is equal to the sum of changes in each place (ie, ones place, tens place, hundreds place). The amount of changes in the ones place is equal to R - L, you can figure this out pretty trivially. Now notice that the number of changes in the 10s place is equivalent to floor(R/10) - floor(L/10). This same pattern occurs for the rest of the places as well. So for each digit place x from 0 to 9 add to the sum floor(R/10^x) - floor(L/10^x), and output this for your answer.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1475/C">Problem 09</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This problem boils down to the following for each of the k couples in the input, find out how many other couples they can dance with, and sum all these up and then divide 2(to prevent a,b and b,a overcounting) and output them. Let freq1[a], freq2[b] be the number of times a shows up in the first sequence and the number of times b shows up in the second sequences.</p>
+                <p>Notice that if our current pair is (a,b) then any pairs of the form (a,x) and (x,b) fail, the number of these failed equivalent to freq1[a] + freq[b] - 1, where the -1 exists to remove the double counting of the pair (a,b) itself (because obviously (a,b) cant dance with (a,b), they are just 1 couple not 2. but (a,b) is counted in both freq1[a] and freq2[b], so we need to remove 1 to prevent overcounting.</p>
+                <p>Now we know freq1[a]+freq2[b]-1 fails which means k-(freq1[a]+freq2[b]-1) works, so our final answer is (the sum of k-(freq1[a]+freq2[b]-1)) divided by 2.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1095/C">Problem 08</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Notice that the minimum powers of 2 needed to create the number n, is the number of 1 bits in the binary representation of n, lets call this number x, and lets say we have all the powers of 2 represented by these 1 bits in a multiset S. If x > k, then our answer is NO because we can't decrease the power of 2s that we need. If x == k, we can just return the powers of 2 in S. If x < k, we need to do break up some powers of 2 into smaller powers of 2. Observe that breaking up a power of 2 increases the total count x by 1. So we can just take a value in the multiset, split it into 2 and put its components back into the set. We can do this until all values equal 1, ie there are n 1s. So this means if n < k, it we output NO, else we output whatever we had in our multiset, after we split powers of 2, k-x times.</p>
+            </details>
+            <br>
             <a href="https://atcoder.jp/contests/agc040/tasks/agc040_c">Problem 07</a>
             <details>
                 <summary>Solution</summary>
