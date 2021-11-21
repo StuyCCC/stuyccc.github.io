@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-11-21</h4>
+        <fieldset>
+            <legend>PCLASSIC 2021 FALL</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <p> Along with the problem statements linked below, PClassic also provided us with code stubs to get past the painful IO process in java and python. You can find the stubs <a href="https://www.dropbox.com/s/28crpiqnd60qbzk/stubs.zip?dl=0&file_subpath=%2FSTUBS">here</a>. Note that the solution codes below will not include the stubs (ie the input process) and instead only include the functions we wrote to solve the problem.</p>
+            <h2><a href="">Problem 01</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// WILL BE HERE SOON
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="">Problem 02</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// WILL BE HERE SOON
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="">Problem 03</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// WILL BE HERE SOON
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="">Problem 04</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// WILL BE HERE SOON
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="https://www.codechef.com/PCFL2021/problems/POMPOUS">Problem 05</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-java">
+// Solved By Jeremy Ku-Benjet
+public static int unbeatable(int[][] peacocks) {
+    boolean[] beat = new boolean[peacocks.length];
+    for (int i = 0; i < peacocks.length; i++) {
+        for (int j = i+1; j < peacocks.length; j++) {
+            int v1 = peacocks[i][0];
+            int v2 = peacocks[j][0];
+            int c1 = peacocks[i][1];
+            int c2 = peacocks[j][1];
+            if (v1 >= v2 && c1 >= c2 && (v1 != v2 || c1 != c2)) {
+                beat[j] = true;
+            }
+            if (v1 <= v2 && c1 <= c2 && (v1 != v2 || c1 != c2)) {
+                beat[i] = true;
+            }
+        }
+    }
+    int num_beat = 0;
+    for (int i = 0; i < beat.length; i++) {
+        if (beat[i]) num_beat++;
+    }
+    return (peacocks.length - num_beat);
+}
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="https://www.codechef.com/PCFL2021/problems/PUUPUU">Problem 06</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// Solved By Alvin Li
+public static boolean ism(int[][] grid, int i, int j) {
+    // i,j is top left corner
+    int s = grid[i][j] + grid[i][j+1] + grid[i][j+2];
+    for (int ii = 0; ii < 3; ii++) {
+        if (grid[i+ii][j] + grid[i+ii][j+1] + grid[i+ii][j+2] != s)
+            return false;
+    }
+    for (int jj = 0; jj < 3; jj++) {
+        if (grid[i][j+jj] + grid[i+1][j+jj] + grid[i+2][j+jj] != s)
+            return false;
+    }
+    if (grid[i][j] + grid[i+1][j+1] + grid[i+2][j+2] != s ||
+        grid[i][j+2] + grid[i+1][j+1] + grid[i+2][j] != s)
+            return false;
+    return true;
+}
+
+public static boolean magicSquare(int[][] grid) {
+    int n = grid.length;
+    int m = grid[0].length;
+    for(int i = 0; i < n-2; i++) {
+        for (int j = 0; j < m-2; j++) {
+            // System.out.println(i + " " + j);
+            if (ism(grid, i, j)) return true;
+        }
+    }
+    return false;
+}
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="https://www.codechef.com/PCFL2021/problems/CACTUSFARM">Problem 07</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// Solved By Mohammad Khan And Alvin Li
+public static boolean matchable(String initialPattern, String finalPattern) {
+    int il = initialPattern.length();
+    int fl = finalPattern.length();
+
+    char[] temp = new char[fl];
+    for (int i = 0; i < fl; i++) temp[i] = '0';
+    for (int i = 0; i < il; i++) temp[i] = initialPattern.charAt(i);
+
+    for (int i = 0; i <= fl-il; i++) {
+        boolean ok = true;
+        for (int j = 0; j < il; j++) {
+            if (initialPattern.charAt(j) == '1' &&
+                finalPattern.charAt(i+j) == '0') {
+                ok = false;
+                break;
+            }
+        }
+        if (ok) {
+            for (int j = 0; j < il; j++) {
+                if (initialPattern.charAt(j) == '1') temp[i+j] = '1';
+            }
+        }
+    }
+    // String tmp = new String(temp);
+    // System.out.println(tmp);
+    for (int i = 0; i < fl; i++) {
+        if (temp[i] != finalPattern.charAt(i)) return false;
+    }
+    return true;
+}
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="https://www.codechef.com/PCFL2021/problems/PEACFULPOLES">Problem 08</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// Solved By Mohammad Khan
+public static int maxPoints(String s, String t) {
+    int m = s.length(), n = t.length();
+    int[][] DP = new int[m+1][n+1];
+
+    for (int i = 0; i < m+1; i++) {
+        DP[i][n] = -(m-i)*2;
+    }
+
+    for (int i = 0; i < n+1; i++) {
+        DP[m][i] = -(n-i)*2;
+    }
+
+    for (int i = m-1; i >= 0; i--) {
+        for (int q = n-1; q >= 0; q--) {
+            int val = DP[i+1][q+1] + (s.charAt(i) == t.charAt(q) ? 1 : -1)
+            DP[i][q] = Math.max(val, Math.max(DP[i+1][q]-2, DP[i][q+1]-2));
+        }
+    }
+
+    return DP[0][0];
+}
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="https://www.codechef.com/PCFL2021/problems/POLRBEARTEST">Problem 09</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// Solved By Maxwell Zen, Alvin Li, And Jeremy Ku-Benjet
+public static int testing(int bears, int testtime, int totaltime) {
+    int k = totaltime / testtime;
+    int ans = 1;
+    long cur = k+1;
+    while (cur < bears) {
+        cur *= (long)k+1;
+        ans++;
+    }
+    return ans;
+}
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="https://www.codechef.com/PCFL2021/problems/PANDALAND">Problem 10</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// Solved By Maxwell Zen
+public static long MOD = 1000000007;
+
+public static void inc(int i, long x, TreeMap&lt;Integer, Long> tm) {
+    if (tm.containsKey(i)) tm.put(i, tm.get(i)+x);
+    else tm.put(i, x);
+}
+
+public static long sum(long i) {
+    long ans = ((i % MOD) * ((i+1) % MOD)) % MOD;
+    if (ans % 2 == 0) ans /= 2;
+    else ans = (ans + MOD) / 2;
+    return ans;
+}
+
+public static long sum(long i, long j) {
+    if (j == 0) return 0;
+    long ans = sum(j) - sum(i);
+    ans %= MOD;
+    if (ans < 0) ans += MOD;
+    return ans;
+}
+
+public static int pandaLand(int n, int m, String s) {
+    int[] r = new int[n], c = new int[m];
+    r[0]++; c[0]++;
+    int x = 0, y = 0;
+    for (int i = 0; i < n+m-2; i++) {
+        if (s.charAt(i) == 'R') y++;
+        else x++;
+        r[x]++; c[y]++;
+    }
+    TreeMap&lt;Integer, Long> rcnt = new TreeMap&lt;Integer, Long>();
+    TreeMap&lt;Integer, Long> ccnt = new TreeMap&lt;Integer, Long>();
+    TreeMap&lt;Integer, Long> cnt = new TreeMap&lt;Integer, Long>();
+    for (int i = 0; i < n; i++) {
+        inc(r[i], 1, rcnt);
+    }
+    for (int i = 0; i < m; i++) {
+        inc(c[i], 1, ccnt);
+    }
+    Set<Integer> rvals = rcnt.keySet(), cvals = ccnt.keySet();
+    // for (Integer i : rvals) {
+    //     System.out.println("Rvals " + i + " " + rcnt.get(i));
+    // }
+    // for (Integer i : cvals) {
+    //     System.out.println("Cvals " + i + " " + ccnt.get(i));
+    // }
+    for (Integer i : rvals) {
+        for (Integer j : cvals) {
+            int k = i+j;
+            inc(k, (long)rcnt.get(i) * (long)ccnt.get(j), cnt);
+        }
+    }
+    x = 0; y = 0;
+    inc(r[0]+c[0], -1, cnt);
+    inc(r[0]+c[0]-1, 1, cnt);
+    for (int i = 0; i < n+m-2; i++) {
+        if (s.charAt(i)=='R') y++;
+        else x++;
+        inc(r[x]+c[y], -1, cnt);
+        inc(r[x]+c[y]-1, 1, cnt);
+    }
+    long k = (long)n*m-1;
+    Set&lt;Integer> vals = cnt.keySet();
+    long ans = 0;
+    for (Integer i : vals) {
+        long icnt = cnt.get(i);
+        // System.out.println("" + i + " " + icnt + " " + k + " " + sum(k-icnt, k));
+        ans += (sum(k-icnt, k) * i)%MOD;
+        k -= icnt;
+    }
+    ans %= MOD;
+    if (ans < 0) ans += MOD;
+    return (int)ans;
+}
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="https://www.codechef.com/PCFL2021/problems/PRETENTIOUS">Problem 11</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// Solved By Maxwell Zen And Mohammad Khan
+public static boolean vis[], beat[];
+
+public static int unbeatable(int n, int[][] pvals, int[] out) {
+    for (int i = 0; i < n; i++) out[i]--;
+    vis = new boolean[n];
+    beat = new boolean[n];
+    int ans = 0;
+    for (int i = 0; i < n; i++) {
+        int v1 = pvals[i][0];
+        int c1 = pvals[i][1];
+        int c = out[i];
+        vis[i] = true;
+        while (!vis[c]) {
+            int v2 = pvals[c][0];
+            int c2 = pvals[c][1];
+            if (v1 <= v2 && c1 <= c2 && (v1 != v2 || c1 != c2)) {
+                beat[i] = true;
+                break;
+            }
+            vis[c] = true;
+            c = out[c];
+        }
+        c = i;
+        while (vis[c]) {
+            vis[c] = false;
+            c = out[c];
+        }
+        if (!beat[i]) ans++;
+    }
+    return ans;
+}
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <h2><a href="https://www.codechef.com/PCFL2021/problems/NEWPARK">Problem 12</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// WILL BE HERE SOON
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+        </fieldset>
+    </div>
+</body>

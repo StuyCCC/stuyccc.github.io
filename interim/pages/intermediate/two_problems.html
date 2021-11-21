@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="../template.css" type="text/css">
-    <link rel="icon" href="../../data/favicon.ico">
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
 
     <!--KaTeX in <script type="math/tex"> tags -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
@@ -9,28 +10,16 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
-    <script src="../../data/highlight.min.js"></script>
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
     <title>StuyCCC</title>
 </head>
 <body>
-    <div id="side">
-        <div id="icon">
-            <h1><a href="../../../index.html">
-                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
-            </a></h1>
-        </div>
-        <br>
-        <p><a href="../about.html">about</a></p>
-        <p><a href="../calendar.html">calendar</a></p>
-        <p><a href="../lessons.html">lessons</a></p>
-        <p><a href="../problems.html">problems</a></p>
-        <p><a href="../resources.html">resources</a></p>
-    </div>
+    <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-08</h4>
+        <h4>Last Updated 2021-11-21</h4>
         <fieldset>
             <legend>TWO MORE PROBLEMS</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -47,7 +36,7 @@
             We can iterate through the string of parentheses incrementing <code>c</code> if we see a "(" and decrementing it if we see a ")". <br><br>
             If <code>c</code> is ever negative that means there is a ")" with no "(" to match it.<br>
             If after iterating through the entire string <code>c</code> is positive, then there is an unmatched "(".<br>
-            
+
             If at the end <code>c</code> is zero and was never negative throughout the algorithm, then every "(" and ")" has a match.<br><br>
 
             Implementation will be omitted because of its simplicity (I believe in you to be able to figure it out).
@@ -56,27 +45,27 @@
             <h3>Majority Element</h3>
             <p>
             Given some array, <code>A</code>, of length <script type="math/tex">n</script>, determine if there exist some element of <code>x</code> in <code>a</code> such that
-            the frequency of <code>x</code> (number of times <code>x</code> appears) is greater than <script type="math/text">\frac{n}{2}</script>. 
+            the frequency of <code>x</code> (number of times <code>x</code> appears) is greater than <script type="math/text">\frac{n}{2}</script>.
             In other words, determine if there exist a majority element.<br><br>
             For example, if <code>A = [1,2,3,2,2]</code> then <code>2</code> is the majority element.<br>
             If <code>A = [1,4,3]</code> then there is no majority element.
             </p>
             <p>
             First notice that if an element, <code>x</code> is the majority element then pairing up all the <code>x</code>s, each <code>x</code> with a non-<code>x</code>,
-            will leave at least one <code>x</code> unpaired. 
+            will leave at least one <code>x</code> unpaired.
             For example, if <code>A = [1,3,5,2,2,2,2]</code> we could have the pairings <code>(1,2), (3,2), (5,2)</code> and there would be <code>2</code> left over.<br><br>
             Also notice that if instead of pairing up an element with <code>x</code> we just paired it up with something distinct from itself,
             after doing all of these pairings if a majority element existed, that would be the element left over. <br>
             Using the same example as before, we could have created the pairings <code>(1,3), (2,5)</code> and had 3 left over <code>2</code>s.<br><br>
 
             Now all we need to do is simulate pairing up unique elements and then seeing what element is left over.
-            We know that if there was a majority element, then the element left over must be it. 
+            We know that if there was a majority element, then the element left over must be it.
             However, if there was no majority element then what is leftover is random.
             Therefore after seeing what is left over after pairing up unique elements we check to see if what is left over is the majority element.<br><br>
 
             To simulate pairing up unique elements, we will iterate though <code>A</code> keeping track if we have anything we can pair.
-            Precisely, we will have a counter variable and another variable to represent a type of element. 
-            The counter will keep track of how many elements of a certain type we have seen and not paired. 
+            Precisely, we will have a counter variable and another variable to represent a type of element.
+            The counter will keep track of how many elements of a certain type we have seen and not paired.
             The other variable will represent the type of element which we can pair with something.<br><br>
 
             If the counter is zero we let the variable representing element type equal the next element we encounter.
@@ -108,12 +97,12 @@
                 if x == A[i]:
                     freq += 1
 
-            if freq > n/2 then x is a majority element, 
+            if freq > n/2 then x is a majority element,
             else a majority element does not exist
             </pre></code>
             <h4>Note</h4>
             <p>
-            This algorithm is called the <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm">Boyer-Moore majority vote algorithm</a>. 
+            This algorithm is called the <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm">Boyer-Moore majority vote algorithm</a>.
             That is a like to the wikipedia page, it has a different description and explanation of the algorithm then what I put here. It's worth taking a look at.
             The algorithm isn't really something to memorize, like in a competition you wouldn't need to be able to be able to recall it and write it out.
             But it is something to keep in mind exists, and to understand so if you maybe you could figure it out if you so desired to.

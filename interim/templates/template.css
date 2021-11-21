@@ -74,11 +74,18 @@ img.logo:hover {
     position: relative;
 }
 
+legend {
+    color: #d65d0e;
+}
+
 fieldset {
     margin-top: 1em;
     margin-bottom: 1em;
 }
 
-legend {
-    color: #d65d0e;
+details {
+    border: 3px;
+    border-style: solid;
+    border-color #83a598;
+    padding: 0.5em;
 }

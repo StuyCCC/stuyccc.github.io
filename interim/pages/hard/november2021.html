@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="../template.css" type="text/css">
-    <link rel="icon" href="../../data/favicon.ico">
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
 
     <!--KaTeX in <script type="math/tex"> tags -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
@@ -9,32 +10,73 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../../data/gruvbox-dark-pale.min.css">
-    <script src="../../data/highlight.min.js"></script>
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
 
     <title>StuyCCC</title>
 </head>
 <body>
-    <div id="side">
-        <div id="icon">
-            <h1><a href="../../../index.html">
-                <img class="logo" src="../../data/CCCLogo.png" alt="CCC logo" width="142px">
-            </a></h1>
-        </div>
-        <br>
-        <p><a href="../about.html">about</a></p>
-        <p><a href="../calendar.html">calendar</a></p>
-        <p><a href="../lessons.html">lessons</a></p>
-        <p><a href="../problems.html">problems</a></p>
-        <p><a href="../resources.html">resources</a></p>
-    </div>
+    <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-13</h4>
+        <h4>Last Updated 2021-11-21</h4>
         <fieldset>
             <legend>HARD NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a href="../writeups/pclassicfall2021">Problem 20</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Today was the day of the PClassic contest so we didn't do a regular POTD. Instead, you can go check out the writeup linked above and try to solve some PClassic problems.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1550/C">Problem 19</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Notice that a triple of points a, b, c is only bad if one of them lies in the rectangle formed by the other two points. Without loss of generality lets assume a and c are the corners of the rectangle. If b is outside the rectangle of a,c then dist(a,b) + dist(b,c) > dist(a,c), so this is a valid triple, but if b is inside dist(a,b) + dist(b,c) = dist(a,c), which makes it a bad triple.</p>
+                <p>Now lets define the points as they are in the problem a = (x,i), b = (y,q), c = (z,r) where i, q, r are indices. We can see that if a bad situation were to occur that would mean that (x <= y <= z or x >= y >= z) and (i <= j <= k or i >= j >= k). However, notice that since i, j, k are indices we only need to look at the situation were i < j < k, because if we also looked at the situation where i > j > k, we would start overcounting.</p>
+                <p>Now look at our first condition we can rephrase that as if there are 3 non-decreasing or 3 non-increasing numbers in order (not necessarily adjacent to each other) in a subarray, then the subarray is invalid because those numbers can form a bad triple. Now notice that because we want this condition to be true, we can limit our subarray size to 4. If there is a subarray of size 5 it is guaranteed to have 3 non-increasing or 3 non-decreasing (you can prove this yourself by bashing it out).</p>
+                <p>So finally our problem reduces to checking all size 1, 2, 3, 4 subarrays in the original array, to see if they have a bad triple and if they don't add them to a count, and then at the end of the program print the count.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1237/C1">Problem 18</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Realize that n <= 2000, which means that we can have up to an n^2 solution for this problem. I am going to give the n^2 solution I used, and then prove that it is right. The solution that I used, is that n/2 times in a row I choose an arbitrary point x that hasn't been removed, then I choose the closest point to x that hasn't been removed yet, lets call it y. I choose these two points to be the pair that I remove, and this pair always work.</p>
+                <p>Now lets see why. y is the closest point to x and now they form a bounding box being the top right and bottom left corners respectively. If a point was to be found in the bounding box, then that point would be closer to x than y is (because y is the farthest point in the bounding box from x). However we know that there is no point closer to x than y because we defined y to be the closest point. So the bounded box is always empty and we can always remove this pair of points, and our strategy works out in the end.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/507/B">Problem 17</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Lets call the euclidean distance between the two centers d (ie sqrt((x2-x1)^2 + (y2-y1)^2)). Notice that the maximum distance you can shift the center of the circle by is 2*R per move (done by rotating the circle by 180 degrees from any pin position). So we can see that it is optimal to move as much as possible until we are within 2*R of the center we want to find. Now notice that when we are within 2*R distance and not already at the end point, we can shift to the new center in one move (shown in diagram below). So now we can see that our optimal strategy leads to an answer of ceil(d/(2*R)).</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1458/A">Problem 16</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This problem can be easily solved if we know some GCD rules. GCD(x-y,y) = GCD(x,y), and this logic works for all arguments, so GCD(x,y,z) = GCD(x-y,y,z). Now notice that the answer we are looking for is GCD(a1+bj, a2+bj, ..., an+bj). We can subtract a1+bj from each term but the first and see that this is equal to GCD(a1+bj, a2-a1, ..., an-a1). We can precalculate GCD(a2-a1, ..., an-a1) and call it G. Now we have that the answer to every query is GCD(a1+bj, G). Note that to get G we might have to use GCD(x, 0) = 0. Also note that if a1 is not the smallest element in the sequences this does not work because then you get the GCD of a negative number.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1167/C">Problem 15</a>
+            <details>
+                <summary>Solution</summary>
+                <p>To solve this problem we can just use the strategy of connected components where once we have a graph set up, for every not visited yet we can start a dfs from the user and everything that user can connect to will belong to the same connected component, and if they are in a certain connected component they can share information to everyone in that connected component, so for each user you just have to take the size of the connected component the user is inside of.</p>
+                <p>Now we that we have the strategy we actually have to start creating the graph. Notice that if we add a edge from everyone to everyone else in each of the m groups this has n^2 edges which is too slow (to visualize this consider the case of only 1 group containing all people). So a better strategy is just to connect only adjacent people in each group as this still represents the fact that all information can spread just in a bit longer matter (but length of spread doesn't matter, only amount does). This observation reduces the complexity from n^2 to sum of k_i for each k_i in the m groups. Now that we have the optimization and the strategy we can easily solve the problem.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc194/tasks/abc194_e">Problem 14</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOOn</p>
+            </details>
+            <br>
+            <a href="../writeups/pclassicfall2021">Problem 13</a>
+            <details>
+                <summary>Solution</summary>
+                <p>For some reason, we didn't give a POTD today, so instead you can go check out our pclassic writeups for some cool problems.</p>
+            </details>
+            <br>
             <a href="https://codeforces.com/problemset/problem/1514/C">Problem 12</a>
             <details>
                 <summary>Solution</summary>
