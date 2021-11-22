@@ -339,18 +339,14 @@ public static int pandaLand(int n, int m, String s) {
         else x++;
         r[x]++; c[y]++;
     }
-    TreeMap&lt;Integer, Long> rcnt = new TreeMap&lt;Integer, Long>();
-    TreeMap&lt;Integer, Long> ccnt = new TreeMap&lt;Integer, Long>();
-    TreeMap&lt;Integer, Long> cnt = new TreeMap&lt;Integer, Long>();
-    for (int i = 0; i < n; i++) {
-        inc(r[i], 1, rcnt);
-    }
-    for (int i = 0; i < m; i++) {
-        inc(c[i], 1, ccnt);
-    }
-    Set&lt;Integer> rvals = rcnt.keySet(), cvals = ccnt.keySet();
-    for (Integer i : rvals) {
-        for (Integer j : cvals) {
+    TreeMap&lt;Integer, Long> rcnt, ccnt, cnt;
+    rcnt = new TreeMap&lt;Integer, Long>();
+    ccnt = new TreeMap&lt;Integer, Long>();
+    cnt = new TreeMap&lt;Integer, Long>();
+    for (int i = 0; i < n; i++) inc(r[i], 1, rcnt);
+    for (int i = 0; i < m; i++) inc(c[i], 1, ccnt);
+    for (Integer i : rcnt.keySet()) {
+        for (Integer j : ccnt.keySet()) {
             int k = i+j;
             inc(k, (long)rcnt.get(i) * (long)ccnt.get(j), cnt);
         }
@@ -365,9 +361,8 @@ public static int pandaLand(int n, int m, String s) {
         inc(r[x]+c[y]-1, 1, cnt);
     }
     long k = (long)n*m-1;
-    Set&lt;Integer> vals = cnt.keySet();
     long ans = 0;
-    for (Integer i : vals) {
+    for (Integer i : cnt.keySet()) {
         long icnt = cnt.get(i);
         ans += (sum(k-icnt, k) * i)%MOD;
         k -= icnt;
@@ -387,12 +382,10 @@ public static int pandaLand(int n, int m, String s) {
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PRETENTIOUS">Problem 11</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-java">
-// Solved By Maxwell Zen And Mohammad Khan
-public static boolean vis[], beat[];
-
+                <pre><code class="language-java">// Solved By Maxwell Zen And Mohammad Khan
 public static int unbeatable(int n, int[][] pvals, int[] out) {
     for (int i = 0; i < n; i++) out[i]--;
+    boolean[] vis, beat;
     vis = new boolean[n];
     beat = new boolean[n];
     int ans = 0;
@@ -404,7 +397,7 @@ public static int unbeatable(int n, int[][] pvals, int[] out) {
         while (!vis[c]) {
             int v2 = pvals[c][0];
             int c2 = pvals[c][1];
-            if (v1 <= v2 && c1 <= c2 && (v1 != v2 || c1 != c2)) {
+            if (v1 <= v2 && c1 <= c2 && (v1!=v2 || c1!=c2)) {
                 beat[i] = true;
                 break;
             }
