@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-11-21</h4>
+        <fieldset>
+            <legend>IO</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Python</h3>
+            <p>
+                IO in python comes down to using the <code class="language-python">input()</code> function and using python's string parsing.
+            </p>
+            <p>
+                <code class="language-python">input()</code> returns a string containing one line of input from standard in.
+                Standard in is one way a program communicates with the enviorment around it. 
+                When you run a program, <code class="language-python">input()</code> will cause the program to wait until a line of text is found in standard in.
+            </p>
+            <p>
+                If you are just running a python program in terminal with the command <code>python program.py</code>, it will wait for you to type some characters
+                and then press enter (or return, or whatever will input a new line). At that time, <code>input()</code> will return the string of characters you typed.
+            </p>
+            <pre><code class="language-python">
+                s = input()
+                # run the program and type "hello" 
+                # then press enter/return/whatever the equivalent for you is
+                print(s)
+                # hello is printed as s is the string "hello"
+            </code></pre>
+            <p>
+                Now that you have a string, the most common things to do are to use <code>strip()</code> to get rid of trailing whitespace 
+                and <code>split()</code> if you want to turn a string of space separated elements of a list into a list.
+                Use list/generator comprehension if you can.
+            </p>
+            <p>
+                I'll follow with writing some examples of python IO:
+            </p>
+            <pre><code class="language-python">
+                # the input is in the format
+                # N
+                # where N is an integer
+                N = int(input())
+
+                # input() will read from standard in the string representation of N
+                # int() will parse that string for the integer N, and return that integer
+            </code></pre>
+
+            <pre><code class="language-python">
+                # the input is in the format
+                # N M
+                # where N and M are both integers
+                N, M = [int(x) for x in input().split()]
+
+                # this uses input() to get the two integers in their string representation
+                # then split turns those integers into a list ['N', 'M']
+                # using list comprehension this turns the list [N, M]
+                # notice N and M are integers now
+                # finally these get set to the correct variables, N and M
+            </code></pre>
+            <pre><code class="language-python">
+                # the input is a list of integers of format
+                # a1 a2 a3 ... an
+                # ai is an integer 
+                A = [int(x) for x in input().split()]
+
+                # this is similar to the last example
+                # input() will get the string of space separated integers
+                # split() will turn that string into an array of strings representing integers
+                # using list comprehension and int
+                # we turn this array of strings into an array of integers
+            </code></pre>
+            <h4>Final Note</h4>
+            <p>
+                Just using <code>input()</code> can be slow, so instead we use <code>sys.stdin.readline</code>.
+                This doesn't do exactly the same thing as <code>input()</code> 
+                (it is one of those things to use for competitive programming but not in general)
+                but for the use of competitive programming it is fine. This amounts to adding the following
+                to the your program:
+            </p>
+            <pre><code class="language-python">
+                import sys
+                input = sys.stdin.readline
+            </code></pre>
+            <p>
+                Some more resources (outside the python docs themselves obviously) are <a href="https://train.usaco.org">USACO Train</a>
+                with an early page on file IO for old USACO questions and
+                <a href="https://usaco.guide/general/input-output?lang=py">this</a> page of usaco.guide for some more information on IO for various langauges.
+            </p>
+            <h3>Java To Be Added Soon</h3>
+        </fieldset>
+    </div>
+</body>
