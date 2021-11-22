@@ -28,7 +28,8 @@
             <h2><a href="">Problem 01</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-java">// written by Maxwell Zen
+                <pre><code class="language-java">
+// written by Maxwell Zen
 public static String reversedMessage(String message, int k) {
     int n = message.length();
     StringBuilder a;
@@ -48,7 +49,8 @@ public static String reversedMessage(String message, int k) {
             <h2><a href="">Problem 02</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-java">// written by Maxwell Zen
+                <pre><code class="language-java">
+// written by Maxwell Zen
 public static String decode(String s, int k) {
     k %= 26;
     if (k&lt;0) k += 26;
@@ -72,7 +74,8 @@ public static String decode(String s, int k) {
             <h2><a href="">Problem 03</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-java">// written by Maxwell Zen
+                <pre><code class="language-java">
+// written by Maxwell Zen
 public static int netTemperature(int n, int[][] temperatures) {
     int k = temperatures.length;
     int[] temp = new int[n];
@@ -100,7 +103,8 @@ public static int netTemperature(int n, int[][] temperatures) {
             <h2><a href="">Problem 04</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-java">// written by Maxwell Zen
+                <pre><code class="language-java">
+// written by Maxwell Zen
 public static boolean checkMessages(String s, String t) {
     char[] matching = new char[26];
     int n = s.length();
@@ -161,7 +165,12 @@ public static int unbeatable(int[][] peacocks) {
             <br>
             <details>
                 <summary>Explanation</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>The number of unbeatable peacocks is the number of all peacocks which can't be beat.
+                    Therefore we can loop through all pairs of peacocks and check if any one peacock in the pair beats the other.
+                    We keep a beat array such that <code>beat[i] = boolean representing if peacock i was beat</code>.
+                    When a peacock in the pair is beat, we set <code>beat[i] = true</code>.
+                    We then count the amount of trues in <code>beat</code> and subtract that from the total number of peacocks.
+                </p>
             </details>
             <br>
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PUUPUU">Problem 06</a></h2>
@@ -202,7 +211,7 @@ public static boolean magicSquare(int[][] grid) {
             <br>
             <details>
                 <summary>Explanation</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>The ism function determines whether or not a magic square with a top left corner of i,j exists. It does this by find the sum of the first row, and then looping through the rest of the rows, the columns, and the two diagonals to check if the sum of those are the same as the sum of the first row. If there exists one that isn't the same the square isn't a magic square, else it is a magic square. The code then loops through all valid top left positions in the graph and checks if there is at least one magic square.</p>
             </details>
             <br>
             <h2><a href="https://www.codechef.com/PCFL2021/problems/CACTUSFARM">Problem 07</a></h2>
@@ -233,6 +242,7 @@ public static boolean matchable(String initialPattern, String finalPattern) {
             }
         }
     }
+
     for (int i = 0; i < fl; i++) {
         if (temp[i] != finalPattern.charAt(i)) return false;
     }
@@ -243,7 +253,10 @@ public static boolean matchable(String initialPattern, String finalPattern) {
             <br>
             <details>
                 <summary>Explanation</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>The idea of this problem is that you are given an initial pattern and you have to copy it onto substrings of a blank template pattern, and you have to see if through repetitions of this process if you can make the template into the final pattern. The first observation is that there are only fl-il positions where you can move the initial pattern to and moving the pattern to the same position multiple times does not have any extra effect, so this means that we only have to loop through the fl-il positions to see if we can somehow get our final pattern.</p>
+                <p>Now that we are looping through the initial positions, we have to find a way to see if we can copy the initial pattern without messing up the pattern. Lets consider position j in the initial pattern and position i+j in the final pattern (this is the jth position of the substring of final pattern starting at position i). Consider the case of final[i+j] = 0, if initial[j] = 0, this is valid to copy over because they are the same, but if initial[j] = 1, we can't copy this over without never achieving the final pattern. Now consider final[i+j] = 1, if initial[j] = 0, then this is valid because we can always turn that 0 into a 1 later, and if initial[j] = 1, this is also valid because now final and initial match.</p>
+                <p>We can now check all positions in the initial pattern and the substring of the final pattern, and if all these positions can be validly copied over, then we can greedily decide to copy the initial pattern over to the template. Also notice that the problem says that the initial pattern must be copied over at position 0, so we implement this change in the <code> for (int i = 0; i < il; i++) temp[i] = initialPattern.charAt(i);</code> loop.</p>
+                <p>Now that we have all our changes made, we just have to check if this template is now equal to the final pattern, and if it is return true else return false.</p>
             </details>
             <br>
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PEACFULPOLES">Problem 08</a></h2>
@@ -265,7 +278,7 @@ public static int maxPoints(String s, String t) {
 
     for (int i = m-1; i >= 0; i--) {
         for (int q = n-1; q >= 0; q--) {
-            int val = DP[i+1][q+1] + (s.charAt(i) == t.charAt(q) ? 1 : -1)
+            int val = DP[i+1][q+1] + (s.charAt(i) == t.charAt(q) ? 1 : -1);
             DP[i][q] = Math.max(val, Math.max(DP[i+1][q]-2, DP[i][q+1]-2));
         }
     }
@@ -277,7 +290,8 @@ public static int maxPoints(String s, String t) {
             <br>
             <details>
                 <summary>Explanation</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>To solve this problem, we first need to solve a classic problem called Edit Distance, which can be explained throughly <a href="https://usaco.guide/CPH.pdf">here</a>, on page 74-75. Now lets see how this problem relates to our current problems. The sequences of cards being put down can be represented a string of either spaces (represented as _) or the characters themselves. If two characters at the same position are the same we add 1 point to our answer, if they are different we subtract 1 point, and if one is a space and one is a character we subtract 2 points. We can see this is just an application of the edit distance between these two strings, where instead of minimizing the score, we are trying to maximize it.</p>
+                <p>So we do edit distance word for word, until we get do the DP transition. The transition given in the book is <code>DP[i][j] = min(DP[i-1][j-1]+(s[i]==t[j] ? 0 : 1), min(DP[i-1][j]+1, DP[i][j-1]+1))</code>, and through the explanation of points distribution above, we get the following slightly different DP transition of the following <code>DP[i][j] = max(DP[i-1][j-1] + (s[i] == t[i] ? 1 : -1), max(DP[i-1][j]-2,DP[i][j-1]-2))</code>. Notice that the code above is also edit distance it is just slightly different because I changed the axes.</p>
             </details>
             <br>
             <h2><a href="https://www.codechef.com/PCFL2021/problems/POLRBEARTEST">Problem 09</a></h2>
