@@ -28,53 +28,105 @@
             <h2><a href="">Problem 01</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
-// WILL BE HERE SOON
+                <pre><code class="language-java">// written by Maxwell Zen
+public static String reversedMessage(String message, int k) {
+    int n = message.length();
+    StringBuilder a;
+    a = new StringBuilder(message.substring(n-k, n));
+    a.reverse();
+    String ans = message.substring(0, n-k) + a.toString();
+    return ans;
+}
                 </code></pre>
             </details>
             <br>
             <details>
                 <summary>Explanation</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>It would be nice if Java Strings had a reverse operation - unfortunately, they don't. Luckily, the StringBuilder class offers this functionality. We can create a StringBuilder instance using the substring we want to reverse, then call the reverse() method, then convert it back into a String to add to the non-reversed section of the message.</p>
             </details>
             <br>
             <h2><a href="">Problem 02</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
-// WILL BE HERE SOON
+                <pre><code class="language-java">// written by Maxwell Zen
+public static String decode(String s, int k) {
+    k %= 26;
+    if (k&lt;0) k += 26;
+    String ans = "";
+    for (int i = 0; i &lt; s.length(); i++) {
+        char c = s.charAt(i);
+        c -= k;
+        if (c &lt; 'a') c += 26;
+        ans += c;
+    }
+    return ans;
+}
                 </code></pre>
             </details>
             <br>
             <details>
                 <summary>Explanation</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>The first operation we must do is make sure k is a number between 0 and 25. We can use the mod operation to ensure k is a number between -25 and 25, then we can add 26 if k is negative to achieve our result. Then, for each character in the string, we can subtract k from the character. In order to account for overflow, we can add 26 to the character if it is no longer a letter of the alphabet.</p>
             </details>
             <br>
             <h2><a href="">Problem 03</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
-// WILL BE HERE SOON
+                <pre><code class="language-java">// written by Maxwell Zen
+public static int netTemperature(int n, int[][] temperatures) {
+    int k = temperatures.length;
+    int[] temp = new int[n];
+    for (int i = 0; i < k; i++) {
+        int target = temperatures[i][1];
+        int change = temperatures[i][2];
+        temp[target] += change;
+    }
+    int ans = 0;
+    for (int i = 0; i < n; i++) {
+        if (temp[i]==0) {
+            ans++;
+        }
+    }
+    return ans;
+}
                 </code></pre>
             </details>
             <br>
             <details>
                 <summary>Explanation</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>We can keep track of the temperature of each dinosaur. For each ball, we add the temperature of the ball to the entry representing the dinosaur hit by the ball. Finally, we can count how many dinosaur have not changed temperature -- that is, how many entries are equal to zero.</p>
             </details>
             <br>
             <h2><a href="">Problem 04</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
-// WILL BE HERE SOON
+                <pre><code class="language-java">// written by Maxwell Zen
+public static boolean checkMessages(String s, String t) {
+    char[] matching = new char[26];
+    int n = s.length();
+    for (int i = 0; i < n; i++) {
+        char c = (char)(s.charAt(i) - 'a');
+        if (matching[c] == 0) {
+            matching[c] = t.charAt(i);
+        } else if (matching[c] != t.charAt(i)) {
+            return false;
+        }
+    }
+    for (int i = 0; i < 26; i++) {
+        if (matching[i] != 0) {
+            for (int j = i+1; j < 26; j++) {
+                if (matching[i]==matching[j]) return false;
+            }
+        }
+    }
+    return true;
+}
                 </code></pre>
             </details>
             <br>
             <details>
                 <summary>Explanation</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>We create an array to record the character that corresponds to each letter in s. As we loop through the string, if we encounter a letter for the first time, the set the matching for that letter. Else, if we've already encountered that character and it has been matched with something different, we return false. At the end, we need to make sure that no two characters in s have been matched with the same character in t, so we loop through every pair of characters to make sure that they are different.</p>
             </details>
             <br>
             <h2><a href="https://www.codechef.com/PCFL2021/problems/POMPOUS">Problem 05</a></h2>
@@ -115,7 +167,7 @@ public static int unbeatable(int[][] peacocks) {
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PUUPUU">Problem 06</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
+                <pre><code class="language-java">
 // Solved By Alvin Li
 public static boolean ism(int[][] grid, int i, int j) {
     // i,j is top left corner
@@ -156,7 +208,7 @@ public static boolean magicSquare(int[][] grid) {
             <h2><a href="https://www.codechef.com/PCFL2021/problems/CACTUSFARM">Problem 07</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
+                <pre><code class="language-java">
 // Solved By Mohammad Khan And Alvin Li
 public static boolean matchable(String initialPattern, String finalPattern) {
     int il = initialPattern.length();
@@ -181,8 +233,6 @@ public static boolean matchable(String initialPattern, String finalPattern) {
             }
         }
     }
-    // String tmp = new String(temp);
-    // System.out.println(tmp);
     for (int i = 0; i < fl; i++) {
         if (temp[i] != finalPattern.charAt(i)) return false;
     }
@@ -199,7 +249,7 @@ public static boolean matchable(String initialPattern, String finalPattern) {
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PEACFULPOLES">Problem 08</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
+                <pre><code class="language-java">
 // Solved By Mohammad Khan
 public static int maxPoints(String s, String t) {
     int m = s.length(), n = t.length();
@@ -233,7 +283,7 @@ public static int maxPoints(String s, String t) {
             <h2><a href="https://www.codechef.com/PCFL2021/problems/POLRBEARTEST">Problem 09</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
+                <pre><code class="language-java">
 // Solved By Maxwell Zen, Alvin Li, And Jeremy Ku-Benjet
 public static int testing(int bears, int testtime, int totaltime) {
     int k = totaltime / testtime;
@@ -256,7 +306,7 @@ public static int testing(int bears, int testtime, int totaltime) {
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PANDALAND">Problem 10</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
+                <pre><code class="language-java">
 // Solved By Maxwell Zen
 public static long MOD = 1000000007;
 
@@ -299,12 +349,6 @@ public static int pandaLand(int n, int m, String s) {
         inc(c[i], 1, ccnt);
     }
     Set&lt;Integer> rvals = rcnt.keySet(), cvals = ccnt.keySet();
-    // for (Integer i : rvals) {
-    //     System.out.println("Rvals " + i + " " + rcnt.get(i));
-    // }
-    // for (Integer i : cvals) {
-    //     System.out.println("Cvals " + i + " " + ccnt.get(i));
-    // }
     for (Integer i : rvals) {
         for (Integer j : cvals) {
             int k = i+j;
@@ -325,7 +369,6 @@ public static int pandaLand(int n, int m, String s) {
     long ans = 0;
     for (Integer i : vals) {
         long icnt = cnt.get(i);
-        // System.out.println("" + i + " " + icnt + " " + k + " " + sum(k-icnt, k));
         ans += (sum(k-icnt, k) * i)%MOD;
         k -= icnt;
     }
@@ -344,7 +387,7 @@ public static int pandaLand(int n, int m, String s) {
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PRETENTIOUS">Problem 11</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
+                <pre><code class="language-java">
 // Solved By Maxwell Zen And Mohammad Khan
 public static boolean vis[], beat[];
 
@@ -388,7 +431,7 @@ public static int unbeatable(int n, int[][] pvals, int[] out) {
             <h2><a href="https://www.codechef.com/PCFL2021/problems/NEWPARK">Problem 12</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
+                <pre><code class="language-java">
 // WILL BE HERE SOON
                 </code></pre>
             </details>
