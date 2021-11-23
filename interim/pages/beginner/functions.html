@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-11-23</h4>
+        <fieldset>
+            <legend>FUNCTIONS</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Function Definitions</h3>
+            <p>As mentioned before, a function takes a set of (possibly 0) inputs, does something, and returns a set of (possibly 0) outputs. If it does take inputs and produce outputs, we need to specify what data type they are. For example: </p>
+            <pre><code class="language-cpp">
+int sum(int a, int b) {
+    return a+b;
+}
+            </code></pre>
+            <p>Is a function that accepts two integer inputs and outputs another integer (their sum).</p>
+
+            <h3>Type Casting</h3>
+            <p>Notice that compatible typecasting is possible with functions. For example:</p>
+            <pre><code class="language-cpp">
+double sum(int a, int b) {
+    return a+b;
+}
+            </code></pre>
+            <p>Is perfectly valid, and it just converts the integer sum into a double before returning that double.</p>
+            <p>Type casting is a method of converting one type of data into another, we have already seen it in the example of dividing an integer by a double and getting a double back. What happens here is that the compiler automatically type casts the integer into a double and then divides the two doubles.</p>
+            <p>However we can also specify the casting that we want ourselves by doing the following, datatype name = (datatype) value or datatype name = datatype(value). For example: </p>
+            <pre><code class="language-cpp">
+int x = (int) 5.5;
+int y = int(5.5);
+            </code></pre>
+
+            <h3>Functions Continued</h3>
+            <p>Of course, the function can also accept no inputs and not produce an output. An example:</p>
+            <pre><code class="language-cpp">
+void print_bob () {
+    cout << “bob\n”;
+}
+            </code></pre>
+            <p>All this does is print the string “bob” with a newline when called. We specify that it produces no output by setting it as ‘void’. </p>
+            <p>Functions can call other functions. Recall our sum function; we can use it elsewhere:</p>
+            <pre><code class="language-cpp">
+int doublesum (int a, int b) {
+    return 2 * sum (a, b);
+}
+            </code></pre>
+            <p>In general, the parameters (the stuff that goes inside the parentheses) are like ingredients to a cake, and our function does something with it. Note that when functions are called, the values can be shoved straight into the parentheses, just like in math, when we call, say, f(5). The parameters can be either variables or literals, just make sure they’re the right type or can be cast to the right type.</p>
+
+            <h3>Precedence And Scope</h3>
+            <p>Precedence: a function can only use other functions if the other function is defined above it in the code. That’s why main() is always at the bottom (main is a function too!)—it’s the function that calls all other functions. One way to view precedence is see that the following is invalid: </p>
+            <pre><code class="language-cpp">
+int main() {
+    cout << sum(5, 5) << "\n";
+}
+
+double sum(int a, int b) {
+    return a+b;
+}
+            </code></pre>
+            <p>But the following is valid:</p>
+            <pre><code class="language-cpp">
+double sum(int a, int b) {
+    return a+b;
+}
+
+int main() {
+    cout << sum(5, 5) << "\n";
+}
+            </code></pre>
+            <p>Note that variables defined in a certain function can only be accessed in that certain function and nowhere else. For example: </p>
+            <pre><code class="language-cpp">
+double sum(int a, int b) {
+    int c = 0;
+    return a+b;
+}
+
+int main() {
+    cout << sum(5, 5) << "\n";
+    cout << c << "\n";
+}
+            </code></pre>
+            <p>The above code is invalid because the c is only defined in the sum function and it thus can not be accessed from the main function. This is another application of scope that we described earlier with the for and while loops.</p>
+            <p>You can get around this scope limitation by using global variables, basically variables that are defined outside of a function. They look like the following completely valid code: </p>
+            <pre><code class="language-cpp">
+int c = 17
+
+int main() {
+    cout << c << "\n";
+}
+            </code></pre>
+
+            <h3>Practice</h3>
+            <p>Create a function that calculates exponents a^b, where a and b are positive integers.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int myexp(int a, int b) {
+    // Variable to store our product
+    int prod = 1;
+    // We are representing exponentiation as repeated multiplication.
+    // This loop runs exactly b times.
+    for (int i = 0; i < b; i++) {
+        prod *= a;
+    }
+    // Returning the value
+    return prod;
+}
+
+int main() {
+    // Testing our exponent function
+    cout << myexp(5, 3) << "\n";
+}
+                </code></pre>
+            </details>
+            <p>Create a function that concatenates two input strings a and b, and then prints it.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+void concat(string a, string b) {
+    // Concatenating the two input strings
+    // Into one variable
+    string res = a+b;
+    // Printing the string
+    cout << res << "\n";
+}
+
+int main() {
+    // Testing our concatenation function
+    concat('a', 'b');
+}
+                </code></pre>
+            </details>
+        </fieldset>
+    </div>
+</body>
