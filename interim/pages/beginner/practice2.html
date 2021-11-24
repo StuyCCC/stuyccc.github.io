@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-11-24</h4>
+        <fieldset>
+            <legend>PRACTICE PART 2</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Practice Problems</h3>
+            <p><a href="https://codeforces.com/problemset/problem/617/A">Problem 01</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    cout << (n+4)/5 << "\n";
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>We are trying to find the minimal amount of steps, so it is optimal to try and cover as much distance as possible using as little steps as possible, so this means we will use 5 position forward steps as much as possible until we can't anymore. When we can't move 5 positions forward anymore that means the house is 1 to 4 positions in front of us, which means we can cover it in another step. This method leads to our answer being ceil(x/5), which is equivalent to (x+4)/5 using integer division.</p>
+            </details>
+            <p><a href="https://codeforces.com/problemset/problem/1454/A">Problem 02</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t; cin >> t; while (t--) {
+        int n; cin >> n;
+        for (int i = 1; i < n; i++) {
+            cout << i+1 << " ";
+        }
+        cout << 1 << "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>One way to make a permutation of length n such that no value is equal to its index is to take 1,2,3,...,n and shift it over by 1, which makes 2,3,4,...,n,1. You can easily do this with a for loop and some print statements.</p>
+            </details>
+            <p><a href="https://codeforces.com/problemset/problem/770/A">Problem 03</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, k; cin >> n >> k;
+    string alp = "abcdefghijklmnopqrstuvwxyz";
+    string res = "";
+    for (int i = 0; i < n; i++) {
+        res += alp[i%k];
+    }
+    cout << res << "\n";
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>We have to create a string such that it has a length of n, is made of k distinct lower case letters, and no two adjacent letters are distinct. There are many ways to do this but the most obvious one is to use the first k letters of the alphabet and repeat the sequence until you reach n. For example, n = 7 k = 3 would lead to abcabca. Now this might be a little difficult to implement for a beginner, but this would entail having a string alp = "abcdefghijklmnopqrstuvwxyz" and a string ans = "". You then do for each i in the range 0 to N-1 (a total of n times) and add to ans, alp[i%k]. If you don't understand why this works try performing a small version of this loop by hand and seeing what occurs.</p>
+            </details>
+            <p><a href="https://codeforces.com/problemset/problem/664/A">Problem 04</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string a, b; cin >> a >> b;
+    if (a == b) cout << a << "\n";
+    else cout << "1" << "\n";
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>We have to find the gcd of the numbers from a, a+1, ..., b-1, b. The first observation to solve this problem is to realize that the of gcd(a, a+1) = 1. And the gcd of 1 and any number is also 1. So if we have more than 1 value in in our interval then the answer is 1. Now lets see what happens if the two bounds are the same, gcd(n, n) = n, so if the two numbers are the same the answer is n. So input two strings into your program, compare the two, if they are the same return the string, else return 1.</p>
+            </details>
+            <p><a href="https://atcoder.jp/contests/abc179/tasks/abc179_b">Problem 05</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int n; cin >> n;
+	int cnt = 0;
+  	for (int i = 0; i < n; i++) {
+    	int a, b; cin >> a >> b;
+	    if (a == b) cnt++;
+	    else cnt = 0;
+      	if (cnt >= 3) {
+        	cout << "Yes\n";;
+	        return 0;
+        }
+    }
+  	cout << "No\n";
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>For this problem, make sure to iterate through both of the inputs at the same time, and keep a count variable to store the current size of the equal subarrays of the two inputs. If the two current elements are equal increase count by one, else set count to 0, and if the count variable is ever >=3, you can just break out of the loop and print “Yes”. If this never happens, print “No”. This can be done with a single loop.</p>
+            </details>
+            <p><a href="https://codeforces.com/problemset/problem/1475/A">Problem 06</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t; cin >> t; while (t--) {
+        ll n; cin >> n;
+        while (n > 1) {
+            if (n%2 == 0) n /= 2;
+            else break;
+        }
+        if (n == 1) cout << "NO\n";
+        else cout << "YES\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>The key observation here is that if a number has no odd divisors, then its only prime factors can be 2. In other words, if the number is a power of 2, then the answer is no, otherwise the answer is yes. There are multiple ways to implement this:</p>
+                <ol>
+                    <li><p>probably the most basic one is to keep dividing by 2 until the number is odd, then notice that if the result is 1 the number was a power of 2. </p></li>
+                    <li><p>you can also use a built in method like __builtin_popcount(n) in C++ to find the number of 1's in a number's bit representation (if it's 1, the number is a power of 2). </p></li>
+                    <li><p>there's also a neat bit manipulation trick: n&-n returns the highest power of 2 that divides n (won't go into it in depth, but you can read about it <a href="https://www.quora.com/In-programming-what-does-n-n-return">here</a>). If n is a power of 2, then n&-n == n. </p></li>
+                    <li><p>a similar trick takes advantage of the fact that n&(n-1) erases the lowest 1 bit in n, so if n is a power of 2 then n&(n-1) == 0.</p></li>
+                </ol>
+            </details>
+            <p><a href="https://codeforces.com/problemset/problem/199/A">Problem 07</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    cout << 0 << " " << 0 << " " << n << "\n";
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>There are a couple ways to solve this problem. One method takes advantage of the fact that 0 is a Fibonacci number, so 0 + 0 + F_n = F_n. You could also do something like 0 + F_(n-1) + F_(n-2), which just uses the formula for Fibonacci numbers. Finally, if using zeroes was not allowed, you could use the formula for Fibonacci numbers multiple times, by noticing that F_n = F_(n-1) + F_(n-2) = (F_(n-2) + F_(n-3)) + F_(n-2).</p>
+            </details>
+            <p><a href="https://codeforces.com/problemset/problem/1409/B">Problem 08</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+    int t; cin >> t; while (t--) {
+        ll a, b; cin >> a >> b;
+        ll x, y; cin >> x >> y;
+        ll n; cin >> n;
+        ll a2 = a, b2 = b, n2 = n;
+        ll ans1, ans2;
+        ll e = min(a-x,n);
+        a -= e;
+        n -= e;
+        b -= min(b-y,n);
+        ans1 = a*b;
+        ll f = min(b2-y,n2);
+        b2 -= f;
+        n2 -= f;
+        a2 -= min(a2-x,n2);
+        ans2 = a2*b2;
+        cout << min(ans1,ans2) << "\n";
+    }
+}
+
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>The main observation is to realize that if you decrease one of the numbers a, it is optimal to decrease this number as much as possible, before moving onto b. Lets see why our original product is a*b if we decrease a twice we subtract 2*b from our product, but if we decrease a once then b we subtract b+(a-1) from our product, and finally if we decrease b twice we subtract 2*a from our product, This is a then b or b then a is less optimal because the -1 exists, and making our difference less than it could be.</p>
+                <p>So now we know its better to subtract one completely before moving on to the other. We have two methods to use we completely subtract a, then try to subtract b or completely subtract b, then subtract a. We simulate the answers we get from these two scenarios and then return their minimum.</p>
+            </details>
+            <p><a href="https://codeforces.com/problemset/problem/869/B">Problem 09</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+    ll a, b; cin >> a >> b;
+    if ((b-a) >= 10) cout << 0 << "\n";
+    else {
+        ll ans = 1;
+        for (ll i = a+1; i <= b; i++) {
+            ans *= i;
+            ans %= 10;
+        }
+        cout << ans << "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>Notice that if there is a multiple of 10 between a and b. Then 10 is included in the final product which means the last digit will be 0. To see if 10 is included in the final product we can just check if (b-a) >= 10, if this is true output 0. Now notice that if (b-a) < 10, we can just loop through from a+1 to b and multiply and modulo by 10 to find the final product and output that. </p>
+            </details>
+            <p><a href="https://codeforces.com/problemset/problem/1257/B">Problem 10</a></p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+#include &lt;bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+    int t; cin >> t; while (t--) {
+        ll x, y; cin >> x >> y;
+        if (x == 1) {
+            if (y == 1) cout << "YES\n";
+            else cout << "NO\n";
+        } else if (x == 2 || x == 3) {
+            if (y == 1 || y == 2 || y == 3) cout << "YES\n";
+            else cout << "NO\n";
+        } else cout << "YES\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>If x == 1, realize that you can't perform either of the spells, so the only possible way to output YES is if y == 1, else output NO. Now for x == 2 or x == 3, you can make x either 3 or 2 or 1, but you can't make any moves after this point, so if y == 1 or y == 2 or y == 3 output YES else output NO. Now realize that for any x >= 4, you can obtain any number (test this out in your head), so the output is always YES. These are all the cases that we have to go through for this problem, so now we have officially solved it :).</p>
+            </details>
+        </fieldset>
+    </div>
+</body>

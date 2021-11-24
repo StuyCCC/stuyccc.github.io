@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-11-24</h4>
+        <fieldset>
+            <legend>RECURSION</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Recursion</h3>
+            <p>Recursion is when a function calls itself; it’s a fairly useful construct for problems of a nested nature. For instance, consider the Fibonacci sequence: F_n = F_{n-1} + F_{n-2}, where the first values are F_0 = 0 and F_1 = 1.</p>
+            <p>A function to find the nth fibonacci number should be fairly straightforward:</p>
+            <pre><code>
+int fib(int n) {
+    return fib(n-1) + fib(n-2);
+}
+            </code></pre>
+            <p>But be careful! We didn’t set any limits on n, so the parameter can just keep decreasing forever without bound. It’s extremely easy to accidentally enter into an infinite loop, so we must set a base case, or a case of n in which we already know the answer. Namely, we know that F_0 = 0.</p>
+            <pre><code>
+int fib(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fib(n-1) + fib(n-2);
+}
+            </code></pre>
+            <p>Each recursive function needs to have a base case before entering a recursive step. Always carefully define what f(n) is and how it relates to the subproblems, i.e. if we know f(n-1) and f(something less), how can we get f(n)?</p>
+
+            <h3>Efficiency And Tail Recursion</h3>
+            <p>There is another way to recursively do fibonacci that is many times faster than the first version. You may be wondering what many times faster means, look at the following images of recursive trees for fibonacci to see the efficiency of our original function.</p>
+            <img src="../../data/beginner/Fib1.jpeg" width=520>
+            <img src="../../data/beginner/Fib2.png" width=520>
+            <p>See that the number of recursive calls gets exponentially bigger the higher you go. So although F(5) and even F(10) is done instantly, F(42) takes almost 2 seconds to run, and if we go even higher it can take hundreds of days to solve even 1 number. Luckily, there are many ways to make this recursion faster.</p>
+            <p>One way is called tail-recursion. And it goes like the following. We have a function like the following: </p>
+            <pre><code>
+int fib(int n, int a = 0, int b = 1) {
+    if (n == 0) return a;
+    return fib(n-1, b, a+b)
+}
+            </code></pre>
+            <p>a represents f(n-2), while b represents f(n-1) and to shift these values up to f(n-1) and f(n) we do b and a+b. Instead of calling another fib function to find the values of f(n-1) and f(n-2) we just have them calculated already so this makes it much more efficient.</p>
+            <p>Notice that this only calls 1 extra call per 1 more n while the other does exponentially more, so this is much more efficient. This method is called tail-recursion and is very useful to know. There are other methods of making this more efficient for example we can make fibonacci through matrix multiplication but we ain’t going to get into that right now.</p>
+
+            <h3>Ternary Statements</h3>
+            <p>Ternary statements have the form (condition ? val1 : val2). If the condition is true the ternary statement becomes equal to val1, but if it isnt true it becomes equal to val2, an example for using ternary statements is given below.</p>
+            <pre><code>
+int main() {
+    int n; cin >> n;
+    string res = (n % 2 == 0 ? "even" : "odd");
+    cout << res << "\n";
+}
+            </code></pre>
+            <p>This code checks if a given number is even, and if it is, it sets res to the string literal "even", and if it is not, it sets res to the string literal "odd". Notice that the ternary statement above is equivalent to an if statement in the following manner:</p>
+            <pre><code>
+int main() {
+    int n; cin >> n;
+    string res;
+    if (n % 2 == 0) res = "even";
+    else res = "odd";
+    cout << res << "\n";
+}
+            </code></pre>
+            <p>The two above pieces of code are completely equivalent, ternary statements just make it a bit shorter to type.</p>
+
+            <h3>Practice</h3>
+            <p>Recursively write the factorial function, where n! = n * (n-1) * … * 2 * 1.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+int fact(int n) {
+    if (n == 0) return 1;
+    return n * fact(n-1);
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>The base case is that 0! = 1 because we can not have negative factorials, so if n == 0 we just return 1. Now we can realize that fact(n) = n * fact(n-1), and just implement that into our function.</p>
+            </details>
+            <p>We have bunnies standing in a line, numbered 1, 2, ... The odd bunnies (1, 3, ..) have the normal 2 ears. The even bunnies (2, 4, ..) we'll say have 3 ears, because they each have a raised foot. Recursively return the number of "ears" in the bunny line 1, 2, ... n (without loops or multiplication).</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code>
+int bunnyEars2(int bunnies) {
+    if (bunnies == 0) return 0;
+    return bunnyEars2(bunnies-1) + (bunnies % 2 == 1 ? 2 : 3);
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>Our base case is that if there are 0 bunnies there are 0 ears. Now lets check out recursion, if our current number n is even we need to do 3 + bunnyEars2(n-1), but if our current number n is odd we need to fo 2 + bunnyEars2(n-1). We can implement this with either if statements or a ternary statements.</p>
+            </details>
+        </fieldset>
+    </div>
+</body>
