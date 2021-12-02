@@ -19,11 +19,76 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-02</h4>
         <fieldset>
             <legend>EASY NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a href="https://codeforces.com/problemset/problem/1475/A">Problem 30</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The observation for this problem is to realize that if a number n has no odd factors that means it also has no odd prime factors, which means its only prime factors must be the number 2. So if a number is a power of two print false, else print true.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1085/B">Problem 29</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Lets call p = x mod k, and q = x div k. Since p is a modulo is must be between 0 and k-1 inclusive. Since our maximum value for k is sufficiently small enough we can loop through these values and then solve for q by doing n / p. If q is an integer then we can find the smallest value of x that when divided by k gets q by doing x = k*q. Now we just loop through all the p values, solving for x whenever possible, and then outputing the minimum value of all those x's.</p>
+            </details>
+            <br>
+            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=940">Problem 28</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=592">Problem 27</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/gym/352982/problem/21_11NOV26">Problem 26</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This problem might seem easy at first, but there are plenty of optimizations that are required to get the least amount of characters removed. One possible string is "ntarsisus", in where removing the second 's' can destroy two strings at once. Another possible string is "susus", in which removing the second 's' will also be optimal. After that, you can go through "ntarsis" and "sus" and delete any middle character in those strings. Deleting characters on the side might yield two strings to join together (consider "ssus").</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/contest/978/problem/C">Problem 25</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://adventofcode.com/2015/day/1">Problem 24</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Note that these problems require file io, you can figure out how to do file io for your respective by googling it.<p/>
+                <p>For the first part, we can keep a count that starts at 0, and then every time we see a ( we add 1 to the count, and every time we see a ) we subtract q from the count. After we have parsed the entire string we print the count and then copy paste it to the website.</p>
+                <p>For the second part, we can also keep a variable to keep track of the index, and as soon as you find that count is -1 you can print the index and then copy paste it to the website.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1409/B">Problem 23</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The main observation is to realize that if you decrease one of the numbers a, it is optimal to decrease this number as much as possible, before moving onto b. Lets see why our original product is a*b if we decrease a twice we subtract 2*b from our product, but if we decrease a once then b we subtract b+(a-1) from our product, and finally if we decrease b twice we subtract 2*a from our product, This is a then b or b then a is less optimal because the -1 exists, and making our difference less than it could be.</p>
+                <p>So now we know its better to subtract one completely before moving on to the other. We have two methods to use we completely subtract a, then try to subtract b or completely subtract b, then subtract a. We simulate the answers we get from these two scenarios and then return their minimum.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1227/A">Problem 22</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Lets define the left point of our answer, l_max, to be the rightmost left point in the given intervals, and the right point of our answer, r_min, to be the leftmost right point in the given intervals. Now notice that for all the given intervals, [l,r], at least one of the two is true: l is in the range [r_min,l_max] or r is.</p>
+                <p>Here is the proof, by definition r_min <= r, so now there are two cases. If r <= l_max, then r is in the range and our condition is satisfied. If r > l_max, we have to go look at l instead, and there are also two cases here. If l >= r_min then it is trivially in the range, but if l < r_min then we have the case where l < r_min and r > l_max which means [r_min,l_max] is inside of [l,r] which must mean there is a point of [l,r] in [r_min, l_max].</p>
+                <p>So now we just loop through our input and find these values, and the size of our interval is l_max - r_min. However, if this value is negative that is undefined, and we can just put 0 instead. Try to think about why this works yourself. </p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc202/tasks/abc202_c">Problem 21</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
             <a href="../writeups/pclassicfall2021">Problem 20</a>
             <details>
                 <summary>Solution</summary>

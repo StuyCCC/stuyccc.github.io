@@ -19,11 +19,76 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-02</h4>
         <fieldset>
             <legend>HARD NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a href="https://codeforces.com/problemset/problem/1327/C">Problem 30</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Note that 2nm is a gigantic limit, so there a bunch of ways to simulate this problem, and I am just going to give one. First lets move all the pieces to the top left corner by doing n-1 U operations and m-1 L operations. Now we can just snake across the entire board in nm-1 operations. The total amount of operations is nm + n + m - 3, which is well under the limit and every cell is reached by every chip, so it is gauranteed to work. Now you just have to simulate it :)</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1548/A">Problem 29</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The key observation for this problem is to realize two things: that at the end of the process no two nobles will still be friends (this can be seen by the fact that in every friend group the weakest friend will be removed until there is only one left) and that if all of his friends are weaker than him a noble can not be killed (there is no one stronger than him to kill him).</p>
+                <p>So this leads to the key idea that if all of a nobles friends are weaker than it will survive, else it will die. So for each noble we can count the number of people weaker than it and the number of people its friends with. If these numbers are equivalent it survives else it doesn't. For each of the first two queries you can just add or subtract to the original counts.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc206/tasks/abc206_e">Problem 28</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/agc053/tasks/agc053_b">Problem 27</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/arc122/tasks/arc122_c">Problem 26</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/abc208/tasks/abc208_e">Problem 25</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a href="https://adventofcode.com/2015/day/20">Problem 24</a>
+            <details>
+                <summary>Solution</summary>
+                <img src="../../data/hard/november24.png" width="525" height="600">
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1519/D">Problem 23</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The naive approach of iterating over the left position of the reversed interval, l, and the right position of the reversed interval, r would take O(n^3) and this is too slow for this problem. The key observation is that we can use prefix sums and a unique way of iterating through intervals to reduce this to O(n^2).</p>
+                <p>Let P[i] = prefix sum of the a_j * b_j for j in range of 0 to i-1 inclusive. Notice that now we can represent the sum of the products of the array with a reversed interval as P[n]-P[r+1]+P[l]+sum where sum is the sum of the products of the reversed interval.</p>
+                <p>Now we are going to iterate over the center positions of the interval. So for i in range 0 to n exclusive, i is going to represent the center position of an interval. We are going to start off with an interval of either size 2 or size 3 so we can handle both even and odd intervals. So l = i-1, r = i+1 (size 3), or l = i-1, r = i (size 2), or l = i, r = i+1 (size 2).</p>
+                <p>Notice that if increase our interval left by 1 (l--) and right by 1 (r++) our interval sum increases by A[l]*B[r] + A[r]*B[l]. Now for every interval centered at i that is within bounds we can use the equation in paragraph 2 to get the product, and our answer will be the maximum of all these products.</p>
+            </details>
+            <br>
+            <a href="https://codeforces.com/problemset/problem/1096/C">Problem 22</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The key observation for this problem is to realize that the angle abc that we are looking for is an inscribed angle which means that it is 1/2 of a central angle. Since we have an n-gon the central angle for 1 side is 360/n, so the smallest amount we can increase our central angle by is 360/n everytime, or 180/n for our inscribed angle. This means that our inscribed angle ang is in the form 180k/n where k is between 1 and n-2. k has to be n-2 or less because we need at least two unused sides to form our inscribed, Look at above diagram for clarity.</p>
+                <p>We have ang = 180k/n which is equivalent ang * n = 180 * k. Lets define g = gcd(ang, 180) we can divide both sides by g and get ang/g * n = 180/g * k. Since gcd(ang/g, 180/g) = 1, we can see that ang/g has to be a divisor of k and 180/g has to be a divisor of n. So we have to have k = x * ang/g and n = x * 180/g. Since we want to minimize n we want to make x as small as possible. So lets start off with x=1, we have k = ang/g and n = 180/g. We can realize that this always works and we can output 180/g as our answer, unless k = n-1 (this does not satsify k <= n-2 for our earlier condition), in which case we have to make x = 2, and output 2*180/g as our answer.</p>
+            </details>
+            <br>
+            <a href="https://atcoder.jp/contests/agc031/tasks/agc031_c">Problem 21</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
             <a href="../writeups/pc2021f.html">Problem 20</a>
             <details>
                 <summary>Solution</summary>

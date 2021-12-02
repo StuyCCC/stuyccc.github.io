@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-12-02</h4>
+        <fieldset>
+            <legend>ADVENT OF CODE 2021</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h2><a href="https://adventofcode.com/2021/day/1">Problem 01</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# written by Mohammad Khan
+fin = open("../Input.in", "r");
+fout = open("../Part1.out", "w");
+
+def main():
+    lines = [int(line.strip()) for line in fin.read().split("\n")[0:-1]];
+    fout.write(str(solve(lines)));
+
+def solve(lines):
+    cnt = 0;
+    for i in range(1, len(lines)):
+        if (lines[i] > lines[i-1]):
+            cnt += 1;
+    return cnt;
+
+main();
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Well this first problem doesn't really need much explanation, just figure out how to read input from a file for your respective language. And then loop through the list you have gotten and if i != 0 and list[i] > list[i-1] increment the count. And at the end print the count.</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code>
+# written by Mohammad Khan
+fin = open("../Input.in", "r");
+fout = open("../Part2.out", "w");
+
+def main():
+    lines = [int(line.strip()) for line in fin.read().split("\n")[0:-1]];
+    fout.write(str(solve(lines)));
+
+def solve(lines):
+    cnt = 0;
+    for i in range (3, len(lines)):
+        if (lines[i] > lines[i-3]):
+            cnt += 1;
+    return cnt;
+
+main();
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Notice that when you are comparing two sets of three in for example the list [a,b,c,d] if we compare a+b+c and b+c+d we really are only comparing between a and d. So for this part we can just loop through the list and if i >= 3 and list[i] > list[i-3] increment the count, and at the end print the count.</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/2">Problem 02</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code>
+# written by Mohammad Khan
+fin = open("../Input.in", "r");
+fout = open("../Part1.out", "w");
+
+def main():
+    lines = [line.strip().split() for line in fin.read().split("\n")[0:-1]];
+    fout.write(str(solve(lines)));
+
+def solve(lines):
+    x,y = 0,0;
+    for i in range(len(lines)):
+        if (lines[i][0] == "forward"): x += int(lines[i][1]);
+        if (lines[i][0] == "down"): y += int(lines[i][1]);
+        if (lines[i][0] == "up"): y -= int(lines[i][1]);
+    return x*y;
+
+main();
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>The instructions for this problem is fairly simple, First read in the lines from the input file. Then initialize x and y to 0. Then for each line in the lines read, split them by the space and then if 1st part is "forward" increase x by the 2nd part, if 1st part is "down" increase y by the 2nd part, and if 1st part is "up" decrease y by the 2nd part. Finally at the end print x*y.</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code>
+# written by Mohammad Khan
+fin = open("../Input.in", "r");
+fout = open("../Part2.out", "w");
+
+def main():
+    lines = [line.strip().split() for line in fin.read().split("\n")[0:-1]];
+    fout.write(str(solve(lines)));
+
+def solve(lines):
+    x,y,a = 0,0,0;
+    for i in range(len(lines)):
+        if (lines[i][0] == "forward"):
+            x += int(lines[i][1]);
+            y += a * int(lines[i][1]);
+        if (lines[i][0] == "down"): a += int(lines[i][1]);
+        if (lines[i][0] == "up"): a -= int(lines[i][1]);
+    return x*y;
+
+main();
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>The instructions for this problem is fairly simple as well. First read in the lines from the input file. Then initialize x, y, and a to 0. Then for each line in the lines read, split them by the space and then if the 1st part is "forward" increase x by the 2nd part and increase y by a * 2nd part, if the 1st part is "down" decrease a by the 2nd part, and if the 1st part is "up" increase a by the 2nd part. Finally at the end print x*y.</p>
+            </details>
+
+        </fieldset>
+    </div>
+</body>

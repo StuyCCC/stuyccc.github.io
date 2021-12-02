@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-02</h4>
         <fieldset>
             <legend>PCLASSIC 2021 FALL</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -45,7 +45,7 @@ public static String reversedMessage(String message, int k) {
                 <summary>Explanation</summary>
                 <p>It would be nice if Java Strings had a reverse operation - unfortunately, they don't. Luckily, the StringBuilder class offers this functionality. We can create a StringBuilder instance using the substring we want to reverse, then call the reverse() method, then convert it back into a String to add to the non-reversed section of the message.</p>
             </details>
-            <br>
+
             <h2><a href="">Problem 02</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -70,7 +70,7 @@ public static String decode(String s, int k) {
                 <summary>Explanation</summary>
                 <p>The first operation we must do is make sure k is a number between 0 and 25. We can use the mod operation to ensure k is a number between -25 and 25, then we can add 26 if k is negative to achieve our result. Then, for each character in the string, we can subtract k from the character. In order to account for overflow, we can add 26 to the character if it is no longer a letter of the alphabet.</p>
             </details>
-            <br>
+
             <h2><a href="">Problem 03</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -99,7 +99,7 @@ public static int netTemperature(int n, int[][] temperatures) {
                 <summary>Explanation</summary>
                 <p>We can keep track of the temperature of each dinosaur. For each ball, we add the temperature of the ball to the entry representing the dinosaur hit by the ball. Finally, we can count how many dinosaur have not changed temperature -- that is, how many entries are equal to zero.</p>
             </details>
-            <br>
+
             <h2><a href="">Problem 04</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -132,7 +132,7 @@ public static boolean checkMessages(String s, String t) {
                 <summary>Explanation</summary>
                 <p>We create an array to record the character that corresponds to each letter in s. As we loop through the string, if we encounter a letter for the first time, the set the matching for that letter. Else, if we've already encountered that character and it has been matched with something different, we return false. At the end, we need to make sure that no two characters in s have been matched with the same character in t, so we loop through every pair of characters to make sure that they are different.</p>
             </details>
-            <br>
+
             <h2><a href="https://www.codechef.com/PCFL2021/problems/POMPOUS">Problem 05</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -172,7 +172,7 @@ public static int unbeatable(int[][] peacocks) {
                     We then count the amount of trues in <code>beat</code> and subtract that from the total number of peacocks.
                 </p>
             </details>
-            <br>
+
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PUUPUU">Problem 06</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -213,7 +213,7 @@ public static boolean magicSquare(int[][] grid) {
                 <summary>Explanation</summary>
                 <p>The ism function determines whether or not a magic square with a top left corner of i,j exists. It does this by find the sum of the first row, and then looping through the rest of the rows, the columns, and the two diagonals to check if the sum of those are the same as the sum of the first row. If there exists one that isn't the same the square isn't a magic square, else it is a magic square. The code then loops through all valid top left positions in the graph and checks if there is at least one magic square.</p>
             </details>
-            <br>
+
             <h2><a href="https://www.codechef.com/PCFL2021/problems/CACTUSFARM">Problem 07</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -258,7 +258,7 @@ public static boolean matchable(String initialPattern, String finalPattern) {
                 <p>We can now check all positions in the initial pattern and the substring of the final pattern, and if all these positions can be validly copied over, then we can greedily decide to copy the initial pattern over to the template. Also notice that the problem says that the initial pattern must be copied over at position 0, so we implement this change in the <code> for (int i = 0; i < il; i++) temp[i] = initialPattern.charAt(i);</code> loop.</p>
                 <p>Now that we have all our changes made, we just have to check if this template is now equal to the final pattern, and if it is return true else return false.</p>
             </details>
-            <br>
+
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PEACFULPOLES">Problem 08</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -293,7 +293,7 @@ public static int maxPoints(String s, String t) {
                 <p>To solve this problem, we first need to solve a classic problem called Edit Distance, which can be explained throughly <a href="https://usaco.guide/CPH.pdf">here</a>, on page 74-75. Now lets see how this problem relates to our current problems. The sequences of cards being put down can be represented a string of either spaces (represented as _) or the characters themselves. If two characters at the same position are the same we add 1 point to our answer, if they are different we subtract 1 point, and if one is a space and one is a character we subtract 2 points. We can see this is just an application of the edit distance between these two strings, where instead of minimizing the score, we are trying to maximize it.</p>
                 <p>So we do edit distance word for word, until we get do the DP transition. The transition given in the book is <code>DP[i][j] = min(DP[i-1][j-1]+(s[i]==t[j] ? 0 : 1), min(DP[i-1][j]+1, DP[i][j-1]+1))</code>, and through the explanation of points distribution above, we get the following slightly different DP transition of the following <code>DP[i][j] = max(DP[i-1][j-1] + (s[i] == t[i] ? 1 : -1), max(DP[i-1][j]-2,DP[i][j-1]-2))</code>. Notice that the code above is also edit distance it is just slightly different because I changed the axes.</p>
             </details>
-            <br>
+
             <h2><a href="https://www.codechef.com/PCFL2021/problems/POLRBEARTEST">Problem 09</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -316,7 +316,7 @@ public static int testing(int bears, int testtime, int totaltime) {
                 <summary>Explanation</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
-            <br>
+
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PANDALAND">Problem 10</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -392,7 +392,7 @@ public static int pandaLand(int n, int m, String s) {
                 <summary>Explanation</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
-            <br>
+
             <h2><a href="https://www.codechef.com/PCFL2021/problems/PRETENTIOUS">Problem 11</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -434,7 +434,7 @@ public static int unbeatable(int n, int[][] pvals, int[] out) {
                 <summary>Explanation</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
-            <br>
+
             <h2><a href="https://www.codechef.com/PCFL2021/problems/NEWPARK">Problem 12</a></h2>
             <details>
                 <summary>Solution</summary>
