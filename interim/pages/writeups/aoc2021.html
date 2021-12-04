@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-02</h4>
+        <h4>Last Updated 2021-12-04</h4>
         <fieldset>
             <legend>ADVENT OF CODE 2021</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -202,6 +202,111 @@ main();
                 </code></pre>
                 <h3>Explanation</h3>
                 <p>Again first initialize two copies of the list of lines read. Then for the first cpy loop through each bit position, i, and count the number of 1s, lets call it x. If x >= len(cpy1)-x loop set a char rem = '0' else rem = '1'. Loop through cpy1 again and remove all strings that have an ith bit that is not equal to rem. At the end of replacing if len(cpy1) == 1 break out of the loop. Do the same thing for cpy2 except switch the values for rem in the conditions. Finally convert the last elements in both copies to integers and print their multiple.</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/4">Problem 04</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code>
+# written by Mohammad Khan
+fin = open("../Input.in", "r");
+fout = open("../Part1.out", "w");
+
+def main():
+    lines = [line.strip() for line in fin.read().split("\n\n")];
+    lines = [[[int(x) for x in row.split()] for row in line.split("\n")] if i != 0 else [int(x) for x in line.split(",")] for i,line in enumerate(lines)];
+    fout.write(str(solve(lines)));
+
+def add(board, num):
+    for i in range(5):
+        for q in range(5):
+            if (board[i][q] == num):
+                board[i][q] = -1;
+                break;
+    return board;
+
+def check(board):
+    for i in range(5):
+        good1,good2 = True,True;
+        for q in range(5):
+            if (board[i][q] != -1): good1 = False;
+            if (board[q][i] != -1): good2 = False;
+        if (good1 == True or good2 == True): return True;
+    return False;
+
+def sum(board):
+    sum = 0;
+    for i in range(5):
+        for q in range(5):
+            if (board[i][q] != -1): sum += board[i][q];
+    return sum;
+
+def solve(lines):
+    for x in lines[0]:
+        for board in lines[1:]:
+            board = add(board, x);
+            if (check(board)):
+                return sum(board) * x;
+
+main();
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Some helpful things to do before we start, first notice that all the numbers given are positive so we can represent them as being reached by setting them to an impossible value like -1. Now create a check function that checks if in a given board if it completed (i.e. there are 5 -1's in a row or a column) and returns true if the board is completed. Also create an add function that goes through a board and looks for a certain number x, if that number is found it replaces it with -1 (ie saying that position has been found) and returns the board. Finally create a function that given a board sums all the values that aren't -1 (ie adding all numbers that aren't marked in a board).</p>
+                <p>Now we have those helpful functions we can loop through the list of numbers in the order they are given and then loop through the boards using the add function to affect them. Directly after adding a number, check if the board is completed. If it is this means this board is the first one to be completed so we can just sum the remaining elements using sum and multiply it by the current number in the list of numbers and return the value (this ends the function and prevents double counting).</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code>
+# written by Mohammad Khan
+fin = open("../Input.in", "r");
+fout = open("../Part2.out", "w");
+
+def main():
+    lines = [line.strip() for line in fin.read().split("\n\n")];
+    lines = [[[int(x) for x in row.split()] for row in line.split("\n")] if i != 0 else [int(x) for x in line.split(",")] for i,line in enumerate(lines)];
+    fout.write(str(solve(lines)));
+
+def add(board, num):
+    for i in range(5):
+        for q in range(5):
+            if (board[i][q] == num):
+                board[i][q] = -1;
+                break;
+    return board;
+
+def check(board):
+    for i in range(5):
+        good1,good2 = True,True;
+        for q in range(5):
+            if (board[i][q] != -1): good1 = False;
+            if (board[q][i] != -1): good2 = False;
+        if (good1 == True or good2 == True): return True;
+    return False;
+
+def sum(board):
+    sum = 0;
+    for i in range(5):
+        for q in range(5):
+            if (board[i][q] != -1): sum += board[i][q];
+    return sum;
+
+def solve(lines):
+    bad = set();
+    for x in lines[0]:
+        for i,board in enumerate(lines[1:]):
+            board = add(board, x);
+            if (check(board)):
+                bad.add(i);
+            if (len(bad) == len(lines)-1):
+                return sum(board) * x;
+
+main();
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>We are going to use the same helper functions as described in part 1, but our algorithm changes a bit. First initialize a set called "bad" which represents all the completed boards. We are first looping through the list of numbers given in order, and then loop through the boards like in part 1. Also add to the boards we loop through as well and check them, however this time if the check turns out to be true instead of ending the function we are going to add the index value of the board into the bad set. We are going to continue this process until the bad set reaches the same size as the number of boards given. Notice that the set is used to prevent overcounting of bad sets. Now when we see that the bad set is equal in size to the number of boards that means the board that just added to the bad set is the last board, so we can return the sum of this board times the current number.</p>
             </details>
         </fieldset>
     </div>
