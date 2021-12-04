@@ -130,6 +130,79 @@ main();
                 <p>The instructions for this problem is fairly simple as well. First read in the lines from the input file. Then initialize x, y, and a to 0. Then for each line in the lines read, split them by the space and then if the 1st part is "forward" increase x by the 2nd part and increase y by a * 2nd part, if the 1st part is "down" decrease a by the 2nd part, and if the 1st part is "up" increase a by the 2nd part. Finally at the end print x*y.</p>
             </details>
 
+            <h2><a href="https://adventofcode.com/2021/day/3">Problem 03</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code>
+# written by Mohammad Khan
+fin = open("../Input.in", "r");
+fout = open("../Part1.out", "w");
+
+def main():
+    lines = [line.strip() for line in fin.read().split("\n")[0:-1]];
+    fout.write(str(solve(lines)));
+
+def solve(lines):
+    gamma = "";
+    epsilon = "";
+    lt = [0] * len(lines[0]);
+    for line in lines:
+        for i,x in enumerate(line):
+            if (x == "1"): lt[i] += 1;
+    for x in lt:
+        if (x > len(lines)-x):
+            gamma += "1";
+            epsilon += "0";
+        else:
+            gamma += "0";
+            epsilon += "1";
+    return int(gamma, 2) * int(epsilon, 2);
+
+main();
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>First initialize two empty strings gamma and epsilon. For each position (from left to right) in the bit strings read, loop through the entire list keeping track of the number of 1s found in that certain position, lets call this number x. If x > len(lines) - x append a 1 to gamma and append a 0 to epsilon, else append a 0 to gamma and append a 1 to epsilon. After gamma and epsilon are the same size at the original bit strings convert them into integers and then multiple them, and return the answer.</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code>
+# written by Mohammad Khan
+fin = open("../Input.in", "r");
+fout = open("../Part2.out", "w");
+
+def main():
+    lines = [line.strip() for line in fin.read().split("\n")[0:-1]];
+    fout.write(str(solve(lines)));
+
+def solve(lines):
+    cpy1 = [x for x in lines];
+    cpy2 = [x for x in lines];
+    for i in range(len(lines[0])):
+        cnt = 0;
+        for x in cpy1:
+            if (x[i] == "1"): cnt += 1;
+        if (cnt >= len(cpy1)-cnt): rem = "0";
+        else: rem = "1";
+        cpy1 = [x for x in cpy1 if x[i] != rem];
+        if (len(cpy1) == 1): break;
+    for i in range(len(lines[0])):
+        cnt = 0;
+        for x in cpy2:
+            if (x[i] == "1"): cnt += 1;
+        if (cnt >= len(cpy2)-cnt): rem = "1";
+        else: rem = "0";
+        cpy2 = [x for x in cpy2 if x[i] != rem];
+        if (len(cpy2) == 1): break;
+    return int(cpy1[0], 2) * int(cpy2[0], 2);
+
+main();
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Again first initialize two copies of the list of lines read. Then for the first cpy loop through each bit position, i, and count the number of 1s, lets call it x. If x >= len(cpy1)-x loop set a char rem = '0' else rem = '1'. Loop through cpy1 again and remove all strings that have an ith bit that is not equal to rem. At the end of replacing if len(cpy1) == 1 break out of the loop. Do the same thing for cpy2 except switch the values for rem in the conditions. Finally convert the last elements in both copies to integers and print their multiple.</p>
+            </details>
         </fieldset>
     </div>
 </body>
