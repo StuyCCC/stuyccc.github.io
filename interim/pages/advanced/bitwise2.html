@@ -37,7 +37,7 @@ int main() {
     if (a==b) cout &lt;&lt; 0 &lt;&lt; endl; // account for 0 case separately
     else {
         int pos = 64 - __builtin_clzll(a^b); // # bits to set to 1
-        long long ans = (1ll &lt;&lt; pos) - 1; // 2^pos - 1
+        long long ans = (1LL &lt;&lt; pos) - 1; // 2^pos - 1
         cout &lt;&lt; ans &lt;&lt; endl;
     }
 }
