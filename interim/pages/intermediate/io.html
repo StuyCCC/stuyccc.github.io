@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-23</h4>
+        <h4>Last Updated 2021-11-30</h4>
         <fieldset>
             <legend>Input And Output</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -107,7 +107,54 @@ input = sys.stdin.readline
                 with an early page on file IO for old USACO questions and
                 <a href="https://usaco.guide/general/input-output?lang=py">this</a> page of usaco.guide for some more information on IO for various langauges.
             </p>
-            <h3>Java To Be Added Soon</h3>
+            <h3>Java</h3>
+            <p>
+                IO in Java (for competitive programming) generally uses the BufferedReader class along with the StringTokenizer class for input 
+                and simply <code>System.out.print</code>/<code>System.out.println</code> for output. 
+            </p>
+            <p>
+                An example of reading in and then printing out an integer follows:
+                <pre><code class="langauge-java">
+//needed imports
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class A {
+    public static void main(String[] args) throws IOException {
+        //input example:
+        //1
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(in.readline());
+        System.out.println(n);
+    }
+}
+                </code></pre>
+                <p>
+                An example of reading in a list of integers with a given length is:
+                </p>
+                <pre><code class="langauge-java">
+//needed imports
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class A {
+    public static void main(String[] args) throws IOException {
+        //input example:
+        //3
+        //1 2 3
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(in.readline());
+        StringTokenizer st = new StringTokenizer(in.readline());
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = Integer.parseInt(st.nextToken());
+        }
+    }
+}
+                </code></pre>
+            </p>
         </fieldset>
     </div>
 </body>
