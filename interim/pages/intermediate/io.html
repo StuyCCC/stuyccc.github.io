@@ -109,51 +109,196 @@ input = sys.stdin.readline
             </p>
             <h3>Java</h3>
             <p>
-                IO in Java (for competitive programming) generally uses the BufferedReader class along with the StringTokenizer class for input 
-                and simply <code>System.out.print</code>/<code>System.out.println</code> for output. 
+                Java has a very wide variety of methods to do IO, which have tradeoffs between being complicated and being slow. 
+            </p> 
+            <h4>Recommended imports</h4>
+            <p>
+                We will need a few imports to allow some of the following methods to work. Some of the methods require only either <code>util</code> or <code>io</code>, and 
+                we do not need everything in both libraries, but it's helpful to have access to other stuff in here. This comes with the disclaimer that doing 
+                full imports of these libraries are bad code practice in actually making projects.
+            </p>
+            <pre><code class="language-java">
+import java.util.*;
+import java.io.*;
+            </code></pre>
+            <p>These two imports should go at the top of your file.</p>
+            <h4>Scanner</h4>
+            <p>
+                Scanner has an advantage in not requiring any extra methods to directly read into important primitive types like integers, doubles, longs, etc.
+                It's disadvantaged in speed, though.
             </p>
             <p>
-                An example of reading in and then printing out an integer follows:
-                <pre><code class="langauge-java">
-//needed imports
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+                To create a Scanner object:
+            </p>
+            <pre><code class="language-java">
+Scanner s = new Scanner(System.in);
+            </code></pre>
+            <p>
+                To directly read certain types:
+            </p>
+            <pre><code class="language-java">
+String str = s.next(); // Next word from standard in (whitespace separated)
+int a = s.nextInt(); // Next integer number
+double d = s.nextDouble(); // Next decimal number
+String line = s.nextLine(); // Next full line
+            </code></pre>
+            <p display="none">
+                If the problem doesn't give you a number that lets you see how far you need to read, 
+                you can check the boolean <code>s.hasNext()</code>, and if you need to check if the 
+                next word satisfies a type, you can check the function hasNext[Type](), i.e., <code>s.hasNextInt()</code>
+            </p>
 
-public class A {
-    public static void main(String[] args) throws IOException {
-        //input example:
-        //1
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(in.readline());
-        System.out.println(n);
+            <h4>BufferedReader</h4>
+            <p>
+                BufferedReader is significantly faster than Scanner, but comes at the cost of only being able to return strings of lines or
+                single characters. 
+                When you combine it with string processing methods we'll learn later, though, you'll be able to get the best of both worlds.
+            </p>
+            <p>
+                To create a BufferedReader:
+            </p>
+            <pre><code class="language-java">
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            </code></pre>
+            <p>
+                To read lines:
+            </p>
+            <pre><code class="language-java">
+String line = br.readLine();
+            </code></pre>
+            <p display="none">
+                If there are no more lines to read, <code>br.readLine()</code> will return null, which is helpful
+                for counting lines.
+            </p>
+            <p>
+                A fairly important thing to take note of is that <b>every</b> function that contains another function that throws IOException
+                must itself either throw or catch IOException.
+            </p>
+            <p>
+                For us, since we're not concerned with following proper code practices, we can stick to just adding <code>throws IOException</code>
+                anywhere that it's needed. For example:
+            </p>
+            <pre><code class="language-java">
+public class Foo {
+    public static void main(String[] args) throws IOException { 
+        String myPassword = "p4ssw0rd";
+        System.out.println(correctPassword(myPassword));
+        //                 ^ This throws IOException, so we throw IOException in main
+    }
+
+    public static boolean correctPassword(String match) throws IOException{
+        // This throws IOException, so we throw IOException in correctPassword()
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String inputPassword = br.readLine();
+        
+        return match.equals(inputPassword);
     }
 }
-                </code></pre>
-                <p>
-                An example of reading in a list of integers with a given length is:
-                </p>
-                <pre><code class="langauge-java">
-//needed imports
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+            </code></pre>
+            <p>
+                Most of the time, you will <b>only need to</b> use BufferedReader in your main function,
+                so you are usually safe with just sticking <code>throws IOException</code> next to main.
+            </p>
 
-public class A {
+            <h4>Processing Strings of Lines</h4>
+            <p>
+                Now that we have our lines, we have to get the right data from them.
+            </p>
+            <h5>Converting Strings to Other Types</h5>
+            <p>
+                If your String is in the correct format (i.e., for an integer, all digits), then you can use each type's
+                <code>parse</code> method, which will return the corresponding value in the correct type.
+            </p>
+            <pre><code class="language-java">
+String readInLine = "52383";
+int n = Integer.parseInt(readInLine); // 52383
+String secondReadInLine = "5.2383";
+double d = Double.parseDouble(secondReadInLine); // 5.2383
+            </code></pre>
+            <h5>Splitting Lines with Spaces Into Words</h5>
+            <p>
+                Option 1: Using <code>String.split(" ")</code> will return an array of Strings, separated by the given string argument - 
+                for our use case, spaces.
+            </p>
+            <pre><code class="language-java">
+String s = "Hello, I am Sam Belliveau";
+String[] words = s.split(" "); // ["Hello,", "I", "am", "Sam", "Belliveau"]
+            </code></pre>
+            <p>
+                Option 2: Using StringTokenizer can grant you slightly more speed and behavior like Scanner, except only on
+                a single String.
+            </p>
+            <p>
+                To create a StringTokenizer:
+            </p>
+            <pre><code class="language-java">
+StringTokenizer st = new StringTokenizer("Hello, I am Sam Belliveau");
+            </code></pre>
+            <p>
+                To get the next word in the String, use <code>st.nextToken()</code>:
+            </p>
+            <pre><code class="language-java">
+String first = st.nextToken(); // Hello,
+String second = st.nextToken(); // I
+String third = st.nextToken(); // am
+String fourth = st.nextToken(); // Sam
+String fifth = st.nextToken(); // Belliveau
+boolean hasNone = st.hasMoreTokens(); // false
+            </code></pre>
+            
+            <h4>An example</h4>
+            <p>
+                Say we wanted to read n line-separated pairs of space separated integers and print out each pair's sum. On the first line, we are given n.
+            </p>
+<pre><code>
+4
+5 6
+1 2
+-5 323
+862983 1239019
+</code></pre>
+
+<pre><code class="language-java">
+import java.util.*;
+import java.io.*;
+
+public class Demo {
     public static void main(String[] args) throws IOException {
-        //input example:
-        //3
-        //1 2 3
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(in.readline());
-        StringTokenizer st = new StringTokenizer(in.readline());
-        int[] nums = new int[n];
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        int n = Integer.parseInt(br.readLine());
         for (int i = 0; i < n; i++) {
-            nums[i] = Integer.parseInt(st.nextToken());
+            st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            System.out.println(a + b);
         }
     }
 }
-                </code></pre>
+</code></pre>
+
+<pre><code>
+11
+3
+318
+2102002
+</code></pre>
+
+<p>Success!</p>
+
+<h4>More resources</h4>
+            <p>
+                <a href="https://usaco.guide/general/input-output?lang=java">This</a> page of usaco.guide is the corresponding usaco.guide page for Java IO.
+            </p>
+            <p>
+                Javadocs (JDK17):
+                <ul>
+                    <li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Scanner.html">Scanner</a></li>
+                    <li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/BufferedReader.html">BufferedReader</a></li>
+                    <li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/StringTokenizer.html">StringTokenizer</a></li>
+                    <li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#split(java.lang.String)">String.split()</a></li>
+                    <li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html#parseInt(java.lang.String)">Integer.parseInt()</a></li>
+                </ul>
             </p>
         </fieldset>
     </div>
