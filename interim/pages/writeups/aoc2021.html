@@ -411,7 +411,7 @@ int main() {
                 <p>For some more nice discussion on this problem, it is worth checking out <a href="https://cestlaz.github.io/post/advent-2021-day05/">this</a> blog post by former Stuyvesant teacher Mike Zamansky.</p>
             </details>
 
-			<h2><a href="https://adventofcode.com/2021/day/6">Problem 06</a></h2>
+    <h2><a href="https://adventofcode.com/2021/day/6">Problem 06</a></h2>
             <details>
                 <summary>Part 1</summary>
                 <h3>Solution</h3>
@@ -516,6 +516,73 @@ main();
                 <h3>Explanation</h3>
                 <p>The ideal method of reducing cost for part 2 is the choose (somewhere near) the average number as our aligning position. Within +- .5 of the average according to some smart people on reddit. Also notice that when calculating the cost we have to do dif*(dif+1)/2 as our cost instead of just dif. Return the minimum of the two sums and that is our final answer.</p>
                 <p>The proof to this minimizing dif*(dif+1)/2 cost gets its basis around the problem of solving a similar minimizing dif^2 cost, which we already know the answer to be the average. You can check the <a href="https://www.reddit.com/r/adventofcode/comments/rar7ty/2021_day_7_solutions/">subreddit</a> or google yourself for more detialed proofs. </p>
+            </details>
+
+    <h2><a href="https://adventofcode.com/2021/day/8">Problem 08</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code>
+lines = open("input.txt", 'r').read().split('\n')
+lengths = [2, 3, 4, 7]
+ans = 0
+for line in lines:
+    a,b = line.split(" | ")
+    for j in b.split():
+        if len(j) in lengths:
+            ans+=1
+print(ans)
+    </pre></code>
+            <h3>Explanation</h3>
+            <p>For this part, you don't need to figure out which combination of segments (letters) maps to some digit. Notice that even though the segments have been mixed up, the number of segments that make up a number stays constant. As 1, 4, 7, and 8 each are comprised of a unique number of segments, it is enough to simply count the number of strings on the right of the "|" whose length is 2, 4, 3, or 7 respectively.</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code>
+# letters corresponding to each digit
+codes = ["abcefg", "cf", "acdeg", "acdfg", "bcdf",
+"abdfg", "abdefg", "acf", "abcdefg", "abcdfg"]
+
+lines = open("input.txt", 'r').read().split('\n')
+total = 0
+
+# frequencies of characters in four and not in four
+infour = {6:'b', 7:'d', 8:'c', 9:'f'}
+notfour = {4:'e', 7:'g', 8:'a'}
+
+for line in lines:
+    digits, output = line.split(" | ")
+    decode = {}
+
+    # find word corresponding to four
+    for word in digits.split(' '):
+        if len(word) == 4:
+            four = word
+
+    # decode each letter
+    for letter in "abcdefg":
+        frequency = digits.count(letter)
+        if letter in four:
+            decode[letter] = infour[frequency]
+        else:
+            decode[letter] = notfour[frequency]
+
+    output = output.split(' ')
+    val = 0
+    for word in output:
+        # decode each letter, then sort the characters
+        letters = (decode[letter] for letter in word)
+        translated = ''.join(sorted(letters))
+        # update the output value
+        val *= 10
+        val += codes.index(translated)
+    total += val
+print(total)
+                </pre></code>
+                <h3>Explanation</h3>
+                <p>The challenge here is to decode the scrambled letters. One method is to bash through every possible permutation of the segments, finding a permutation that works and using it to decode the output value. However, there's an even cleaner solution. We can count the number of times each segment appears in the digits from 0 to 9 and try to find a pattern there. e appears 4 times, b appears 6 times, d and g both appear 7 times, a and c both appear 8 times, and f appears 9 times. So the letters corresponding to e, b, and f can be found right away. In order to figure out which letters correspond to d/g and a/c, we can look at the digit 4 (which we can find since it's the only one to have length 4). Since d and c are both in 4, but g and a aren't, we can use that information to distinguish between d/g and a/c, unscrambling the letters. Finally, use this information to decode the output value, and you're done.</p>
             </details>
         </fieldset>
     </div>
