@@ -557,7 +557,7 @@ for line in lines:
     decode = {}
 
     # find word corresponding to four
-    for word in digits.split(' '):
+    for word in digits.split():
         if len(word) == 4:
             four = word
 
@@ -569,7 +569,7 @@ for line in lines:
         else:
             decode[letter] = notfour[frequency]
 
-    output = output.split(' ')
+    output = output.split()
     val = 0
     for word in output:
         # decode each letter, then sort the characters
