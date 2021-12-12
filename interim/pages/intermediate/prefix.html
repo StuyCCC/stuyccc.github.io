@@ -25,8 +25,8 @@
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
             <h3>Prefix Sums</h3>
-            <p>Prefix sums are how they sound, the sum of a prefix of elements in an array of something with a sum operation. For example, the prefix sum of <code>1, 2, 3, 4</code> up to the <code>w</code> is <code>3</code>. A common use is using prefixes to compute range sums. Consider a list <script type="math/tex">a_1, a_2, a_3, a_4, a_5, a_6</script>. Say we want to compute the sum of elements with indecies from 3 to 4: <script type="math/tex">a_3 + a_4</script>. Notice <script type="math/tex">a_2 + a_3 = (a_1 + a_2 + a_3 + a_4) - (a_1 + a_2)</script>, the difference of two prefixes. The number 3 to 4 aren't special, any range sum in the that array can be written as a difference of two prefixes.</p>
-            <p>This allows for us to precalculate a prefix sum array which can then be used to calcualte the sum of a range very quickly. Let this prefix array be such that <code>pre[i] = sum of a prefix with lenth i</code>. This can be easily constructed in <script type="math/tex">\mathcal{O}(n)</script> time where <script type="math/tex">n</script> is the length of the array. Psuedocode follows:</p>
+            <p>Prefix sums are how they sound, the sum of a prefix of elements in an array of something with a sum operation. For example, the prefix sum of <code>1, 2, 3, 4</code> up to the <code>2</code> is <code>3</code>. A common use is using prefixes to compute range sums. Consider a list <script type="math/tex">a_1, a_2, a_3, a_4, a_5, a_6</script>. Say we want to compute the sum of elements with indecies from 3 to 4: <script type="math/tex">a_3 + a_4</script>. Notice <script type="math/tex">a_3 + a_4 = (a_1 + a_2 + a_3 + a_4) - (a_1 + a_2)</script>, the difference of two prefixes. The number 3 to 4 aren't special, any range sum in the that array can be written as a difference of two prefixes.</p>
+            <p>This allows for us to precalculate a prefix sum array which can then be used to calculate the sum of a range very quickly. Let this prefix array be such that <code>pre[i] = sum of a prefix with lenth i</code>. This can be easily constructed in <script type="math/tex">\mathcal{O}(n)</script> time where <script type="math/tex">n</script> is the length of the array. Psuedocode follows:</p>
             <pre><code>
 let pre be an array with size n+1
 let A be the original array, zero indexed
@@ -69,9 +69,9 @@ fout.write(str(ans) + '\n')
 fout.close()
 fin.close()
             </code></pre>
-            <h4>Explination</h4>
+            <h4>Explanation</h4>
             <p>Given an index, <code>i</code>, the <code>i</code>th game played, we can compute Bessie's score if she chooses to change her play (say change playing hoof to paper) at that index. This is done by calculating the number of "papers", or "hoof"s, or "scissors"s in a prefix. Bessie can beat all of plays of any one given type up to index <code>i</code> and then beat all play of any one (possibly the same) type after index <code>i</code>. The amount of plays which Bessie beats, and therefore the total amount of games she wins can then be found with prefix sums. Taking the maximum of these values for all <code>i</code> gives the answer.</p>
-            <p>As this is a USACO problem, an alternative (possibly clearer) explination of a similar solution can be found on their website, linked <a href="http://www.usaco.org/current/data/sol_hps_silver_jan17.html">here</a>.</p>
+            <p>As this is a USACO problem, an alternative (possibly clearer) explanation of a similar solution can be found on their website, linked <a href="http://www.usaco.org/current/data/sol_hps_silver_jan17.html">here</a>.</p>
         </details>
         <h4><a href="https://codeforces.com/contest/1398/problem/C">Good Subarrays</a></h4>
         <details>
@@ -105,19 +105,19 @@ T = int(input())
 for _ in range(T):
     solve()
         </pre></code>
-        <h4>Explination</h4>
-        <p>Let <code>A</code>The key insight for this question is noticing the condition for a good subarray can be written very nicely in terms of prefix sums of <code>A</code>. Let <code>pre</code> be the prefix sums of <code>A</code>. For the sum of a subarray with inclusive endpoints <code>r</code> and <code>l</code> to equal the length of the subarray, <code>pre[r] - pre[l-1] = r - l + 1 = r - (l - 1)</code>. Note that <code>l</code> and <code>r</code> are one indexed.</p>
-        <p>We can rearrage this equation to get <code>pre[r] - r = pre[l-1] - (l-1)</code>. Notice both sides are of the form <code>pre[i] - i</code> where <code>i</code> is an integer with <script type="math/tex">0 \leq i \leq n</script>. We can create an array <code>b</code> such that <code>b[i] = pre[i] - i</code> and then see how many pairs of elements in <code>b</code> are equal, as each pair of equal elements in <code>b</code> corrosponds to some good subarray.</p>
+        <h4>Explanation</h4>
+        <p>Let <code>A</code> be the array of numbers. The key insight for this question is noticing the condition for a good subarray can be written very nicely in terms of prefix sums of <code>A</code>. Let <code>pre</code> be the prefix sums of <code>A</code>. For the sum of a subarray with inclusive endpoints <code>r</code> and <code>l</code> to equal the length of the subarray, <code>pre[r] - pre[l-1] = r - l + 1 = r - (l - 1)</code>. Note that <code>l</code> and <code>r</code> are one indexed.</p>
+        <p>We can rearrange this equation to get <code>pre[r] - r = pre[l-1] - (l-1)</code>. Notice both sides are of the form <code>pre[i] - i</code> where <code>i</code> is an integer with <script type="math/tex">0 \leq i \leq n</script>. We can create an array <code>b</code> such that <code>b[i] = pre[i] - i</code> and then see how many pairs of elements in <code>b</code> are equal, as each pair of equal elements in <code>b</code> corrospond to some good subarray.</p>
         <p>To find the number of pairs of equal elements in <code>b</code> we first create a frequency map of <code>b</code>. This tells us how many of each element <code>b[i]</code> there are. We can then compute <script type="math/tex">\binom{\text{b[i]}}{2} = \frac{\text{b[i]}(\text{b[i]}-1)}{2}</script>, the number of possible pairs ways to choose pairs of two elements from a group of <code>b[i]</code> elements, for each item in the frequency map and sum them. That is the answer.</p>
         </details>
         <h3>2D Prefix Sums</h3>
         <p>2D prefix sums really aren't much different from 1D prefix sums. It is just the array of elements is now 2D which requires some new definitions.</p> 
-        <p>Define a subarray of 2D array <script type="math/tex">A</script> with <script type="math/tex">n</script> rows and <script type="math/tex">m</script> columns to be all elements <script type="math/tex">A_{i, j}</script> of <script type="math/tex">A</script> such that <script type="math/tex">a \leq i \leq b</script> and <script type="math/tex">c \leq j \leq d</script> where <script type="math/tex">a,b,c,d</script> are one indexed indecies <script type="math/tex">A</script> with <script type="math/tex">1\leq a \leq b \leq b \leq n, 1\leq c \leq d \leq m</script>. A subarray can be thought of as some rectangle of elements of the original array.</p>
+        <p>Define a subarray of 2D array <script type="math/tex">A</script> with <script type="math/tex">n</script> rows and <script type="math/tex">m</script> columns to be all elements <script type="math/tex">A_{i, j}</script> of <script type="math/tex">A</script> such that <script type="math/tex">a \leq i \leq b</script> and <script type="math/tex">c \leq j \leq d</script> where <script type="math/tex">a,b,c,d</script> are one indexed indices <script type="math/tex">A</script> with <script type="math/tex">1\leq a \leq b \leq b \leq n, 1\leq c \leq d \leq m</script>. A subarray can be thought of as some rectangle of elements of the original array.</p>
         <p>Define a prefix of 2D array <code>A</code> to be a subarray of <script type="math/tex">A</script> with <script type="math/tex">a = b = 1</script>. This is a rectangle of elements of the original array with one of its corners at <script type="math/tex">A_{1,1}</script>.</p>
         <p>Creating a prefix sum array, <code>pre</code>, where <code>pre[i][j]</code> is a prefix with corners <code>0, 0, i, j</code> is similar to creating a 1D prefix array. The main difference is you are adding 2D things instead of 1D things.</p>
         <pre><code>
 let A be an array of size n by m
-let pre be an array initially filled with zeros of size n+1 by m+1
+let pre be an array of size n+1 by m+1 initally filled with 0s
 for i in 1..n+1:
     for j in 1..m+1:
         pre[i][j] = pre[i-1][j] + pre[i][j-1] - pre[i-1][j-1] + A[i-1][j-1]
