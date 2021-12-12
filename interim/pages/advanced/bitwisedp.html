@@ -106,22 +106,22 @@ int main() {
         }
     }
     // initialize dp array
-    vector&lt;int> dp(1&lt;n, 0);
+    vector&lt;int> dp(1&lt;&lt;n, 0);
     dp[0]=1;
-    for (int subset = 1; subset &lt; 1&lt;n; subset++) {
+    for (int subset = 1; subset &lt; 1&lt;&lt;n; subset++) {
         // index of last man
         int k = __builtin_popcount(subset)-1;
         // for each compatible woman
         for (int last = 0; last &lt; n; last++) {
-            if ((subset & (1&lt;last)) > 0 && a[k][last]==1) {
+            if ((subset & (1&lt;&lt;last)) > 0 && a[k][last]==1) {
                 // add # ways to arrange rest of subset
-                dp[subset] += dp[subset ^ (1&lt;last)];
+                dp[subset] += dp[subset ^ (1&lt;&lt;last)];
                 dp[subset] %= MOD;
             }
         }
     }
     // output answer
-    cout &lt; dp[(1&lt;n)-1] &lt; endl;
+    cout &lt;&lt; dp[(1&lt;&lt;n)-1] &lt;&lt; endl;
 }
 </code></pre>
         </fieldset>
