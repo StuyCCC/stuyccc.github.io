@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-11-21</h4>
+        <fieldset>
+            <legend>BITWISE DP CONTINUED</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Grouping</h3>
+            <p>Original Problem: <a href="https://atcoder.jp/contests/dp/tasks/dp_u">Atcoder - Grouping</a>.</p>
+            <p>This is a problem where even the naive solution is difficult to think of - one possible naive solution involves taking every permutation of the objects, then iterating over every subset of n-1 "separators" that partition adjacent objects into separate groups. This strategy has a time complexity of <script type="math/tex">O(n! \cdot 2^n)</script>.</p>
+            <p>The dp solution here is extremely elegant, and stems from one simple observation: when we're trying to maximize our score for a subset, we can achieve that by picking one subset to be a single group and maximizing our score for the rest of the subset. So let's first calculate score[subset], the score of a group containing subset. This can just be calculated in <script type="math/tex">O(n^2 \cdot 2^n)</script>. Then, we'll let dp[subset] be the maximal score we can achieve by splitting the subset into groups. Then we have <script type="math/tex">dp[subset] = max_{group \subset subset} (score[group] + dp[subset \backslash group])</script>.</p>
+            <p>What's the time complexity of this approach? At first, it might look like it's <script type="math/tex">O(4^n)</script>, because for every subset we have to loop over every subset of that, and both parts have complexity <script type="math/tex">O(2^n)</script>. However, we can actually show that the time complexity is lower than that througha counting argument. Notice that if we pick a mask then pick a subset of that mask, we're essentially partitioning the whole into three subsets - the part outside the mask, the part in the mask but outside the subset, and the part in the subset. Since there are three choices for which subset each element falls under, the actual time complexity is <script type="math/tex">O(3^n)</script>, which will run in the time limit for <script type="math/tex">n \leq 16</script>.</p>
+            <p>Finally, one important implementation detail is how to loop over the subsets of a mask. It turns out, we can just use the following loop to achieve this:</p>
+            <pre><code class="language-cpp">for (int subset = mask; subset > 0; subset = (subset-1) & mask)</code></pre>
+            <p>Notice that this for loop won't run for subset = 0 — if you need that, you can replace the condition with true and break out of the loop when subset == 0 after doing what you need to do with the 0 subset. To understand why it works, first consider how subtracting one works in bitwise - take the rightmost 1 bit, flip it off, then flip every bit to the right of it on. Then notice that the for loop transition takes that subtraction operation and filters it through the mask. The result is that the rightmost 1 bit in the mask is flipped off, and every bit in the mask to the right of it is flipped on. Since this also resembles subtracting one but for the mask, the result is processing every subset in decreasing order.</p>
+            <p>The following example code will use the for loop macro I've gotten used to using - I don't usually put it into example code, but there are so many nested for loops and if statements that it felt necessary.</p>
+            <pre><code class="language-cpp">#include &lt;bits/stdc++.h>
+using namespace std;
+
+#define FOR(i,a,b) for (int i = (a); i &lt; (b); ++i)
+// F0R(i, n) loops the variable i from 0 to n
+#define F0R(i,a) FOR(i,0,a)
+
+int main() {
+    // read input
+    int n; cin >> n;
+    int a[n][n];
+    F0R(i, n) {
+        F0R(j, n) {
+            cin >> a[i][j];
+        }
+    }
+    // calculate score
+    int score[1&lt;&lt;n];
+    F0R(subset, 1&lt;&lt;n) {
+        score[subset] = 0;
+        F0R(j, n) if (subset & 1&lt;&lt;j) {
+            F0R(i, j) if (subset & 1&lt;&lt;i) {
+                score[subset] += a[i][j];
+            }
+        }
+    }
+    // calculate dp array
+    int dp[1&lt;&lt;n];
+    F0R(subset, 1&lt;&lt;n) {
+        dp[subset] = 0;
+        for (int group = subset; group > 0; group = (group-1)&subset) {
+            dp[subset]=max(dp[subset], score[group]+dp[subset^group]);
+        }
+    }
+    cout &lt;&lt; dp[(1&lt;&lt;n) - 1] &lt;&lt; endl;
+}</code></pre>
+            <h3>Elevator Rides</h3>
+            <p>Original Problem: <a href="https://cses.fi/problemset/task/1653">CSES - Elevator Rides</a>.</p>
+            <p>First, the naive solution is to try every permutation of the people, enter them into the elevator one at a time in order (creating a new elevator if the current one isn't large enough to fit the next person), and finding the minimum elevators needed. This approach has a time complexity of <script type="math/tex">O(n \cdot n!)</script>.</p>
+            <p>The dp approach will once again solve the problem for a subset of people, but it's not enough to only store the number of elevators needed for a subset, since the number of elevators used isn't enough to determine what happens when we add another person. Instead, we'll store both the number of elevators needed and the total weight placed in the last elevator. So let dp[subset] be a pair storing the number of elevators needed for that subset, then the weight in the final elevator. In the dp transition, we'll pick the last person, take the dp entry for the remaining subset, and add the last person's weight. Adding this weight involves some casework: if the final elevator can hold the extra weight, just add it, else increment the number of elevators and set the weight of the final elevator to the weight of the person. Finally, to compare these pairs of numbers with each other to pick the "minimum", notice that it's always optimal to minimize the number of elevators first, then the weight in the final elevator second.</p>
+            <p>As a minor implementation detail, pair comparison in c++ already compares the first entry, then the second entry, so we can just calculate the minimum of each pair instead of implementing our own comparison.</p>
+            <pre><code class="language-cpp">#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // read input
+    int n, x;
+    cin >> n >> x;
+    int w[n];
+    for (int i = 0; i &lt; n; i++) cin >> w[i];
+
+    // initialize dp array
+    pair&lt;int, int> dp[1&lt;&lt;n];
+    dp[0] = make_pair(1, 0);
+    // loop over every subset
+    for (int i = 1; i &lt; 1&lt;&lt;n; i++) {
+        dp[i] = make_pair(1e9, 1e9);
+        for (int k = 0; k &lt; n; k++) if (i&(1&lt;&lt;k)) {
+            // measure for rest of subset
+            pair&lt;int, int> test = dp[i^(1&lt;&lt;k)];
+            // add the last person
+            test.second += w[k];
+            if (test.second > x) {
+                test = make_pair(test.first+1, w[k]);
+            }
+            // compare with current answer
+            dp[i] = min(dp[i], test);
+        }
+    }
+    // output answer
+    cout &lt;&lt; dp[(1&lt;&lt;n) - 1].first &lt;&lt; '\n';
+}</code></pre>
+        </fieldset>
+    </div>
+</body>
