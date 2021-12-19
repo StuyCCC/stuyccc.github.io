@@ -25,14 +25,14 @@
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
             <h3>Increasing Subsequence</h3>
-            <p>Original Problem: <a href="https://cses.fi/problemset/task/1145">Increasing Subsequence</a></p>
+            <p>Original Problem: <a target="_blank" href="https://cses.fi/problemset/task/1145">Increasing Subsequence</a></p>
             <p>(Note: this problem was covered in the previous meeting, but the explanation will be placed here for coherence)</p>
             <p>In this problem, you start with an array A[1], A[2], ..., A[N] (<script type="math/tex">N<2\cdot 10^5</script>) and want to find the length of the longest strictly increasing subsequence.</p>
             <p>We'll use LIS as an abbreviation for longest increasing subsequence. This problem introduces the idea of using a segment tree to optimize a dynamic programming approach. Let's first describe the DP approach. Let's define DP[i] as the length fo the LIS that ends at index i (and must include index i). Then there are two possibilities for this subsequence: either it consists of only the index i, or it consists of index i as well as the LIS ending at some earlier index j. So we'll initialize DP[i] to <script type="math/tex">1</script>, and then loop over all indices j &lt; i such that A[j] &lt; A[i], setting DP[i] equal to max(DP[i], DP[j]+1). The time complexity is <script type="math/tex">\mathcal{O}(N^2)</script>.</p>
             <p>We can do better, though! Let's start by using coordinate compression to ensure that all values A[i] are in the range from 0 to N-1. If you don't know what coordinate compression, it's not critical to this solution, but you can google it if you'd like. Now let's define DP2[x] as the maximum value of DP[i] for all indices i where A[i] = x. Then to calculate DP[i], we want to find the maximum value of DP2[x] for all x &lt; A[i]. Also, in order to update DP2 after calculating DP[i], we'll just set DP2[A[i]] = DP[i]. Notice that these operations are a range maximum and point update, which we can do with a segment tree. Each operation takes <script type="math/tex">\mathcal{O}(\log_2(N))</script> time, and we have to perform this operation N times, so the time complexity is <script type="math/tex">\mathcal{O}(N\cdot \log_2(N))</script></p>
 
             <h3>Subarray Sum Queries</h3>
-            <p>Original Problem: <a href="https://cses.fi/problemset/task/1190">Subarray Sum Queries</a></p>
+            <p>Original Problem: <a target="_blank" href="https://cses.fi/problemset/task/1190">Subarray Sum Queries</a></p>
             <p>In this problem, we start with an array of integers A[1], A[2], ..., A[N] and M queries (<script type="math/tex">N, M \leq 2 \cdot 10^5</script>). Each query asks to change the value at index K to X. After each query, you must output the maximum sum of any contiguous subarray.</p>
             <p>This problem uses a new way of thinking about segment trees. We can use segtrees to perform operations like getting the range sum or min, but we can also use them to somehow represent a range of the original array in each node. Let's first decide what information needs to be stored in each node to capture the corresponding array range.</p>
             <p>MAXIMUM SUBARRAY SUM: If we want to find the maximum subarray sum in the entire array, it makes sense to record the maximum subarray sum in each segment. When combining two subarrays, the new maximum could be a subarray contained in either segment, or a subarray that uses both segments. So we'll need more information...</p>
@@ -56,7 +56,7 @@ array&lt;int, 4&gt; comb(array&lt;int, 4&gt; a, array&lt;int, 4&gt; b) {
     return ans;
 }</code></pre>
             <h3>Bit Inversions</h3>
-            <p>Original Problem: <a href="https://cses.fi/problemset/task/1188">Bit Inversions</a></p>
+            <p>Original Problem: <a target="_blank" href="https://cses.fi/problemset/task/1188">Bit Inversions</a></p>
             <p>We start with a bit string with N bits and M queries (<script type="math/tex">N, M \leq 2 \cdot 10^5</script>). Each query asks to flip the bit at position K. After each query, the length of the longest uniform substring (composed of the same bits) must be outputted.</p>
             <p>This uses a similar idea where each element of a segtree corresponds to a range. Once again, we can start listing the information about each range we need.</p>
             <p>MAXIMUM UNIFORM SUBSTRING: The answer should always be the first thing we record in each node. This max can be the maximum substring in either range, but could also be a substring in both ranges. But we need information on whether we can form this intermediate string...</p>
@@ -85,7 +85,7 @@ array&lt;int, 6&gt; comb(array&lt;int, 6&gt; a, array&lt;int, 6&gt; b) {
     return ans;
 }</code></pre>
             <h3>Pizzeria Queries</h3>
-            <p>Original Problem: <a href="https://cses.fi/problemset/task/2206">Pizzeria Queries</a></p>
+            <p>Original Problem: <a target="_blank" href="https://cses.fi/problemset/task/2206">Pizzeria Queries</a></p>
             <p>N buildings each contain both a pizzeria and an apartment. The price of pizza from building a is P[a], and the cost of getting pizza from building a to building b is <script type="math/tex">P[a] + |a-b|</script>. There are Q queries with two types: one type asks to set P[K] = X for given K and X, and the other type asks to calculate the minimum cost of delivering pizza from any building to building K (<script type="math/tex">N, Q \leq 2 \cdot 10^5</script>).</p>
             <p>Here, we want to use a segment tree to calculate the minimum cost. But the presence of the absolute value makes it hard to assign a single value to each building to enter into a segment tree. So we'll use a strategy that you can apply to most questions involving absolute value. Notice that when <script type="math/tex">a\geq b</script>, <script type="math/tex">|a-b| = a-b</script>, and when <script type="math/tex">a\leq b</script>, <script type="math/tex">|a-b| = b-a</script>. So we can treat these as two separate cases.</p>
             <p>In the first case, where <script type="math/tex">a\geq b</script>, we want to find the minimum of <script type="math/tex">P[a] + a - b</script>. So we can use a segtree to record <script type="math/tex">P[a]-a</script> for each building, and then calculate <script type="math/tex">\text{min}_{a\geq K}(P[a] + a) - K</script> for a query.</p>

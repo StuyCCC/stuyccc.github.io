@@ -24,50 +24,50 @@
             <legend>HARD NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
-            <a href="https://codeforces.com/problemset/problem/1327/C">Problem 30</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1327/C">Problem 30</a>
             <details>
                 <summary>Solution</summary>
                 <p>Note that 2nm is a gigantic limit, so there a bunch of ways to simulate this problem, and I am just going to give one. First lets move all the pieces to the top left corner by doing n-1 U operations and m-1 L operations. Now we can just snake across the entire board in nm-1 operations. The total amount of operations is nm + n + m - 3, which is well under the limit and every cell is reached by every chip, so it is gauranteed to work. Now you just have to simulate it :)</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1548/A">Problem 29</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1548/A">Problem 29</a>
             <details>
                 <summary>Solution</summary>
                 <p>The key observation for this problem is to realize two things: that at the end of the process no two nobles will still be friends (this can be seen by the fact that in every friend group the weakest friend will be removed until there is only one left) and that if all of his friends are weaker than him a noble can not be killed (there is no one stronger than him to kill him).</p>
                 <p>So this leads to the key idea that if all of a nobles friends are weaker than it will survive, else it will die. So for each noble we can count the number of people weaker than it and the number of people its friends with. If these numbers are equivalent it survives else it doesn't. For each of the first two queries you can just add or subtract to the original counts.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc206/tasks/abc206_e">Problem 28</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc206/tasks/abc206_e">Problem 28</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/agc053/tasks/agc053_b">Problem 27</a>
+            <a target="_blank" href="https://atcoder.jp/contests/agc053/tasks/agc053_b">Problem 27</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/arc122/tasks/arc122_c">Problem 26</a>
+            <a target="_blank" href="https://atcoder.jp/contests/arc122/tasks/arc122_c">Problem 26</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc208/tasks/abc208_e">Problem 25</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc208/tasks/abc208_e">Problem 25</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://adventofcode.com/2015/day/20">Problem 24</a>
+            <a target="_blank" href="https://adventofcode.com/2015/day/20">Problem 24</a>
             <details>
                 <summary>Solution</summary>
                 <img src="../../data/hard/november24.png" width="525" height="600">
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1519/D">Problem 23</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1519/D">Problem 23</a>
             <details>
                 <summary>Solution</summary>
                 <p>The naive approach of iterating over the left position of the reversed interval, l, and the right position of the reversed interval, r would take O(n^3) and this is too slow for this problem. The key observation is that we can use prefix sums and a unique way of iterating through intervals to reduce this to O(n^2).</p>
@@ -76,14 +76,14 @@
                 <p>Notice that if increase our interval left by 1 (l--) and right by 1 (r++) our interval sum increases by A[l]*B[r] + A[r]*B[l]. Now for every interval centered at i that is within bounds we can use the equation in paragraph 2 to get the product, and our answer will be the maximum of all these products.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1096/C">Problem 22</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1096/C">Problem 22</a>
             <details>
                 <summary>Solution</summary>
                 <p>The key observation for this problem is to realize that the angle abc that we are looking for is an inscribed angle which means that it is 1/2 of a central angle. Since we have an n-gon the central angle for 1 side is 360/n, so the smallest amount we can increase our central angle by is 360/n everytime, or 180/n for our inscribed angle. This means that our inscribed angle ang is in the form 180k/n where k is between 1 and n-2. k has to be n-2 or less because we need at least two unused sides to form our inscribed, Look at above diagram for clarity.</p>
                 <p>We have ang = 180k/n which is equivalent ang * n = 180 * k. Lets define g = gcd(ang, 180) we can divide both sides by g and get ang/g * n = 180/g * k. Since gcd(ang/g, 180/g) = 1, we can see that ang/g has to be a divisor of k and 180/g has to be a divisor of n. So we have to have k = x * ang/g and n = x * 180/g. Since we want to minimize n we want to make x as small as possible. So lets start off with x=1, we have k = ang/g and n = 180/g. We can realize that this always works and we can output 180/g as our answer, unless k = n-1 (this does not satsify k &lt;= n-2 for our earlier condition), in which case we have to make x = 2, and output 2*180/g as our answer.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/agc031/tasks/agc031_c">Problem 21</a>
+            <a target="_blank" href="https://atcoder.jp/contests/agc031/tasks/agc031_c">Problem 21</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
@@ -95,7 +95,7 @@
                 <p>Today was the day of the PClassic contest so we didn't do a regular POTD. Instead, you can go check out the writeup linked above and try to solve some PClassic problems.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1550/C">Problem 19</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1550/C">Problem 19</a>
             <details>
                 <summary>Solution</summary>
                 <p>Notice that a triple of points a, b, c is only bad if one of them lies in the rectangle formed by the other two points. Without loss of generality lets assume a and c are the corners of the rectangle. If b is outside the rectangle of a,c then dist(a,b) + dist(b,c) &gt; dist(a,c), so this is a valid triple, but if b is inside dist(a,b) + dist(b,c) = dist(a,c), which makes it a bad triple.</p>
@@ -104,51 +104,51 @@
                 <p>So finally our problem reduces to checking all size 1, 2, 3, 4 subarrays in the original array, to see if they have a bad triple and if they don't add them to a count, and then at the end of the program print the count.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1237/C1">Problem 18</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1237/C1">Problem 18</a>
             <details>
                 <summary>Solution</summary>
                 <p>Realize that n &lt;= 2000, which means that we can have up to an n^2 solution for this problem. I am going to give the n^2 solution I used, and then prove that it is right. The solution that I used, is that n/2 times in a row I choose an arbitrary point x that hasn't been removed, then I choose the closest point to x that hasn't been removed yet, lets call it y. I choose these two points to be the pair that I remove, and this pair always work.</p>
                 <p>Now lets see why. y is the closest point to x and now they form a bounding box being the top right and bottom left corners respectively. If a point was to be found in the bounding box, then that point would be closer to x than y is (because y is the farthest point in the bounding box from x). However we know that there is no point closer to x than y because we defined y to be the closest point. So the bounded box is always empty and we can always remove this pair of points, and our strategy works out in the end.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/507/B">Problem 17</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/507/B">Problem 17</a>
             <details>
                 <summary>Solution</summary>
                 <p>Lets call the euclidean distance between the two centers d (ie sqrt((x2-x1)^2 + (y2-y1)^2)). Notice that the maximum distance you can shift the center of the circle by is 2*R per move (done by rotating the circle by 180 degrees from any pin position). So we can see that it is optimal to move as much as possible until we are within 2*R of the center we want to find. Now notice that when we are within 2*R distance and not already at the end point, we can shift to the new center in one move (shown in diagram below). So now we can see that our optimal strategy leads to an answer of ceil(d/(2*R)).</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1458/A">Problem 16</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1458/A">Problem 16</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem can be easily solved if we know some GCD rules. GCD(x-y,y) = GCD(x,y), and this logic works for all arguments, so GCD(x,y,z) = GCD(x-y,y,z). Now notice that the answer we are looking for is GCD(a1+bj, a2+bj, ..., an+bj). We can subtract a1+bj from each term but the first and see that this is equal to GCD(a1+bj, a2-a1, ..., an-a1). We can precalculate GCD(a2-a1, ..., an-a1) and call it G. Now we have that the answer to every query is GCD(a1+bj, G). Note that to get G we might have to use GCD(x, 0) = 0. Also note that if a1 is not the smallest element in the sequences this does not work because then you get the GCD of a negative number.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1167/C">Problem 15</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1167/C">Problem 15</a>
             <details>
                 <summary>Solution</summary>
                 <p>To solve this problem we can just use the strategy of connected components where once we have a graph set up, for every not visited yet we can start a dfs from the user and everything that user can connect to will belong to the same connected component, and if they are in a certain connected component they can share information to everyone in that connected component, so for each user you just have to take the size of the connected component the user is inside of.</p>
                 <p>Now we that we have the strategy we actually have to start creating the graph. Notice that if we add a edge from everyone to everyone else in each of the m groups this has n^2 edges which is too slow (to visualize this consider the case of only 1 group containing all people). So a better strategy is just to connect only adjacent people in each group as this still represents the fact that all information can spread just in a bit longer matter (but length of spread doesn't matter, only amount does). This observation reduces the complexity from n^2 to sum of k_i for each k_i in the m groups. Now that we have the optimization and the strategy we can easily solve the problem.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc194/tasks/abc194_e">Problem 14</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc194/tasks/abc194_e">Problem 14</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOOn</p>
             </details>
             <br>
-            <a href="../writeups/pclassicfall2021">Problem 13</a>
+            <a target="_blank" href="../writeups/pclassicfall2021">Problem 13</a>
             <details>
                 <summary>Solution</summary>
                 <p>For some reason, we didn't give a POTD today, so instead you can go check out our pclassic writeups for some cool problems.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1514/C">Problem 12</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1514/C">Problem 12</a>
             <details>
                 <summary>Solution</summary>
                 <p>The first observation of this problem is to notice that if we include a number x &lt; n such that gcd(x, n) != 1 then the prod wont be 1 mod N. To see this in action, imagine we have n = 9 and we include 3 in the product. Prod % 9, must be either be 0, 3, or 6 (ie a multiple of 3), and thus it will never be 1, and that is not what we want. So now we know we should only include numbers that have gcd(x, n) == 1. Lets call p the product of all numbers that have gcd(x, n) == 1 modulo n. If p == 1 we can just output all those numbers, however if p != 1, we can just remove the number p itself and output the rest of the numbers. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/329/B">Problem 11</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/329/B">Problem 11</a>
             <details>
                 <summary>Solution</summary>
                 <p>The optimal strategy for the user in this problem is to take the shortest path to the exit cell. This is because if you take a non-shortest path this gives the other trainers an extra move to try to get to you. Now notice that the optimal play for the trainers is to get to the exit cell before or at the same time as you. This is because if they can get to the exit cell, you are forced to battle them before you can leave.</p>
@@ -156,13 +156,13 @@
                 <p>So now this problem boils down to checking if the shortest path to the exit of the trainers are shorter than or equal to your shortest path to the exit. If they are you have to battle them, and if they aren't you don't have to battle them. You can find the shortest path to the exit for each trainer and yourself by doing a single bfs starting at the exit cell. Once you are done with the bfs just compare distances and add up trainers and output your answer.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1538/F">Problem 10</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1538/F">Problem 10</a>
             <details>
                 <summary>Solution</summary>
                 <p>There are a ton of overly difficult ways to solve this problem using dp, binary search, and the such, but I am going to give the simplest solution I found here. The total number of changed digits is equal to the sum of changes in each place (ie, ones place, tens place, hundreds place). The amount of changes in the ones place is equal to R - L, you can figure this out pretty trivially. Now notice that the number of changes in the 10s place is equivalent to floor(R/10) - floor(L/10). This same pattern occurs for the rest of the places as well. So for each digit place x from 0 to 9 add to the sum floor(R/10^x) - floor(L/10^x), and output this for your answer.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1475/C">Problem 09</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1475/C">Problem 09</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem boils down to the following for each of the k couples in the input, find out how many other couples they can dance with, and sum all these up and then divide 2(to prevent a,b and b,a overcounting) and output them. Let freq1[a], freq2[b] be the number of times a shows up in the first sequence and the number of times b shows up in the second sequences.</p>
@@ -170,49 +170,49 @@
                 <p>Now we know freq1[a]+freq2[b]-1 fails which means k-(freq1[a]+freq2[b]-1) works, so our final answer is (the sum of k-(freq1[a]+freq2[b]-1)) divided by 2.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1095/C">Problem 08</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1095/C">Problem 08</a>
             <details>
                 <summary>Solution</summary>
                 <p>Notice that the minimum powers of 2 needed to create the number n, is the number of 1 bits in the binary representation of n, lets call this number x, and lets say we have all the powers of 2 represented by these 1 bits in a multiset S. If x &gt; k, then our answer is NO because we can't decrease the power of 2s that we need. If x == k, we can just return the powers of 2 in S. If x &lt; k, we need to do break up some powers of 2 into smaller powers of 2. Observe that breaking up a power of 2 increases the total count x by 1. So we can just take a value in the multiset, split it into 2 and put its components back into the set. We can do this until all values equal 1, ie there are n 1s. So this means if n &lt; k, it we output NO, else we output whatever we had in our multiset, after we split powers of 2, k-x times.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/agc040/tasks/agc040_c">Problem 07</a>
+            <a target="_blank" href="https://atcoder.jp/contests/agc040/tasks/agc040_c">Problem 07</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/arc116/tasks/arc116_d">Problem 06</a>
+            <a target="_blank" href="https://atcoder.jp/contests/arc116/tasks/arc116_d">Problem 06</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc183/tasks/abc183_e">Problem 05</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc183/tasks/abc183_e">Problem 05</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc196/tasks/abc196_d">Problem 04</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc196/tasks/abc196_d">Problem 04</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/arc098/tasks/arc098_b">Problem 03</a>
+            <a target="_blank" href="https://atcoder.jp/contests/arc098/tasks/arc098_b">Problem 03</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc149/tasks/abc149_e">Problem 02</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc149/tasks/abc149_e">Problem 02</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc147/tasks/abc147_d">Problem 01</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc147/tasks/abc147_d">Problem 01</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>

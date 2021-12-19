@@ -22,26 +22,26 @@
         <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>HARD AUGUST 2021</legend>
-            <a href="https://codeforces.com/problemset/problem/453/A">Problem 31</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/453/A">Problem 31</a>
             <details>
                 <summary>Solution</summary>
                 <img src="../../data/hard/august31.png" width="525" height="600">
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/312/B">Problem 30</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/312/B">Problem 30</a>
             <details>
                 <summary>Solution</summary>
                 <img src="../../data/hard/august30.png" width="525" height="600">
             </details>
             <br>
-            <a href="https://community.topcoder.com/stat?c=problem_statement&pm=11359">Problem 29</a>
+            <a target="_blank" href="https://community.topcoder.com/stat?c=problem_statement&pm=11359">Problem 29</a>
             <details>
                 <summary>Solution</summary>
                 <p>The first part of this problem is to figure out how much each suffix gives as a percentage. This can be seen by noticing the following, if a suffix has length 2, 2 out of the 9 places in the number are fixed, which means it is contained in a total of 10^7 numbers (the other 7 numbers can be any digit). 10^7 / 10^9 (Original amount of numbers) = 0.01. So the total percentage for a suffix is 1 / 10^(length of suffix).</p>
                 <p>Now the second part of this problem is to reduce overcounting. The method to do this depends on the observation that if a substring beginning from the last position of a suffix is equivalent to another suffix, then that suffix has already been counted. For example "347" has 1/10 of the numbers of "47". So if "47" is counted "347" doesn't need to be. One method to determine the suffixes that are overcounted is to sort the suffixes by size (smallest first). And then for each suffix before this current suffix, check to see if the previous suffixes are substrings of the current suffix starting from the end. If there exists a substring you don't count the current suffix, if there doesnt exist a substring you do count it. Add all the percentages of each suffix accounting for overcounting and return an answer with proper set precision and you are done.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/dp/tasks/dp_i">Problem 28</a>
+            <a target="_blank" href="https://atcoder.jp/contests/dp/tasks/dp_i">Problem 28</a>
             <details>
                 <summary>Solution</summary>
                 <p>For this problem we have to track two states, the number of coins flipped so far and the number of heads we have gotten so far. This leads us to having a 2 dp array, where DP[i][q] represents the probability of there being q heads in the first i coins flipped. From here we can get that DP[0][0] = 1 (the probability that 0 heads comes from 0 tosses is 100%).</p>
@@ -49,13 +49,13 @@
                 <p>Now that we all these probabilities calculated we need to figure out our answer. The probability of having more heads than tails from n tosses is the sum of the probabilities from DP[n][(n+1)/2] to DP[n][n]. So just sum those values up, make sure to cout with setprecision, and your done.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc201/tasks/abc201_d">Problem 27</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc201/tasks/abc201_d">Problem 27</a>
             <details>
                 <summary>Solution</summary>
                 <p>Another game dp! This time each player has the choice of going right or going down on the grid, and we want to use our knowledge from those two squares to inform our decision for the current square. One implementation of the dp looks like this: let color[x][y] be the number of points a player scores by landing on square (x, y), and score[x][y] be the maximum advantage that the player starting at square (x, y) can gain over their opponent. If the player chooses to go right, they gain or lose a point, then lose whatever advantage their opponent is able to gain from that square onward ( color[x][y+1] - score[x][y+1] ). The same logic applies if the player chooses to go down ( color[x+1][y] - score[x+1][y] ). We can use this relation to calculate all values of score, then determine that Takashi wins if score[0][0] is greater than 0, ties if it's equal to zero, and loses if it's less than 0.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc214/tasks/abc214_f">Problem 26</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc214/tasks/abc214_f">Problem 26</a>
             <details>
                 <summary>Solution</summary>
                 <p>Our approach will be to try to work from right to left: let strings[i] be the number of strings which satisfy the problem statement and start at index i. If we know all values of strings from i+1 onward, we want to calculate strings[i].</p>
@@ -64,14 +64,14 @@
                 <p>Finally, we get to the implementation: for each i, string[i] is initialized to 1. Then, for each character, we find the first index of that character greater than i+1 (this can be done by storing the indices of each character in an array and using binary search). If that index exists (let's call it j), we add strings[j] to strings[i]. Finally, once everything has been calculated, for each character that appears in the string, we find the first index j where it appears and add strings[j] to the answer to account for every possible starting character.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/859/C">Problem 25</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/859/C">Problem 25</a>
             <details>
                 <summary>Solution</summary>
                 <p>The first observation (which demonstrates why we would use dynamic programming in the first place) is that if we know the optimal results for Alice and Bob from slice k+1 onward, then it's easy to figure out how they can play optimally from slice k onward. The next observation is that we only need to keep track of how Bob can play optimally - if Alice has the decider token, her best choice is to just copy whatever strategy Bob would have had.</p>
                 <p>The rest of it is mostly implementation - the one I like keeps track of the difference between Alice and Bob's scores. Let B[i] be the maximum difference Bob can achieve over Alice from the ith slice onward (assuming Bob has the decider token). Also, let S be the size of the current slice. Then Bob has the choice of either giving this slice to Alice and playing optimally from i+1 onward ( -S + B[i+1] ), or taking the slice and letting Alice play optimally ( S - B[i+1] ). B[i] will be the maximum between these two options. At the end, B[0] will be the maximum difference Bob can achieve having the decider token at the beginning. This information, along with the sum of all slices, gives us to the answer.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1513/C">Problem 24</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1513/C">Problem 24</a>
             <details>
                 <summary>Solution</summary>
                 <p>So the first observation to solve this problem, is the fact that the expansion of each digit in the number n is independent from each other. So our answer for this problem will be "the sum of f(i) for each digit i in n", where f(i) represents the total size that the digit i will become after m operations.</p>
@@ -80,20 +80,20 @@
                 <p>To figure out the number of 9 in DP[i-10], we can do DP[i-9]-D[i-10], as after 1 more operation all the 9s in (i-10) will become 10s, while everything else remains the same size. So by combining these formulas we get a total formula of DP[i] = 2*DP[i-10]+DP[i-9]-DP[i-10] = DP[i-9]+DP[i-10]. Now just make sure to only precalculate the DP values once for each test case and the problem becomes simple.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1195/C">Problem 23</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1195/C">Problem 23</a>
             <details>
                 <summary>Solution</summary>
                 <p>So there are 2 rows of N students in this problem, so no we need to figure out all the possible DP states that we can have. For each position in the row, there are 3 possible DP states: we pick from row 1 only, we pick from row 2 only, or we pick from neither (This is seen in the 2nd example case). So this leads us to see that our DP vector is going to be the following vector&lt;array&lt;ll,3&gt;&gt; DP(n). Let us also define F[i] to be the ith position in the first row, and S[i] to be the ith position in the 2nd row.</p>
                 <p>Now we need to figure out initial states. DP[0][0] is the maximum possible sum if the current first row is chosen, so this means DP[0][0] = F[0]. Similar logic is applied to DP[0][1], so it is equal to S[0]. DP[0][2] is the max sum if we pick from neither rows, so its equal to 0. Now for transitions, if in the ith position we pick from the 1st row, that means in the (i-1)th position we can only pick from the 2nd row or neither of them, so this leads to DP[i][0] = max(DP[i-1][1],DP[i-1][2])+F[i]. By similar logic DP[i][1] =  max(DP[i-1][0],DP[i-1][2])+S[i]. Finally DP[i][2] = max(DP[i-1][0],DP[i-1][1]), because if we dont choose from either this row we can choose from either in the previous row. Now that initial states and transitions are done, we can just output the max of the 3 final values at DP[n-1].</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1633">Problem 22</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1633">Problem 22</a>
             <details>
                 <summary>Solution</summary>
                 <p>The sample test case clarifies that order does matter (1+2 and 2+1 are listed as different possibilities). This allows us to find a recursive approach based on the first value. For example, the number of ways to get a sum of n where the first value equals 1 is the same as the number of ways to get a sum of n-1. When expanded to the other possible first values, the recursion becomes f(n) = f(n-1) + f(n-2) + ... + f(n-6), where f(n) is the number of ways to get a sum of n. Finally, we can store the values of f in a dp array to ensure that we can calculate them efficiently. As always, make sure to ignore negative numbers, because there are 0 ways to reach a negative sum.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1638">Problem 21</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1638">Problem 21</a>
             <details>
                 <summary>Solution</summary>
                 <p>The key to solving this problem is to realize since you can only move to the right or down, this means you can only enter a cell from the cell above it and the cell to the left of it. So from here you can see that the number of ways to reach a certain cell is equal to the number of ways to reach the cell above + the number of ways to reach the cell to the left of it.</p>
@@ -101,37 +101,37 @@
                 <p>Also if people were interested in the side problem of solving this problem in O(n) time, given there were no traps. The observation for that problem is that no matter what, to reach the bottom right cell you need to move n-1 cells to the right and n-1 cells down. So the answer is the number of distinct permutations of these two elements, which is (2n-2)! / ((n-1)!)^2. This can be calculated in O(n) time using precalculations of factorials and factorial inverses.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1543/D1">Problem 20</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1543/D1">Problem 20</a>
             <details>
                 <summary>Solution</summary>
                 <img src="../../data/hard/august20.png" width="525" height="600">
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1362/C">Problem 19</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1362/C">Problem 19</a>
             <details>
                 <summary>Solution</summary>
                 <img src="../../data/hard/august19.png" width="525" height="600">
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1420/B">Problem 18</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1420/B">Problem 18</a>
             <details>
                 <summary>Solution</summary>
                 <img src="../../data/hard/august18.png" width="525" height="600">
             </details>
             <br>
-            <a href="https://codeforces.com/contest/1547/problem/D">Problem 17</a>
+            <a target="_blank" href="https://codeforces.com/contest/1547/problem/D">Problem 17</a>
             <details>
                 <summary>Solution</summary>
                 <img src="../../data/hard/august17.png" width="525" height="600">
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1362/B">Problem 16</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1362/B">Problem 16</a>
             <details>
                 <summary>Solution</summary>
                 <img src="../../data/hard/august16.png" width="525" height="600">
             </details>
             <br>
-            <a href="https://codeforces.com/contest/1554/problem/C">Problem 15</a>
+            <a target="_blank" href="https://codeforces.com/contest/1554/problem/C">Problem 15</a>
             <details>
                 <summary>Solution</summary>
                 <p>This was a hard problem, so if you don't understand the solution feel free to come back to it after the next few bitwise problems.</p>
@@ -140,55 +140,55 @@
                 <p>The next implementation does a little more casework, but is more explicit in its reasoning. We want n^x to be at least m+1, so we can compare the two bit by bit (starting from most significant). If an n-bit is 0 and an (m+1)-bit is 1, then x has to be 1 to ensure equality. If the two are equal, then x is 0 to maintain equality. And lastly, if an n-bit is 1 and an (m+1)-bit is 0, then that and all remaining bits in x can be set to 0, since n by itself is already greater than m+1 from that point on.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/199/A">Problem 14</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/199/A">Problem 14</a>
             <details>
                 <summary>Solution</summary>
                 <p>There are a couple ways to solve this problem. One method takes advantage of the fact that 0 is a Fibonacci number, so 0 + 0 + F_n = F_n. You could also do something like 0 + F_(n-1) + F_(n-2), which just uses the formula for Fibonacci numbers. Finally, if using zeroes was not allowed, you could use the formula for Fibonacci numbers multiple times, by noticing that F_n = F_(n-1) + F_(n-2) = (F_(n-2) + F_(n-3)) + F_(n-2).</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1475/A">Problem 13</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1475/A">Problem 13</a>
             <details>
                 <summary>Solution</summary>
                 <p>The key observation here is that if a number has no odd divisors, then its only prime factors can be 2. In other words, if the number is a power of 2, then the answer is no, otherwise the answer is yes. There are multiple ways to implement this:</p>
                 <ol>
                     <li><p>probably the most basic one is to keep dividing by 2 until the number is odd, then notice that if the result is 1 the number was a power of 2. </p></li>
                     <li><p>you can also use a built in method like __builtin_popcount(n) in C++ to find the number of 1's in a number's bit representation (if it's 1, the number is a power of 2). </p></li>
-                    <li><p>there's also a neat bit manipulation trick: n&-n returns the highest power of 2 that divides n (won't go into it in depth, but you can read about it <a href="https://www.quora.com/In-programming-what-does-n-n-return">here</a>). If n is a power of 2, then n&-n == n. </p></li>
+                    <li><p>there's also a neat bit manipulation trick: n&-n returns the highest power of 2 that divides n (won't go into it in depth, but you can read about it <a target="_blank" href="https://www.quora.com/In-programming-what-does-n-n-return">here</a>). If n is a power of 2, then n&-n == n. </p></li>
                     <li><p>a similar trick takes advantage of the fact that n&(n-1) erases the lowest 1 bit in n, so if n is a power of 2 then n&(n-1) == 0.</p></li>
                 </ol>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1618">Problem 12</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1618">Problem 12</a>
             <details>
                 <summary>Solution</summary>
                 <p>When you multiply a number by 10, a zero is added to the end of the number, so the aim of the problems is to figure out how many multiples of 10 is in n!. To do this we can look at the prime factors of 10, which are 2 and 5. Whenever there is both a 2 and a 5 in the expression of n!, thent there will be a 10 and thus an extra zero. So the answer is min(# of 2s, # of 5s). It can be proven that the # of 2s in n! is always greater than or equal to the # of 5s in n!. A simple non rigorous intuitive proof of this observation is that there is at least 1 two for every other number up to n, while there is at least 1 five for one of every five numbers up to n. So we shall look for the # of 5s as our answer. To do this we can see that 5! is expanded has 1 five, 10! if expanded has 2 fives, and so on. However this pattern fails at 25! because 25 is double counted because it has 2 fives in it. We can also see that multiples of 25 will be double counted later on as well. This is also true for multiples of 125 as they will be triple counted. In fact this is true for all powers of 5, so to account for this double/triple/quad/etc counting we can do the following formula: floor(x/5) + floor(x/25) + floor(x/125) + ... until the power of 5 becomes greater than x and the floor(x/5^y) becomes 0.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc194/tasks/abc194_c">Problem 11</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc194/tasks/abc194_c">Problem 11</a>
             <details>
                 <summary>Solution</summary>
                 <p>The first solution takes advantage of one of the constraints: since it's given that the values can range between -200 and 200, we can record how many times each value appears and use that to efficiently calculate how many times each squared difference should be added to the sum. It will get the points, but it's not particularly elegant and won't help us approach other, more complicated problems. So let's try to solve it assuming that the elements can be anything. We can first expand (Ai - Aj)^2 as Ai^2 - 2 * Ai * Aj + Aj^2. The Ai^2 and Aj^2 terms are the easiest to take care of: any entry Ai will contribute an Ai^2 term exactly n-1 times (when paired with n-1 other numbers). Next, we have to deal with the -2 * Ai * Aj term. If we fix the index i, the sum of these terms will be -2 * Ai * (A1 + A2 + ... + A(i-1)). We can interpret the third factor as a prefix sum, which we can efficiently calculate as we iterate through the elements. And so after expanding and considering each term, we're able to efficiently calculate this sum.</p>
             </details>
             <br>
-            <a href="https://www.spoj.com/APS/">Problem 10</a>
+            <a target="_blank" href="https://www.spoj.com/APS/">Problem 10</a>
             <details>
                 <summary>Solution</summary>
-                <p>This problem used an adaptation of the Sieve of Eratosthenes (if you're not familiar with the original algorithm, you can read about it <a href="https://www.geeksforgeeks.org/sieve-of-eratosthenes/">here</a>). For this problem, we want to efficiently calculate the smallest prime that divides each number. When we use the sieve, instead of marking numbers as prime or composite, we can mark them with the smallest prime that divides it by only marking numbers that haven't already been labelled with a smallest prime yet. After running the sieve, we can sum up the values of the sieve up to each n and output that value.</p>
+                <p>This problem used an adaptation of the Sieve of Eratosthenes (if you're not familiar with the original algorithm, you can read about it <a target="_blank" href="https://www.geeksforgeeks.org/sieve-of-eratosthenes/">here</a>). For this problem, we want to efficiently calculate the smallest prime that divides each number. When we use the sieve, instead of marking numbers as prime or composite, we can mark them with the smallest prime that divides it by only marking numbers that haven't already been labelled with a smallest prime yet. After running the sieve, we can sum up the values of the sieve up to each n and output that value.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc164/tasks/abc164_d">Problem 09</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc164/tasks/abc164_d">Problem 09</a>
             <details>
                 <summary>Solution</summary>
                 <p>The first observation is that if x * 10^k is a multiple of 2019, then x is a multiple of 2019. Since 10 and 2019 are coprime (don't share any factors), any factors of 2019 must lie in x, not 10^k. This means that if, for example, we have the sequence 12345 and want to determine if 23 is a multiple of 2019, we can calculate whether the difference 2345 - 45 = 2300 is a multiple of 2019. More importantly, if the remainder of the difference is 0 mod 2019, then the two values must have the same remainder mod 2019. So the strategy is to calculate the remainder mod 2019 of 0, 5, 45, 345, 2345, and 12345, then count the number of pairs with the same remainder (remember that 0 has to be included because it's possible to not subtract anything from a number like 2345). To count the number of pairs, we can record for each remainder how many values have that remainder, then use the formula n * (n-1) / 2 for the number of ways to pick two numbers from that remainder. The last implementation detail is how to efficiently calculate these remainders: we can keep track of an increasing power of 10 and each time add a new digit, multiplied by that power of 10, onto the previous remainder.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/group/KIrM1Owd8u/contest/315076/problem/A">Problem 08</a>
+            <a target="_blank" href="https://codeforces.com/group/KIrM1Owd8u/contest/315076/problem/A">Problem 08</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem makes use of Fermat's Little Theorem, which states that for a prime modulus p and any number a not divisible by p, a ^ (p-1) leaves a remainder of 1 when divided by p. In this situation, p=5, so 1 = a^4 = a^8 = ..., which creates a cycle of length 4. We can read in the exponent as a string, find its remainder mod 4 using its last two digits, then compute the given expression under the new exponent.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc212/tasks/abc212_c">Problem 07</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc212/tasks/abc212_c">Problem 07</a>
             <details>
                 <summary>Solution</summary>
                 <ol>
@@ -198,7 +198,7 @@
                 </ol>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1621">Problem 06</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1621">Problem 06</a>
             <details>
                 <summary>Solution</summary>
                 <ol>

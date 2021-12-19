@@ -24,31 +24,31 @@
             <legend>HARD SEPTEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
-            <a href="https://codeforces.com/problemset/problem/1312/D">Problem 30</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1312/D">Problem 30</a>
             <details>
                 <summary>Solution</summary>
                 <p>First observation is that there are m numbers and we are going to choose n-1 of them for our array (one of the numbers is duplicated). So there are mC(n-1) ways so far. Now out of these n-1 numbers all but the maximum can be chosen to be the duplicated number. This is because if the max was duplicated the array would not be able to satisfy the strictly ascending and strictly descending conditions. So there are n-2 choices and our current answer is mC(n-1)*(n-2). Now we have the max number at the middle, and the 2 duplicated numbers on either side of them. For the rest of n-3 numbers, they can be either on the left side or the right side of the maximum number, and since these sides are sorted there are no permutations that can be done to either side, and there is only a direct 2^(n-3) choices. So this leads to our final answer of mC(n-1)*(n-2)*2^(n-3). Make sure to hardcode the case n = 2, and you can solve the problem.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1433/E">Problem 29</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1433/E">Problem 29</a>
             <details>
                 <summary>Solution</summary>
                 <p>First we see that we can choose n/2 people to be in the first group and the rest in the second group. So our answer starts off being nC(n/2). Now we realize we have to deal with the permutations of the n/2 people in each group, but we also have to be careful with rotations. To deal with the rotation aspect of this problem, we can fix one person in group and then permute the other n/2-1 people. This leads to an additional factor of (n/2-1)! for each group. So our answer so far is nC(n/2) * ((n/2-1)!)^2. However, we still have to deal with the fact that two dancers (x,y) will be counted as the same as (y,x), so we divide our answer by 2. For a final answer of (nC(n/2) * ((n/2-1)!)^2) / 2.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/contest/1562/problem/A">Problem 28</a>
+            <a target="_blank" href="https://codeforces.com/contest/1562/problem/A">Problem 28</a>
             <details>
                 <summary>Solution</summary>
                 <p>We want to maximize a % b. The first step is to realize that a = r, because larger values of a are always advantageous. Now we can notice that b = floor(r/2)+1 is optimal, because then a%b is as close to a/2 as possible. However, it's possible that this ideal value for b is outside the range [l, r]. If this is the case then we can show that each time b increases by 1, a % b decreases by 1, so it's optimal to pick b = l. So our final solution turns out to be r % max(l, floor(r/2)+1).</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1509/A">Problem 27</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1509/A">Problem 27</a>
             <details>
                 <summary>Solution</summary>
                 <p>There are three main cases of averaging adjacent numbers. The two numbers can either be odd odd, even even, or odd even. Out of these three cases the first two average out to an integer while the last one doesn't, so this means we want to minimize the number of times an even number is next to an odd number in the array. We can do this by putting all the odds at the start and evens at the end. This is optimal because if there is at least one odd and one even number, then there is at least one non-photogenic pair, and this method finds exactly one non-photogenic pair.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1513/A">Problem 26</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1513/A">Problem 26</a>
             <details>
                 <summary>Solution</summary>
                 <p>So first step we need to do for this problem is to figure out when N and K has a possibile permutation and when it doesn't. Let n repesent a nonpeak and p represent a peak. Lets start off with some sample cases: the smallest amount of numbers needed to get 1 peak is 3: n p n, 2 peaks is 5: n p n p n, 3 peaks is 7: n p n p n p n. This is the smallest pattern possible and we know this because two adjacent indexes can't both be peaks. To order numbers in this way correctly we can choose the p's to be the K largest numbers and the n's the K+1 smallest numbers, which would make sure that each p is a peak and each n is a nonpeak.</p>
@@ -56,7 +56,7 @@
                 <p>Now that we have proven that if N &gt;= 2*K+1 it works else it doesn't, we need to actually create the permutation. One way to create this permutation is to make the peaks the K largest in order numbers and make the n the N-K smallest numbers (ie N = 7, K = 2 -&gt; 1 6 2 7 3 4 5). We can also switch up even and odd numbers until we get enough peaks (ie N = 7, K = 2 -&gt; 1 3 2 5 4 6 7). And there are a ton of other methods, go see if you can find one not used in this explanation.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1498/A">Problem 25</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1498/A">Problem 25</a>
             <details>
                 <summary>Solution</summary>
                 <p>To start, you can find the gcd of two numbers using a built-in function, or code it yourself with the Euclidean algorithm https://cp-algorithms.com/algebra/euclid-algorithm.html.</p>
@@ -64,13 +64,13 @@
                 <p>To prove this we can notice that if a number is a multiple of three, then its digits also add up to a multiple of three. This means that every multiple of three has a gcd of at least 3 with its digit sum, which qualifies it as a potential answer. This means we never need to test more than 3 values, since we'll hit a multiple of 3 by then. Remember to test each value instead of taking the nearest multiple of 3, else you can run into counterexamples like n=79, where the answer is 80 but the lowest multiple of 3 is 81.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1304/B">Problem 24</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1304/B">Problem 24</a>
             <details>
                 <summary>Solution</summary>
                 <p>The bounds in this problem allow for an O(n^2 * m) bash. There are two cases for an included string: either it's already a palindrome and appears in the middle, or it's not and its reverse appears on the opposite end of the string. So this means for every string we can either note that it's a palindrome, or see if its reverse exists in the array. At the end, if a palindrome exists, put it in the center and append each substring with its reverse to the front and end of the answer. The complexity is O(n^2 * m) because we have to search for the reverse of each string in O(n^2) with O(m) comparison.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1717">Problem 23</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1717">Problem 23</a>
             <details>
                 <summary>Solution</summary>
                 <p>We can solve this problem efficiently with dynamic programming. Let ways[i] be the number of ways for i people to give gifts to someone else. Let's first consider the ith person, who we can just name i. Let's also say that A is the person who gives a gift to i. Then there are two cases: either i gives a gift to someone other than A, or i gives a gift to A.</p>
@@ -79,7 +79,7 @@
                 <p>After summing the two cases, we multiply by i-1 choices for person A. That means we can calculate ways[i] with the simple equation ways[i] = (i-1) * (ways[i-1] + ways[i-2]), while remembering to take the mod at each step. One final detail: ways[0] = 1 since there's 1 way to arrange nobody, and ways[1] = 0 because there aren't any valid arrangements of one person.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1716">Problem 22</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1716">Problem 22</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem can be reworded as follows: how many combinations of n non-negative integers are there such that the sum of those n non-negative integers sum to m. This is called the "stars and bars" problem because it can be solved using a visualization of stars and bars. We can think of this visually as m stars and n-1 bars in a line. Notice that the bars in an such arrangement will divide the stars in groups that add up to n. Since there are m+n-1 objects lined up and we choose n-1 of them to be bars, the number of ways to do this is (m+n-1) choose (n-1).</p>
@@ -87,14 +87,14 @@
                 <p>ax % p = 1 under the definition of modular inverse, which makes sense because a*1/a = 1. We can do this is through Fermat's little theorem, which states that if gcd(a,p) = 1 and p is prime, then a^(p-1) % p = 1. So we can say that ax % p = a^(p-1) % p, which is satisfied if x = a^(p-2) % p, which we can calculate through binary exponentiation. Now that we can calculate inverses we can finish the problem.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1713">Problem 21</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1713">Problem 21</a>
             <details>
                 <summary>Solution</summary>
                 <p>If a number x has prime factorizstion (p_1)^(e_1) * (p_2)^(e_2) * ..., where p_i is prime, then the number of divisors is equal to (e_1+1)(e_2+1)(...). This is because there are (e_i + 1) choices for how many factors of p_i to include, so the product of all (e_i + 1) is the number of ways to construct the prime factorization of a divisor.</p>
                 <p>Now the goal is to quickly find the prime factorization of x. Lets define sieve[x] to be the smallest prime factor of x, which we can calculate using an approach described in the 8/10 Problem of the Day. Let's say sieve[x] = p. Then we can repeatedly divide x by p to find its exponent in the prime factorization of x. When all factors of p are divided out, sieve[x] will give another prime that we can continue to divide out. Using this method will give us the prime factorization of x. Finally, if the maximum value is mx, then the time complexity of this approach is about O(mx + n*log(mx)), since calculating the sieve is only a little slower than O(mx) and we consider at most log(mx) factors for each of n numbers.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1712">Problem 20</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1712">Problem 20</a>
             <details>
                 <summary>Solution</summary>
                 <p>Todays problem relied on understanding Fermat's little theorem. This theorem states that if p is prime and a is not a multiple of p then a^(p-1) % p = 1. Since p = 1e9+7 is prime and we know a,b,c is smaller than 1e9+7 so it isn't a multiple so we can use Fermat's little theorem. Our initial equation is a^(b^c) % p = ans</p>
@@ -113,7 +113,7 @@
                 <p>So we get that a^y % p should be our answer. Since we defined y as b^c = x(p-1) + y, we can see that y is the remainder when b^c is divided by (p-1), so y = b^c % (p-1). So to find our final answer we need to first calculate y = b^c % (p-1), then calculate a^y % p. Make sure to use binary exponentiation to ensure that it runs within the time limit. More info about binary exponentiation here: https://cp-algorithms.com/algebra/binary-exp.html and more info about fermat's little theorem here: https://en.wikipedia.org/wiki/Fermat%27s_little_theorem.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1632/">Problem 19</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1632/">Problem 19</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem is similar to movie festival I because the events should be considered in order of their ending times. The proof that this sorting works is explained better with pictures than I could with words at the following link: https://usaco.guide/CPH.pdf#page=68. So check it out and make sure you understand it a bit. </p>
@@ -121,20 +121,20 @@
                 <p>Finally, to efficiently manage k members at each step, we need to use a multiset to keep track of each member's ending time.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1076/">Problem 18</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1076/">Problem 18</a>
             <details>
                 <summary>Solution</summary>
                 <p>So in this problem we have to the find the median of a sliding window in at least log(n) time or faster since we have n &lt; 2*10^5 values. This fact and the fact that medians can be found from a sorted list leads us to use set data structures because they can insert delete and find values in log(n) time. There are two ways to use set data structures to solve this problem, you can either use 2 regular multisets and simulate putting values below the median in one, and values above or equal to the median in the other one. But this is painful with multiple cases, so I am going to be explaining a different method that uses an ordered_set. </p>
                 <p>First we need to create an ordered set of pairs because ordered sets don't usually accept unique values, so we need a method of allowing multiple values into the ordered_set, and the way we do this is by adding the pair {value, position} to the ordered_set instead of just the value (or you could use the less_equal comparator in the ordered_set and not worry about using pairs). Once we have the ordered_set set up we just need to insert a window of k elements and return the ordered_set.find_by_order((k-1)/2), as (k-1)/2th element is the median. After we insert(k) elements we have to keep on inserting a new element and deleting the oldest one and doing the same process until we are done. Ordered_sets are very useful data structure so you might want to do some more practice with them.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1085">Problem 17</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1085">Problem 17</a>
             <details>
                 <summary>Solution</summary>
                 <p>We want to find the lowest number x such that it is possible to divide the array into k subarrays with sum at most x. Notice that if this is possible for x, it is possible for every number larger than x (just use the same partitioning), so this is a monotonic function and we can use binary search. The largest possible answer is the sum of all numbers, the smallest possible answer is the maximum value, and to test a value we can greedily add elements to a subarray until the sum exceeds x, then move on to the next subarray.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/2428">Problem 16</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/2428">Problem 16</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem is another application of the sliding window technique. Let's keep track of a window [l, r] that starts out as [0, 0]. The basic approach is this: if we can extend the interval by increasing r, then do that, otherwise increase l instead. That's because if we can't increase r, then we've found the largest interval starting at l, and we can move on to finding the largest interval starting at l+1.</p>
@@ -142,7 +142,7 @@
                 <p>Finally, to find the answer, we can use the fact that if we can't increase r anymore then we've found the largest valid interval starting at l. That means every interval that starts at l and ends at or before r is valid. The number of intervals that satisfy this description is (r-l+1), so we can add that to the answer. Since we count the valid intervals that start at every left bound and only count each left bound once, this gives us the exact answer.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1641/">Problem 15</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1641/">Problem 15</a>
             <details>
                 <summary>Solution</summary>
                 <p>To solve the sum of 3 values problem, let's first solve the sum of 2 values problem in O(n*logn). The approach is to sort the array and then use two pointers l and r to represent the interval from which a potential pair can be picked. At each step, we can tighten the interval with the following method: if nums[l] + nums[r] == x, we've already found our solution. Otherwise, if nums[l] + nums[r] &lt; x, then we can remove index l from the interval, since every number it's added with will result in a sum strictly less than x. Likewise, if nums[l] + nums[r] &gt; x, we can remove r from the interval. Sorting takes complexity O(n*logn), and we only need O(n) steps to tighten the interval, so the complexity is O(n*logn).</p>
@@ -150,7 +150,7 @@
                 <p>One last detail is outputting the index of each element after sorting. To do this, we can store each element as a pair where the first item is the value and the second item is the index, and then sort. The answer will just be the second value of each element.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1141">Problem 14</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1141">Problem 14</a>
             <details>
                 <summary>Solution</summary>
                 <p>So for this problem we are going to use the sliding window method. The sliding window method is a method where we try to increase the size of the window until its not valid and then we decrease the windows size until its valid. Both our left and right bounds start at 0, and we try to increase our right bound by one until its not valid. </p>
@@ -158,13 +158,13 @@
                 <p>But there is still one thing we are missing, how do we find out how many values to skip for the left bound until the window becomes valid again. To solve this, we have a map M, and M[x] tells us the last position of the value x not including the current position. A window is invalid if there are two or more of the same value in the array. We can think of this in terms of the map by checking our current value, lets call it x, if M[x] is in the bounds of the array, that means there are 2 of the value x in the array, and thus the array becomes invalid. It becomes valid again once the left most value of x is removed which is when the left bound becomes M[x]+1. Now that you can update the left bound efficiently, you can solve this problem with no problems.</p>
             </details>
             <br>
-            <a href="https://cses.fi/problemset/task/1091">Problem 13</a>
+            <a target="_blank" href="https://cses.fi/problemset/task/1091">Problem 13</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem requires finding the right data structure to use. The instructions pretty clearly state what we need to do: find the largest element below a certain number, and remove that element if it exists. This can be done with a c++ multiset, which supports both operations in O(log n) where n is the number of elements currently in the set. In particular, multiset.upper_bound(x) returns a pointer to the first element strictly larger than x, and so the element before that is the greatest element less than x, which we can then remove.</p>
             </details>
             <br>
-            <a href="https://leetcode.com/problems/sum-of-floored-pairs/">Problem 12</a>
+            <a target="_blank" href="https://leetcode.com/problems/sum-of-floored-pairs/">Problem 12</a>
             <details>
                 <summary>Solution</summary>
                 <p>To start off, let C[x] = # of times x appears in the array. Then let P[x] bc the number of elements that are less than or equal to x in the array, which we can calculate with the prefix sum expression P[x] = P[x-1] + C[x].</p>
@@ -172,7 +172,7 @@
                 <p>We can show that if the maximum value is mx, the time complexity is O(mx log(mx)). In the worst case, we'll assume that every number from 1 to mx appears in the array. For each number x in this array calculating sum[x] would take approximately mx/x iterations, because when i is about mx/x, x*i will go out of bounds. If we do this for all x we get mx/1 + mx/2 + mx/3 + ... + mx/mx. This can be rewritten as mx(1/1+1/2+1/3+...+1/1e5). The 2nd half of this expression is the harmonic series, and the nth partial sum of the harmonic series increases with complexity O(log n). Since there are mx terms we get a worst case time of O(mxlog(mx)) which is fast enough. </p>
             </details>
             <br>
-            <a href="https://leetcode.com/problems/smallest-rotation-with-highest-score/">Problem 11</a>
+            <a target="_blank" href="https://leetcode.com/problems/smallest-rotation-with-highest-score/">Problem 11</a>
             <details>
                 <summary>Solution</summary>
                 <p>So we have N numbers and we want to figure out the ideal k-rotation such that the maximum amount of these N numbers are in position that is greater than or equal to their value. The key observation of this problem is that for every value x, there is a certain number of rotation intervals where x is valid, and a certain number of rotation intervals where x is invalid. </p>
@@ -180,7 +180,7 @@
                 <p>So now that we have the 2 cases for the intervals down, we can use prefix sums to figure out the best rotation. Lets create a prefix array with the possible rotation from 0 to n-1. For every number we know that on the intervals calculated by that number the score will increase by 1, otherwise it'll be 0. So for each interval for each number we will add 1 to the starting index of the interval, and a -1 to the ending index+1 of the interval. Then we can use prefix sums and the index with the highest value, is the ideal k-rotation. Make sure to not segment error while finding the intervals, and you're done :). </p>
             </details>
             <br>
-            <a href="https://toph.co/p/rio-and-inversion">Problem 10</a>
+            <a target="_blank" href="https://toph.co/p/rio-and-inversion">Problem 10</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem required multiple clever optimizations using prefix sums.</p>
@@ -190,7 +190,7 @@
                 <p>The second query requires more optimization. Let's define pairs[i] as the number of inverted pairs where i is the second index in the pair -- this is equal to the elements before i greater than A[i]. Then we can subtract pairs[i] for all indices in the interval using prefix sums. This removes pairs where the second index is in the interval, but not when the first index is in the interval and the second index is after the interval. We can finish the solution with the following approach: for each value from 0 to 99, we can use the count array to find the number of elements in the removed interval equal to this value, then multiply this by the number of elements past the interval that are less than the value. This successfully counts all removed inversions and gives us the answer.</p>
             </details>
             <br>
-            <a href="https://practice.geeksforgeeks.org/problems/longest-subarray-with-sum-divisible-by-k1259/1/">Problem 09</a>
+            <a target="_blank" href="https://practice.geeksforgeeks.org/problems/longest-subarray-with-sum-divisible-by-k1259/1/">Problem 09</a>
             <details>
                 <summary>Solution</summary>
                 <p>Today's problem required two optimizations to get the intended complexity of O(n + k).</p>
@@ -199,7 +199,7 @@
                 <p>The next optimization uses the following observation: if we have an interval from a+1 to b, we want the sum prefix[b] - prefix[a] to be a multiple of k. That means (prefix[b] - prefix[a])%k = 0, which leads to the equality prefix[b]%k = prefix[a]%k. That means for every possible remainder r from 0 to k-1, we can use the lowest and highest i such that prefix[i]%k = r as candidates for the longest subarray. We can store these indices in lowest[r] and highest[r], and calculate them by updating them as we go from left to right across the array.</p>
             </details>
             <br>
-            <a href="https://www.hackerrank.com/contests/ab-yeh-kar-ke-dikhao/challenges/kj-and-street-lights/problem">Problem 08</a>
+            <a target="_blank" href="https://www.hackerrank.com/contests/ab-yeh-kar-ke-dikhao/challenges/kj-and-street-lights/problem">Problem 08</a>
             <details>
                 <summary>Solution</summary>
                 <p>Today's problem introduces a new way to use prefix sums to efficiently update ranges. </p>
@@ -208,7 +208,7 @@
                 <p>Finally, to retrieve a[i] from the difference array, we can rewrite the original equation as a[i] = a[i-1] + diff[i]. If this looks familiar, it's because we've used prefix sums to invert the difference array. This approach reduces the complexity to O(n+p), which passes.</p>
             </details>
             <br>
-            <a href="https://dmoj.ca/problem/chores">Problem 07</a>
+            <a target="_blank" href="https://dmoj.ca/problem/chores">Problem 07</a>
             <details>
                 <summary>Solution</summary>
                 <p>Lets first find a formula for each distinct chore before we find the correct order of doing each chore. So lets say we have our current answer at value y, and our current time at value x, and we have a chore that takes a minutes and there are b of them. According to the problem statement for every i from 1 to b we do x += a, and then y += x. However, using this method is too slow because b can be up to 10^9, so we need a way to calculate this faster. </p>
@@ -217,7 +217,7 @@
                 <p>So we end up solving this problem by sorting the chores by time it takes to finish and then applying the method described in the 2nd paragraph, with appropriate modulos.</p>
             </details>
             <br>
-            <a href="https://leetcode.com/problems/longest-well-performing-interval/">Problem 06</a>
+            <a target="_blank" href="https://leetcode.com/problems/longest-well-performing-interval/">Problem 06</a>
             <details>
                 <summary>Solution</summary>
                 <p>So in this problem we need to figure out the largest interval such that the number of days with hours &gt; 8 is greater than the number of days with hours &lt;= 8 (yay for overworking). Anyway this is a prefix sum problem and the the first key observation is that it doesn't matter the value of a certain day, all that matters is whether they day is &gt; 8 or not. If it is &gt; 8 then we add 1 to our prefix sum, and if its not we subtract 1. The code looks like the following P[i] = P[i-1] + (hours[i-1] &gt; 8 ? 1 : -1). </p>
@@ -227,13 +227,13 @@
                 <p>So basically as we iterate through the prefix array, if P[i] &gt; 0 we update the ans with i if its bigger than ans. If P[i] &lt; 0 and its the first time we have seen it we add its current position to a map, and then if a later P[i] is &lt;= 0 then we update the ans with i-the map position of P[i]-1 if it exists. This added map makes the time complexity O(nlogn) instead of O(n), but it still works within the time limit.</p>
             </details>
             <br>
-            <a href="https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/">Problem 05</a>
+            <a target="_blank" href="https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/">Problem 05</a>
             <details>
                 <summary>Solution</summary>
                 <p>So for this problem we see that because we are always taking from either the beginning or the end, if we take from the beginning i times we will have taken the sum of the first i elements and the sum of the last k-i elements as our score. So this turns into a basic prefix and suffix sums problem. We just need to precalculate our prefix and suffix sums and then for every i from 0 to k, we take the sum of the first i elements in O(1) using the prefix array and the sum of the last k-i elements in O(1) using the suffix array, and our answer is the maximum of all these sums.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/arc085/tasks/arc085_a">Problem 04</a>
+            <a target="_blank" href="https://atcoder.jp/contests/arc085/tasks/arc085_a">Problem 04</a>
             <details>
                 <summary>Solution</summary>
                 <p>So for this problem we have m cases that take 1900 ms to run and n-m cases that takes 100ms to run and we need to figure out the expected amount of time that this will take to run. the n-m cases will work on every run no matter what, while the m cases have a 1/2 probability of working on every run. So we need to figure out the expected value of runs needed for the m cases to all work in one run, and then multiply that by the time it takes for the m and n-m cases.</p>
@@ -241,7 +241,7 @@
                 <p>Now that we have the expected number of games, our answer becomes trivial as we know m cases takes 1900ms to run, and the n-m cases take 100ms to run. So the final equation for this problem is (m*1900+(n-m)*100)*(2^m).</p>
             </details>
             <br>
-            <a href="https://community.topcoder.com/stat?c=problem_statement&pm=6116">Problem 03</a>
+            <a target="_blank" href="https://community.topcoder.com/stat?c=problem_statement&pm=6116">Problem 03</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem is just pure probability, let t = trials, g = games, n = wins needed, and c = win chance. The problem is asking us to find the percent chance that we win at least one of the trials. This percent chance is equivalent to 1 (all possibilities) - x (the percent chance to not win a single trial out of all trials). This is equivalent to (1-y^t) where y is the chance to not win a trial. </p>
@@ -249,7 +249,7 @@
                 <p>Another way to do this is to instead of finding the probability you lose and subtracting is to just find the probability that you win at least 1 trial directly, which is equivalent to the sum of tCi*(x^i)*((1-x)^(t-i)) for all i from 1 to t inclusive, where x represents the probability that you win a trial or the sum of gCq*(c^q)*((1-c)^(g-q)) for all q from n to g inclusive.</p>
             </details>
             <br>
-            <a href="https://community.topcoder.com/stat?c=problem_statement&pm=8414">Problem 02</a>
+            <a target="_blank" href="https://community.topcoder.com/stat?c=problem_statement&pm=8414">Problem 02</a>
             <details>
                 <summary>Solution</summary>
                 <p>So for this problem we need to figure out the expected value of rolls to obtain at least a certain number of candies. We are going to solve this problem through DP, This is because as you can see in the explanation of the 2nd example, the expected value of obtaining a certain number depends on the expected value of obtaining previous numbers (if the previous number we obtained was 1, like in the example we would need to add to our expected value for 2).</p>
@@ -258,7 +258,7 @@
                 <p>So our final formula simplified is DP[i] = (DP[i-1]+DP[i-2]+DP[i-3]+DP[i-4]+DP[i-5]+DP[i-6]+6)/6. Make sure to calculate from 0 to N, and also to not segmentation error (if DP[i-q] &lt; 0, just return 0 because the expected value of rolls needed to get at least a negative number is 0. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/77/B">Problem 01</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/77/B">Problem 01</a>
             <details>
                 <summary>Solution</summary>
                 <p>Let y = p, and x = q, for this explanation. We know that a quadratic equation of form ax^2 + bx + c, has at least on real root when, b^2-4ac &gt;= 0, so in our problem we have to figure out what percentage of the time is y-4x &gt;= 0. Im going to explain this through a desmos graph which can be found here: https://www.desmos.com/calculator/4daruv72ju. There are probably other methods that can be used to solve this problem, but it's the morning, I am lazy, and this method is intuitive enough.</p>

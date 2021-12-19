@@ -24,43 +24,43 @@
             <legend>EASY NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
-            <a href="https://codeforces.com/problemset/problem/1475/A">Problem 30</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1475/A">Problem 30</a>
             <details>
                 <summary>Solution</summary>
                 <p>The observation for this problem is to realize that if a number n has no odd factors that means it also has no odd prime factors, which means its only prime factors must be the number 2. So if a number is a power of two print false, else print true.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1085/B">Problem 29</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1085/B">Problem 29</a>
             <details>
                 <summary>Solution</summary>
                 <p>Lets call p = x mod k, and q = x div k. Since p is a modulo is must be between 0 and k-1 inclusive. Since our maximum value for k is sufficiently small enough we can loop through these values and then solve for q by doing n / p. If q is an integer then we can find the smallest value of x that when divided by k gets q by doing x = k*q. Now we just loop through all the p values, solving for x whenever possible, and then outputing the minimum value of all those x's.</p>
             </details>
             <br>
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=940">Problem 28</a>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=940">Problem 28</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=592">Problem 27</a>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=592">Problem 27</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://codeforces.com/gym/352982/problem/21_11NOV26">Problem 26</a>
+            <a target="_blank" href="https://codeforces.com/gym/352982/problem/21_11NOV26">Problem 26</a>
             <details>
                 <summary>Solution</summary>
                 <p>This problem might seem easy at first, but there are plenty of optimizations that are required to get the least amount of characters removed. One possible string is "ntarsisus", in where removing the second 's' can destroy two strings at once. Another possible string is "susus", in which removing the second 's' will also be optimal. After that, you can go through "ntarsis" and "sus" and delete any middle character in those strings. Deleting characters on the side might yield two strings to join together (consider "ssus").</p>
             </details>
             <br>
-            <a href="https://codeforces.com/contest/978/problem/C">Problem 25</a>
+            <a target="_blank" href="https://codeforces.com/contest/978/problem/C">Problem 25</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://adventofcode.com/2015/day/1">Problem 24</a>
+            <a target="_blank" href="https://adventofcode.com/2015/day/1">Problem 24</a>
             <details>
                 <summary>Solution</summary>
                 <p>Note that these problems require file io, you can figure out how to do file io for your respective by googling it.</p>
@@ -68,14 +68,14 @@
                 <p>For the second part, we can also keep a variable to keep track of the index, and as soon as you find that count is -1 you can print the index and then copy paste it to the website.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1409/B">Problem 23</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1409/B">Problem 23</a>
             <details>
                 <summary>Solution</summary>
                 <p>The main observation is to realize that if you decrease one of the numbers a, it is optimal to decrease this number as much as possible, before moving onto b. Lets see why our original product is a*b if we decrease a twice we subtract 2*b from our product, but if we decrease a once then b we subtract b+(a-1) from our product, and finally if we decrease b twice we subtract 2*a from our product, This is a then b or b then a is less optimal because the -1 exists, and making our difference less than it could be.</p>
                 <p>So now we know its better to subtract one completely before moving on to the other. We have two methods to use we completely subtract a, then try to subtract b or completely subtract b, then subtract a. We simulate the answers we get from these two scenarios and then return their minimum.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1227/A">Problem 22</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1227/A">Problem 22</a>
             <details>
                 <summary>Solution</summary>
                 <p>Lets define the left point of our answer, l_max, to be the rightmost left point in the given intervals, and the right point of our answer, r_min, to be the leftmost right point in the given intervals. Now notice that for all the given intervals, [l,r], at least one of the two is true: l is in the range [r_min,l_max] or r is.</p>
@@ -83,7 +83,7 @@
                 <p>So now we just loop through our input and find these values, and the size of our interval is l_max - r_min. However, if this value is negative that is undefined, and we can just put 0 instead. Try to think about why this works yourself. </p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc202/tasks/abc202_c">Problem 21</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc202/tasks/abc202_c">Problem 21</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
@@ -95,13 +95,13 @@
                 <p>Today was the day of the PClassic contest so we didn't do a regular POTD. Instead, you can go check out the writeup linked above and try to solve some PClassic problems.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1165/A">Problem 19</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1165/A">Problem 19</a>
             <details>
                 <summary>Solution</summary>
                 <p>When a modulo a number of size n by 10^x this means we receive the last x digits of that number. And we want those last x digits to be equivalent to 10^y which means that we want the yth place of those x digits to be 1, while the rest are 0. So we know our y number can be represented as 0...010...0 (x digits), and our last x digits are represented as something like this 10101010 (x digits). Now we just need to figure out at how many places these two numbers differ and that is our answer. We can easily do this process through looping and comparing chars.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1327/A">Problem 18</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1327/A">Problem 18</a>
             <details>
                 <summary>Solution</summary>
                 <p>Ok the first observation is that if n and k have different parities (this means that one is odd while the other is even), then the sum is impossible. Lets see why this happens if n is odd and k is even then an even amount of odd numbers will sum to an even number, not an odd one. Similar logic can be seen for n is even and k is odd. In both these cases we output NO.</p>
@@ -109,44 +109,44 @@
                 <p>Now if the two above conditions aren't true the answer is always YES. We can see this through the following: For every query we can make the sequence 1, 3, 5, 7, ..., 2(k-1)-1, rem. Where rem is the remainder after subtracting the sum of the first k-1 terms of the sequences from n. Try to see why this sequences always works yourself, its good practice.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/869/B">Problem 17</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/869/B">Problem 17</a>
             <details>
                 <summary>Solution</summary>
                 <p>Notice that if there is a multiple of 10 between a and b. Then 10 is included in the final product which means the last digit will be 0. To see if 10 is included in the final product we can just check if (b-a) &gt;= 10, if this is true output 0. Now notice that if (b-a) &lt; 10, we can just loop through from a+1 to b and multiply and modulo by 10 to find the final product and output that.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1257/B">Problem 16</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1257/B">Problem 16</a>
             <details>
                 <summary>Solution</summary>
                 <p>If x == 1, realize that you can't perform either of the spells, so the only possible way to output YES is if y == 1, else output NO. Now for x == 2 or x == 3, you can make x either 3 or 2 or 1, but you can't make any moves after this point, so if y == 1 or y == 2 or y == 3 output YES else output NO. Now realize that for any x &gt;= 4, you can obtain any number (test this out in your head), so the output is always YES. These are all the cases that we have to go through for this problem, so now we have officially solved it :).</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/515/A">Problem 15</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/515/A">Problem 15</a>
             <details>
                 <summary>Solution</summary>
                 <p>Notice that the shortest path from 0,0 to a,b is abs(a)+abs(b). So s &gt;= abs(a)+abs(b) for our path to be possible. If s == abs(a)+abs(b) then we don't have to do anything else, but if s &gt; abs(a)+abs(b) we have to make an extra k steps were k = s-abs(a)-abs(b). Notice that whatever amount of steps we use to move out of the shortest path we have to use the same number to move back to the shortest path, (ie if we move k/2 away from the shortest path we have to use k/2 steps to come back). So this means that if k is even we can move the extra steps, but if k is odd we can not. Overall, out final condition becomes if k &gt; 0 and k % 2 == 0 print YES else print NO.</p>
             </details>
             <br>
-            <a href="https://leetcode.com/problems/merge-intervals/description/">Problem 14</a>
+            <a target="_blank" href="https://leetcode.com/problems/merge-intervals/description/">Problem 14</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://codeforces.com/gym/352982/problem/B">Problem 13</a>
+            <a target="_blank" href="https://codeforces.com/gym/352982/problem/B">Problem 13</a>
             <details>
                 <summary>Solution</summary>
                 <p>Since the input is given in strings, you can first use a map to assign each person a unique ID number, so you can work with indices in an array. You are to take in the inputs for all the classes first, and put them in an array indexed based on period number. Next, create an answer array that will store the number of people infected when the i'th period has gone by. You can simulate now, for each class in each period, if there is an already infected person in that class, you can set the rest of the class to infected as well. And of course using prefix sums, the answer for the current period will be the the number infected in the previous period plus the number just infected in the current period.</p>
                 <p>After all the periods are simulated, you can start answering queries. For each query, you can either loop through the answer array and stop when you find a number greater or equal to the query, and print the period in O(p). Or, you can use binary search and search for the first index that has an element greater or equal to the query, in O(log(p)). Note that you are not expected to use the binary search approach, as looping through will work as well.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1260/A">Problem 12</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1260/A">Problem 12</a>
             <details>
                 <summary>Solution</summary>
                 <p>The optimal strategy for this problem is to make all the heater have close to the same number of sections. You can see this by realizing (x-1)^2 + 1^2 &gt; (x/2)^2 + (x/2)^2. So now we have "sum" sections and "c" heaters and we need to find the optimal way to split sum into c numbers such that the c numbers are really close together. We can do this by having sum%c heaters with value of sum/c + 1, and having the rest be sum/c. This adds up to sum, and keeps the c heaters close together. Now with this distribution our final anwer becomes (sum%c)*(sum/c+1)*(sum/c+1) + (c-sum%c)*(sum/c)*(sum/c).</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1245/A">Problem 11</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1245/A">Problem 11</a>
             <details>
                 <summary>Solution</summary>
                 <p>First observation to solve this problem is to realize that all multiples of a and b are painted white (ie anything with the form ax or by, where x,y are integers will be painted white). From there we can realize that anything in the form ax+by will also be painted white, because ax is painted white and ax is by (multiple of b) away from ax+by, so ax+by is also white. Now notice that ax+by is a multiple of gcd(a,b). I won't prove this fact, but just know that any number greater than ab and is a multiple of gcd(a,b) can be written as ax+by (try some examples in your head).</p>
@@ -154,62 +154,62 @@
                 <p>Notice we can check the gcd of two numbers using the c++ library function __gcd(a,b). If __gcd(a,b) == 1 print "Finite", else print "Infinite".</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1008/B">Problem 10</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1008/B">Problem 10</a>
             <details>
                 <summary>Solution</summary>
                 <p>The optimal strategy for this problem is for a current rectangle it is optimal to orientate it in such a way that its height is maximal but not greater than the previous rectangle. This is optimal because if the current height is larger than its more likely that the next rectangle is shorter than it. The way to program this optimal strategy is to first create a max = max(width, height) of first rectangle, and then for every rectangle afterward, set the max to the largest side that is still smaller than or equal to the max. If this is not possible for all rectangles print NO else print YES. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1411/B">Problem 09</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1411/B">Problem 09</a>
             <details>
                 <summary>Solution</summary>
                 <p>Notice that we only have to consider digits, so 1-9, so notice that the lcm of of the first 9 digits is 2520. This means that any multiple of 2520 is definitely fair, and this means that the most we have to loop from x to find the next number is 2520, because after 2520 iterations we will find a multiple of 2520 that most definitely works. So now that we know our for loop won't time out (2520 * 10^3 works fast enough), we can just do a for loop from x and increment by 1 until we find a fair number, and then return that fair number.</p>
                 <p>Now I'll explain how to check if a number is a fair. To get the digits of the number we can make a copy of it and then repeatedly modulo it by 10 and then divide it by 10 until we get 0. For example 282 modulo 10 = 2, divide it by 10 and you get 28, 28 modulo 10 = 8, divide it by 10 and you get 2, 2 modulo 10 = 2, and we have gotten all our digits (note this works because of integer division). Then we can just check if our original number is divisible by all these digits that we have gotten to see if its fair.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1342/A">Problem 08</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1342/A">Problem 08</a>
             <details>
                 <summary>Solution</summary>
                 <p>Notice that the second operation just performs the first operation twice, but does it in one move. So from this fact we can see that if 2a &lt;= b, then it performing the second operation is not optimal at all, so we just perform the first operation the entire time to get a final answer of (x+y)*a. However if 2a &gt; b, then it is optimal to use the second operation as much as possible, but we also don't want to make one of the numbers go below 0 because this wastes an extra move going back up, so our answer becomes min(x,y)*b+(max(x,y)-min(x,y))*a.</p>
             </details>
             <br>
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1084">Problem 07</a>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1084">Problem 07</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
             <br>
-            <a href="https://codeforces.com/gym/352982/problem/A1">Problem 06</a>
+            <a target="_blank" href="https://codeforces.com/gym/352982/problem/A1">Problem 06</a>
             <details>
                 <summary>Solution</summary>
                 <p>There are several ways to solve this problem, but I'll explain the jury's linear solution. You can first create an array size n+1, so you can work with every day 1-indexed. Then, you can create another array with the same length that stores the number of bones broken on the i'th day. Now, you can simulate. On the 0-th day you will have k bones. For every day after that, the number of bones will be equal to the number of bones on the previous day minus the bones broken on that day. If he did not break any bones and has less than k bones he will regenerate one. The first time the bone count hits below or equal to zero, print the day number and exit your program.</p>
             </details>
             <br>
-            <a href="http://usaco.org/index.php?page=viewproblem2&cpid=1085">Problem 05</a>
+            <a target="_blank" href="http://usaco.org/index.php?page=viewproblem2&cpid=1085">Problem 05</a>
             <details>
                 <summary>Solution</summary>
                 <p>First, you can sort the stall height limits in ascending order. For every stall, check how many cows could fit in that stall. Notice that for the b_i-th stall, if there are x_i cows that could fit, then all of those cows could have also fit in a previous stall. So in order for every stall to have a cow, i-1 of those cows must have already gone to an earlier stall. Thus, the final answer is x_1*(x_2-1)*(x_3-2)*...</p>
             </details>
             <br>
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=835">Problem 04</a>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=835">Problem 04</a>
             <details>
                 <summary>Solution</summary>
                 <p>One quick way of doing this problem is to sort the cows in reverse order(descending). From here just loop through the array, and whenever the cow’s waiting tolerance is greater than or equal to its index, increment the answer by 1. You can also break whenever you find a cow that doesn’t satisfy this condition, but this is not needed.</p>
             </details>
             <br>
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1011">Problem 03</a>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1011">Problem 03</a>
             <details>
                 <summary>Solution</summary>
                 <p>We can first loop over all triples of pastures. As one of the fence posts is parallel to the x-axis and the other is parallel to the y-axis, then the triangle formed must be right. For a triangle to be right in this scenario, two of the y-coordinates of the points must be the same and two of the x-coordinates must be the same. Once you have validated a triangle, compute double the area by using the base*formula for a triangle (no dividing by 2). Take the max of all areas to get the final answer.</p>
             </details>
             <br>
-            <a href="http://usaco.org/index.php?page=viewproblem2&cpid=1107">Problem 02</a>
+            <a target="_blank" href="http://usaco.org/index.php?page=viewproblem2&cpid=1107">Problem 02</a>
             <details>
                 <summary>Solution</summary>
                 <p>For every cow, instead of keeping track of their year, try to keep track of their cycle value relative to Bessie. To make things simpler, suppose that Bessie was born on cycle 0. Still, we need to parse the input properly. We can simply split each string by spaces and only look at the 1st,4th,5th, and 8th words as they are the only ones that provide any valuable information. While parsing the input, we can assign each cow its cycle. Suppose that the second cow mentioned was born on cycle C. There are four cases: either the new cow was born in the same cycle but on an earlier year (lower index in the array [Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig, Rat]), it is in the same cycle but on a later year, it is in the cycle directly before C, and it is in the cycle directly after C. After this we can split the computation into two parts: the cycle difference and  the year difference. The cycle difference between Bessie and Elsie is just abs(C1-C2)*12 and the year difference is the difference of their indices in the array. Here we can add the value to the cycle difference or subtract, depending on Elsie if was born earlier.</p>
             </details>
             <br>
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=966">Problem 01</a>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=966">Problem 01</a>
             <details>
                 <summary>Solution</summary>
                 <p>Here a simple simulation will be too slow. Instead, notice that the pattern of numbers and Moos repeats every 15 numbers. In other words, every number with a value mod 15 that isn't a multiple of 3 or 5, will be itself in the sequence. There are eight such residues, so for every interval of 15 there are eight valid numbers. So you can simply add n*15/8 (to skip past the previous sets of 15 numbers) and add what the mod 8th number in the sequence is. Notice that the 15 value is not a number, so when N divides 8, subtract 1 from the expression.</p>

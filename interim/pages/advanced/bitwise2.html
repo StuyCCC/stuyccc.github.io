@@ -25,7 +25,7 @@
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
             <h3>Maximum XOR</h3>
-            <p>Original problem: <a href="https://codeforces.com/problemset/problem/276/D">Little Girl and Maximum XOR</a></p>
+            <p>Original problem: <a target="_blank" href="https://codeforces.com/problemset/problem/276/D">Little Girl and Maximum XOR</a></p>
             <p>The problem asks for the maximum XOR of two numbers in the range [L, R]. One way to solve this is the following: at the highest bit where L and R differ, there must be a 0 in L and a 1 in R at that bit. Then set one number equal to L up to and including that bit, then set all lower bits to 1. Set the other number equal to R up to and including that bit, then set all lower bits to 0. It's pretty easy to confirm that both of these numbers must be in the range [L, R], and their XOR will contain a 1 at all bits at or below the first bit where L and R differ, which is maximal.</p>
             <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 
@@ -43,7 +43,7 @@ int main() {
 }
 </code></pre>
             <h3>Representing Subsets</h3>
-            <p>Practice problem: <a href = "https://cses.fi/problemset/task/1623">Apple Division</a></p>
+            <p>Practice problem: <a target="_blank" href = "https://cses.fi/problemset/task/1623">Apple Division</a></p>
             <p>One common use of bitwise manipulation is the ability to easily generate subsets. For a small enough n (make sure it fits in the number of bits you have available!), you can use an integer to represent a subset of n objects. Then the i'th bit will be 1 if the i'th object is in the subset, and 0 otherwise.</p>
             <p>In order to test if an object is present in a bitwise subset, we can use the left shift and & operators. First, we can use <script type="math/tex">1<<i</script> to access the i'th bit. Then, we can use the and operator to isolate that bit in the subset by doing <script type="math/tex">subset & (1 << i)</script>, which eliminates all other bits and leaves the i'th bit unaffected. Finally, by testing if the result is greater than 0, we can determine if the i'th object is in the set. Here's the solution to Apple Division:</p>
             <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
@@ -72,7 +72,7 @@ int main() {
     cout &lt;&lt; mindiff &lt;&lt; endl;
 }</code></pre>
             <h3>The Brand New Function</h3>
-            <p>Original Problem: <a href="https://codeforces.com/problemset/problem/243/A">The Brand New Function</a></p>
+            <p>Original Problem: <a target="_blank" href="https://codeforces.com/problemset/problem/243/A">The Brand New Function</a></p>
             <p>The problem asks us to calculate all possible values of bitwise or of a subarray. Note that we can use a segtree to quickly process bitwise or queries -- refer to the first lesson on segment trees to learn on how to implement this. So the naive solution is <script type="math/tex">O(N^2 log_2(N))</script> by iterating over all subarrays and calculating their bitwise or. Let's try to do better!</p>
             <p>The first step is to fix the starting index L of the subarray. Then we can note that <script type="math/tex">f(L, R) = f(L, R-1) | A[R]</script> -- kind of like prefix sums, but with bitwise or. More importantly, note that this transition cannot turn any bits from 1 to 0-- it can only turn bits from 0 to 1 or leave them alone. This then introduces a new idea: if we could keep track of the value of R for which each bit turns from 0 to 1, then we can isolate all the right endpoints we can consider</p>
             <p>For implementation, we will keep an array X where X[i] represents the bitwise or at the first right index where the i'th bit is 1. We iterate over L from right to left, and for each bit i in A[L], we update X[i]. By doing this, we only have <script type="math/tex">O(N \cdot log_2 (max\ A[i]))</script> values to process, and we can output how many distinct values there are after removing duplicates.</p>

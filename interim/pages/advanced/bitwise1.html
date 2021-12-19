@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>INTRO TO BITWISE</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -54,13 +54,13 @@
 				<li>__builtin_ctz: counts the number of trailing zeroes in the input.</li>
 			</ul>
 			<h3>Raising Bacteria</h3>
-			<p>Original Problem: <a href="https://codeforces.com/problemset/problem/579/A">Raising Bacteria</a></p>
+			<p>Original Problem: <a target="_blank" href="https://codeforces.com/problemset/problem/579/A">Raising Bacteria</a></p>
 			<p>(make sure you read and understand the problem before continuing)</p>
 			<p>First, we can prove that the number of bacteria added is at least the number of bits in the binary representation of X. That's because doubling a number doesn't change the number of bits, and adding 1 to a number adds at most one bit to its binary representation. Therefore, to reach the number of bits in X, there must have been at least that many bacteria added.</p>
 			<p>It's also possible to add exactly the number of bits in the binary representation in X. The process to achieve this ensures that the number of bacteria every morning is always a prefix of the intended number of bacteria. This way, you only have to add 1 bacteria when the corresponding bit in X is 1.</p>
 			<p>Implementation-wise, it's enough to just output __builtin_popcount(X).</p>
 			<h3>Array Elimination</h3>
-			<p>Original Problem: <a href="https://codeforces.com/problemset/problem/1601/A">Array Elimination</a></p>
+			<p>Original Problem: <a target="_blank" href="https://codeforces.com/problemset/problem/1601/A">Array Elimination</a></p>
 			<p>(make sure you read and understand the problem before continuing)</p>
 			<p>This problem introduces an important strategy of considering one bit at a time. Often, it's too difficult to consider all 30 bits in conjunction, so if you can deal with a single bit and show how it expands to multiple bits, then you can succeed.</p>
 			<p>Let's consider one bit at a time. If the array could only consist of 1's and 0's, an elimination process only achieves anything if k 1's are selected, and all k are erased. Therefore, the number of 1's must be a multiple of k.</p>

@@ -25,9 +25,9 @@
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
             <h3>Practice Problems</h3>
-            <p> All these problems are found from a website called <a href="https://codeforces.com/">codeforces</a>. This is going to be one of the 4 main places where we will be giving practice problems from, so it is suggested that you make an account (you need an account to test your solution). If you are interested, the other 3 websites are <a href="https://cses.fi/problemset/">cses</a>, <a href="https://atcoder.jp/">atcoder</a>, and <a href="http://www.usaco.org/index.php">usaco</a>.</p>
+            <p> All these problems are found from a website called <a target="_blank" href="https://codeforces.com/">codeforces</a>. This is going to be one of the 4 main places where we will be giving practice problems from, so it is suggested that you make an account (you need an account to test your solution). If you are interested, the other 3 websites are <a target="_blank" href="https://cses.fi/problemset/">cses</a>, <a target="_blank" href="https://atcoder.jp/">atcoder</a>, and <a target="_blank" href="http://www.usaco.org/index.php">usaco</a>.</p>
 
-            <p><a href="https://codeforces.com/problemset/problem/4/A">Problem 01</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/4/A">Problem 01</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -47,7 +47,7 @@ int main() {
                 <p>We need to split the melon into 2 evens parts, first observation is that no odd number can be split into 2 even numbers, so all odd numbers return NO. 2nd observation is that any even number works except 2, because all even numbers except 2 can be split into n/2 and n/2 which are both even. So our final answer is if n is odd or 2 return NO else return YES.</p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/231/A">Problem 02</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/231/A">Problem 02</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -68,7 +68,7 @@ int main() {
                 <p>We are given t contests and we need to figure out the number of contests where they write a solution. Notice that they write a solution when at least 2 of them are confident in their answers. We are given 3 numbers (a,b,c) where they equal 1 if they are confident and they equal 0 if they are not confident. Notice that they solve the problem if (a+b+c) &gt;= 2, because this means at least 2 values are 1, which is what we want. Now if this condition is true, we add 1 to a counter, and after the t contests, we print the counter.</p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/148/A">Problem 03</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/148/A">Problem 03</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -89,7 +89,7 @@ int main() {
                 <p>Notice that if we number our dragons from 1 to d, then the k attack would hit the k dragon, then the 2*k dragon, then the 3*k dragon, and so on. This means we know that if a dragon is divisible by an attack k, then it'll get hit by it. And our goal is to find the number of dragons that have been hit by at least one attack. So we can just loop from 1 to d, and check if each dragon is divisible by any of the 4 numbers given and if that is the case we increase a counter by 1, else we do nothing. And after the loop is finished, we output the counter.</p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/116/A">Problem 04</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/116/A">Problem 04</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -112,7 +112,7 @@ int main() {
                 <p>Notice that at every train stop, after people get off and get on, there is a certain number that remain on the train, and the trains capacity must be able to fit all these people that remain on the train. This means that the mx(capacity we need) &gt;= curr(current capacity) for every train stop, and if we want to find the minimum maximum capacity this means we set mx to the largest curr value we find and no more than that. Now we can see that at the beginning we can set curr = 0 (no one is on the train), and mx = 0 (maximum of all currs so far is 0 because curr is 0), and then as we go through every stop we update curr (curr -= a, curr += b), and then if this curr becomes bigger than mx we have to update mx to reflect that, but if it doesn't become bigger than mx we don't need to change anything, and we can continue on with the loop.</p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/746/A">Problem 05</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/746/A">Problem 05</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -134,7 +134,7 @@ int main() {
                 <p>Now we just have to figure out the smallest x, that satisfies one of these conditions. Notice that x = i*k, where k is the price of 1 shovel and i is the number of shovels being bought. So now we need to find the smallest i, and to do this we can loop from i = 1 to i = 10, and print the first i that satsifies these conditions. But why is our maximum 10? Our maximum is 10 because it is gauranteed htat 10*k % 10 == 0 for any k, so this means that 10 always works so we have no need to go past 10 to check larger values of i that work.</p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/703/A">Problem 06</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/703/A">Problem 06</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -158,7 +158,7 @@ int main() {
                 <p>We have to loop through t games, and see who wins each game and count total wins. To do this we can keep an counter c1 to count Mishka's wins, and a counter c2 to count Chris's wins, and update these counters to reflect the winners of each game as described in the problem. Once we have these final counts, if c1 &gt; c2, we print "Mishka", if c1 == c2, we print "Friendship is magic!^^", and else we print "Chris".</p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/1325/A">Problem 07</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/1325/A">Problem 07</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -177,7 +177,7 @@ int main() {
                 <p>The GCD of 1 and a number n is 1, and the LCM of 1 and a number n is n. So if we add these two equations, we get n+1 = x, so we can just make the pair 1, x-1 as our answer always.</p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/1389/A">Problem 08</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/1389/A">Problem 08</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -200,7 +200,7 @@ int main() {
                 <p>The optimal strategy for this problem is to make x = l, because the smaller x is the more multiples of x(ie x*2,x*3,x*4) that can be found the in range [l,r]. Now that we have x = l, the smallest multiple of x that is in the range and isn't x itself (x can't be lcm(x,y), because y &gt; x from the problem) is 2*x. Since this is the smallest value of multiple possible, if this value is in the range we can just return x and 2x because the lcm of (x,2x) = 2x, However, if 2x is not in the range, then no other multiple of x is possible, and so just return -1 -1. </p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/1451/A">Problem 09</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/1451/A">Problem 09</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -225,7 +225,7 @@ int main() {
                 <p>Lets try to split this up into cases, first lets find a pattern, if n is even we can divide by n/2, get 2, and then subtract 1 to get 1, so for evens it looks like the answer is always 2. However, this does not work for all evens, we have the case of n=2, where the solution is 1 instead of 2. For odds, we can see that we can subtract 1 to get an even then do the same process as for evens and get the answer seems like it is always 3. Except for n=1 and n=3, this always works because they only need 0 and 2 moves for this problem. Anyhow now that we have the cases we can say if n &lt;= 3 the answer is n-1, else if its even the answer is 2, else if its odd the answer is 3. </p>
             </details>
 
-            <p><a href="https://codeforces.com/problemset/problem/965/A">Problem 10</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/965/A">Problem 10</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">

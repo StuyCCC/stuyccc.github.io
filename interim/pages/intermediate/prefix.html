@@ -39,7 +39,7 @@ for i in 1..n+1:
             <p>This reveals why <code>pre[0] = 0</code>, that way the sum of a prefix, can be computed without doing any special cases. Instead of having to do a special case when <code>l = 0</code> it is <code>pre[l]</code> just subtracts nothing and works.</p>
             <h3>Problems</h3>
             <p>I am supplying solutions in Python because it is clean and readable. Generally doing competitive programming with Python is a bad idea.</p>
-            <h4><a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=691">Hoof Paper Scissors (Silver)</a></h4>
+            <h4><a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=691">Hoof Paper Scissors (Silver)</a></h4>
             <details>
             <summary>Solution</summary>
                 <pre><code class="language-python">
@@ -71,9 +71,9 @@ fin.close()
             </code></pre>
             <h4>Explanation</h4>
             <p>Given an index, <code>i</code>, the <code>i</code>th game played, we can compute Bessie's score if she chooses to change her play (say change playing hoof to paper) at that index. This is done by calculating the number of "papers", or "hoof"s, or "scissors"s in a prefix. Bessie can beat all of plays of any one given type up to index <code>i</code> and then beat all play of any one (possibly the same) type after index <code>i</code>. The amount of plays which Bessie beats, and therefore the total amount of games she wins can then be found with prefix sums. Taking the maximum of these values for all <code>i</code> gives the answer.</p>
-            <p>As this is a USACO problem, an alternative (possibly clearer) explanation of a similar solution can be found on their website, linked <a href="http://www.usaco.org/current/data/sol_hps_silver_jan17.html">here</a>.</p>
+            <p>As this is a USACO problem, an alternative (possibly clearer) explanation of a similar solution can be found on their website, linked <a target="_blank" href="http://www.usaco.org/current/data/sol_hps_silver_jan17.html">here</a>.</p>
         </details>
-        <h4><a href="https://codeforces.com/contest/1398/problem/C">Good Subarrays</a></h4>
+        <h4><a target="_blank" href="https://codeforces.com/contest/1398/problem/C">Good Subarrays</a></h4>
         <details>
         <summary>Solution</summary>
         <pre><code class="language-python">

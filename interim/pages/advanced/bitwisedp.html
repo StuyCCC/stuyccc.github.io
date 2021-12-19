@@ -88,7 +88,7 @@ int main() {
     cout &lt;&lt; ans &lt;&lt; endl;
 }</code></pre>
 			<h3>Matching</h3>
-			<p>Original problem: <a href="https://atcoder.jp/contests/dp/tasks/dp_o">Atcoder - Matching</a>.</p>
+			<p>Original problem: <a target="_blank" href="https://atcoder.jp/contests/dp/tasks/dp_o">Atcoder - Matching</a>.</p>
 			<p>The naive solution is simple: we can test every possible matching by noting that the first man has <script type="math/tex">n</script> women to match with, the second has <script type="math/tex">n-1</script> to match with, and so on. In total, the complexity of this approach is <script type="math/tex">O(n!)</script>.</p>
 			<p>On first glance, it may seem that the bitwise DP solution would involve dp[subsetA][subsetB], which counts the number of ways to match subsetA men with subsetB women. The complexity of this approach would be <script type="math/tex">O(4^n)</script>, which is better than our previous <script type="math/tex">O(n!)</script> but still too slow. However, the key observation is that we can assume that the subset of men will just be the first k men (where k is the size of the subset). And so we can set dp[subset] equal to the number of ways to match a subset of women with the first k men. Our dp transition will involve picking a woman to be paired with the k'th man, and adding the number of way to match the rest of the women with the first k-1 men. So the dp transition will be <script type="math/tex">dp[subset] = \sum_{i \in subset, a[k][i]=1} dp[subset \backslash i]</script></p>
 			<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;

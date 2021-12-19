@@ -24,187 +24,187 @@
             and <pre><code class="language-cpp"> (or whatever language) for code-->
         <fieldset>
             <legend>EASY OCTOBER 2021</legend>
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=784">Problem 31</a>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=784">Problem 31</a>
             <details>
                 <summary>Solution</summary>
                 <p>For this problem, it is enough to remove each of the lifeguards one at a time and see the number of time intervals that are covered. To do this, process the intervals given for each lifeguard and for every lifeguard removed, create a new array full of 0s. For every i in an interval covered by a lifeguard, increment arr[i] by 1. The number of covered periods of time is the number of values in the array greater than 1.</p>
             </details>
             <br>
-            <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=568">Problem 30</a>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=568">Problem 30</a>
             <details>
                 <summary>Solution</summary>
                 <p>One approach is to simply create two arrays, one detailing Bessie’s speed at any point in time and the other detailing the spread limit at that point. You can either create two arrays of size 100 and simply increment the index representing Bessie’s current location for each segment and then update Bessie’s speed until you reach 100. The same process can be done for the speed limit. You can also use a dynamic array and simply append the speed limit and Bessie’s current speed. Then simply loop through the arrays and record the max value of Bessie’s speed - Speed Limit.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/479/A">Problem 29</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/479/A">Problem 29</a>
             <details>
                 <summary>Solution</summary>
                 <p>Here there are only four cases(two operations with two choices for them), so we can just choose the one that results in the largest value. The possible cases are a+b+c, a*b+c, a+b*c, and a*b*c. You can also notice that having a 1 is the only case where you’d prefer addition, and then you just try out some cases.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/contest/478/problem/A">Problem 28</a>
+            <a target="_blank" href="https://codeforces.com/contest/478/problem/A">Problem 28</a>
             <details>
                 <summary>Solution</summary>
                 <p>Notice that passing a coin to another player does not change the total number of coins on the table. If each of the five players had b coins, then they must have had 5b coins in total. Thus, the total sum of the coins must be a multiple of 5. So just find the sum and check if it is positive and a multiple of 5 as in this case you return sum/5, else return -1.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/contest/27/problem/A">Problem 27</a>
+            <a target="_blank" href="https://codeforces.com/contest/27/problem/A">Problem 27</a>
             <details>
                 <summary>Solution</summary>
                 <p>There are two ways to solve this problem that run in time. The first way is to just sort the array and whenever you see an element that isn’t one less than the following element, simply return the current element+1. If this doesn’t happen, return 1 if it is not in the array, return the max element+1(nlogn solution). You can also just check every possible a_i from 1-3000 and see if it is in the array(n solution).</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc197/tasks/abc197_b">Problem 26</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc197/tasks/abc197_b">Problem 26</a>
             <details>
                 <summary>Solution</summary>
                 <p>The first step is you make sure you start at the right square (X,Y). Remember that arrays are 0-indexed, so you actually need to start at array[X-1][Y-1](2d array). From here on just loop in all four directions in the same row and column as this starting point, and count the number of visible squares until you see an obstacle. Notice that the starting square also counts as a visible square.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc199/tasks/abc199_b">Problem 25</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc199/tasks/abc199_b">Problem 25</a>
             <details>
                 <summary>Solution</summary>
                 <p>For x to be &gt;= all A_i and &lt;= all B_i, then x must be between the max A_i and the min B_i. These values can be computed with a fairly standard loop or with a built-in function. The final answer is simply min(B_i)-max(A_i)+1 (the size of [A_i,B_i]). If this expression yields a non-negative value, simply return 0.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc179/tasks/abc179_b">Problem 24</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc179/tasks/abc179_b">Problem 24</a>
             <details>
                 <summary>Solution</summary>
                 <p>For this problem, make sure to iterate through both of the inputs at the same time, and keep a count variable to store the current size of the equal subarrays of the two inputs. If the count variable is ever &gt;=3, you can just break out of the loop and print “Yes”. If this never happens, print “No”. This can be done with a single loop.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc198/tasks/abc198_b">Problem 23</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc198/tasks/abc198_b">Problem 23</a>
             <details>
                 <summary>Solution</summary>
                 <p>Notice that the max number of digits that N could have is 10. Thus, you just loop over the number of zeroes you can add (0-10) to make the input a palindrome. You can check if a string is a palindrome by simply comparing it with its reverse.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/835/A">Problem 22</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/835/A">Problem 22</a>
             <details>
                 <summary>Solution</summary>
                 <p>The total time for each contests from start to finish is t_i seconds of ping + s * v_i seconds of typing + t_i seconds of ping again. We can solve for this time for each of the players and if player 1 has a smaller sum than player 2 we output "First", else if player 2 has a smaller sum than player 1 we output "Second", else we output "Friendship".</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1185/A">Problem 21</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1185/A">Problem 21</a>
             <details>
                 <summary>Solution</summary>
                 <p>Lets assume we have the three tightrope walkers at positions a, b, and c where a &lt; b &lt; c (you can order this yourself. Since the tightrope walkers can walk in any direction (+ or -), you can pretty easily see that the optimal solution is to move the person at pos a left until he is d units from b, and the person at pos c right until he is d units from b. So each second we can move 1 unit so our final answer is max((b+d)-c,0) + max(a-(b-d),0)</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1077/A">Problem 20</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1077/A">Problem 20</a>
             <details>
                 <summary>Solution</summary>
                 <p>If k is even then we can see that the frog jumps to the right k/2 times and to the left k/2 times, so our answer becomes a*k/2 - b\*k/2 = (a-b)*k/2. If k is odd we can see that the frog jumps to the right k/2+1 times and to the left k/2 times, so our answer becomes ((a-b)*k/2)+a. Make sure to not overflow and you will definitely be able to solve this problem.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/4/A">Problem 19</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/4/A">Problem 19</a>
             <details>
                 <summary>Solution</summary>
                 <p>We need to split the melon into 2 evens parts, first observation is that no odd number can be split into 2 even numbers, so all odd numbers return NO. 2nd observation is that any even number works except 2, because all even numbers except 2 can be split into n/2 and n/2 which are both even. So our final answer is if n is odd or 2 return NO else return YES.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/617/A">Problem 18</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/617/A">Problem 18</a>
             <details>
                 <summary>Solution</summary>
                 <p>We are trying to find the minimal amount of steps, so it is optimal to try and cover as much distance as possible using as little steps as possible, so this means we will use 5 position forward steps as much as possible until we can't anymore. When we can't move 5 positions forward anymore that means the house is 1 to 4 positions in front of us, which means we can cover it in another step. This method leads to our answer being ceil(x/5).</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/664/A">Problem 17</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/664/A">Problem 17</a>
             <details>
                 <summary>Solution</summary>
                 <p>We have to find the gcd of the numbers from a, a+1, ..., b-1, b. The first observation to solve this problem is to realize that the of gcd(a, a+1) = 1. And the gcd of 1 and any number is also 1. So if we have more than 1 value in in our interval then the answer is 1. Now lets see what happens if the two bounds are the same, gcd(n, n) = n, so if the two numbers are the same the answer is n. So input two strings into your program, compare the two, if they are the same return the string, else return 1.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc196/tasks/abc196_c">Problem 16</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc196/tasks/abc196_c">Problem 16</a>
             <details>
                 <summary>Solution</summary>
                 <p>Simply through all of the numbers from 1-N will be too slow as N goes up to 10**12. Instead you can simply loop over the first half the target number and see if combining the digits of that number with itself will be greater than n(if the current number is 66 then is 6666 works). As all of the numbers that you need to examine will only have half the number of digits of the biggest value that fulfills the problem conditions, and N goes up to 10**12, you only need to check aroung 10**6 values or around sqrt(N). This problem can be further optimized with binary search or through an algebraic analysis that runs in constant time(half*(10**len(half))+half = target).</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1451/A">Problem 15</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1451/A">Problem 15</a>
             <details>
                 <summary>Solution</summary>
                 <p>Lets try to split this up into cases, first lets find a pattern, if n is even we can divide by n/2, get 2, and then subtract 1 to get 1, so for evens it looks like the answer is always 2. However, this does not work for all evens, we have the case of n=2, where the solution is 1 instead of 2. For odds, we can see that we can subtract 1 to get an even then do the same process as for evens and get the answer seems like it is always 3. Except for n=1 and n=3, this always works because they only need 0 and 2 moves for this problem. Anyhow now that we have the cases we can say if n &lt;= 3 the answer is n-1, else if its even the answer is 2, else if its odd the answer is 3. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/965/A">Problem 14</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/965/A">Problem 14</a>
             <details>
                 <summary>Solution</summary>
                 <p>Each person has to make n planes and they can make s per sheet, also people can't share paper so this means each person need ceil(n/s) sheets of paper for their airplanes. There are k people, so we need k*ceil(n/s) sheets, lets call this x for short. Each packet of paper has p sheets of paper, so our final answer is ceil(x/p) packets of paper are needed.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/770/A">Problem 13</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/770/A">Problem 13</a>
             <details>
                 <summary>Solution</summary>
                 <p>We have to create a string such that it has a length of n, is made of k distinct lower case letters, and no two adjacent letters are distinct. There are many ways to do this but the most obvious one is to use the first k letters of the alphabet and repeat the sequence until you reach n. For example, n = 7 k = 3 would lead to abcabca. Now this might be a little difficult to implement for a beginner, but this would entail having a string alp = "abcdefghijklmnopqrstuvwxyz" and a string ans = "". You then do for each i in the range 0 to N-1 (a total of n times) and add to ans, alp[i%k]. If you don't understand why this works try performing a small version of this loop by hand and seeing what occurs. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/832/A">Problem 12</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/832/A">Problem 12</a>
             <details>
                 <summary>Solution</summary>
                 <p>Since there are n sticks originally, and you remove k per move, there can only be a max of floor(n/k) moves. Since Sasha goes first he has more moves taken than Lena when floor(n/k) is odd, but only ties with Lena when floor(n/k) is even. So if floor(n/k) is odd we output YES else we output NO. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/624/A">Problem 11</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/624/A">Problem 11</a>
             <details>
                 <summary>Solution</summary>
                 <p>The total space in the rubbish bin is L, and it decreases in size by (v1+v2) units every unit of time. We need to calculate the amount of time until L-(v1+v2)t = d, where t represents time, because after this point Luke dies. So solving for t we get t = (L-d) / (v1+v2), and we can output this as our answer. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1102/A">Problem 10</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1102/A">Problem 10</a>
             <details>
                 <summary>Solution</summary>
                 <p>The first observation needed to solve this problem is the fact that if we have 4 numbers in a row in the form n, n+1, n+2, n+3, we can add n+1 and n+2 into 1 group, and n and n+3 to the other. This minimizes the difference between sets to 0 and is thus optimal. Using this method we can generalize all sequences to the following: {g_1, g_2, ...}, {1, g_1, g_2, ...}, {1, 2, g_1, g_2, ...}, {1, 2, 3, g_1, g_2}, where g_i represents a consecutive group of 4. The first type of sequence is caused when n%4 == 0, second type is when n%4 == 1, and etc. Since g_i minimizes to 0 we can limit the sequences to the elements that are left which are the following: {}, {1}, {1,2}, {1,2,3}. The n%4==0 and n%4==3 sequences can be trivially minimized to a difference of 0 as well, while the n%4==1 and n%4==2 sequences can be trivially minimized to a difference of 1.</p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/abc181/tasks/abc181_b">Problem 09</a>
+            <a target="_blank" href="https://atcoder.jp/contests/abc181/tasks/abc181_b">Problem 09</a>
             <details>
                 <summary>Solution</summary>
                 <p>Simply adding up all of the numbers in the range [a,b] with a for loop will be too slow. Instead use the fact that the sum of the first n positive integers is equal to n*(n+1)/2. So for each query simply compute b*(b+1)/2 - a*(a-1)/2. You can also use prefix sums by storing the number of times each number occurs but this is more difficult and is reliant on the values of a and b being small.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1445/A">Problem 08</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1445/A">Problem 08</a>
             <details>
                 <summary>Solution</summary>
                 <p>The optimal strategy for this problem is to sort one of the arrays regularly, and then reverse sort the other array, and then to compare each index i from 0 to n to see if these pairs are less than or equal to k. If this isn't true we return No and if it is we return Yes. Now, lets prove why this strategy works. Lets choose the largest value from array 1, now lets find the optimal pairing for this value from array 2. This optimal pairing is the smallest element of array 2, if its any other element of array 2, the sum will be larger and there is more of a chance of going over. So matching smallest and largest elements is optimal and you can continue this for the entire array. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1454/A">Problem 07</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1454/A">Problem 07</a>
             <details>
                 <summary>Solution</summary>
                 <p>One way to make a permutation of length n such that no value is equal to its index is to take 1,2,3,...,n and shift it over by 1, which makes 2,3,4,...,n,1. You can easily do this with a for loop, so you definitely should give this problem a try, even if you are only a beginner. </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1189/A">Problem 06</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1189/A">Problem 06</a>
             <details>
                 <summary>Solution</summary>
                 <p>If the the number of 0s isnt equal to the number of 1s in the input, then you can just return 1 and the input. If the numbers are equal to each other lets call them x, ie we have x 0s and x 1s. We can make 2 groups: the first character and the rest of the character of the string. This works because one string becomes one 1 or 0, and the other becomes x-1 1 or 0 and x 1 or 0.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/669/A">Problem 05</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/669/A">Problem 05</a>
             <details>
                 <summary>Solution</summary>
                 <p>We can show the optimal solution is just made of 1s and 2s. If the value n is divisible by 3. Then we can do a sequence like this 1 2 1 2 ... which adds to n. If n has a remainder of 1 when divided by 3, then we can do 1 2 1 2 ... 1, basically adding one final 1 to sum up to n. Finally if n has a remainder of 2 when divided by 3, then we can do 2 1 2 1 ... 2, basically adding one final 2 to sum up to n. We can show that these sequences of 1s and 2s are optimal because they take up the least amount of stones every time. The final answer is the size of these three sequences based on the input, and can be generalized as n/3 + (n%3 ? 1 : 0).</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1315/A">Problem 04</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1315/A">Problem 04</a>
             <details>
                 <summary>Solution</summary>
                 <p>The four possible largest rectangles are the rectangles that include all the cells above the pixel, all the cells to the left of the pixel, all the cells to the right of the pixel, and all the cells below the pixel. So calculate the areas of these four rectangles and output the maximal areas. </p>
             </details>
             <br>
-            <a href="https://atcoder.jp/contests/arc113/tasks/arc113_a">Problem 03</a>
+            <a target="_blank" href="https://atcoder.jp/contests/arc113/tasks/arc113_a">Problem 03</a>
             <details>
                 <summary>Solution</summary>
                 <p>First loop over the possible values for A between 1 and K. Then notice that you don't need to loop over all of these values again for B as then their product could be greater than K. Just loop over the values between 1 and K/A. Now that you have A and B, just keep on adding the possible values of C (K/(A*B)) to your answer. Notice that this solution has a complexity of K logK as the number of operations used for each value of A is K+K/2+K/3+...K/K or K(1+1/2+1/3+...1/K). This interior sum is a harmonic series and approximates to logK </p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1130/A">Problem 02</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1130/A">Problem 02</a>
             <details>
                 <summary>Solution</summary>
                 <p>In the array there are 3 types of numbers, positive numbers, negative numbers, and 0s. If we have the required number of positives (ceil(n/2)) already, we can just output a 1 because dividing by 1 doesn't change the array. If the amount of negatives is greater than or equal to ceil(n/2), we can choose d as -1, because this would switch the number of positives and negatives. If the two above conditions don't work then choosing a correct d is impossible, and we output 0.</p>
             </details>
             <br>
-            <a href="https://codeforces.com/problemset/problem/1325/A">Problem 01</a>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1325/A">Problem 01</a>
             <details>
                 <summary>Solution</summary>
                 <p>The GCD of 1 and a number n is n, and the LCM of 1 and a number n is n. So if we add these two equations, we get n+1 = x, so we can just make the pair 1, x-1 as our answer always.</p>

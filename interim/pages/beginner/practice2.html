@@ -25,7 +25,7 @@
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
             <h3>Practice Problems</h3>
-            <p><a href="https://codeforces.com/problemset/problem/617/A">Problem 01</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/617/A">Problem 01</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -40,7 +40,7 @@ int main() {
                 <h4>Explanation</h4>
                 <p>We are trying to find the minimal amount of steps, so it is optimal to try and cover as much distance as possible using as little steps as possible, so this means we will use 5 position forward steps as much as possible until we can't anymore. When we can't move 5 positions forward anymore that means the house is 1 to 4 positions in front of us, which means we can cover it in another step. This method leads to our answer being ceil(x/5), which is equivalent to (x+4)/5 using integer division.</p>
             </details>
-            <p><a href="https://codeforces.com/problemset/problem/1454/A">Problem 02</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/1454/A">Problem 02</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -60,7 +60,7 @@ int main() {
                 <h4>Explanation</h4>
                 <p>One way to make a permutation of length n such that no value is equal to its index is to take 1,2,3,...,n and shift it over by 1, which makes 2,3,4,...,n,1. You can easily do this with a for loop and some print statements.</p>
             </details>
-            <p><a href="https://codeforces.com/problemset/problem/770/A">Problem 03</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/770/A">Problem 03</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -80,7 +80,7 @@ int main() {
                 <h4>Explanation</h4>
                 <p>We have to create a string such that it has a length of n, is made of k distinct lower case letters, and no two adjacent letters are distinct. There are many ways to do this but the most obvious one is to use the first k letters of the alphabet and repeat the sequence until you reach n. For example, n = 7 k = 3 would lead to abcabca. Now this might be a little difficult to implement for a beginner, but this would entail having a string alp = "abcdefghijklmnopqrstuvwxyz" and a string ans = "". You then do for each i in the range 0 to N-1 (a total of n times) and add to ans, alp[i%k]. If you don't understand why this works try performing a small version of this loop by hand and seeing what occurs.</p>
             </details>
-            <p><a href="https://codeforces.com/problemset/problem/664/A">Problem 04</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/664/A">Problem 04</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -96,7 +96,7 @@ int main() {
                 <h4>Explanation</h4>
                 <p>We have to find the gcd of the numbers from a, a+1, ..., b-1, b. The first observation to solve this problem is to realize that the of gcd(a, a+1) = 1. And the gcd of 1 and any number is also 1. So if we have more than 1 value in in our interval then the answer is 1. Now lets see what happens if the two bounds are the same, gcd(n, n) = n, so if the two numbers are the same the answer is n. So input two strings into your program, compare the two, if they are the same return the string, else return 1.</p>
             </details>
-            <p><a href="https://atcoder.jp/contests/abc179/tasks/abc179_b">Problem 05</a></p>
+            <p><a target="_blank" href="https://atcoder.jp/contests/abc179/tasks/abc179_b">Problem 05</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -121,7 +121,7 @@ int main() {
                 <h4>Explanation</h4>
                 <p>For this problem, make sure to iterate through both of the inputs at the same time, and keep a count variable to store the current size of the equal subarrays of the two inputs. If the two current elements are equal increase count by one, else set count to 0, and if the count variable is ever &gt;=3, you can just break out of the loop and print “Yes”. If this never happens, print “No”. This can be done with a single loop.</p>
             </details>
-            <p><a href="https://codeforces.com/problemset/problem/1475/A">Problem 06</a></p>
+            <p><a target="_blank" href="https://codeforces.com/problemset/problem/1475/A">Problem 06</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -145,11 +145,11 @@ int main() {
                 <ol>
                     <li><p>probably the most basic one is to keep dividing by 2 until the number is odd, then notice that if the result is 1 the number was a power of 2. </p></li>
                     <li><p>you can also use a built in method like __builtin_popcount(n) in C++ to find the number of 1's in a number's bit representation (if it's 1, the number is a power of 2). </p></li>
-                    <li><p>there's also a neat bit manipulation trick: n&-n returns the highest power of 2 that divides n (won't go into it in depth, but you can read about it <a href="https://www.quora.com/In-programming-what-does-n-n-return">here</a>). If n is a power of 2, then n&-n == n. </p></li>
+                    <li><p>there's also a neat bit manipulation trick: n&-n returns the highest power of 2 that divides n (won't go into it in depth, but you can read about it <a target="_blank" ref="https://www.quora.com/In-programming-what-does-n-n-return">here</a>). If n is a power of 2, then n&-n == n. </p></li>
                     <li><p>a similar trick takes advantage of the fact that n&(n-1) erases the lowest 1 bit in n, so if n is a power of 2 then n&(n-1) == 0.</p></li>
                 </ol>
             </details>
-            <p><a href="https://codeforces.com/problemset/problem/199/A">Problem 07</a></p>
+            <p><a target="_blank" ref="https://codeforces.com/problemset/problem/199/A">Problem 07</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -164,7 +164,7 @@ int main() {
                 <h4>Explanation</h4>
                 <p>There are a couple ways to solve this problem. One method takes advantage of the fact that 0 is a Fibonacci number, so 0 + 0 + F_n = F_n. You could also do something like 0 + F_(n-1) + F_(n-2), which just uses the formula for Fibonacci numbers. Finally, if using zeroes was not allowed, you could use the formula for Fibonacci numbers multiple times, by noticing that F_n = F_(n-1) + F_(n-2) = (F_(n-2) + F_(n-3)) + F_(n-2).</p>
             </details>
-            <p><a href="https://codeforces.com/problemset/problem/1409/B">Problem 08</a></p>
+            <p><a target="_blank" ref="https://codeforces.com/problemset/problem/1409/B">Problem 08</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -198,7 +198,7 @@ int main() {
                 <p>The main observation is to realize that if you decrease one of the numbers a, it is optimal to decrease this number as much as possible, before moving onto b. Lets see why our original product is a*b if we decrease a twice we subtract 2*b from our product, but if we decrease a once then b we subtract b+(a-1) from our product, and finally if we decrease b twice we subtract 2*a from our product, This is a then b or b then a is less optimal because the -1 exists, and making our difference less than it could be.</p>
                 <p>So now we know its better to subtract one completely before moving on to the other. We have two methods to use we completely subtract a, then try to subtract b or completely subtract b, then subtract a. We simulate the answers we get from these two scenarios and then return their minimum.</p>
             </details>
-            <p><a href="https://codeforces.com/problemset/problem/869/B">Problem 09</a></p>
+            <p><a target="_blank" ref="https://codeforces.com/problemset/problem/869/B">Problem 09</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
@@ -222,7 +222,7 @@ int main() {
                 <h4>Explanation</h4>
                 <p>Notice that if there is a multiple of 10 between a and b. Then 10 is included in the final product which means the last digit will be 0. To see if 10 is included in the final product we can just check if (b-a) &gt;= 10, if this is true output 0. Now notice that if (b-a) &lt; 10, we can just loop through from a+1 to b and multiply and modulo by 10 to find the final product and output that. </p>
             </details>
-            <p><a href="https://codeforces.com/problemset/problem/1257/B">Problem 10</a></p>
+            <p><a target="_blank" ref="https://codeforces.com/problemset/problem/1257/B">Problem 10</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
