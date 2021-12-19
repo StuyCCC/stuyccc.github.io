@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-02</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>EASY NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -63,7 +63,7 @@
             <a href="https://adventofcode.com/2015/day/1">Problem 24</a>
             <details>
                 <summary>Solution</summary>
-                <p>Note that these problems require file io, you can figure out how to do file io for your respective by googling it.<p/>
+                <p>Note that these problems require file io, you can figure out how to do file io for your respective by googling it.</p>
                 <p>For the first part, we can keep a count that starts at 0, and then every time we see a ( we add 1 to the count, and every time we see a ) we subtract q from the count. After we have parsed the entire string we print the count and then copy paste it to the website.</p>
                 <p>For the second part, we can also keep a variable to keep track of the index, and as soon as you find that count is -1 you can print the index and then copy paste it to the website.</p>
             </details>
@@ -79,7 +79,7 @@
             <details>
                 <summary>Solution</summary>
                 <p>Lets define the left point of our answer, l_max, to be the rightmost left point in the given intervals, and the right point of our answer, r_min, to be the leftmost right point in the given intervals. Now notice that for all the given intervals, [l,r], at least one of the two is true: l is in the range [r_min,l_max] or r is.</p>
-                <p>Here is the proof, by definition r_min <= r, so now there are two cases. If r <= l_max, then r is in the range and our condition is satisfied. If r > l_max, we have to go look at l instead, and there are also two cases here. If l >= r_min then it is trivially in the range, but if l < r_min then we have the case where l < r_min and r > l_max which means [r_min,l_max] is inside of [l,r] which must mean there is a point of [l,r] in [r_min, l_max].</p>
+                <p>Here is the proof, by definition r_min &lt;= r, so now there are two cases. If r &lt;= l_max, then r is in the range and our condition is satisfied. If r &gt; l_max, we have to go look at l instead, and there are also two cases here. If l &gt;= r_min then it is trivially in the range, but if l &lt; r_min then we have the case where l &lt; r_min and r &gt; l_max which means [r_min,l_max] is inside of [l,r] which must mean there is a point of [l,r] in [r_min, l_max].</p>
                 <p>So now we just loop through our input and find these values, and the size of our interval is l_max - r_min. However, if this value is negative that is undefined, and we can just put 0 instead. Try to think about why this works yourself. </p>
             </details>
             <br>
@@ -105,26 +105,26 @@
             <details>
                 <summary>Solution</summary>
                 <p>Ok the first observation is that if n and k have different parities (this means that one is odd while the other is even), then the sum is impossible. Lets see why this happens if n is odd and k is even then an even amount of odd numbers will sum to an even number, not an odd one. Similar logic can be seen for n is even and k is odd. In both these cases we output NO.</p>
-                <p>Next observation is that the smallest sum of k distinct positive odd integers is k^2 (the sum of 1+3+5+...+(2k-1) is k^2). This means that if k^2 > n, then the problem is impossible and we output NO as well.</p>
+                <p>Next observation is that the smallest sum of k distinct positive odd integers is k^2 (the sum of 1+3+5+...+(2k-1) is k^2). This means that if k^2 &gt; n, then the problem is impossible and we output NO as well.</p>
                 <p>Now if the two above conditions aren't true the answer is always YES. We can see this through the following: For every query we can make the sequence 1, 3, 5, 7, ..., 2(k-1)-1, rem. Where rem is the remainder after subtracting the sum of the first k-1 terms of the sequences from n. Try to see why this sequences always works yourself, its good practice.</p>
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/869/B">Problem 17</a>
             <details>
                 <summary>Solution</summary>
-                <p>Notice that if there is a multiple of 10 between a and b. Then 10 is included in the final product which means the last digit will be 0. To see if 10 is included in the final product we can just check if (b-a) >= 10, if this is true output 0. Now notice that if (b-a) < 10, we can just loop through from a+1 to b and multiply and modulo by 10 to find the final product and output that.</p>
+                <p>Notice that if there is a multiple of 10 between a and b. Then 10 is included in the final product which means the last digit will be 0. To see if 10 is included in the final product we can just check if (b-a) &gt;= 10, if this is true output 0. Now notice that if (b-a) &lt; 10, we can just loop through from a+1 to b and multiply and modulo by 10 to find the final product and output that.</p>
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/1257/B">Problem 16</a>
             <details>
                 <summary>Solution</summary>
-                <p>If x == 1, realize that you can't perform either of the spells, so the only possible way to output YES is if y == 1, else output NO. Now for x == 2 or x == 3, you can make x either 3 or 2 or 1, but you can't make any moves after this point, so if y == 1 or y == 2 or y == 3 output YES else output NO. Now realize that for any x >= 4, you can obtain any number (test this out in your head), so the output is always YES. These are all the cases that we have to go through for this problem, so now we have officially solved it :).</p>
+                <p>If x == 1, realize that you can't perform either of the spells, so the only possible way to output YES is if y == 1, else output NO. Now for x == 2 or x == 3, you can make x either 3 or 2 or 1, but you can't make any moves after this point, so if y == 1 or y == 2 or y == 3 output YES else output NO. Now realize that for any x &gt;= 4, you can obtain any number (test this out in your head), so the output is always YES. These are all the cases that we have to go through for this problem, so now we have officially solved it :).</p>
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/515/A">Problem 15</a>
             <details>
                 <summary>Solution</summary>
-                <p>Notice that the shortest path from 0,0 to a,b is abs(a)+abs(b). So s >= abs(a)+abs(b) for our path to be possible. If s == abs(a)+abs(b) then we don't have to do anything else, but if s > abs(a)+abs(b) we have to make an extra k steps were k = s-abs(a)-abs(b). Notice that whatever amount of steps we use to move out of the shortest path we have to use the same number to move back to the shortest path, (ie if we move k/2 away from the shortest path we have to use k/2 steps to come back). So this means that if k is even we can move the extra steps, but if k is odd we can not. Overall, out final condition becomes if k > 0 and k % 2 == 0 print YES else print NO.</p>
+                <p>Notice that the shortest path from 0,0 to a,b is abs(a)+abs(b). So s &gt;= abs(a)+abs(b) for our path to be possible. If s == abs(a)+abs(b) then we don't have to do anything else, but if s &gt; abs(a)+abs(b) we have to make an extra k steps were k = s-abs(a)-abs(b). Notice that whatever amount of steps we use to move out of the shortest path we have to use the same number to move back to the shortest path, (ie if we move k/2 away from the shortest path we have to use k/2 steps to come back). So this means that if k is even we can move the extra steps, but if k is odd we can not. Overall, out final condition becomes if k &gt; 0 and k % 2 == 0 print YES else print NO.</p>
             </details>
             <br>
             <a href="https://leetcode.com/problems/merge-intervals/description/">Problem 14</a>
@@ -143,7 +143,7 @@
             <a href="https://codeforces.com/problemset/problem/1260/A">Problem 12</a>
             <details>
                 <summary>Solution</summary>
-                <p>The optimal strategy for this problem is to make all the heater have close to the same number of sections. You can see this by realizing (x-1)^2 + 1^2 > (x/2)^2 + (x/2)^2. So now we have "sum" sections and "c" heaters and we need to find the optimal way to split sum into c numbers such that the c numbers are really close together. We can do this by having sum%c heaters with value of sum/c + 1, and having the rest be sum/c. This adds up to sum, and keeps the c heaters close together. Now with this distribution our final anwer becomes (sum%c)*(sum/c+1)*(sum/c+1) + (c-sum%c)*(sum/c)*(sum/c).</p>
+                <p>The optimal strategy for this problem is to make all the heater have close to the same number of sections. You can see this by realizing (x-1)^2 + 1^2 &gt; (x/2)^2 + (x/2)^2. So now we have "sum" sections and "c" heaters and we need to find the optimal way to split sum into c numbers such that the c numbers are really close together. We can do this by having sum%c heaters with value of sum/c + 1, and having the rest be sum/c. This adds up to sum, and keeps the c heaters close together. Now with this distribution our final anwer becomes (sum%c)*(sum/c+1)*(sum/c+1) + (c-sum%c)*(sum/c)*(sum/c).</p>
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/1245/A">Problem 11</a>
@@ -170,7 +170,7 @@
             <a href="https://codeforces.com/problemset/problem/1342/A">Problem 08</a>
             <details>
                 <summary>Solution</summary>
-                <p>Notice that the second operation just performs the first operation twice, but does it in one move. So from this fact we can see that if 2a <= b, then it performing the second operation is not optimal at all, so we just perform the first operation the entire time to get a final answer of (x+y)*a. However if 2a > b, then it is optimal to use the second operation as much as possible, but we also don't want to make one of the numbers go below 0 because this wastes an extra move going back up, so our answer becomes min(x,y)*b+(max(x,y)-min(x,y))*a.</p>
+                <p>Notice that the second operation just performs the first operation twice, but does it in one move. So from this fact we can see that if 2a &lt;= b, then it performing the second operation is not optimal at all, so we just perform the first operation the entire time to get a final answer of (x+y)*a. However if 2a &gt; b, then it is optimal to use the second operation as much as possible, but we also don't want to make one of the numbers go below 0 because this wastes an extra move going back up, so our answer becomes min(x,y)*b+(max(x,y)-min(x,y))*a.</p>
             </details>
             <br>
             <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1084">Problem 07</a>

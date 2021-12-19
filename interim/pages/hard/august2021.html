@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>HARD AUGUST 2021</legend>
             <a href="https://codeforces.com/problemset/problem/453/A">Problem 31</a>
@@ -83,7 +83,7 @@
             <a href="https://codeforces.com/problemset/problem/1195/C">Problem 23</a>
             <details>
                 <summary>Solution</summary>
-                <p>So there are 2 rows of N students in this problem, so no we need to figure out all the possible DP states that we can have. For each position in the row, there are 3 possible DP states: we pick from row 1 only, we pick from row 2 only, or we pick from neither (This is seen in the 2nd example case). So this leads us to see that our DP vector is going to be the following vector<array<ll,3>> DP(n). Let us also define F[i] to be the ith position in the first row, and S[i] to be the ith position in the 2nd row.</p>
+                <p>So there are 2 rows of N students in this problem, so no we need to figure out all the possible DP states that we can have. For each position in the row, there are 3 possible DP states: we pick from row 1 only, we pick from row 2 only, or we pick from neither (This is seen in the 2nd example case). So this leads us to see that our DP vector is going to be the following vector&lt;array&lt;ll,3&gt;&gt; DP(n). Let us also define F[i] to be the ith position in the first row, and S[i] to be the ith position in the 2nd row.</p>
                 <p>Now we need to figure out initial states. DP[0][0] is the maximum possible sum if the current first row is chosen, so this means DP[0][0] = F[0]. Similar logic is applied to DP[0][1], so it is equal to S[0]. DP[0][2] is the max sum if we pick from neither rows, so its equal to 0. Now for transitions, if in the ith position we pick from the 1st row, that means in the (i-1)th position we can only pick from the 2nd row or neither of them, so this leads to DP[i][0] = max(DP[i-1][1],DP[i-1][2])+F[i]. By similar logic DP[i][1] =  max(DP[i-1][0],DP[i-1][2])+S[i]. Finally DP[i][2] = max(DP[i-1][0],DP[i-1][1]), because if we dont choose from either this row we can choose from either in the previous row. Now that initial states and transitions are done, we can just output the max of the 3 final values at DP[n-1].</p>
             </details>
             <br>
@@ -97,7 +97,7 @@
             <details>
                 <summary>Solution</summary>
                 <p>The key to solving this problem is to realize since you can only move to the right or down, this means you can only enter a cell from the cell above it and the cell to the left of it. So from here you can see that the number of ways to reach a certain cell is equal to the number of ways to reach the cell above + the number of ways to reach the cell to the left of it.</p>
-                <p>This formula can also be written as DP[i][q] = (i-1 >= 0 ? DP[i-1][q] : 0) + (q-1 >= 0 ? DP[i][q-1] : 0), where DP[0][0] = 1 because there is only $1$ way to reach the first cell, and the ternary statements are just there to make sure you don't seg fault. Also remember to calculate DP[i-1][q] and DP[i][q-1] before DP[i][q]. The way to do this is to iterate in row major order (iterate over an entire row before moving to the one below it). As for dealing with traps just set them to 0 because there is no way to reach a trap. After iterating throughout the entire grid return DP[n-1][n-1] as your answer. </p>
+                <p>This formula can also be written as DP[i][q] = (i-1 &gt;= 0 ? DP[i-1][q] : 0) + (q-1 &gt;= 0 ? DP[i][q-1] : 0), where DP[0][0] = 1 because there is only $1$ way to reach the first cell, and the ternary statements are just there to make sure you don't seg fault. Also remember to calculate DP[i-1][q] and DP[i][q-1] before DP[i][q]. The way to do this is to iterate in row major order (iterate over an entire row before moving to the one below it). As for dealing with traps just set them to 0 because there is no way to reach a trap. After iterating throughout the entire grid return DP[n-1][n-1] as your answer. </p>
                 <p>Also if people were interested in the side problem of solving this problem in O(n) time, given there were no traps. The observation for that problem is that no matter what, to reach the bottom right cell you need to move n-1 cells to the right and n-1 cells down. So the answer is the number of distinct permutations of these two elements, which is (2n-2)! / ((n-1)!)^2. This can be calculated in O(n) time using precalculations of factorials and factorial inverses.</p>
             </details>
             <br>
@@ -135,7 +135,7 @@
             <details>
                 <summary>Solution</summary>
                 <p>This was a hard problem, so if you don't understand the solution feel free to come back to it after the next few bitwise problems.</p>
-                <p>The first step is simplifying what we need to find. The problem asks us for the smallest number that's not part of n^0, n^1, ..., n^m. Let's call this number x. Notice that if n^k = x, then n^x = k. Therefore, n^x can't be a number from 0 to m, so it has to be strictly greater than m. The problem now boils down to: find the smallest number x such that n^x > m.</p>
+                <p>The first step is simplifying what we need to find. The problem asks us for the smallest number that's not part of n^0, n^1, ..., n^m. Let's call this number x. Notice that if n^k = x, then n^x = k. Therefore, n^x can't be a number from 0 to m, so it has to be strictly greater than m. The problem now boils down to: find the smallest number x such that n^x &gt; m.</p>
                 <p>Now, we can implement. The implementation I like goes something like this: start with x = INT_MAX ^ n so n^x is as large as possible. Then, going from most significant to least significant, if a 1 bit can be flipped to a 0 while n^x remains larger than m, then flip it. This works because 1) we never need to flip any 0 bits, else we have a larger number resulting in a smaller xor which is always worse, and 2) we can afford to be greedy because any power of 2 is greater than all powers of 2 below it.</p>
                 <p>The next implementation does a little more casework, but is more explicit in its reasoning. We want n^x to be at least m+1, so we can compare the two bit by bit (starting from most significant). If an n-bit is 0 and an (m+1)-bit is 1, then x has to be 1 to ensure equality. If the two are equal, then x is 0 to maintain equality. And lastly, if an n-bit is 1 and an (m+1)-bit is 0, then that and all remaining bits in x can be set to 0, since n by itself is already greater than m+1 from that point on.</p>
             </details>
@@ -203,8 +203,8 @@
                 <summary>Solution</summary>
                 <ol>
                     <li><p>you can use a data structure like a set, which allows you to easily record all distinct elements and then return the size at the end</p></li>
-                    <li><p>you can also sort an array, which ensures that equal elements will appear consecutively, and record the number of times consecutive elements are unequal + 1 (for example, [1,1,1,2,2,3] has 2 inequalities, so 3 distinct elements)</li></p>
-                    <li><p>you can keep a boolean array of size 10^9 which stores whether an element has been encountered yet. This gets very close to the memory limit, but will still pass</li></p>
+                    <li><p>you can also sort an array, which ensures that equal elements will appear consecutively, and record the number of times consecutive elements are unequal + 1 (for example, [1,1,1,2,2,3] has 2 inequalities, so 3 distinct elements)</p></li>
+                    <li><p>you can keep a boolean array of size 10^9 which stores whether an element has been encountered yet. This gets very close to the memory limit, but will still pass</p></li>
                 </ol>
             </details>
         </fieldset>

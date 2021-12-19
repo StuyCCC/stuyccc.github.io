@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>CONTINUING BITWISE</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -27,13 +27,13 @@
             <h3>Maximum XOR</h3>
             <p>Original problem: <a href="https://codeforces.com/problemset/problem/276/D">Little Girl and Maximum XOR</a></p>
             <p>The problem asks for the maximum XOR of two numbers in the range [L, R]. One way to solve this is the following: at the highest bit where L and R differ, there must be a 0 in L and a 1 in R at that bit. Then set one number equal to L up to and including that bit, then set all lower bits to 1. Set the other number equal to R up to and including that bit, then set all lower bits to 0. It's pretty easy to confirm that both of these numbers must be in the range [L, R], and their XOR will contain a 1 at all bits at or below the first bit where L and R differ, which is maximal.</p>
-            <pre><code class="language-cpp">#include&lt;bits/stdc++.h>
+            <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 
 using namespace std;
 
 int main() {
     long long a, b;
-    cin >> a >> b;
+    cin &gt;&gt; a &gt;&gt; b;
     if (a==b) cout &lt;&lt; 0 &lt;&lt; endl; // account for 0 case separately
     else {
         int pos = 64 - __builtin_clzll(a^b); // # bits to set to 1
@@ -46,16 +46,16 @@ int main() {
             <p>Practice problem: <a href = "https://cses.fi/problemset/task/1623">Apple Division</a></p>
             <p>One common use of bitwise manipulation is the ability to easily generate subsets. For a small enough n (make sure it fits in the number of bits you have available!), you can use an integer to represent a subset of n objects. Then the i'th bit will be 1 if the i'th object is in the subset, and 0 otherwise.</p>
             <p>In order to test if an object is present in a bitwise subset, we can use the left shift and & operators. First, we can use <script type="math/tex">1<<i</script> to access the i'th bit. Then, we can use the and operator to isolate that bit in the subset by doing <script type="math/tex">subset & (1 << i)</script>, which eliminates all other bits and leaves the i'th bit unaffected. Finally, by testing if the result is greater than 0, we can determine if the i'th object is in the set. Here's the solution to Apple Division:</p>
-            <pre><code class="language-cpp">#include&lt;bits/stdc++.h>
+            <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 
 using namespace std;
 typedef long long ll;
 
 int main() {
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     ll p[n], sum = 0, mindiff = LLONG_MAX;
     for (int i = 0; i &lt; n; i++) {
-        cin >> p[i];
+        cin &gt;&gt; p[i];
         sum += p[i];
     }
     // for subset from 0 to 2^n
@@ -63,7 +63,7 @@ int main() {
         ll cursum = 0;
         for (int i = 0; i &lt; n; i++) {
             // add weight of objects in subset
-            if ((subset & (1&lt;&lt;i)) > 0) cursum += p[i];
+            if ((subset & (1&lt;&lt;i)) &gt; 0) cursum += p[i];
         }
         // test current different against answer
         ll curdiff = abs(cursum - (sum - cursum));
@@ -76,18 +76,18 @@ int main() {
             <p>The problem asks us to calculate all possible values of bitwise or of a subarray. Note that we can use a segtree to quickly process bitwise or queries -- refer to the first lesson on segment trees to learn on how to implement this. So the naive solution is <script type="math/tex">O(N^2 log_2(N))</script> by iterating over all subarrays and calculating their bitwise or. Let's try to do better!</p>
             <p>The first step is to fix the starting index L of the subarray. Then we can note that <script type="math/tex">f(L, R) = f(L, R-1) | A[R]</script> -- kind of like prefix sums, but with bitwise or. More importantly, note that this transition cannot turn any bits from 1 to 0-- it can only turn bits from 0 to 1 or leave them alone. This then introduces a new idea: if we could keep track of the value of R for which each bit turns from 0 to 1, then we can isolate all the right endpoints we can consider</p>
             <p>For implementation, we will keep an array X where X[i] represents the bitwise or at the first right index where the i'th bit is 1. We iterate over L from right to left, and for each bit i in A[L], we update X[i]. By doing this, we only have <script type="math/tex">O(N \cdot log_2 (max\ A[i]))</script> values to process, and we can output how many distinct values there are after removing duplicates.</p>
-            <pre><code class="language-cpp">#include&lt;bits/stdc++.h>
+            <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 
 using namespace std;
 
 int main() {
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     int a[n];
-    for (int i = 0; i &lt; n; i++) cin >> a[i];
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; a[i];
     int x[20];
     for (int i = 0; i &lt; 20; i++) x[i] = 0;
-    set&lt;int> vals;
-    for (int L = n-1; L >= 0; L--) {
+    set&lt;int&gt; vals;
+    for (int L = n-1; L &gt;= 0; L--) {
         vals.insert(a[L]);
         for (int bit = 0; bit &lt; 20; bit++) {
             if (a[L] & 1&lt;bit) x[bit] = 0;

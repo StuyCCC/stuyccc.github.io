@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <!-- use <script type="math/tex"> to use latex
             and <pre><code class="language-cpp"> (or whatever language) for code-->
         <fieldset>
@@ -63,13 +63,13 @@
             <a href="https://atcoder.jp/contests/abc199/tasks/abc199_b">Problem 25</a>
             <details>
                 <summary>Solution</summary>
-                <p>For x to be >= all A_i and <= all B_i, then x must be between the max A_i and the min B_i. These values can be computed with a fairly standard loop or with a built-in function. The final answer is simply min(B_i)-max(A_i)+1 (the size of [A_i,B_i]). If this expression yields a non-negative value, simply return 0.</p>
+                <p>For x to be &gt;= all A_i and &lt;= all B_i, then x must be between the max A_i and the min B_i. These values can be computed with a fairly standard loop or with a built-in function. The final answer is simply min(B_i)-max(A_i)+1 (the size of [A_i,B_i]). If this expression yields a non-negative value, simply return 0.</p>
             </details>
             <br>
             <a href="https://atcoder.jp/contests/abc179/tasks/abc179_b">Problem 24</a>
             <details>
                 <summary>Solution</summary>
-                <p>For this problem, make sure to iterate through both of the inputs at the same time, and keep a count variable to store the current size of the equal subarrays of the two inputs. If the count variable is ever >=3, you can just break out of the loop and print “Yes”. If this never happens, print “No”. This can be done with a single loop.</p>
+                <p>For this problem, make sure to iterate through both of the inputs at the same time, and keep a count variable to store the current size of the equal subarrays of the two inputs. If the count variable is ever &gt;=3, you can just break out of the loop and print “Yes”. If this never happens, print “No”. This can be done with a single loop.</p>
             </details>
             <br>
             <a href="https://atcoder.jp/contests/abc198/tasks/abc198_b">Problem 23</a>
@@ -87,7 +87,7 @@
             <a href="https://codeforces.com/problemset/problem/1185/A">Problem 21</a>
             <details>
                 <summary>Solution</summary>
-                <p>Lets assume we have the three tightrope walkers at positions a, b, and c where a < b < c (you can order this yourself. Since the tightrope walkers can walk in any direction (+ or -), you can pretty easily see that the optimal solution is to move the person at pos a left until he is d units from b, and the person at pos c right until he is d units from b. So each second we can move 1 unit so our final answer is max((b+d)-c,0) + max(a-(b-d),0)</p>
+                <p>Lets assume we have the three tightrope walkers at positions a, b, and c where a &lt; b &lt; c (you can order this yourself. Since the tightrope walkers can walk in any direction (+ or -), you can pretty easily see that the optimal solution is to move the person at pos a left until he is d units from b, and the person at pos c right until he is d units from b. So each second we can move 1 unit so our final answer is max((b+d)-c,0) + max(a-(b-d),0)</p>
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/1077/A">Problem 20</a>
@@ -123,7 +123,7 @@
             <a href="https://codeforces.com/problemset/problem/1451/A">Problem 15</a>
             <details>
                 <summary>Solution</summary>
-                <p>Lets try to split this up into cases, first lets find a pattern, if n is even we can divide by n/2, get 2, and then subtract 1 to get 1, so for evens it looks like the answer is always 2. However, this does not work for all evens, we have the case of n=2, where the solution is 1 instead of 2. For odds, we can see that we can subtract 1 to get an even then do the same process as for evens and get the answer seems like it is always 3. Except for n=1 and n=3, this always works because they only need 0 and 2 moves for this problem. Anyhow now that we have the cases we can say if n <= 3 the answer is n-1, else if its even the answer is 2, else if its odd the answer is 3. </p>
+                <p>Lets try to split this up into cases, first lets find a pattern, if n is even we can divide by n/2, get 2, and then subtract 1 to get 1, so for evens it looks like the answer is always 2. However, this does not work for all evens, we have the case of n=2, where the solution is 1 instead of 2. For odds, we can see that we can subtract 1 to get an even then do the same process as for evens and get the answer seems like it is always 3. Except for n=1 and n=3, this always works because they only need 0 and 2 moves for this problem. Anyhow now that we have the cases we can say if n &lt;= 3 the answer is n-1, else if its even the answer is 2, else if its odd the answer is 3. </p>
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/965/A">Problem 14</a>

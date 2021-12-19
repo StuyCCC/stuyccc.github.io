@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-02</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>PCLASSIC 2021 FALL</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -79,13 +79,13 @@ public static String decode(String s, int k) {
 public static int netTemperature(int n, int[][] temperatures) {
     int k = temperatures.length;
     int[] temp = new int[n];
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i &lt; k; i++) {
         int target = temperatures[i][1];
         int change = temperatures[i][2];
         temp[target] += change;
     }
     int ans = 0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         if (temp[i]==0) {
             ans++;
         }
@@ -108,7 +108,7 @@ public static int netTemperature(int n, int[][] temperatures) {
 public static boolean checkMessages(String s, String t) {
     char[] matching = new char[26];
     int n = s.length();
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         char c = (char)(s.charAt(i) - 'a');
         if (matching[c] == 0) {
             matching[c] = t.charAt(i);
@@ -116,9 +116,9 @@ public static boolean checkMessages(String s, String t) {
             return false;
         }
     }
-    for (int i = 0; i < 26; i++) {
+    for (int i = 0; i &lt; 26; i++) {
         if (matching[i] != 0) {
-            for (int j = i+1; j < 26; j++) {
+            for (int j = i+1; j &lt; 26; j++) {
                 if (matching[i]==matching[j]) return false;
             }
         }
@@ -140,22 +140,22 @@ public static boolean checkMessages(String s, String t) {
 // Solved By Jeremy Ku-Benjet
 public static int unbeatable(int[][] peacocks) {
     boolean[] beat = new boolean[peacocks.length];
-    for (int i = 0; i < peacocks.length; i++) {
-        for (int j = i+1; j < peacocks.length; j++) {
+    for (int i = 0; i &lt; peacocks.length; i++) {
+        for (int j = i+1; j &lt; peacocks.length; j++) {
             int v1 = peacocks[i][0];
             int v2 = peacocks[j][0];
             int c1 = peacocks[i][1];
             int c2 = peacocks[j][1];
-            if (v1 >= v2 && c1 >= c2 && (v1 != v2 || c1 != c2)) {
+            if (v1 &gt;= v2 && c1 &gt;= c2 && (v1 != v2 || c1 != c2)) {
                 beat[j] = true;
             }
-            if (v1 <= v2 && c1 <= c2 && (v1 != v2 || c1 != c2)) {
+            if (v1 &lt;= v2 && c1 &lt;= c2 && (v1 != v2 || c1 != c2)) {
                 beat[i] = true;
             }
         }
     }
     int num_beat = 0;
-    for (int i = 0; i < beat.length; i++) {
+    for (int i = 0; i &lt; beat.length; i++) {
         if (beat[i]) num_beat++;
     }
     return (peacocks.length - num_beat);
@@ -181,11 +181,11 @@ public static int unbeatable(int[][] peacocks) {
 public static boolean ism(int[][] grid, int i, int j) {
     // i,j is top left corner
     int s = grid[i][j] + grid[i][j+1] + grid[i][j+2];
-    for (int ii = 0; ii < 3; ii++) {
+    for (int ii = 0; ii &lt; 3; ii++) {
         if (grid[i+ii][j] + grid[i+ii][j+1] + grid[i+ii][j+2] != s)
             return false;
     }
-    for (int jj = 0; jj < 3; jj++) {
+    for (int jj = 0; jj &lt; 3; jj++) {
         if (grid[i][j+jj] + grid[i+1][j+jj] + grid[i+2][j+jj] != s)
             return false;
     }
@@ -198,8 +198,8 @@ public static boolean ism(int[][] grid, int i, int j) {
 public static boolean magicSquare(int[][] grid) {
     int n = grid.length;
     int m = grid[0].length;
-    for(int i = 0; i < n-2; i++) {
-        for (int j = 0; j < m-2; j++) {
+    for(int i = 0; i &lt; n-2; i++) {
+        for (int j = 0; j &lt; m-2; j++) {
             // System.out.println(i + " " + j);
             if (ism(grid, i, j)) return true;
         }
@@ -224,12 +224,12 @@ public static boolean matchable(String initialPattern, String finalPattern) {
     int fl = finalPattern.length();
 
     char[] temp = new char[fl];
-    for (int i = 0; i < fl; i++) temp[i] = '0';
-    for (int i = 0; i < il; i++) temp[i] = initialPattern.charAt(i);
+    for (int i = 0; i &lt; fl; i++) temp[i] = '0';
+    for (int i = 0; i &lt; il; i++) temp[i] = initialPattern.charAt(i);
 
-    for (int i = 0; i <= fl-il; i++) {
+    for (int i = 0; i &lt;= fl-il; i++) {
         boolean ok = true;
-        for (int j = 0; j < il; j++) {
+        for (int j = 0; j &lt; il; j++) {
             if (initialPattern.charAt(j) == '1' &&
                 finalPattern.charAt(i+j) == '0') {
                 ok = false;
@@ -237,13 +237,13 @@ public static boolean matchable(String initialPattern, String finalPattern) {
             }
         }
         if (ok) {
-            for (int j = 0; j < il; j++) {
+            for (int j = 0; j &lt; il; j++) {
                 if (initialPattern.charAt(j) == '1') temp[i+j] = '1';
             }
         }
     }
 
-    for (int i = 0; i < fl; i++) {
+    for (int i = 0; i &lt; fl; i++) {
         if (temp[i] != finalPattern.charAt(i)) return false;
     }
     return true;
@@ -255,7 +255,7 @@ public static boolean matchable(String initialPattern, String finalPattern) {
                 <summary>Explanation</summary>
                 <p>The idea of this problem is that you are given an initial pattern and you have to copy it onto substrings of a blank template pattern, and you have to see if through repetitions of this process if you can make the template into the final pattern. The first observation is that there are only fl-il positions where you can move the initial pattern to and moving the pattern to the same position multiple times does not have any extra effect, so this means that we only have to loop through the fl-il positions to see if we can somehow get our final pattern.</p>
                 <p>Now that we are looping through the initial positions, we have to find a way to see if we can copy the initial pattern without messing up the pattern. Lets consider position j in the initial pattern and position i+j in the final pattern (this is the jth position of the substring of final pattern starting at position i). Consider the case of final[i+j] = 0, if initial[j] = 0, this is valid to copy over because they are the same, but if initial[j] = 1, we can't copy this over without never achieving the final pattern. Now consider final[i+j] = 1, if initial[j] = 0, then this is valid because we can always turn that 0 into a 1 later, and if initial[j] = 1, this is also valid because now final and initial match.</p>
-                <p>We can now check all positions in the initial pattern and the substring of the final pattern, and if all these positions can be validly copied over, then we can greedily decide to copy the initial pattern over to the template. Also notice that the problem says that the initial pattern must be copied over at position 0, so we implement this change in the <code> for (int i = 0; i < il; i++) temp[i] = initialPattern.charAt(i);</code> loop.</p>
+                <p>We can now check all positions in the initial pattern and the substring of the final pattern, and if all these positions can be validly copied over, then we can greedily decide to copy the initial pattern over to the template. Also notice that the problem says that the initial pattern must be copied over at position 0, so we implement this change in the <code> for (int i = 0; i &lt; il; i++) temp[i] = initialPattern.charAt(i);</code> loop.</p>
                 <p>Now that we have all our changes made, we just have to check if this template is now equal to the final pattern, and if it is return true else return false.</p>
             </details>
 
@@ -268,16 +268,16 @@ public static int maxPoints(String s, String t) {
     int m = s.length(), n = t.length();
     int[][] DP = new int[m+1][n+1];
 
-    for (int i = 0; i < m+1; i++) {
+    for (int i = 0; i &lt; m+1; i++) {
         DP[i][n] = -(m-i)*2;
     }
 
-    for (int i = 0; i < n+1; i++) {
+    for (int i = 0; i &lt; n+1; i++) {
         DP[m][i] = -(n-i)*2;
     }
 
-    for (int i = m-1; i >= 0; i--) {
-        for (int q = n-1; q >= 0; q--) {
+    for (int i = m-1; i &gt;= 0; i--) {
+        for (int q = n-1; q &gt;= 0; q--) {
             int val = DP[i+1][q+1] + (s.charAt(i) == t.charAt(q) ? 1 : -1);
             DP[i][q] = Math.max(val, Math.max(DP[i+1][q]-2, DP[i][q+1]-2));
         }
@@ -303,7 +303,7 @@ public static int testing(int bears, int testtime, int totaltime) {
     int k = totaltime / testtime;
     int ans = 1;
     long cur = k+1;
-    while (cur < bears) {
+    while (cur &lt; bears) {
         cur *= (long)k+1;
         ans++;
     }
@@ -324,7 +324,7 @@ public static int testing(int bears, int testtime, int totaltime) {
 // Solved By Maxwell Zen
 public static long MOD = 1000000007;
 
-public static void inc(int i, long x, TreeMap&lt;Integer, Long> tm) {
+public static void inc(int i, long x, TreeMap&lt;Integer, Long&gt; tm) {
     if (tm.containsKey(i)) tm.put(i, tm.get(i)+x);
     else tm.put(i, x);
 }
@@ -340,7 +340,7 @@ public static long sum(long i, long j) {
     if (j == 0) return 0;
     long ans = sum(j) - sum(i);
     ans %= MOD;
-    if (ans < 0) ans += MOD;
+    if (ans &lt; 0) ans += MOD;
     return ans;
 }
 
@@ -348,17 +348,17 @@ public static int pandaLand(int n, int m, String s) {
     int[] r = new int[n], c = new int[m];
     r[0]++; c[0]++;
     int x = 0, y = 0;
-    for (int i = 0; i < n+m-2; i++) {
+    for (int i = 0; i &lt; n+m-2; i++) {
         if (s.charAt(i) == 'R') y++;
         else x++;
         r[x]++; c[y]++;
     }
-    TreeMap&lt;Integer, Long> rcnt, ccnt, cnt;
-    rcnt = new TreeMap&lt;Integer, Long>();
-    ccnt = new TreeMap&lt;Integer, Long>();
-    cnt = new TreeMap&lt;Integer, Long>();
-    for (int i = 0; i < n; i++) inc(r[i], 1, rcnt);
-    for (int i = 0; i < m; i++) inc(c[i], 1, ccnt);
+    TreeMap&lt;Integer, Long&gt; rcnt, ccnt, cnt;
+    rcnt = new TreeMap&lt;Integer, Long&gt;();
+    ccnt = new TreeMap&lt;Integer, Long&gt;();
+    cnt = new TreeMap&lt;Integer, Long&gt;();
+    for (int i = 0; i &lt; n; i++) inc(r[i], 1, rcnt);
+    for (int i = 0; i &lt; m; i++) inc(c[i], 1, ccnt);
     for (Integer i : rcnt.keySet()) {
         for (Integer j : ccnt.keySet()) {
             int k = i+j;
@@ -368,7 +368,7 @@ public static int pandaLand(int n, int m, String s) {
     x = 0; y = 0;
     inc(r[0]+c[0], -1, cnt);
     inc(r[0]+c[0]-1, 1, cnt);
-    for (int i = 0; i < n+m-2; i++) {
+    for (int i = 0; i &lt; n+m-2; i++) {
         if (s.charAt(i)=='R') y++;
         else x++;
         inc(r[x]+c[y], -1, cnt);
@@ -382,7 +382,7 @@ public static int pandaLand(int n, int m, String s) {
         k -= icnt;
     }
     ans %= MOD;
-    if (ans < 0) ans += MOD;
+    if (ans &lt; 0) ans += MOD;
     return (int)ans;
 }
                 </code></pre>
@@ -398,12 +398,12 @@ public static int pandaLand(int n, int m, String s) {
                 <summary>Solution</summary>
                 <pre><code class="language-java">// Solved By Maxwell Zen And Mohammad Khan
 public static int unbeatable(int n, int[][] pvals, int[] out) {
-    for (int i = 0; i < n; i++) out[i]--;
+    for (int i = 0; i &lt; n; i++) out[i]--;
     boolean[] vis, beat;
     vis = new boolean[n];
     beat = new boolean[n];
     int ans = 0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         int v1 = pvals[i][0];
         int c1 = pvals[i][1];
         int c = out[i];
@@ -411,7 +411,7 @@ public static int unbeatable(int n, int[][] pvals, int[] out) {
         while (!vis[c]) {
             int v2 = pvals[c][0];
             int c2 = pvals[c][1];
-            if (v1 <= v2 && c1 <= c2 && (v1!=v2 || c1!=c2)) {
+            if (v1 &lt;= v2 && c1 &lt;= c2 && (v1!=v2 || c1!=c2)) {
                 beat[i] = true;
                 break;
             }

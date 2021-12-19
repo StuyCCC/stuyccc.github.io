@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>SEGMENT TREES</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -43,7 +43,7 @@
     K += N;
     seg[K] = X;
     K /= 2;
-    while (K>0) {
+    while (K&gt;0) {
         seg[K] = seg[2*K] + seg[2*K+1];
         K /= 2;
     }
@@ -54,7 +54,7 @@
     L += N;
     R += N;
     int ans = 0;
-    while (L <= R) {
+    while (L &lt;= R) {
         if (L%2 != 0) {
             ans += seg[L];
             L++;
@@ -76,7 +76,7 @@
     L += N;
     R += N;
     int left_ans = 0, right_ans = 0;
-    while (L <= R) {
+    while (L &lt;= R) {
         if (L%2 != 0) {
             left_ans = left_ans + seg[L];
             L++;

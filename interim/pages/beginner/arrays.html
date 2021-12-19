@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-23</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>Yer A Wizard, ‘Array!</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -33,7 +33,7 @@ int arr[50];
             <p>To access the element at the k-th position of the sequence, we can use arr[k]. This can be either changed or used any way you like, and can be treated like a variable. For instance, if you wanted to add 2 to arr[k] and print the sum of arr[k] and arr[k-1], we can do</p>
             <pre><code class="language-cpp">
 arr[k] += 2;
-cout << arr[k] + arr[k-1] << ‘\n’;
+cout &lt;&lt; arr[k] + arr[k-1] &lt;&lt; ‘\n’;
             </code></pre>
 
             <h3>Zero-Indexing</h3>
@@ -43,7 +43,7 @@ cout << arr[k] + arr[k-1] << ‘\n’;
             <h3>Iteration</h3>
             <p>The main way to go through an array is using a for loop like the following:</p>
             <pre><code class="language-cpp">
-for (int i = 0; i < n; i++) {
+for (int i = 0; i &lt; n; i++) {
     // do something to arr[i].
 }
             </code></pre>
@@ -64,7 +64,7 @@ int arr[10][10];
             </code></pre>
             <p>Which creates a 10 by 10 box. We can create arrays with more dimensions just by putting more brackets with numbers at the end.</p>
             <p>We can think of a 2-d array as a 1-d array of 1-d arrays. We can think of the big array of arrays as going from up to down, and each constituent array as going from left to right. Here is an image for convenience:</p>
-            <img src="../../data/beginner/2d-array.png" width=520>
+            <img src="../../data/beginner/2d-array.png" width="520">
             <p>The syntax for accessing elements is similar: we use arr[i][j]. The first index, i, refers to the index in the bigger array of arrays. The second index, j, refers to the index in the constituent array, arr[i]. You can also use other coordinate systems to think about arrays in 2 dimensions or higher dimensions, as long as it stays consistent.</p>
 
             <h3>Extra Tips And Tricks</h3>
@@ -82,9 +82,9 @@ int arr[5] = {1, 2, 3, 4, 5};
             </code></pre>
             <p>Or you can loop through the array and set the value of each element in the loop from standard input like the following: </p>
             <pre><code class="language-cpp">
-int n; cin >> n;
+int n; cin &gt;&gt; n;
 int arr[n];
-for (int i = 0; i < n; i++) cin >> arr[i];
+for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
             </code></pre>
             <p>Warning! Arrays are very easy to mess up, you can do a whole number of things like going out of the valid ranges of an array and messing stuff up, so just be careful that your accessing the correct elements of an array in your code.</p>
             <p>Warning! Don't pass arrays to functions unless you really have to. They are a pain to deal with in functions.</p>
@@ -95,16 +95,16 @@ for (int i = 0; i < n; i++) cin >> arr[i];
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     int arr[n];
-    for (int i = 0; i < n; i++) cin >> arr[i];
-    if (n == 0) cout << "false\n";
-    else if (arr[0] == arr[n-1]) cout << "true\n";
-    else cout << "false\n";
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
+    if (n == 0) cout &lt;&lt; "false\n";
+    else if (arr[0] == arr[n-1]) cout &lt;&lt; "true\n";
+    else cout &lt;&lt; "false\n";
 }
                 </code></pre>
             </details>
@@ -112,19 +112,19 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     int arr[n];
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
     int mn = 1000000000, mx = -1000000000;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         mn = min(mn, arr[i]);
         mx = max(mx, arr[i]);
     }
-    cout << mx-mn << "\n";
+    cout &lt;&lt; mx-mn &lt;&lt; "\n";
     return 0;
 }
                 </code></pre>
@@ -133,21 +133,21 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     int arr[n];
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
     int sm = 0;
     bool add = true;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         if (arr[i] == 6) add = false;
         if (add) sm += arr[i];
         if (arr[i] == 7) add = true;
     }
-    cout << sm << "\n";
+    cout &lt;&lt; sm &lt;&lt; "\n";
     return 0;
 }
 
@@ -157,20 +157,20 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     int arr[n];
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
     int c1 = 0, c4 = 0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         if (arr[i] == 1) c1++;
         if (arr[i] == 4) c4++;
     }
-    if (c1 > c4) cout << "true\n";
-    else cout << "false\n";
+    if (c1 &gt; c4) cout &lt;&lt; "true\n";
+    else cout &lt;&lt; "false\n";
     return 0;
 }
                 </code></pre>
@@ -179,26 +179,26 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
     int n = sizeof(arr)/sizeof(arr[0]);
     bool found = true;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         int sm1 = 0, sm2 = 0;
-        for (int q = 0; q < i; q++) {
+        for (int q = 0; q &lt; i; q++) {
             sm1 += arr[q];
         }
-        for (int q = i; q < n; q++) {
+        for (int q = i; q &lt; n; q++) {
             sm2 += arr[q];
         }
         if (sm1 == sm2) {
-            cout << "true\n";
+            cout &lt;&lt; "true\n";
             return 0;
         }
     }
-    cout << "false\n";
+    cout &lt;&lt; "false\n";
     return 0;
 }
                 </code></pre>
@@ -207,29 +207,29 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int n, m; cin >> n >> m;
+    int n, m; cin &gt;&gt; n &gt;&gt; m;
     int arr[n][m];
-    for (int i = 0; i < n; i++) {
-        for (int q = 0; q < m; q++) {
-            cin >> arr[i][q];
+    for (int i = 0; i &lt; n; i++) {
+        for (int q = 0; q &lt; m; q++) {
+            cin &gt;&gt; arr[i][q];
         }
     }
     int sum[n];
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         int sm = 0;
-        for (int q = 0; q < m; q++) {
+        for (int q = 0; q &lt; m; q++) {
             sm += arr[i][q];
         }
         sum[i] = sm;
     }
-    for (int i = 0; i < n; i++) {
-        cout << sum[i] << " ";
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; sum[i] &lt;&lt; " ";
     }
-    cout << "\n";
+    cout &lt;&lt; "\n";
 }
                 </code></pre>
             </details>

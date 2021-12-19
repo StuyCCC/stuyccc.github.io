@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-12</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>Prefix Sums</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -35,8 +35,8 @@ pre[0] = 0
 for i in 1..n+1:
     pre[i] = pre[i-1] + A[i-1]
             </code></pre>
-            <p>To use this to calculate the sum of a range <code>l</code> to <code>r</code> (inclusive on both sides with zero indexing), do <code>pre[r+1] - pre[l]</code>.</p> 
-            <p>This reveals why <code>pre[0] = 0</code>, that way the sum of a prefix, can be computed without doing any special cases. Instead of having to do a special case when <code>l = 0</code> it is <code>pre[l]</code> just subtracts nothing and works.
+            <p>To use this to calculate the sum of a range <code>l</code> to <code>r</code> (inclusive on both sides with zero indexing), do <code>pre[r+1] - pre[l]</code>.</p>
+            <p>This reveals why <code>pre[0] = 0</code>, that way the sum of a prefix, can be computed without doing any special cases. Instead of having to do a special case when <code>l = 0</code> it is <code>pre[l]</code> just subtracts nothing and works.</p>
             <h3>Problems</h3>
             <p>I am supplying solutions in Python because it is clean and readable. Generally doing competitive programming with Python is a bad idea.</p>
             <h4><a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=691">Hoof Paper Scissors (Silver)</a></h4>
@@ -104,14 +104,14 @@ def solve():
 T = int(input())
 for _ in range(T):
     solve()
-        </pre></code>
+        </code></pre>
         <h4>Explanation</h4>
         <p>Let <code>A</code> be the array of numbers. The key insight for this question is noticing the condition for a good subarray can be written very nicely in terms of prefix sums of <code>A</code>. Let <code>pre</code> be the prefix sums of <code>A</code>. For the sum of a subarray with inclusive endpoints <code>r</code> and <code>l</code> to equal the length of the subarray, <code>pre[r] - pre[l-1] = r - l + 1 = r - (l - 1)</code>. Note that <code>l</code> and <code>r</code> are one indexed.</p>
         <p>We can rearrange this equation to get <code>pre[r] - r = pre[l-1] - (l-1)</code>. Notice both sides are of the form <code>pre[i] - i</code> where <code>i</code> is an integer with <script type="math/tex">0 \leq i \leq n</script>. We can create an array <code>b</code> such that <code>b[i] = pre[i] - i</code> and then see how many pairs of elements in <code>b</code> are equal, as each pair of equal elements in <code>b</code> corrospond to some good subarray.</p>
         <p>To find the number of pairs of equal elements in <code>b</code> we first create a frequency map of <code>b</code>. This tells us how many of each element <code>b[i]</code> there are. We can then compute <script type="math/tex">\binom{\text{b[i]}}{2} = \frac{\text{b[i]}(\text{b[i]}-1)}{2}</script>, the number of possible pairs ways to choose pairs of two elements from a group of <code>b[i]</code> elements, for each item in the frequency map and sum them. That is the answer.</p>
         </details>
         <h3>2D Prefix Sums</h3>
-        <p>2D prefix sums really aren't much different from 1D prefix sums. It is just the array of elements is now 2D which requires some new definitions.</p> 
+        <p>2D prefix sums really aren't much different from 1D prefix sums. It is just the array of elements is now 2D which requires some new definitions.</p>
         <p>Define a subarray of 2D array <script type="math/tex">A</script> with <script type="math/tex">n</script> rows and <script type="math/tex">m</script> columns to be all elements <script type="math/tex">A_{i, j}</script> of <script type="math/tex">A</script> such that <script type="math/tex">a \leq i \leq b</script> and <script type="math/tex">c \leq j \leq d</script> where <script type="math/tex">a,b,c,d</script> are one indexed indices <script type="math/tex">A</script> with <script type="math/tex">1\leq a \leq b \leq b \leq n, 1\leq c \leq d \leq m</script>. A subarray can be thought of as some rectangle of elements of the original array.</p>
         <p>Define a prefix of 2D array <code>A</code> to be a subarray of <script type="math/tex">A</script> with <script type="math/tex">a = b = 1</script>. This is a rectangle of elements of the original array with one of its corners at <script type="math/tex">A_{1,1}</script>.</p>
         <p>Creating a prefix sum array, <code>pre</code>, where <code>pre[i][j]</code> is a prefix with corners <code>0, 0, i, j</code> is similar to creating a 1D prefix array. The main difference is you are adding 2D things instead of 1D things.</p>
@@ -126,8 +126,7 @@ pre is now a prefix sum array of A
         </code></pre>
         <p>We subtract <code>pre[i-1][j-1]</code> because we double counted it when adding <code>pre[i-1][j]</code> and <code>pre[i][j-1]</code>. This construction has time complexity <script type="math/tex">\mathcal{O}(nm)</script>, it is two nested for loops, the first running through <script type="math/tex">n</script> indecies and the second running through <script type="math/tex">m</script> indecies. Note <code>pre</code> is padded with zeros, all elements <code>pre[i][0]</code> and <code>pre[0][j]</code> are zero. This is similar to what we did for 1D prefix sum arrays and makes construction and subarray sum queries easier.</p>
         <p>The construction is adds prefixes to create a new prefix and then subtracting the stuff accounted for twice. Querying a subarray sums works the same. The sum of a subarray with one indexed inclusive corners <code>(a, b), (c, d)</code> can be found with the expression:<br> <code>pre[c][d] - pre[c][b-1] - pre[a-1][d] + pre[a-1][b-1]</code>.<br> This is basically just the reverse of what we did to construct <code>pre</code>.</p>
-        <p>A visual to help understand what thing is <code>pre</code> represent follows:<br><br><img src="2D_Prefix_Sum_Construction_Diagram.png" width=500></p>
-
+        <p>A visual to help understand what thing is <code>pre</code> represent follows:<br><br><img src="../../data/intermediate/2D_Prefix_Sum_Construction_Diagram.png" width="500"></p>
         </fieldset>
     </div>
 </body>

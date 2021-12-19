@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>BITWISE DP</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -28,7 +28,7 @@
 			<p>Bitwise dynamic programming uses the concepts of dynamic programming to use the results of subproblems to solve larger problems. We can also incorporate bitwise manipulation, which allows us to act on subsets. Often, this strategy can be used to optimize a naive <script type="math/tex">O(n!)</script> bash into something with <script type="math/tex">O(2^n)</script> complexity, or something similar. This is significant - <script type="math/tex">O(n!)</script> complexity allows us to reach about <script type="math/tex">n \leq 11</script>, while a complexity of <script type="math/tex">O(2^n)</script> lets us reach about <script type="math/tex">n \leq 25</script>. In particular, if a problem's constraints include <script type="math/tex">n \leq 20</script>, there are pretty good chances that some sort of bitwise DP is involved.</p>
 			<p>We'll start by solving an extremely simple problem - count the number of permutations of N objects. For now, let's ignore the combinatorial solution. Here, the "naive" solution would involve looping over every permutation. Instead, let's define an array dp[subset] as the number of ways to arrange a subset of the N objects. In order to calculate this for a particular subset, we can first pick an element to appear last in the permutation and then add the number of ways we can arrange the remaining objects. In other words, <script type="math/tex">dp[subset] = \sum_{i \in subset} dp[subset \backslash i]</script>.</p>
 			<p>For implementation, we'll treat an integer as a subset where each bit of the integer represents one of the objects. To perform operations on these subsets, you can refer to <a href="bitwise2.html">the previous bitwise lesson summary</a>. Finally, we have to ensure that we process the subsets in the correct order, to ensure that all dp states we rely on have already been calculated. But here, we can just process the subsets in numerical order, because when we exclude an object from a subset the result is guaranteed to be less. With those in mind, you can solve the problem.</p>
-			<pre><code class="language-cpp">#include&lt;bits/stdc++.h>
+			<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 
 using namespace std;
 
@@ -41,7 +41,7 @@ int main() {
         // initialize to 0
         dp[subset] = 0;
         // for each object in the subset
-        for (int i = 0; i &lt; n; i++) if ((subset & 1&lt;&lt;i) > 0) {
+        for (int i = 0; i &lt; n; i++) if ((subset & 1&lt;&lt;i) &gt; 0) {
             // add number of ways to arrange every other object
             dp[subset] += dp[subset ^ 1&lt;&lt;i];
         }
@@ -52,17 +52,17 @@ int main() {
 			<h3>Travelling Salesman Problem</h3>
 			<p>Now we can use this technique to solve the travelling salesman problem more efficiently. In the travelling salesman problem, we must find a shortest path that visits every node through a graph. Many versions will make the graph fully connected (where every pair of nodes is connected by an edge), but if they aren't connected we can just fill in edges with infinite weight. In the naive solution, we can test every permutation of nodes and find the one with minimal distance. This solution is <script type="math/tex">O(n!)</script>, but we can do better.</p>
 			<p>As with before, we'll define a dp state by a subset. But in order to use prior results to calculate answers for the current subset, we'll also need to store the last node visited. So dp[subset][last] will be the minimum distance needed to visit subset nodes and end at last. Let subset2 be equal to all of subset, except for last. Then we can do casework on the node in subset2 that we end on, and add on the distance from that node to last. In other words, <script type="math/tex">dp[subset][last] = \text{min }_{i \in subset2}(dp[subset2][i] + dist[i][last])</script></p>
-			<pre><code class="language-cpp">#include&lt;bits/stdc++.h>
+			<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 
 using namespace std;
 
 int main() {
     // take inputs
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     int dist[n][n];
     for (int i = 0; i &lt; n; i++) {
         for (int j = 0; j &lt; n; j++) {
-            cin >> dist[i][j];
+            cin &gt;&gt; dist[i][j];
         }
     }
 
@@ -75,7 +75,7 @@ int main() {
     for (int subset = 0; subset &lt; (1&lt;&lt;n); subset++) {
         for (int i = 0; i &lt; n; i++) if (subset&1&lt;&lt;i) {
             int subset2 = subset ^ 1&lt;&lt;i;
-            for (int j = 0; j &lt; n; j++) if ((subset2&1&lt;&lt;j)>0) {
+            for (int j = 0; j &lt; n; j++) if ((subset2&1&lt;&lt;j)&gt;0) {
                 int test = dp[subset2][j] + dist[j][i];
                 dp[subset][i]=min(dp[subset][i], test);
             }
@@ -91,29 +91,29 @@ int main() {
 			<p>Original problem: <a href="https://atcoder.jp/contests/dp/tasks/dp_o">Atcoder - Matching</a>.</p>
 			<p>The naive solution is simple: we can test every possible matching by noting that the first man has <script type="math/tex">n</script> women to match with, the second has <script type="math/tex">n-1</script> to match with, and so on. In total, the complexity of this approach is <script type="math/tex">O(n!)</script>.</p>
 			<p>On first glance, it may seem that the bitwise DP solution would involve dp[subsetA][subsetB], which counts the number of ways to match subsetA men with subsetB women. The complexity of this approach would be <script type="math/tex">O(4^n)</script>, which is better than our previous <script type="math/tex">O(n!)</script> but still too slow. However, the key observation is that we can assume that the subset of men will just be the first k men (where k is the size of the subset). And so we can set dp[subset] equal to the number of ways to match a subset of women with the first k men. Our dp transition will involve picking a woman to be paired with the k'th man, and adding the number of way to match the rest of the women with the first k-1 men. So the dp transition will be <script type="math/tex">dp[subset] = \sum_{i \in subset, a[k][i]=1} dp[subset \backslash i]</script></p>
-			<pre><code class="language-cpp">#include &lt;bits/stdc++.h>
+			<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 const int MOD = 1e9+7;
 
 int main() {
     // read input
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     int a[n][n];
     for (int i = 0; i &lt; n; i++) {
         for (int j = 0; j &lt; n; j++) {
-            cin >> a[i][j];
+            cin &gt;&gt; a[i][j];
         }
     }
     // initialize dp array
-    vector&lt;int> dp(1&lt;&lt;n, 0);
+    vector&lt;int&gt; dp(1&lt;&lt;n, 0);
     dp[0]=1;
     for (int subset = 1; subset &lt; 1&lt;&lt;n; subset++) {
         // index of last man
         int k = __builtin_popcount(subset)-1;
         // for each compatible woman
         for (int last = 0; last &lt; n; last++) {
-            if ((subset & (1&lt;&lt;last)) > 0 && a[k][last]==1) {
+            if ((subset & (1&lt;&lt;last)) &gt; 0 && a[k][last]==1) {
                 // add # ways to arrange rest of subset
                 dp[subset] += dp[subset ^ (1&lt;&lt;last)];
                 dp[subset] %= MOD;

@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>IF, FOR, AND WHILE</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -29,22 +29,22 @@
             <p>It turns out that we can make this decision by asking multiple yes or no questions in succession. The first question we can ask is, “is the grade greater than equal to 90?” If the answer is yes, we know the letter grade has to be an E. Otherwise, it is subject to further classification. We can then ask, “is the grade greater than or equal to 80?” If the answer is yes, given that the answer to the previous question is no, we know that the grade is between 80 and 90, indicating that it’s an S. Otherwise, we can keep going until we ask if the grade is greater than or equal to 70. If the answer to this is no, then it goes to our catch-all, i.e. the answer is no to every single question we have to ask. In our case, the <i>catch-all</i> is the letter grade of U.</p>
             <p>In general, in our chain of yes-or-no questions, the decision is made any time the answer is “yes.” Some code is executed, and lower branches are not considered. The syntax looks something like this:</p>
             <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main () {
 	// prompts user to enter a grade to consider
-	int grade; cin >> grade;
+	int grade; cin &gt;&gt; grade;
 
 	// branching starts here
-	if (grade >= 90) {
-		cout << “E\n”;
-	} else if (grade >= 80) {
-		cout << “S\n”;
-	} else if (grade >= 70) {
-		cout << “N\n”;
+	if (grade &gt;= 90) {
+		cout &lt;&lt; “E\n”;
+	} else if (grade &gt;= 80) {
+		cout &lt;&lt; “S\n”;
+	} else if (grade &gt;= 70) {
+		cout &lt;&lt; “N\n”;
 	} else {
-		cout << “U\n”;
+		cout &lt;&lt; “U\n”;
 	}
 }
             </code></pre>
@@ -58,8 +58,8 @@ for ([INITIALIZATION]; [CONDITION]; [OPERATION]) {
 }
             </code></pre>
             <p>We examine these parts one by one. The [INIT] is executed only once before the loop starts. Usually, we declare some counter variable that we let run through some range of numbers. For instance, it can be <b><i>int i = 0</i></b>, where i is short for index. Note that i can only be used within the body of the for loop.</p>
-            <p>The loop is then repeated until [CONDITION] is false, where [CONDITION] is some boolean expression. Since the counter variable we declared in [INIT] will be changed, it often involves that counter variable. For example, this condition can be <b><i>i < 50</i></b>. So long as i is less than 50, the loop will keep running.</p>
-            <p>The [OPERATION] part is executed after each run-through of the code within the loop. Since we’re using the counter i to keep track of iterations or something else, we usually make some changes to i as the loop progresses, like increasing it by 1, shown as follows: <b><i>i = i + 1</b></i>.</p>
+            <p>The loop is then repeated until [CONDITION] is false, where [CONDITION] is some boolean expression. Since the counter variable we declared in [INIT] will be changed, it often involves that counter variable. For example, this condition can be <b><i>i &lt; 50</i></b>. So long as i is less than 50, the loop will keep running.</p>
+            <p>The [OPERATION] part is executed after each run-through of the code within the loop. Since we’re using the counter i to keep track of iterations or something else, we usually make some changes to i as the loop progresses, like increasing it by 1, shown as follows: <i><b>i = i + 1</b></i>.</p>
 
             <h3>Syntactic Sugar</h3>
             <p>To make our lives a bit easier, we can shorten the operation described above. Typing i += 1 and i = i + 1  serve the exact same function: increasing i by 1. This works for any operation (-, *, /, %) and any number or variable on the right. For instance, if a = 7, then running a %= 5 will turn it into 2.</p>
@@ -67,10 +67,10 @@ for ([INITIALIZATION]; [CONDITION]; [OPERATION]) {
             <p>Now, let’s say we wanted to find the sum of all integers from 1 to 50. We can do it as follows:</p>
             <pre><code class="language-cpp">
 int sum = 0;
-for (int i = 1; i <= 50; i++) {
+for (int i = 1; i &lt;= 50; i++) {
 	sum += i;
 }
-cout << sum << ‘\n’;
+cout &lt;&lt; sum &lt;&lt; ‘\n’;
             </code></pre>
             <p>We first initialize a counter variable called i, which starts from 1. Then, for each pass of the loop, we add the value of i to a variable sum. Finally, we increment i by 1. This runs until i exceeds 50, in which case the loop stops.</p>
             <p><b>The <i>break</i> and <i>continue</i> keywords</b></p>
@@ -90,14 +90,14 @@ while ([CONDITION]) {
             <h3>Scope</h3>
             <p>Defining something in a structure means that thing can only be used in the structure. For example, if I had the following for loop:</p>
             <pre><code class="language-cpp">
-for (int i = 0; i < 10; i++) {
+for (int i = 0; i &lt; 10; i++) {
     // do something
 }
             </code></pre>
             <p>The variable i would only be able to be used inside the for loop and not in anything after it. However, this is different if we declared a while loop like the following:</p>
             <pre><code class="language-cpp">
 int i = 0;
-while (i < 10) {
+while (i &lt; 10) {
     // code that is run repeatedly
     i++;
 }

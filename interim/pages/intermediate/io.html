@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-30</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>Input And Output</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -109,12 +109,12 @@ input = sys.stdin.readline
             </p>
             <h3>Java</h3>
             <p>
-                Java has a very wide variety of methods to do IO, which have tradeoffs between being complicated and being slow. 
-            </p> 
+                Java has a very wide variety of methods to do IO, which have tradeoffs between being complicated and being slow.
+            </p>
             <h4>Recommended imports</h4>
             <p>
-                We will need a few imports to allow some of the following methods to work. Some of the methods require only either <code>util</code> or <code>io</code>, and 
-                we do not need everything in both libraries, but it's helpful to have access to other stuff in here. This comes with the disclaimer that doing 
+                We will need a few imports to allow some of the following methods to work. Some of the methods require only either <code>util</code> or <code>io</code>, and
+                we do not need everything in both libraries, but it's helpful to have access to other stuff in here. This comes with the disclaimer that doing
                 full imports of these libraries are bad code practice in actually making projects.
             </p>
             <pre><code class="language-java">
@@ -143,15 +143,15 @@ double d = s.nextDouble(); // Next decimal number
 String line = s.nextLine(); // Next full line
             </code></pre>
             <p display="none">
-                If the problem doesn't give you a number that lets you see how far you need to read, 
-                you can check the boolean <code>s.hasNext()</code>, and if you need to check if the 
+                If the problem doesn't give you a number that lets you see how far you need to read,
+                you can check the boolean <code>s.hasNext()</code>, and if you need to check if the
                 next word satisfies a type, you can check the function hasNext[Type](), i.e., <code>s.hasNextInt()</code>
             </p>
 
             <h4>BufferedReader</h4>
             <p>
                 BufferedReader is significantly faster than Scanner, but comes at the cost of only being able to return strings of lines or
-                single characters. 
+                single characters.
                 When you combine it with string processing methods we'll learn later, though, you'll be able to get the best of both worlds.
             </p>
             <p>
@@ -180,7 +180,7 @@ String line = br.readLine();
             </p>
             <pre><code class="language-java">
 public class Foo {
-    public static void main(String[] args) throws IOException { 
+    public static void main(String[] args) throws IOException {
         String myPassword = "p4ssw0rd";
         System.out.println(correctPassword(myPassword));
         //                 ^ This throws IOException, so we throw IOException in main
@@ -190,7 +190,7 @@ public class Foo {
         // This throws IOException, so we throw IOException in correctPassword()
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String inputPassword = br.readLine();
-        
+
         return match.equals(inputPassword);
     }
 }
@@ -217,7 +217,7 @@ double d = Double.parseDouble(secondReadInLine); // 5.2383
             </code></pre>
             <h5>Splitting Lines with Spaces Into Words</h5>
             <p>
-                Option 1: Using <code>String.split(" ")</code> will return an array of Strings, separated by the given string argument - 
+                Option 1: Using <code>String.split(" ")</code> will return an array of Strings, separated by the given string argument -
                 for our use case, spaces.
             </p>
             <pre><code class="language-java">
@@ -245,7 +245,7 @@ String fourth = st.nextToken(); // Sam
 String fifth = st.nextToken(); // Belliveau
 boolean hasNone = st.hasMoreTokens(); // false
             </code></pre>
-            
+
             <h4>An example</h4>
             <p>
                 Say we wanted to read n line-separated pairs of space separated integers and print out each pair's sum. On the first line, we are given n.
@@ -267,7 +267,7 @@ public class Demo {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         int n = Integer.parseInt(br.readLine());
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i &lt; n; i++) {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());

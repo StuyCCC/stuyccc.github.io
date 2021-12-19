@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-24</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>PRACTICE PART 2</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -29,12 +29,12 @@
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int n; cin >> n;
-    cout << (n+4)/5 << "\n";
+    int n; cin &gt;&gt; n;
+    cout &lt;&lt; (n+4)/5 &lt;&lt; "\n";
 }
                 </code></pre>
                 <h4>Explanation</h4>
@@ -44,16 +44,16 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int t; cin >> t; while (t--) {
-        int n; cin >> n;
-        for (int i = 1; i < n; i++) {
-            cout << i+1 << " ";
+    int t; cin &gt;&gt; t; while (t--) {
+        int n; cin &gt;&gt; n;
+        for (int i = 1; i &gt; n; i++) {
+            cout &lt;&lt; i+1 &lt;&lt; " ";
         }
-        cout << 1 << "\n";
+        cout &lt;&lt; 1 &lt;&lt; "\n";
     }
 }
                 </code></pre>
@@ -64,17 +64,17 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int n, k; cin >> n >> k;
+    int n, k; cin &gt;&gt; n &gt;&gt; k;
     string alp = "abcdefghijklmnopqrstuvwxyz";
     string res = "";
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i &lt; n; i++) {
         res += alp[i%k];
     }
-    cout << res << "\n";
+    cout &lt;&lt; res &lt;&lt; "\n";
 }
                 </code></pre>
                 <h4>Explanation</h4>
@@ -84,13 +84,13 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    string a, b; cin >> a >> b;
-    if (a == b) cout << a << "\n";
-    else cout << "1" << "\n";
+    string a, b; cin &gt;&gt; a &gt;&gt; b;
+    if (a == b) cout &lt;&lt; a &lt;&lt; "\n";
+    else cout &lt;&lt; "1" &lt;&lt; "\n";
 }
                 </code></pre>
                 <h4>Explanation</h4>
@@ -100,43 +100,43 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-	int n; cin >> n;
+	int n; cin &gt;&gt; n;
 	int cnt = 0;
-  	for (int i = 0; i < n; i++) {
-    	int a, b; cin >> a >> b;
+  	for (int i = 0; i &lt; n; i++) {
+    	int a, b; cin &gt;&gt; a &gt;&gt; b;
 	    if (a == b) cnt++;
 	    else cnt = 0;
-      	if (cnt >= 3) {
-        	cout << "Yes\n";;
+      	if (cnt &gt;= 3) {
+        	cout &lt;&lt; "Yes\n";;
 	        return 0;
         }
     }
-  	cout << "No\n";
+  	cout &lt;&lt; "No\n";
 }
                 </code></pre>
                 <h4>Explanation</h4>
-                <p>For this problem, make sure to iterate through both of the inputs at the same time, and keep a count variable to store the current size of the equal subarrays of the two inputs. If the two current elements are equal increase count by one, else set count to 0, and if the count variable is ever >=3, you can just break out of the loop and print “Yes”. If this never happens, print “No”. This can be done with a single loop.</p>
+                <p>For this problem, make sure to iterate through both of the inputs at the same time, and keep a count variable to store the current size of the equal subarrays of the two inputs. If the two current elements are equal increase count by one, else set count to 0, and if the count variable is ever &gt;=3, you can just break out of the loop and print “Yes”. If this never happens, print “No”. This can be done with a single loop.</p>
             </details>
             <p><a href="https://codeforces.com/problemset/problem/1475/A">Problem 06</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int t; cin >> t; while (t--) {
-        ll n; cin >> n;
-        while (n > 1) {
+    int t; cin &gt;&gt; t; while (t--) {
+        ll n; cin &gt;&gt; n;
+        while (n &gt; 1) {
             if (n%2 == 0) n /= 2;
             else break;
         }
-        if (n == 1) cout << "NO\n";
-        else cout << "YES\n";
+        if (n == 1) cout &lt;&lt; "NO\n";
+        else cout &lt;&lt; "YES\n";
     }
 }
                 </code></pre>
@@ -153,12 +153,12 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
-    int n; cin >> n;
-    cout << 0 << " " << 0 << " " << n << "\n";
+    int n; cin &gt;&gt; n;
+    cout &lt;&lt; 0 &lt;&lt; " " &lt;&lt; 0 &lt;&lt; " " &lt;&lt; n &lt;&lt; "\n";
 }
                 </code></pre>
                 <h4>Explanation</h4>
@@ -168,15 +168,15 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 #define ll long long
 
 int main() {
-    int t; cin >> t; while (t--) {
-        ll a, b; cin >> a >> b;
-        ll x, y; cin >> x >> y;
-        ll n; cin >> n;
+    int t; cin &gt;&gt; t; while (t--) {
+        ll a, b; cin &gt;&gt; a &gt;&gt; b;
+        ll x, y; cin &gt;&gt; x &gt;&gt; y;
+        ll n; cin &gt;&gt; n;
         ll a2 = a, b2 = b, n2 = n;
         ll ans1, ans2;
         ll e = min(a-x,n);
@@ -189,7 +189,7 @@ int main() {
         n2 -= f;
         a2 -= min(a2-x,n2);
         ans2 = a2*b2;
-        cout << min(ans1,ans2) << "\n";
+        cout &lt;&lt; min(ans1,ans2) &lt;&lt; "\n";
     }
 }
 
@@ -202,49 +202,49 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 #define ll long long
 
 int main() {
-    ll a, b; cin >> a >> b;
-    if ((b-a) >= 10) cout << 0 << "\n";
+    ll a, b; cin &gt;&gt; a &gt;&gt; b;
+    if ((b-a) &gt;= 10) cout &lt;&lt; 0 &lt;&lt; "\n";
     else {
         ll ans = 1;
-        for (ll i = a+1; i <= b; i++) {
+        for (ll i = a+1; i &lt;= b; i++) {
             ans *= i;
             ans %= 10;
         }
-        cout << ans << "\n";
+        cout &lt;&lt; ans &lt;&lt; "\n";
     }
 }
                 </code></pre>
                 <h4>Explanation</h4>
-                <p>Notice that if there is a multiple of 10 between a and b. Then 10 is included in the final product which means the last digit will be 0. To see if 10 is included in the final product we can just check if (b-a) >= 10, if this is true output 0. Now notice that if (b-a) < 10, we can just loop through from a+1 to b and multiply and modulo by 10 to find the final product and output that. </p>
+                <p>Notice that if there is a multiple of 10 between a and b. Then 10 is included in the final product which means the last digit will be 0. To see if 10 is included in the final product we can just check if (b-a) &gt;= 10, if this is true output 0. Now notice that if (b-a) &lt; 10, we can just loop through from a+1 to b and multiply and modulo by 10 to find the final product and output that. </p>
             </details>
             <p><a href="https://codeforces.com/problemset/problem/1257/B">Problem 10</a></p>
             <details>
                 <summary>Solution</summary>
                 <pre><code>
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 #define ll long long
 
 int main() {
-    int t; cin >> t; while (t--) {
-        ll x, y; cin >> x >> y;
+    int t; cin &gt;&gt; t; while (t--) {
+        ll x, y; cin &gt;&gt; x &gt;&gt; y;
         if (x == 1) {
-            if (y == 1) cout << "YES\n";
-            else cout << "NO\n";
+            if (y == 1) cout &lt;&lt; "YES\n";
+            else cout &lt;&lt; "NO\n";
         } else if (x == 2 || x == 3) {
-            if (y == 1 || y == 2 || y == 3) cout << "YES\n";
-            else cout << "NO\n";
-        } else cout << "YES\n";
+            if (y == 1 || y == 2 || y == 3) cout &lt;&lt; "YES\n";
+            else cout &lt;&lt; "NO\n";
+        } else cout &lt;&lt; "YES\n";
     }
 }
                 </code></pre>
                 <h4>Explanation</h4>
-                <p>If x == 1, realize that you can't perform either of the spells, so the only possible way to output YES is if y == 1, else output NO. Now for x == 2 or x == 3, you can make x either 3 or 2 or 1, but you can't make any moves after this point, so if y == 1 or y == 2 or y == 3 output YES else output NO. Now realize that for any x >= 4, you can obtain any number (test this out in your head), so the output is always YES. These are all the cases that we have to go through for this problem, so now we have officially solved it :).</p>
+                <p>If x == 1, realize that you can't perform either of the spells, so the only possible way to output YES is if y == 1, else output NO. Now for x == 2 or x == 3, you can make x either 3 or 2 or 1, but you can't make any moves after this point, so if y == 1 or y == 2 or y == 3 output YES else output NO. Now realize that for any x &gt;= 4, you can obtain any number (test this out in your head), so the output is always YES. These are all the cases that we have to go through for this problem, so now we have officially solved it :).</p>
             </details>
         </fieldset>
     </div>

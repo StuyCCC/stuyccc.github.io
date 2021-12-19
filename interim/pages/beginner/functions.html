@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-23</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>FUNCTIONS</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -52,7 +52,7 @@ int y = int(5.5);
             <p>Of course, the function can also accept no inputs and not produce an output. An example:</p>
             <pre><code class="language-cpp">
 void print_bob () {
-    cout << “bob\n”;
+    cout &lt;&lt; “bob\n”;
 }
             </code></pre>
             <p>All this does is print the string “bob” with a newline when called. We specify that it produces no output by setting it as ‘void’. </p>
@@ -68,7 +68,7 @@ int doublesum (int a, int b) {
             <p>Precedence: a function can only use other functions if the other function is defined above it in the code. That’s why main() is always at the bottom (main is a function too!)—it’s the function that calls all other functions. One way to view precedence is see that the following is invalid: </p>
             <pre><code class="language-cpp">
 int main() {
-    cout << sum(5, 5) << "\n";
+    cout &lt;&lt; sum(5, 5) &lt;&lt; "\n";
 }
 
 double sum(int a, int b) {
@@ -82,7 +82,7 @@ double sum(int a, int b) {
 }
 
 int main() {
-    cout << sum(5, 5) << "\n";
+    cout &lt;&lt; sum(5, 5) &lt;&lt; "\n";
 }
             </code></pre>
             <p>Note that variables defined in a certain function can only be accessed in that certain function and nowhere else. For example: </p>
@@ -93,8 +93,8 @@ double sum(int a, int b) {
 }
 
 int main() {
-    cout << sum(5, 5) << "\n";
-    cout << c << "\n";
+    cout &lt;&lt; sum(5, 5) &lt;&lt; "\n";
+    cout &lt;&lt; c &lt;&lt; "\n";
 }
             </code></pre>
             <p>The above code is invalid because the c is only defined in the sum function and it thus can not be accessed from the main function. This is another application of scope that we described earlier with the for and while loops.</p>
@@ -103,7 +103,7 @@ int main() {
 int c = 17
 
 int main() {
-    cout << c << "\n";
+    cout &lt;&lt; c &lt;&lt; "\n";
 }
             </code></pre>
 
@@ -112,7 +112,7 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int myexp(int a, int b) {
@@ -120,7 +120,7 @@ int myexp(int a, int b) {
     int prod = 1;
     // We are representing exponentiation as repeated multiplication.
     // This loop runs exactly b times.
-    for (int i = 0; i < b; i++) {
+    for (int i = 0; i &lt; b; i++) {
         prod *= a;
     }
     // Returning the value
@@ -129,7 +129,7 @@ int myexp(int a, int b) {
 
 int main() {
     // Testing our exponent function
-    cout << myexp(5, 3) << "\n";
+    cout &lt;&lt; myexp(5, 3) &lt;&lt; "\n";
 }
                 </code></pre>
             </details>
@@ -137,7 +137,7 @@ int main() {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 void concat(string a, string b) {
@@ -145,7 +145,7 @@ void concat(string a, string b) {
     // Into one variable
     string res = a+b;
     // Printing the string
-    cout << res << "\n";
+    cout &lt;&lt; res &lt;&lt; "\n";
 }
 
 int main() {

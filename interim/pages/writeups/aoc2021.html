@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-10</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>ADVENT OF CODE 2021</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -40,20 +40,20 @@ def main():
 def solve(lines):
     cnt = 0;
     for i in range(1, len(lines)):
-        if (lines[i] > lines[i-1]):
+        if (lines[i] &gt; lines[i-1]):
             cnt += 1;
     return cnt;
 
 main();
                 </code></pre>
                 <h3>Explanation</h3>
-                <p>Well this first problem doesn't really need much explanation, just figure out how to read input from a file for your respective language. And then loop through the list you have gotten and if i != 0 and list[i] > list[i-1] increment the count. And at the end print the count.</p>
+                <p>Well this first problem doesn't really need much explanation, just figure out how to read input from a file for your respective language. And then loop through the list you have gotten and if i != 0 and list[i] &gt; list[i-1] increment the count. And at the end print the count.</p>
             </details>
             <br>
             <details>
                 <summary>Part 2</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part2.out", "w");
@@ -65,21 +65,21 @@ def main():
 def solve(lines):
     cnt = 0;
     for i in range (3, len(lines)):
-        if (lines[i] > lines[i-3]):
+        if (lines[i] &gt; lines[i-3]):
             cnt += 1;
     return cnt;
 
 main();
                 </code></pre>
                 <h3>Explanation</h3>
-                <p>Notice that when you are comparing two sets of three in for example the list [a,b,c,d] if we compare a+b+c and b+c+d we really are only comparing between a and d. So for this part we can just loop through the list and if i >= 3 and list[i] > list[i-3] increment the count, and at the end print the count.</p>
+                <p>Notice that when you are comparing two sets of three in for example the list [a,b,c,d] if we compare a+b+c and b+c+d we really are only comparing between a and d. So for this part we can just loop through the list and if i &gt;= 3 and list[i] &gt; list[i-3] increment the count, and at the end print the count.</p>
             </details>
 
             <h2><a href="https://adventofcode.com/2021/day/2">Problem 02</a></h2>
             <details>
                 <summary>Part 1</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part1.out", "w");
@@ -105,7 +105,7 @@ main();
             <details>
                 <summary>Part 2</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part2.out", "w");
@@ -134,7 +134,7 @@ main();
             <details>
                 <summary>Part 1</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part1.out", "w");
@@ -151,7 +151,7 @@ def solve(lines):
         for i,x in enumerate(line):
             if (x == "1"): lt[i] += 1;
     for x in lt:
-        if (x > len(lines)-x):
+        if (x &gt; len(lines)-x):
             gamma += "1";
             epsilon += "0";
         else:
@@ -162,13 +162,13 @@ def solve(lines):
 main();
                 </code></pre>
                 <h3>Explanation</h3>
-                <p>First initialize two empty strings gamma and epsilon. For each position (from left to right) in the bit strings read, loop through the entire list keeping track of the number of 1s found in that certain position, lets call this number x. If x > len(lines) - x append a 1 to gamma and append a 0 to epsilon, else append a 0 to gamma and append a 1 to epsilon. After gamma and epsilon are the same size at the original bit strings convert them into integers and then multiple them, and return the answer.</p>
+                <p>First initialize two empty strings gamma and epsilon. For each position (from left to right) in the bit strings read, loop through the entire list keeping track of the number of 1s found in that certain position, lets call this number x. If x &gt; len(lines) - x append a 1 to gamma and append a 0 to epsilon, else append a 0 to gamma and append a 1 to epsilon. After gamma and epsilon are the same size at the original bit strings convert them into integers and then multiple them, and return the answer.</p>
             </details>
             <br>
             <details>
                 <summary>Part 2</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part2.out", "w");
@@ -184,7 +184,7 @@ def solve(lines):
         cnt = 0;
         for x in cpy1:
             if (x[i] == "1"): cnt += 1;
-        if (cnt >= len(cpy1)-cnt): rem = "0";
+        if (cnt &gt;= len(cpy1)-cnt): rem = "0";
         else: rem = "1";
         cpy1 = [x for x in cpy1 if x[i] != rem];
         if (len(cpy1) == 1): break;
@@ -192,7 +192,7 @@ def solve(lines):
         cnt = 0;
         for x in cpy2:
             if (x[i] == "1"): cnt += 1;
-        if (cnt >= len(cpy2)-cnt): rem = "1";
+        if (cnt &gt;= len(cpy2)-cnt): rem = "1";
         else: rem = "0";
         cpy2 = [x for x in cpy2 if x[i] != rem];
         if (len(cpy2) == 1): break;
@@ -201,14 +201,14 @@ def solve(lines):
 main();
                 </code></pre>
                 <h3>Explanation</h3>
-                <p>Again first initialize two copies of the list of lines read. Then for the first cpy loop through each bit position, i, and count the number of 1s, lets call it x. If x >= len(cpy1)-x loop set a char rem = '0' else rem = '1'. Loop through cpy1 again and remove all strings that have an ith bit that is not equal to rem. At the end of replacing if len(cpy1) == 1 break out of the loop. Do the same thing for cpy2 except switch the values for rem in the conditions. Finally convert the last elements in both copies to integers and print their multiple.</p>
+                <p>Again first initialize two copies of the list of lines read. Then for the first cpy loop through each bit position, i, and count the number of 1s, lets call it x. If x &gt;= len(cpy1)-x loop set a char rem = '0' else rem = '1'. Loop through cpy1 again and remove all strings that have an ith bit that is not equal to rem. At the end of replacing if len(cpy1) == 1 break out of the loop. Do the same thing for cpy2 except switch the values for rem in the conditions. Finally convert the last elements in both copies to integers and print their multiple.</p>
             </details>
 
             <h2><a href="https://adventofcode.com/2021/day/4">Problem 04</a></h2>
             <details>
                 <summary>Part 1</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part1.out", "w");
@@ -259,7 +259,7 @@ main();
             <details>
                 <summary>Part 2</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part2.out", "w");
@@ -313,9 +313,9 @@ main();
             <details>
                 <summary>Part 1</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-cpp">
 // Written by Maxwell Zen
-#include&lt;bits/stdc++.h>
+#include&lt;bits/stdc++.h&gt;
 using namespace std;
 
 int cnt[1000][1000];
@@ -334,7 +334,7 @@ int main() {
     while ( getline (fin, s) ) {
         int x, y, x2, y2;
         // scan coordinates from string
-        sscanf(s.c_str(), "%d,%d -> %d,%d", &x, &y, &x2, &y2);
+        sscanf(s.c_str(), "%d,%d -&gt; %d,%d", &x, &y, &x2, &y2);
         int dx = dir(x, x2), dy = dir(y, y2);
         while (true) {
             // increment only if line is horizontal or vertical
@@ -347,15 +347,15 @@ int main() {
     }
     int ans = 0;
     // count points counted more than once
-    for (int i = 0; i < 1000; i++) {
-        for (int j = 0; j < 1000; j++) {
-            if (cnt[i][j]>1) ans++;
+    for (int i = 0; i &lt; 1000; i++) {
+        for (int j = 0; j &lt; 1000; j++) {
+            if (cnt[i][j]&gt;1) ans++;
         }
     }
     // output answer
     cout &lt;&lt; ans &lt;&lt; endl;
 }
-            </pre></code>
+            </code></pre>
             <h3>Explanation</h3>
             <p>First create a 2d array of ints called cnt to store how many times a point is marked by a line. We'll start with x and y at the initial coordinates of the line, and set dx and dy to the direction x and y must move in (1, 0, or -1). To calculate dx and dy, we write a function dir that returns 1, 0, or -1, depending on which direction the first argument must move in to meet the second argument. Then in a while loop, we increment cnt if the line is horizontal or vertical (dx is 0 or dy is 0). If we've reached the endpoint, we break out of the whiel loop, otherwise we keep going. Finally, we go through each point to count how many have been incremented more than once.</p>
             </details>
@@ -363,9 +363,9 @@ int main() {
             <details>
                 <summary>Part 2</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-cpp">
 // Written by Maxwell Zen
-#include&lt;bits/stdc++.h>
+#include&lt;bits/stdc++.h&gt;
 using namespace std;
 
 int cnt[1000][1000];
@@ -384,7 +384,7 @@ int main() {
     while ( getline (fin, s) ) {
         int x, y, x2, y2;
         // scan coordinates from string
-        sscanf(s.c_str(), "%d,%d -> %d,%d", &x, &y, &x2, &y2);
+        sscanf(s.c_str(), "%d,%d -&gt; %d,%d", &x, &y, &x2, &y2);
         int dx = dir(x, x2), dy = dir(y, y2);
         while (true) {
             // increment count
@@ -397,15 +397,15 @@ int main() {
     }
     int ans = 0;
     // count points counted more than once
-    for (int i = 0; i < 1000; i++) {
-        for (int j = 0; j < 1000; j++) {
-            if (cnt[i][j]>1) ans++;
+    for (int i = 0; i &lt; 1000; i++) {
+        for (int j = 0; j &lt; 1000; j++) {
+            if (cnt[i][j]&gt;1) ans++;
         }
     }
     // output answer
     cout &lt;&lt; ans &lt;&lt; endl;
 }
-                </pre></code>
+                </code></pre>
                 <h3>Explanation</h3>
                 <p>This code is almost exactly the same as the previous part. The only difference is that diagonal lines are counted, so we increment cnt at each point regardless of whether the line is vertical or horizontal.</p>
                 <p>For some more nice discussion on this problem, it is worth checking out <a href="https://cestlaz.github.io/post/advent-2021-day05/">this</a> blog post by former Stuyvesant teacher Mike Zamansky.</p>
@@ -415,7 +415,7 @@ int main() {
             <details>
                 <summary>Part 1</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # Written by Maxwell Zen
 s = open("input.txt", 'r').read()
 s = s.split(',')
@@ -429,7 +429,7 @@ for day in range(80):
             b += [i-1]
     a = b
 print(len(a))
-    </pre></code>
+            </code></pre>
             <h3>Explanation</h3>
             <p>In part 1, it's possible to simply brute force your way through the problem. We'll maintain a list of lanternfish, recording how many days each lanternfish has left to go. For each day, we create a new list out of the old one -- lanternfish at 0 days will split into a lanternfish at 6 days and a lanternfish at 8 days, and all other lanternfish will just have their value subtracted by 1. At the end, we return the length of the array as the number of lanternfish.</p>
             </details>
@@ -437,7 +437,7 @@ print(len(a))
             <details>
                 <summary>Part 2</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # Written by Maxwell Zen
 s = open("input.txt", 'r').read()
 s = s.split(',')
@@ -451,7 +451,7 @@ for day in range(256):
     nxt[6] += count[0]
     count = nxt
 print(sum(count))
-                </pre></code>
+                </code></pre>
                 <h3>Explanation</h3>
                 <p>After 256 days, the answer will be huge, so it's impossible to brute force keeping track of every lanternfish. Here's the key observation: we can group all lanternfish that have a certain number of days remaining, because the number of days remaining is the only thing that actually matters. So we can keep an array count that records how many lanternfish there are for each number of remaining days. To simulate a day passing, we set the new counts for 0 to 7 days equal to the original counts for 1 to 8 days. Then, to simulate the lanternfish with 0 days left, we add the original count for 0 days to the new counts for 6 and 8 days. Doing this 256 times will yield the answer.</p>
             </details>
@@ -460,7 +460,7 @@ print(sum(count))
             <details>
                 <summary>Part 1</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # Written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part1.out", "w");
@@ -479,7 +479,7 @@ def solve(lines):
     return ans;
 
 main();
-    </pre></code>
+            </code></pre>
             <h3>Explanation</h3>
             <p>The ideal method of reducing cost for part 1 is to choose the median number as our aligning position and then move everyone to this median number. Notice that if the list has an even number of elements we can use either one of the median numbers. We can get the median number by sorting the list and then list[size/2] is the median number. So for each element in the list find the difference in their position from the median number, and sum up all those differences and then return the sum.</p>
             <p>The proof to this being the optimal minimization has to do with the following somewhat intuitive idea. If you already chose a position x to be your meeting point, if you increase x by 1, all the distances of points below x increase by 1 and all distances above x decrease by 1. You can read more about it <a href="https://math.stackexchange.com/questions/113270/the-median-minimizes-the-sum-of-absolute-deviations-the-ell-1-norm">here</a>.</p>
@@ -488,7 +488,7 @@ main();
             <details>
                 <summary>Part 2</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # Written by Mohammad Khan
 fin = open("../Input.in", "r");
 fout = open("../Part2.out", "w");
@@ -512,17 +512,17 @@ def solve(lines):
     return min(cost1,cost2);
 
 main();
-                </pre></code>
+                </code></pre>
                 <h3>Explanation</h3>
                 <p>The ideal method of reducing cost for part 2 is the choose (somewhere near) the average number as our aligning position. Within +- .5 of the average according to some smart people on reddit. Also notice that when calculating the cost we have to do dif*(dif+1)/2 as our cost instead of just dif. Return the minimum of the two sums and that is our final answer.</p>
                 <p>The proof to this minimizing dif*(dif+1)/2 cost gets its basis around the problem of solving a similar minimizing dif^2 cost, which we already know the answer to be the average. You can check the <a href="https://www.reddit.com/r/adventofcode/comments/rar7ty/2021_day_7_solutions/">subreddit</a> or google yourself for more detialed proofs. </p>
             </details>
 
-    <h2><a href="https://adventofcode.com/2021/day/8">Problem 08</a></h2>
+            <h2><a href="https://adventofcode.com/2021/day/8">Problem 08</a></h2>
             <details>
                 <summary>Part 1</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # Written by Maxwell Zen
 lines = open("input.txt", 'r').read().split('\n')
 lengths = [2, 3, 4, 7]
@@ -533,15 +533,15 @@ for line in lines:
         if len(j) in lengths:
             ans+=1
 print(ans)
-    </pre></code>
-            <h3>Explanation</h3>
-            <p>For this part, you don't need to figure out which combination of segments (letters) maps to some digit. Notice that even though the segments have been mixed up, the number of segments that make up a number stays constant. As 1, 4, 7, and 8 each are comprised of a unique number of segments, it is enough to simply count the number of strings on the right of the "|" whose length is 2, 4, 3, or 7 respectively.</p>
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>For this part, you don't need to figure out which combination of segments (letters) maps to some digit. Notice that even though the segments have been mixed up, the number of segments that make up a number stays constant. As 1, 4, 7, and 8 each are comprised of a unique number of segments, it is enough to simply count the number of strings on the right of the "|" whose length is 2, 4, 3, or 7 respectively.</p>
             </details>
             <br>
             <details>
                 <summary>Part 2</summary>
                 <h3>Solution</h3>
-                <pre><code>
+                <pre><code class="language-python">
 # Written by Maxwell Zen
 # letters corresponding to each digit
 codes = ["abcefg", "cf", "acdeg", "acdfg", "bcdf",
@@ -582,9 +582,240 @@ for line in lines:
         val += codes.index(translated)
     total += val
 print(total)
-                </pre></code>
+                </code></pre>
                 <h3>Explanation</h3>
                 <p>The challenge here is to decode the scrambled letters. One method is to bash through every possible permutation of the segments, finding a permutation that works and using it to decode the output value. However, there's an even cleaner solution. We can count the number of times each segment appears in the digits from 0 to 9 and try to find a pattern there. e appears 4 times, b appears 6 times, d and g both appear 7 times, a and c both appear 8 times, and f appears 9 times. So the letters corresponding to e, b, and f can be found right away. In order to figure out which letters correspond to d/g and a/c, we can look at the digit 4 (which we can find since it's the only one to have length 4). Since d and c are both in 4, but g and a aren't, we can use that information to distinguish between d/g and a/c, unscrambling the letters. Finally, use this information to decode the output value, and you're done.</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/9">Problem 9</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/10">Problem 10</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/11">Problem 11</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/12">Problem 12</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/13">Problem 13</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/14">Problem 14</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/15">Problem 15</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/16">Problem 16</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/17">Problem 17</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/18">Problem 18</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+
+            <h2><a href="https://adventofcode.com/2021/day/19">Problem 19</a></h2>
+            <details>
+                <summary>Part 1</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
+            </details>
+            <br>
+            <details>
+                <summary>Part 2</summary>
+                <h3>Solution</h3>
+                <pre><code class="language-python">
+# Will Be Here Soon
+                </code></pre>
+                <h3>Explanation</h3>
+                <p>Will Be Here Soon</p>
             </details>
         </fieldset>
     </div>

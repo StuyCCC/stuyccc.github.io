@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>ARITHMETIC OPERATIONS</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -34,7 +34,7 @@ int x = 5 + 3;
 // or
 int x = y + z;
 // or
-cout << x+y << "\n";
+cout &lt;&lt; x+y &lt;&lt; "\n";
 			</code></pre>
             <p>where y and z are integers, and the + can be replaced with any of the other operators.</p>
             <p>Division is done using the ‘/’ symbol, but it's a little different than regular mathematical division. When C++ divides two integers it wants the answer to also be an integer so it truncates everything past the decimal point, so 5 / 3 = 1 not 1.66.</p>
@@ -68,7 +68,7 @@ char c = ‘d’
 string s2 = s+c;
             </code></pre>
             <p>But also notice that you can’t add a string to a char because a char is limited to one value.</p>
-            <p>There are four more boolean operators: > (greater than), >= (greater than or equal to), < (less than), <= (less than or equal to). These can be used to compare two compatible data types and return a true or false value. For example (1 <= 3) evaluates to true.</p>
+            <p>There are four more boolean operators: &gt; (greater than), &gt;= (greater than or equal to), &lt; (less than), &lt;= (less than or equal to). These can be used to compare two compatible data types and return a true or false value. For example (1 &lt;= 3) evaluates to true.</p>
 
             <h3>If Statements</h3>
             <p>The basic syntax of an if statement is the following:</p>
@@ -77,7 +77,7 @@ if (condition) {
     // do something here
 }
             </code></pre>
-            <p>Where condition is a boolean expression, i.e. a >= b or 5 <= 3 or true && false. If this condition expression evaluates to true then the code inside the curly braces is run otherwise it is completely skipped.</p>
+            <p>Where condition is a boolean expression, i.e. a &gt;= b or 5 &lt;= 3 or true && false. If this condition expression evaluates to true then the code inside the curly braces is run otherwise it is completely skipped.</p>
             <p>There is another form of the if statement that looks like the following:</p>
             <pre><code class="language-cpp">
 if (condition) {
@@ -91,20 +91,20 @@ if (condition) {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-#include &lt;bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main() {
     int age;
-    cin >> age;
-    if (age >= 21) {
-        cout << "Yes";
+    cin &gt;&gt; age;
+    if (age &gt;= 21) {
+        cout &lt;&lt; "Yes";
     } else {
-        cout << "No";
+        cout &lt;&lt; "No";
     }
 }
                 </code></pre>
-                <p> Here is why this works: the code inside of the if statement is the "yes" branch. If it's true that the age is greater than or equal to 21, then it executes, printing "Yes". Otherwise, it goes to the code inside of the else block, which is the "no" branch. If the age is not greater than or equal to 21, it would print "No".
+                <p>Here is why this works: the code inside of the if statement is the "yes" branch. If it's true that the age is greater than or equal to 21, then it executes, printing "Yes". Otherwise, it goes to the code inside of the else block, which is the "no" branch. If the age is not greater than or equal to 21, it would print "No".</p>
             </details>
 
         </fieldset>

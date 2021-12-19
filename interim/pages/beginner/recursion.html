@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-24</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>RECURSION</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -44,8 +44,8 @@ int fib(int n) {
 
             <h3>Efficiency And Tail Recursion</h3>
             <p>There is another way to recursively do fibonacci that is many times faster than the first version. You may be wondering what many times faster means, look at the following images of recursive trees for fibonacci to see the efficiency of our original function.</p>
-            <img src="../../data/beginner/Fib1.jpeg" width=520>
-            <img src="../../data/beginner/Fib2.png" width=520>
+            <img src="../../data/beginner/Fib1.jpeg" width="520">
+            <img src="../../data/beginner/Fib2.png" width="520">
             <p>See that the number of recursive calls gets exponentially bigger the higher you go. So although F(5) and even F(10) is done instantly, F(42) takes almost 2 seconds to run, and if we go even higher it can take hundreds of days to solve even 1 number. Luckily, there are many ways to make this recursion faster.</p>
             <p>One way is called tail-recursion. And it goes like the following. We have a function like the following: </p>
             <pre><code>
@@ -61,19 +61,19 @@ int fib(int n, int a = 0, int b = 1) {
             <p>Ternary statements have the form (condition ? val1 : val2). If the condition is true the ternary statement becomes equal to val1, but if it isnt true it becomes equal to val2, an example for using ternary statements is given below.</p>
             <pre><code>
 int main() {
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     string res = (n % 2 == 0 ? "even" : "odd");
-    cout << res << "\n";
+    cout &lt;&lt; res &lt;&lt; "\n";
 }
             </code></pre>
             <p>This code checks if a given number is even, and if it is, it sets res to the string literal "even", and if it is not, it sets res to the string literal "odd". Notice that the ternary statement above is equivalent to an if statement in the following manner:</p>
             <pre><code>
 int main() {
-    int n; cin >> n;
+    int n; cin &gt;&gt; n;
     string res;
     if (n % 2 == 0) res = "even";
     else res = "odd";
-    cout << res << "\n";
+    cout &lt;&lt; res &lt;&lt; "\n";
 }
             </code></pre>
             <p>The two above pieces of code are completely equivalent, ternary statements just make it a bit shorter to type.</p>

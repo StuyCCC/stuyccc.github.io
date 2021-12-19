@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>TIME COMPLEXITY AND A PROBLEM</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -150,13 +150,13 @@
             sm = 0
             mx = 0
             for i in 0 to n:
-                if sm + A[i] >= 0:
+                if sm + A[i] &gt;= 0:
                     sm += A[i]
-                else if sm + A[i] < 0:
+                else if sm + A[i] &lt; 0:
                     sm = 0
                 mx = max(mx, sm)
             mx is the answer
-            </pre></code>
+            </code></pre>
             <p>
             This solution is linear or <script type="math/tex">\mathcal{O}(n)</script>, as it runs the inside of the for loop, an <script type="math/tex">\mathcal{O}(1)</script> operation, <script type="math/tex">n</script> times.
             </p>

@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-11-21</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>SEGMENT TREE PRACTICE PROBLEMS</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -43,8 +43,8 @@
             <p>For an individual element, the maximum subarray sum, prefix, and suffix are all either 0 or the element itself. The total sum is the element itself.</p>
             <p>One final implementation detail: it might be helpful to create a comb() operation that combines two subarrays. That way, instead of rewriting the same piece of code many times, you can just call the comb function on two nodes to get their combination. It also allows you to reuse segment tree code more easily, since the comb function is one of the few things that changes between segment tree implementations.</p>
             <pre><code class="language-cpp">// structure: {max subarray sum, max prefix, max suffix, total sum}
-array&lt;int, 4> comb(array&lt;int, 4> a, array&lt;int, 4> b) {
-    array&lt;int, 4> ans;
+array&lt;int, 4&gt; comb(array&lt;int, 4&gt; a, array&lt;int, 4&gt; b) {
+    array&lt;int, 4&gt; ans;
     // add total sums
     ans[3] = a[3]+b[3];
     // max prefix is either left prefix or left sum + right prefix
@@ -65,12 +65,12 @@ array&lt;int, 4> comb(array&lt;int, 4> a, array&lt;int, 4> b) {
             <p>TOTAL LENGTH: If we can combine the entire left range with the right prefix, then we can add the total length to the right prefix.</p>
             <p>With all of this information, we can complete the problem. Once again, this operation is associative but not commutative. It turns out that any identity would involve changing our combination function, so the easiest approach is to just set the length of the identity to 0 and test if one of the elements has length 0 at the start of our combination function.</p>
 <pre><code class="language-cpp">// structure: {max uniform string, first elem, last elem, prefix, suffix, length}
-array&lt;int, 6> comb(array&lt;int, 6> a, array&lt;int, 6> b) {
+array&lt;int, 6&gt; comb(array&lt;int, 6&gt; a, array&lt;int, 6&gt; b) {
     // check if one is the identity
     if (a[5]==0) return b;
     if (b[5]==0) return a;
 
-    array&lt;int, 6> ans;
+    array&lt;int, 6&gt; ans;
     ans[5] = a[5]+b[5]; // set length;
     ans[1] = a[1]; // set first elem
     ans[2] = b[2]; // set last elem

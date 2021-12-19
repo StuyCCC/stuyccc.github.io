@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-02</h4>
+        <h4>Last Updated 2021-12-18</h4>
         <fieldset>
             <legend>HARD NOVEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -80,7 +80,7 @@
             <details>
                 <summary>Solution</summary>
                 <p>The key observation for this problem is to realize that the angle abc that we are looking for is an inscribed angle which means that it is 1/2 of a central angle. Since we have an n-gon the central angle for 1 side is 360/n, so the smallest amount we can increase our central angle by is 360/n everytime, or 180/n for our inscribed angle. This means that our inscribed angle ang is in the form 180k/n where k is between 1 and n-2. k has to be n-2 or less because we need at least two unused sides to form our inscribed, Look at above diagram for clarity.</p>
-                <p>We have ang = 180k/n which is equivalent ang * n = 180 * k. Lets define g = gcd(ang, 180) we can divide both sides by g and get ang/g * n = 180/g * k. Since gcd(ang/g, 180/g) = 1, we can see that ang/g has to be a divisor of k and 180/g has to be a divisor of n. So we have to have k = x * ang/g and n = x * 180/g. Since we want to minimize n we want to make x as small as possible. So lets start off with x=1, we have k = ang/g and n = 180/g. We can realize that this always works and we can output 180/g as our answer, unless k = n-1 (this does not satsify k <= n-2 for our earlier condition), in which case we have to make x = 2, and output 2*180/g as our answer.</p>
+                <p>We have ang = 180k/n which is equivalent ang * n = 180 * k. Lets define g = gcd(ang, 180) we can divide both sides by g and get ang/g * n = 180/g * k. Since gcd(ang/g, 180/g) = 1, we can see that ang/g has to be a divisor of k and 180/g has to be a divisor of n. So we have to have k = x * ang/g and n = x * 180/g. Since we want to minimize n we want to make x as small as possible. So lets start off with x=1, we have k = ang/g and n = 180/g. We can realize that this always works and we can output 180/g as our answer, unless k = n-1 (this does not satsify k &lt;= n-2 for our earlier condition), in which case we have to make x = 2, and output 2*180/g as our answer.</p>
             </details>
             <br>
             <a href="https://atcoder.jp/contests/agc031/tasks/agc031_c">Problem 21</a>
@@ -98,8 +98,8 @@
             <a href="https://codeforces.com/problemset/problem/1550/C">Problem 19</a>
             <details>
                 <summary>Solution</summary>
-                <p>Notice that a triple of points a, b, c is only bad if one of them lies in the rectangle formed by the other two points. Without loss of generality lets assume a and c are the corners of the rectangle. If b is outside the rectangle of a,c then dist(a,b) + dist(b,c) > dist(a,c), so this is a valid triple, but if b is inside dist(a,b) + dist(b,c) = dist(a,c), which makes it a bad triple.</p>
-                <p>Now lets define the points as they are in the problem a = (x,i), b = (y,q), c = (z,r) where i, q, r are indices. We can see that if a bad situation were to occur that would mean that (x <= y <= z or x >= y >= z) and (i <= j <= k or i >= j >= k). However, notice that since i, j, k are indices we only need to look at the situation were i < j < k, because if we also looked at the situation where i > j > k, we would start overcounting.</p>
+                <p>Notice that a triple of points a, b, c is only bad if one of them lies in the rectangle formed by the other two points. Without loss of generality lets assume a and c are the corners of the rectangle. If b is outside the rectangle of a,c then dist(a,b) + dist(b,c) &gt; dist(a,c), so this is a valid triple, but if b is inside dist(a,b) + dist(b,c) = dist(a,c), which makes it a bad triple.</p>
+                <p>Now lets define the points as they are in the problem a = (x,i), b = (y,q), c = (z,r) where i, q, r are indices. We can see that if a bad situation were to occur that would mean that (x &lt;= y &lt;= z or x &gt;= y &gt;= z) and (i &lt;= j &lt;= k or i &gt;= j &gt;= k). However, notice that since i, j, k are indices we only need to look at the situation were i &lt; j &lt; k, because if we also looked at the situation where i &gt; j &gt; k, we would start overcounting.</p>
                 <p>Now look at our first condition we can rephrase that as if there are 3 non-decreasing or 3 non-increasing numbers in order (not necessarily adjacent to each other) in a subarray, then the subarray is invalid because those numbers can form a bad triple. Now notice that because we want this condition to be true, we can limit our subarray size to 4. If there is a subarray of size 5 it is guaranteed to have 3 non-increasing or 3 non-decreasing (you can prove this yourself by bashing it out).</p>
                 <p>So finally our problem reduces to checking all size 1, 2, 3, 4 subarrays in the original array, to see if they have a bad triple and if they don't add them to a count, and then at the end of the program print the count.</p>
             </details>
@@ -107,7 +107,7 @@
             <a href="https://codeforces.com/problemset/problem/1237/C1">Problem 18</a>
             <details>
                 <summary>Solution</summary>
-                <p>Realize that n <= 2000, which means that we can have up to an n^2 solution for this problem. I am going to give the n^2 solution I used, and then prove that it is right. The solution that I used, is that n/2 times in a row I choose an arbitrary point x that hasn't been removed, then I choose the closest point to x that hasn't been removed yet, lets call it y. I choose these two points to be the pair that I remove, and this pair always work.</p>
+                <p>Realize that n &lt;= 2000, which means that we can have up to an n^2 solution for this problem. I am going to give the n^2 solution I used, and then prove that it is right. The solution that I used, is that n/2 times in a row I choose an arbitrary point x that hasn't been removed, then I choose the closest point to x that hasn't been removed yet, lets call it y. I choose these two points to be the pair that I remove, and this pair always work.</p>
                 <p>Now lets see why. y is the closest point to x and now they form a bounding box being the top right and bottom left corners respectively. If a point was to be found in the bounding box, then that point would be closer to x than y is (because y is the farthest point in the bounding box from x). However we know that there is no point closer to x than y because we defined y to be the closest point. So the bounded box is always empty and we can always remove this pair of points, and our strategy works out in the end.</p>
             </details>
             <br>
@@ -145,7 +145,7 @@
             <a href="https://codeforces.com/problemset/problem/1514/C">Problem 12</a>
             <details>
                 <summary>Solution</summary>
-                <p>The first observation of this problem is to notice that if we include a number x < n such that gcd(x, n) != 1 then the prod wont be 1 mod N. To see this in action, imagine we have n = 9 and we include 3 in the product. Prod % 9, must be either be 0, 3, or 6 (ie a multiple of 3), and thus it will never be 1, and that is not what we want. So now we know we should only include numbers that have gcd(x, n) == 1. Lets call p the product of all numbers that have gcd(x, n) == 1 modulo n. If p == 1 we can just output all those numbers, however if p != 1, we can just remove the number p itself and output the rest of the numbers. </p>
+                <p>The first observation of this problem is to notice that if we include a number x &lt; n such that gcd(x, n) != 1 then the prod wont be 1 mod N. To see this in action, imagine we have n = 9 and we include 3 in the product. Prod % 9, must be either be 0, 3, or 6 (ie a multiple of 3), and thus it will never be 1, and that is not what we want. So now we know we should only include numbers that have gcd(x, n) == 1. Lets call p the product of all numbers that have gcd(x, n) == 1 modulo n. If p == 1 we can just output all those numbers, however if p != 1, we can just remove the number p itself and output the rest of the numbers. </p>
             </details>
             <br>
             <a href="https://codeforces.com/problemset/problem/329/B">Problem 11</a>
@@ -173,7 +173,7 @@
             <a href="https://codeforces.com/problemset/problem/1095/C">Problem 08</a>
             <details>
                 <summary>Solution</summary>
-                <p>Notice that the minimum powers of 2 needed to create the number n, is the number of 1 bits in the binary representation of n, lets call this number x, and lets say we have all the powers of 2 represented by these 1 bits in a multiset S. If x > k, then our answer is NO because we can't decrease the power of 2s that we need. If x == k, we can just return the powers of 2 in S. If x < k, we need to do break up some powers of 2 into smaller powers of 2. Observe that breaking up a power of 2 increases the total count x by 1. So we can just take a value in the multiset, split it into 2 and put its components back into the set. We can do this until all values equal 1, ie there are n 1s. So this means if n < k, it we output NO, else we output whatever we had in our multiset, after we split powers of 2, k-x times.</p>
+                <p>Notice that the minimum powers of 2 needed to create the number n, is the number of 1 bits in the binary representation of n, lets call this number x, and lets say we have all the powers of 2 represented by these 1 bits in a multiset S. If x &gt; k, then our answer is NO because we can't decrease the power of 2s that we need. If x == k, we can just return the powers of 2 in S. If x &lt; k, we need to do break up some powers of 2 into smaller powers of 2. Observe that breaking up a power of 2 increases the total count x by 1. So we can just take a value in the multiset, split it into 2 and put its components back into the set. We can do this until all values equal 1, ie there are n 1s. So this means if n &lt; k, it we output NO, else we output whatever we had in our multiset, after we split powers of 2, k-x times.</p>
             </details>
             <br>
             <a href="https://atcoder.jp/contests/agc040/tasks/agc040_c">Problem 07</a>

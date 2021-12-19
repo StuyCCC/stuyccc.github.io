@@ -10,8 +10,8 @@ body {
 }
 
 .markdown-body {
-      max-width: 980px;
-      border: 1px solid #ddd;
+    max-width: 980px;
+    border: 1px solid #ddd;
 }
 
 summary:focus {
