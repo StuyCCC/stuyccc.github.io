@@ -5,20 +5,20 @@ window.onload = function() {
 function SideBar() {
     document.getElementById("side").innerHTML =
    '<div id="icon">'+
-       '<h1><a href="../main/index.html">'+
+       '<h1><a href="../main/index">'+
            '<img class="logo" src="../../templates/CCCLogo.png" alt="CCC logo" width="142px">'+
        '</a></h1>'+
    '</div>'+
    '<br>'+
-   '<nav><a href="../main/about.html">about</a></nav>'+
+   '<nav><a href="../main/about">about</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/calendar.html">calendar</a></nav>'+
+   '<nav><a href="../main/calendar">calendar</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/lessons.html">lessons</a></nav>'+
+   '<nav><a href="../main/lessons">lessons</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/problems.html">problems</a></nav>'+
+   '<nav><a href="../main/problems">problems</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/resources.html">resources</a></nav>'+
+   '<nav><a href="../main/resources">resources</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/writeups.html">writeups</a></nav>';
+   '<nav><a href="../main/writeups">writeups</a></nav>';
 }
