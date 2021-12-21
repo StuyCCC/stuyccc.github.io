@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-12-20</h4>
+        <fieldset>
+            <legend>Math</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Math</h3>
+            <p>This is obviously not all the math useful for competitive programming, it is a tiny fraction of what is needed. But this part should be helpful none the less for those who haven't yet learned it in school. Probably more (interesting) math will come at a later date, but these topics needed regardless so they will be here. Note that I DO NOT go in depth at all into anything stated here, it is only the bare minimum to start programming. If anything is interesting, everything has a world unto itself to discover, go for it.</p>
+            <h4>Binomial Coefficient</h4>
+            <p>This is often framed as the number of ways to choose <script type="math/tex">k</script> sized unordered groups from a set of <script type="math/tex">n</script> distinct objects. The solution to this problem is to first find the number of ordered groups and the "divide out" the order. Consider creating an ordered group of size <script type="math/tex">k</script>. There are <script type="math/tex">n</script> choices of elements for the first element in the group, <script type="math/tex">n-1</script> for the second element, <script type="math/tex">n-2</script> for the third element, and so on, until putting thie final element in the group there are <script type="math/tex">n-(k-1) = n-k+1</script> choices.</p>
+            <p>Multiplying together these numbers of choices for each element gives the total number of <em>ordered</em> size <script type="math/tex">k</script> groups. The amount of permutations of a size <script type="math/tex">k</script> group is <script type="math/tex">k! = k\cdot (k-1) \cdot (k-2) \cdot \dots \cdot 2 \cdot 1</script>. For each unordered size <script type="math/tex">k</script> group there are <script type="math/tex">k!</script> ordered groups, so if we divide the amount of ordered groups by <script type="math/tex">k!</script>, that will give the amount of unordered groups.</p>
+            <p>This gives the final result of <script type="math/tex">\frac{n\cdot (n-1) \cdot \dots \cdot (n-k+1)}{k!} = \frac{n!}{k!(n-l)!} = \binom{n}{k}</script>. The final notation is used for this expression and pronounced "n choose k". This is called the binomial coefficient, appearing as the coefficient of a binomial (by the binomial theorem, it is worth looking up if you haven't heard of it, though it isn't that relavent to competitive programming).</p>
+            <p>This is how to show that the complexity of running three nested for loops actually is <script type="math/tex">\mathcal{O}(n^3)</script>.</p>
+            <pre><code>
+let n be some number
+for i in 1..n+1:
+    for j in i+1..n+1:
+        for k+1 in n+1:
+            //do stuff
+            </code></pre>
+            <p>The above code iterates over all possible unique triples of <script type="math/tex">i,j,k</script> where <script type="math/tex">i < j < k</script>. As there is only one possible increaseing ordering for some triple of distinct <script type="math/tex">i,j,k</script>, there are <script type="math/tex">\binom{n}{3}</script> different ways to choose triples. <script type="math/tex">\binom{n}{3} = \frac{n(n-1)(n-2)}{1\cdot 2 \cdot 3} = \frac{1}{6}(n^3 + \text{other terms}) = \mathcal{O}(n^3)</script>.</p>
+
+            <h4>Modular Arithmetic</h4>
+            <p>Often answers are very big in which case questions ask for the remainder when the answer is divided by some integer, like <script type="math/tex">10^9 + 7</script> (a prime number of the same order of magnitude as the 32 bit integer limit).</p>
+            <p>The notation <script type="math/tex">a \equiv b \mod p</script> means <script type="math/tex">b</script> is the remainder when <script type="math/tex">a</script> is divided by <script type="math/tex">p</script> (sort of, not exactly, the definition is different and allows for more than just the remainder to be <script type="math/tex">r</script>, but for the purposes of competitive programming, thinking the notation as meaning remainder isn't too bad). It is not unlike writing <code>a % p</code> to get <code>b</code> when writing code.</p>
+            <p>Some rules for modular arithmetic:<br><script type="math/tex">a + b \equiv (a \mod p + b\mod p) \mod p</script>.</p>
+            <p>To prove this write out <script type="math/tex">a = gp + r</script> where <script type="math/tex">g</script> is the quotient when <script type="math/tex">a</script> is divided by <script type="math/tex">p</script> and <script type="math/tex">r</script> is the remainder. Similarly define <script type="math/tex">b = hp + s</script>. Now finding the remainder of both sides of the equaiton shows equality: <script type="math/tex">a + b = gp + r + hp + s \equiv r + s \mod p \equiv (gp + r \mod p) + (hp + s \mod p) \equiv r + s \mod p</script>.</p>
+            <p>A similar thing can be done to show:<br><script type="math/tex">ab \equiv (a \mod p)(b \mod p) \mod p</script>.</p>
+            <p>This allows taking an answer mod some number before the total calculation is finished so if an answer is too large to be easily stored, the remainder can still be found.</p>
+            <h4>Logarithms</h4>
+            <p>What follows is (a very poor definition of) the logarithm function and two logarithm rules to prove one property which is useful in analyzing complexities. It can come up when dividing a problem into many but not too many smaller problems.</p>
+            <p>A logarithm can be defined as the number <script type="math/tex">y</script> such that <script type="math/tex">b^y = x</script> where <script type="math/tex">b \in \mathbb{R}, b > 0, b \neq 1</script> and <script type="math/tex">x > 0</script>. The function <script type="math/tex">y</script> is written <script type="math/tex">y = \log_b x</script>. <script type="math/tex">b</script> is the base of the logarithm.</p> 
+            <p>This makes the logarithm function the inverse of the exponential. Therefore it grows very slowly as <script type="math/tex">x</script> grows. An algorithm which runs in <script type="math/tex">\mathcal{O}(\log n)</script> is very good.</p> 
+            <p>Now the goal will be to prove the "change of base" formula to show that <script type="math/tex">\log_b n = \mathcal{O}(\log n)</script> where <script type="math/tex">\log n</script> is a logarithm of any base, most commonly base <script type="math/tex">e</script> or base <script type="math/tex">10</script>.</p> 
+            <p>To prove this first we need to show a property of logorithms of a power. We know <script type="math/tex">a^p = b^{\log_b a^p} = (a)^p = (b^{\log_b a})^p = b^{p\log_b a}</script>. Therefore <script type="math/tex">\log_b a^p = p\log_b a</script>.</p>
+            <p>Now we can consider <script type="math/tex">\log_c b^{\log_b a} = \log_c a</script>. Using the power rule just proved, <script type="math/tex">(\log_b a)(\log_c b) = \log_c a \Rightarrow \log_b a = \frac{\log_c a}{\log_c b}</script>.</p>
+            <p>If we let the base be constant, as often is, then <script type="math/tex">\log n</script> and <script type="math/tex">\log_b n</script> only differ by a constant, namely <script type="math/tex">\frac{1}{\log_c b}</script>, which dies when analyzing complexity. This shows <script type="math/tex">\log_b n = \mathcal{O}(\log n)</script>, so most often no base is present when complexity is notated.</p>
+        </fieldset>
+    </div>
+</body>
