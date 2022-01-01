@@ -19,11 +19,89 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-18</h4>
+        <h4>Last Updated 2022-01-01</h4>
         <fieldset>
             <legend>EASY DECEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=809">Problem 31</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1012">Problem 30</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Solve this with a greedy solution. The key observation is that there's always an optimal solution where none of the flipped ranges overlap. To show this, let's assume that two of the ranges do overlap. There are multiple ways this can happen, but the result will have a flipped range, followed by an unaffected range (that was flipped twice), followed by another flipped range. So we can replace the intersecting ranges with the two flipped ranges on either end, producing the same effect and removing this intersection.</p>
+                <p>So count the number of contiguous ranges of cows that need to be flipped. That number is the answer.</p>
+                <p>This isn't the only greedy solution, so if you have something else that is fine too.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc186/tasks/abc186_d">Problem 29</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1607/D">Problem 28</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The hard part of this is noticing that in a working permutation all the blue elements can the be the first numbers and the red elements the last numbers. After this just check to see if we can construct that permutation. To do that there must exist enough "large" blue number and "small" red numbers. By "large" blue number, I mean the ith greatest blue number must be greater than or equal to the number i. By "small" red number I mean the ith greatest red number must be less than or equal to the ith greatest number from 1 to n.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://cses.fi/problemset/task/2216/">Problem 27</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1610/A">Problem 26</a>
+            <details>
+                <summary>Solution</summary>
+                <p>There are three cases to consider.</p>
+                <p>N = 1 and M = 1. This is really easy, x = 1 and y = 1, done, k = 0.</p>
+                <p>N = 1 or M = 1. This is a bit harder but still not too bad. x or y has to be 1 because one dimension of the grid has length 1. The second dimension can be found by guessing (1, 1). The difference in one dimension is zero, so the distance between the guess and the hidden point is the y coordinate. (well technically the y coordinate minus 1). Therefore k = 1.</p>
+                <p>N &gt; 1 and M &gt; 1. Neither of the above techniques work. Let g = min(N, M). Place points (1, 1) and (1, g) to get responses from the computer, b1 and b2. Using the formula for manhattan distance, |x - 1| + |y - 1| = b1 and |x - 1| + |y - g| = b2. This is a linear system of equations with two unknowns and therefore can be solved to find the values of x and y. Therefore k = 2.</p>
+                <p>Really this entire problem could be thought of as applying the above formula for manhattan distance instead of the two strategies I gave (a good way to start trying to solve it). For the fist two cases: In the first case, both x and y are known so there are zero needed equations. If the second case, one of x or y is known so there need be one one equation, |x - 1| = b1 or |y - 1| = b1, a linear equation, something easy to solve.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/25">Problem 25</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/24">Problem 24</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/23">Problem 23</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/22">Problem 22</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/21">Problem 21</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/20">Problem 20</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
             <a target="_blank" href="https://adventofcode.com/2021/day/19">Problem 19</a>
             <details>
                 <summary>Solution</summary>

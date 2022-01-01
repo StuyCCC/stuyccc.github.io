@@ -19,11 +19,96 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-10</h4>
+        <h4>Last Updated 2022-01-01</h4>
         <fieldset>
             <legend>HARD DECEMBER 2021</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1554/D">Problem 31</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/arc104/tasks/arc104_d">Problem 30</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1593/problem/D2">Problem 29</a>
+            <details>
+                <summary>Solution</summary>
+                <p>To solve, lets iterate over possible values which we can make half the array. The possible values to make the array are just every value in the array. So, just consider some value m in the array. Count the amount of numbers equal to m and let that equal c, numbers which we don't have to change. Then find the difference between m and all remaining possible a_i, (the a_i &gt; m). For each a_i compute all the possible divisors of a_i - m. These are the possible values for k. As we iterate over the a_i's, keep track of the amount of a_i - m each k divides. Now, for that m, we know that all k such N/2 - c &lt;= # a_i such that that k divides a_i - m will be valid values of k. We can now take the maximum valid k over all values of m as our answer.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc199/tasks/abc199_e">Problem 28</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1567/C">Problem 27</a>
+            <details>
+                <summary>Solution</summary>
+                <p>There is more than one solution but I did it with DP. let dp[i][j][k] = # of ways to make the least k significant digits of n</p>
+                <p>The index j is 0 if there is a carry which affects this current index. The index k is 0 if there is a carry which will affect the next index.</p>
+                <p>Initialize dp to zeros, and notice dp[1][1][0] = 1. We can now write out the transitions. Let d = the kth least significant digit of n.</p>
+                <p>We can then write, to construct the dp array.</p>
+                <p>dp[1][1][k+1] = (d+1) * dp[1][1][k] + d * dp[0][1][k]</p>
+                <p>dp[0][1][k+1] = (d+1) * dp[1][0][k] + d * dp[0][0][k]</p>
+                <p>dp[1][0][k+1] = (9 - d) * dp[1][1][k] + (9 - d + 1) * dp[0][1][k]</p>
+                <p>dp[0][0][k+1] = (9 - d) * dp[1][0][k] + (9 - d + 1) * dp[0][0][k]</p>
+                <p>The top two statements represent adding together two digits at in the two numbers we are summing such that their sum is less than 10. The second two statements represent adding two digits whose sum is greater than 9 (the addition creates a carry).</p>
+                <p>I'll work through one line and hopefully the others will be similar enough to figure out:</p>
+                <p>dp[1][1][k+1] = (d+1) * dp[1][1][k] + d * dp[0][1][k]<br>^^^^^^^^^^^^^<br>This represents the number of ways to get to the kth least significant digit such that there are no carries which will affect that kth digit or the k+1th digit after it.</p>
+                <p>dp[1][1][k+1] = (d+1) * dp[1][1][k] + d * dp[0][1][k]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^^^^^<br>number of ways to get two numbers which sum to d</p>
+                <p>dp[1][1][k+1] = (d+1) * dp[1][1][k] + d * dp[0][1][k]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^^^^^^^^^<br>if numbers sum to d, then there was no carry affecting this digit, and also we want not a carry to affect the next digit, so we multiply by the appropriate array value.</p>
+                <p>dp[1][1][k+1] = (d+1) * dp[1][1][k] + d * dp[0][1][k]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^^^^^^^^^^^^^<br>very similar to last term, but now numbers are adding to d-1 because we assume a carry happened which is affecting this digit</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc227/tasks/abc227_e">Problem 26</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/25">Problem 25</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/24">Problem 24</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/23">Problem 23</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/22">Problem 22</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/21">Problem 21</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://adventofcode.com/2021/day/20">Problem 20</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution to both parts of this Advent Of Code problem can be found <a href="../writeups/aoc2021.html">here</a>.</p>
+            </details>
+            <br>
             <a target="_blank" href="https://adventofcode.com/2021/day/19">Problem 19</a>
             <details>
                 <summary>Solution</summary>
