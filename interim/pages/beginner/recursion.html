@@ -32,7 +32,7 @@ int fib(int n) {
     return fib(n-1) + fib(n-2);
 }
             </code></pre>
-            <p>But be careful! We didn’t set any limits on n, so the parameter can just keep decreasing forever without bound. It’s extremely easy to accidentally enter into an infinite loop, so we must set a base case, or a case of n in which we already know the answer. Namely, we know that F_0 = 0.</p>
+            <p>But be careful! We didn’t set any limits on n, so the parameter can just keep decreasing forever without bound. It’s extremely easy to accidentally enter into an infinite loop, so we must set a base case, or a case of n in which we already know the answer. Namely, we know that F_0 = 0 and F_1 = 1.</p>
             <pre><code>
 int fib(int n) {
     if (n == 0) return 0;
