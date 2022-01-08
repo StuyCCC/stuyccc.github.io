@@ -19,10 +19,50 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-01-01</h4>
+        <h4>Last Updated 2022-01-08</h4>
         <fieldset>
             <legend>HARD JANUARY 2022</legend>
             <a target="_blank" href="https://szkopul.edu.pl/problemset/problem/GhIaISKm9qEfL2hUCRREkUj1/site/?key=statement">Problem 01</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <a target="_blank" href=" https://codeforces.com/contest/1237/problem/C2">Problem 02</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <a target="_blank" href="https://atcoder.jp/contests/hitachi2020/tasks/hitachi2020_c">Problem 03</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <a target="_blank" href="https://codeforces.com/contest/1558/problem/C">Problem 04</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <a target="_blank" href="https://csacademy.com/contest/archive/task/increasing_subarrays/statement/">Problem 05</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <a target="_blank" href="https://codeforces.com/contest/1560/problem/F1">Problem 06</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The thing to notice about this problem (at least the easy version) is that there aren't that many beautiful numbers, so few we can precompute every possible beautiful number and use that to answer queries.</p>
+                <p>If k = 1, iterating over all digits 0 to 9 and creating numbers of length 0 to 9 using only that one digit (just a string of 11111 for example). There are very few (&lt; 100) possible numbers so handling this case just involves iterating through all these beautiful numbers and finding the minimum one greater than n.</p>
+                <p>If k = 2 they can all be generated through iterating over all pairs of digits taken form the digits 0 to 9 and then computing all numbers of length from 1 to 9 using only the two picked digits (if the two digits are 1 and 3 then 133331 is an example number). However as there are considerably more numbers than when k = 1, a little more work has to be done than just iterating over all of them.</p>
+                <p>By analyzing this code, it runs in no more than O(l * 2^l * d^2) time where l is the maximum length of a number, d is the number of digits to choose from. This runs in time. It is good to note that depending on how you implement generating beautiful numbers you may make a lot of duplicates (I did at least). Filtering out duplicate numbers is a good idea. In the end there should only be around 40,000-41,000 beautiful numbers.</p>
+                <p>Store all these beautiful numbers in a sorted array (or really any data structure you can easily do a binary search on) and then process queries. As the numbers are in sorted order, finding the smallest beautiful number &gt;= n can be done with a binary search in O(log(# beautiful numbers)) time.</p>
+                <p>Additionally the editorial on codeforces gives a different solution to this problem and the solution to the harder version of this problem, F2 on this same contest, which is much faster that the one presented here (as it has to deal with a larger possible k).</p>
+            </details>
+            <a target="_blank" href="https://codeforces.com/contest/1560/problem/F2">Problem 07</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <a target="_blank" href=" https://codeforces.com/problemset/problem/1455/D">Problem 08</a>
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
