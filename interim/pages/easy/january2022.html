@@ -71,6 +71,59 @@
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1567/problem/A">Problem 09</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Look at the top row and for each character there, see what the bottom row should be. If the top row has the patter "LR" (we know there will be an 'L' followed by an 'R') we can just mimic it with an "LR" on the bottom row. If there is a 'U' on the top row, that domino has to be completed by outputting a 'D' on the bottom row. Similarly if there is a "RL" pattern then that can be mimiced on the bottom row with another "RL" patter and a 'D' on the top row will be completed with a 'U' on the bottom row.</p>
+                <p>Creating a new string using these rules will solve the problem.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc220/tasks/abc220_c">Problem 10</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1556/A">Problem 11</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution is to look at the parity (odd or evenness) of |a-b|. For it to be possible to use a set of operations to get c and d the difference |c-d| must have the same parity as |a-b| (both odd or both even). This is because adding k to both a and b maintains the value of |a-b| and adding k to one number and subtracting k from the other adds (or subtracts) an even number from |a-b|. |a-b| must equal |c-d| if a=c and b=d so and so the differences must have the same starting parity.</p>
+                <p>If the parities are the same we can construct the solution with casework.</p>
+                <ul>
+                    <li>if c = 0, d = 0 then we are done, output zero moves</li>
+                    <li>if c = d != 0 then we increment a and b by k = c = d. Output one move</li>
+                    <li>if c != d but still works then k = |c-d|/2 and then add k and subtract k to the appropriate a or b.</li>
+                    <li>This makes |a-b| correct, but a and b could both still be too low. This can be fixed by adding another k to a and b.</li>
+                    <li>Output two moves.</li>
+                    <li>if the parity check fails output -1.</li>
+                </ul>
+                <p>A note: checking parity and seeing it is invariant between |a-b| and |c-d| is something to keep in mind. It comes up occasionally. Looking for an invariant is a good general problem solving strategy and checking parities can often be helpful as well.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc229/tasks/abc229_c">Problem 12</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1622/B/">Problem 13</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc166/tasks/abc166_c">Problem 14</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1584/problem/A">Problem 15</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
         </fieldset>
     </div>
 </body>

@@ -74,6 +74,56 @@
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
             </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc214/tasks/abc214_e">Problem 09</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1560/problem/E">Problem 10</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The hard thing to notice about this problem is we can find the order letters are removed. It is simply the reverse order they appear in the string. Using this we can create a frequency list for the initial string. For the ith character removed (1 indexed) freq[char i] = frequency of that character in the entire string divided by i.</p>
+                <p>From then on this problem simply becomes implementation. The first substring of characters to match the frequency list calculated must the original string of characters, if no substring is found, then the answer doesn't exist. Then using this original substring simulate the process of removing characters and evolving the string, we have enough time. After this process is complete, the resultant string should be the same as our input. If so output the computed original string and order. Else output -1.</p>
+                <p>I think there might be a different way of doing this, not quite sure of it though, this is just what I did.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc203/tasks/abc203_e">Problem 11</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1546/problem/D">Problem 12</a>
+            <details>
+                <summary>Solution</summary>
+                <p>This really more of a combo question than a CS question.</p>
+                <p>Consider a transforming 011 -&gt; 110.</p>
+                <p>One way to think about this is the third '1' "hopping" over the second '1' to swap with the '0' as described in the problem statement, but more useful is considering the "11" as one unit, call it '2'. Then by the rules of the problem statement we are transforming 011 = 02 -&gt; 110 = 20.</p>
+                <p>Another, larger example is 100111011 -&gt; 1002102.</p>
+                <p>Using the rules given in the problem statement any consecutive '0's and '2's can be swapped. Therefore, considering all pairs of consecutive '1's as '2's, the problem can be restated as finding all orientations of some amount of '2's and some amount of '0's.</p>
+                <p>That is (# of '0's + # of '2's)! / ((# of '0's)! * (# of '2's)!)</p>
+                <p>The above can be calculated mod some prime using modular inverses found with Fermat's little theorem and a simple factorial function. (remember, a^(p-1) = 1 = a^(-1) (mod p) for prime p and some number a)</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc162/tasks/abc162_e">Problem 13</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1583/problem/C">Problem 14</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc177/tasks/abc177_f">Problem 15</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
         </fieldset>
     </div>
 </body>
