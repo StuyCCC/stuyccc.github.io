@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-01-08</h4>
+        <h4>Last Updated 2022-01-26</h4>
         <fieldset>
             <legend>EASY JANUARY 2022</legend>
             <a target="_blank" href="https://codeforces.com/gym/352982/problem/22_01JAN01">Problem 01</a>
@@ -123,6 +123,76 @@
             <details>
                 <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc207/tasks/abc207_c">Problem 16</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1537/A">Problem 17</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/91381">here.</a></p>
+            </details>
+            <br>
+            <a target="_blank" href="https://cses.fi/problemset/task/1620/">Problem 18</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1496/problem/A">Problem 19</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution (if it exists can be constructed). Let a_1, a_2,..., a_k be single character strings. We know these compose the first k characters of the string and also must compose the last k characters of the string. Additionally, these first k characters must be the reverse of the last k characters because of the order they are added to the string. If this isn't he case the answer is "NO". Finally, a_k+1 can fill the middle part of the string left. If there is string left to fill (i.e. 2k &lt; n) then the answer is "YES", else "NO".</p>
+                <p>Example construction: "abcddcba"<br>k = 2<br>a_1 = "a"<br>a_2 = "b"<br>a_3 = "cddc"<br>so the answer is "YES"</p>
+                <p>"abba"<br>k = 2<br>a_1 = "a"<br>a_2 = "b"<br>nothing left for a_3 so the answer is "NO"</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc163/tasks/abc163_c">Problem 20</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1559/problem/A">Problem 21</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The first thing to notice is that a & b &lt;= min(a, b).</p>
+                <p>Consider the following example<br>a = 1001<br>b = 1011<br>a&b=1001</p>
+                <p>Only a place value where both a and b are 1 becomes a 1, otherwise the place value is 0. As replacing a 1 with a 0 at a place value decreases the value of that number, a&b &lt;= min(a, b).</p>
+                <p>The second (and final thing to notice) is that it is possible to preform the operation on every pair of elements in the sequence. Consider a pair, a_i, a_j (i &lt; j). Preforming the operation on the interval [i, j] results in a_i = a_i & a_j = a_j = a_j & a_i. Note all of the other changed in the interval will be &lt;= to what they were before by the first thing noticed.</p>
+                <p>Therefore, the answer can be found by taking all pairs and preforming the operation on them. This causes every element in the array to become a_1 & a_2 & a_3 & ... & a_n, the answer.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/gym/352982/problem/22_01JAN22">Problem 22</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1486/problem/A">Problem 23</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/87849">here.</a></p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc145/tasks/abc145_c">Problem 24</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1608/A">Problem 25</a>
+            <details>
+                <summary>Solution</summary>
+                <p>There are a bunch of solutions (the problem author for example just outputs 2,3,4,...,n,n+1 which you can check works yourself). The one I used was printing out prime numbers.</p>
+                <p>A prime number doesn't isn't divisible by the number before it becuase there is no integer &gt; 1 which divides it. The hard part of this solution however is to find these prime numbers. Generally though, there are a lot of prime numbers so it is likely that the solution will work. The solution is quick to code and quick to test locally.</p>
+                <p>To check if some natural number n is prime, verify that all integers &gt; 1 and &lt;= sqrt(n) don't divide n. This takes O(sqrt(n)) time, iterating over sqrt(n) integers.</p>
+                <p>Then, starting at some small prime, say 2 or 3, iterate over the integers, checking if each is prime and outputing it if it is. Finish outputing numbers when n have been printed.</p>
+                <p>Quickly timing the program locally with the maximum test cases will show it runs fast enough. Alternatively, if you know a lot of math you might know the prime number theorem which approximates the amount of primes and shows this algorithm will run quickly enough.</p>
             </details>
         </fieldset>
     </div>
