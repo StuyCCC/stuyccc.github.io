@@ -28,22 +28,22 @@
             <p>Given a sorted range, a binary search allows some element of that range to be found quickly. The connonical example is finding the index of an element of a sorted array.</p>
             <p>Say there is an array <code>A</code> of some numbers in sorted order, <code>A = [1,3,4,5,6,9]</code> and we want to find the index of <code>x = some element of A</code>. A binary search (or at least the implementation I'll gone over here) stores a range of of possible indecies of <code>A</code>. It will then have this range of possible values until there is only one left which will be the answer.</p>
             <p>Let's start by defining <code>lo = 0</code> the initial lower bound for our range of possible indecies and <code>hi = 5</code> be the intial upper bound. While I do make <code>hi</code> inclusive, it is near identical to write a binary search with an exclusive upper bound and both work fine. The algorithm then guess the index of <code>x</code> as <code>md = (lo + hi) / 2</code> (the division is floor division). This leads to three cases, <code>A[md]</code> could be too small, too larger, or equal to <code>x</code>.</p>
-            <p>Each of these cases can be handled separately. Firstly, if <code>A[md] == x</code> return <code>md</code>, the problem is solved. If <code>A[md] < x</code> then the problem halves. It is now known not only <code>A[md]</code> is too small but also as <code>A</code> is sorted, <code>A[anything less than md]</code> is too small. Therefore we can reduce the range in which we are looking for answers: <code>lo = md + 1, hi unchanged</code>. This process can then be repeated.</p>
-            <p>The final case of <code>A[md] > x</code> is similar, being able to know that the index containing <code>x</code> has to be smaller than <code>md</code> so the range of possible answers can be rediced, <code>lo unchanged, hi = md - 1</code>. Repeating these checks over and over will eventually yield the index of <code>x</code>.</p>
+            <p>Each of these cases can be handled separately. Firstly, if <code>A[md] == x</code> return <code>md</code>, the problem is solved. If <code>A[md] &lt; x</code> then the problem halves. It is now known not only <code>A[md]</code> is too small but also as <code>A</code> is sorted, <code>A[anything less than md]</code> is too small. Therefore we can reduce the range in which we are looking for answers: <code>lo = md + 1, hi unchanged</code>. This process can then be repeated.</p>
+            <p>The final case of <code>A[md] &gt; x</code> is similar, being able to know that the index containing <code>x</code> has to be smaller than <code>md</code> so the range of possible answers can be rediced, <code>lo unchanged, hi = md - 1</code>. Repeating these checks over and over will eventually yield the index of <code>x</code>.</p>
             <p> Python like psudocode for a slightly more general version of finding the index of a value in a list follows follows:
             <pre><code>
 let a be an array of length n
 let x be an element of a
 lo = 0
 hi = n-1
-while lo <= hi:
+while lo &lt;= hi:
     //in cases when lo + hi risks integer overflow
     //the below can be used to negate that risk
-    md = r - (r - l) / 2 
+    md = r - (r - l) / 2
     if A[md] == x:
         //md is answer
         break
-    else if A[md] > x:
+    else if A[md] &gt; x:
         hi = md - 1
     else:
         lo = md + 1
@@ -53,7 +53,7 @@ while lo <= hi:
             <h3>Binary Search on Other Things</h3>
             <p>There are a bunch of other things other than just array indecies which are ordered in some non-increaseing or non-decreasing order. If there is some function which will tell if a guess is either too high or too low, and the values which are being guessed are well ordered, a binary search can be applied. Some types of problems can be solved by binary searching over all possible answers with some specialized function to see if the guessed solution is too high or low (or just right).</p>
             <h4>Approximating Root 2</h4>
-            <p>An exmple is approximating the square root of 2. Here, <code>hi</code> and <code>lo</code> can start as upper and lower bounds for the square root of 2, say <code>hi = 2.0</code> and <code>lo = 1.0</code>. Let <code>md = (hi + lo) / 2.0</code>. It's important to realize <code>hi</code> and <code>lo</code> are not integers, the are floating point rational numbers and the divsion is just regular division. Then md can be checked to be too high or low by comparing <code>md * md</code> to <code>2.0</code> and the upper and lower bounds representing the remaining possible values in the search space can be adjusted. <code>md * md > 2</code> would mean <code>hi = md, lo unchanged</code> and <code>md * md < 2</code> would mean <code>hi unchanged, lo = md</code>.</p>
+            <p>An exmple is approximating the square root of 2. Here, <code>hi</code> and <code>lo</code> can start as upper and lower bounds for the square root of 2, say <code>hi = 2.0</code> and <code>lo = 1.0</code>. Let <code>md = (hi + lo) / 2.0</code>. It's important to realize <code>hi</code> and <code>lo</code> are not integers, the are floating point rational numbers and the divsion is just regular division. Then md can be checked to be too high or low by comparing <code>md * md</code> to <code>2.0</code> and the upper and lower bounds representing the remaining possible values in the search space can be adjusted. <code>md * md &gt; 2</code> would mean <code>hi = md, lo unchanged</code> and <code>md * md &lt; 2</code> would mean <code>hi unchanged, lo = md</code>.</p>
             <h4>Another Problem</h4>
             <p>Given an array <code>A</code> of first decreasing numbers, followed by decreasing numbers, find the point of inflection, where the decreasing becomes increasing. Assume the sequences are strictly decreasing and then strictly increasing and the length of <code>A</code> is greater than 1.</p>
             <p>For example, <code>A = [5,4,2,1,3,6]</code> the answer is <code>4</code> the first index after which the numbers have increased.</p>
@@ -65,9 +65,9 @@ A = [5,4,3,2,1,3,4,5,7]
 #    0,1,2,3,4,5,6,7,8
 #    answer is ^
 
-assert(len(A) >= 2)
+assert(len(A) &gt;= 2)
 lo, hi = 1, len(A)
-while lo <= hi:
+while lo &lt;= hi:
     md = (hi + lo) // 2 #this valid as the array indecies likely small enough so not to overflow
     if A[md] - A[md-1]:
         lo = md + 1
