@@ -75,6 +75,16 @@ while lo <= hi:
         hi = md - 1
 print(lo)
         </code></pre>
+        <h4><a href="https://codeforces.com/contest/1486/problem/C2">And Another Problem</a> (click the name for problem)</h4>
+        <p>The solution is below, try the problem first though, like a real try, maybe sleep on it for a day.</p>
+        <p>The problem uses 1 indexing, I will to for this explanation. </p>
+        <p>The solution is a binary search, in particular a search over possible array indexes. The way it will work is by first getting the index of the second to max of the entire array. Call this index s. </p>
+        <p>The max of the array must have index ether greater than or less than the index of this second max. To figure out which one, check what the second max of the subarray 1 to s is. Note that the ranges are inclusive so this subarray contains s. </p>
+        <p>If the index of the second to max of this subarray as the index of the second to max of the entire array, s, then the max must be in the subarray 1 to s. This is because there must be an element of the array in that subarray greater than the second to max of the entire array. The only such element is the max. </p>
+        <p>If the indexes are different, the above is false and the max of the array is outside the range 1 to s.</p>
+        <p>Then this process can be continued on the remaining part of the array left. In this first case the (inclusive) range of answers is either lo = 1, hi = s-1 if the max is in the range 1 to s, or else lo = s+1, hi = N. </p>
+        <p>I'll explain the case explicitly for lo = 1 and hi = s-1, the other case is similar and y'all can figure it out. </p>
+        <p>Query the second to max element of the range s to md = (hi + lo) / 2. If this is equal to the index of the second to max of the entire array, s, then the maximum element in the array must be in that range s to md by the same logic as the case from 1 to s above. Then the range of possible answers can be narrowed to lo to md - 1 = new hi. Else the maximum element has index greater than md and the range of possible answers is new lo = md + 1 to hi. Then repeat this while lo <= hi. </p>
         </fieldset>
     </div>
 </body>
