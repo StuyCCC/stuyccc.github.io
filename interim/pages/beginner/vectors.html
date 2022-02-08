@@ -44,6 +44,11 @@ v[3] = 10;
 v[2] = v[3] + v[1];
             </code></pre>
             <p>However, remember that even in vector if you get the indexing wrong, you will run into a memory error (seg faults gahhh). If a vector is of size 5 and you try to access v[5] it will error. Also note that if the current size of a vector is 0, you can’t actually access anything. You first need to increase the size of the vector to access something, let's see how this is done below. </p>
+            <p>Also, before I forget, you can also initialize a vector with curly braces very similar to how you can do it with an array, shown below:</p>
+            <pre><code class="language-cpp">
+vector&lt;int&gt; v = {1, 2, 3, 4, 5};
+            </code></pre>
+            <p>This will create a vector of size 5 with the same values surrounded in the curly braces. Also note that if you intitialize a vector with curly braces, you can not add constructor arguments to the vector, or you will get an error.</p>
 
             <h3>Vector Methods</h3>
             <p>What makes a vector more useful than an array are <i>methods</i>, or functions that modify specific vectors, that come attached. Let v be a vector. Consider the following example:</p>
