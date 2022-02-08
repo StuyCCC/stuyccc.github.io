@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2022-02-07</h4>
+        <fieldset>
+            <legend>VECTORS AND BASIC STL</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Vectors</h3>
+            <p>A vector is basically a <i>list of stuff</i>. It supports certain extra advanced features that arrays do not have, and it is used more often than normal arrays in C because of these features. We can define a vector ‘v’ as follows:</p>
+            <pre><code class="language-cpp">
+vector&lt;int&gt; v;
+            </code></pre>
+            <p>The ‘int’ in angle brackets is what is called a <i>generic</i>. It is used to define what data type goes inside of the vector, similar to how we say int arr[] is an array of integers. The name comes last. The vector originally starts out empty, but we can give it an initial size by declaring it as follows:</p>
+            <pre><code class="language-cpp">
+vector&lt;int&gt; v(5);
+            </code></pre>
+            <p>This will create a vector of size 5, with the default value of all indexes being 0. Additionally, we can give it a different default values by doing the following: </p>
+            <pre><code class="language-cpp">
+vector&lt;int&gt; v(5, 3);
+            </code></pre>
+            <p>This will set the vector to be size 5 with 5 3’s inside of it instead of 5 0’s. The arguments inside the parentheses are <i>constructor parameters</i>, which modify what the vector looks like upon construction. Any three of the above types of declarations are valid to be used. </p>
+            <p>While construction is different for vectors than in arrays, accessing and modifying the values inside the vector work the same as it would with an array, i.e.</p>
+            <pre><code class="language-cpp">
+v[3] = 10;
+v[2] = v[3] + v[1];
+            </code></pre>
+            <p>However, remember that even in vector if you get the indexing wrong, you will run into a memory error (seg faults gahhh). If a vector is of size 5 and you try to access v[5] it will error. Also note that if the current size of a vector is 0, you can’t actually access anything. You first need to increase the size of the vector to access something, let's see how this is done below. </p>
+            <p>Also, before I forget, you can also initialize a vector with curly braces very similar to how you can do it with an array, shown below:</p>
+            <pre><code class="language-cpp">
+vector&lt;int&gt; v = {1, 2, 3, 4, 5};
+            </code></pre>
+            <p>This will create a vector of size 5 with the same values surrounded in the curly braces. Also note that if you intitialize a vector with curly braces, you can not add constructor arguments to the vector, or you will get an error.</p>
+
+            <h3>Vector Methods</h3>
+            <p>What makes a vector more useful than an array are <i>methods</i>, or functions that modify specific vectors, that come attached. Let v be a vector. Consider the following example:</p>
+            <pre><code class="language-cpp">
+v.push_back(7);
+            </code></pre>
+            <p>The function ‘push_back’ appends the element 7 to the back (or the rightmost side) of a vector. This is how you can increase the size of a vector and this is the increased functionality that arrays don’t have. So in our previous example of a vector of size 0, you can increase the size by 1, by doing push_back and then accessing the singular element.</p>
+            <p>Below will be a list of the most basic vector methods and their uses. </p>
+            <pre><code class="language-cpp">
+T at(int pos)
+            </code></pre>
+            <p>This method returns the value at position pos of the vector. The only difference between .at and regular bracket notation is that .at will prevent you from segfaulting if you accidently go out of bounds. Also side note the T basically stands for template which means it can stand for multiple values depending on the vector. </p>
+            <pre><code class="language-cpp">
+bool empty()
+            </code></pre>
+            <p>This method returns true if the vector is empty (of size 0) and false if the vector isn’t empty (of size &gt;= 1). This is useful when you are trying to remove or add elements but don’t know if you will segfault.</p>
+            <pre><code class="language-cpp">
+size_t size()
+            </code></pre>
+            <p>Returns the size of the vector. Note that it’s not exactly an int, but a size_t type, but it’s easily castable to an int.</p>
+            <pre><code class="language-cpp">
+void clear()
+            </code></pre>
+            <p>Removes everything from the vector, and leaves the vector with size 0.</p>
+            <pre><code class="language-cpp">
+void push_back(int val)
+            </code></pre>
+            <p>Already described above, but takes an element and adds it to the end of the vector. Increases the size of the vector by 1.</p>
+            <pre><code class="language-cpp">
+void pop_back()
+            </code></pre>
+            <p>Removes the back element and shrinks the size of the vector by 1. Will error if the size of the vector is 0, so this method is often used alongside empty.</p>
+            <pre><code class="language-cpp">
+void resize(int size, int value)
+            </code></pre>
+            <p>If size is greater than the current vector size, it grows the vector to size and fills the back with value (or the default value of 0, if value is not specified). Otherwise, it shrinks the vector to the specified size and removes extra elements at the end.</p>
+            <p>The most common methods of the above are size, empty, and push_back, but the others do have the occasional use, so they are good to know. Also note that there are some more complicated and obscure methods related to vectors that we will focus on in later lessons. If you want a sneak peek of those, go <a target="_blank" href="https://www.cplusplus.com/reference/vector/vector/">here</a>.</p>
+
+            <h3>Basic STL Functions</h3>
+            <p>Many functions in the standard library are not attached to objects like vectors, but can be used in tandem with vectors and other data structures. Some of the most common standard library functions are listed below.</p>
+            <pre><code class="language-cpp">
+void swap(T a, T b)
+            </code></pre>
+            <p>The T shows up in the function again, and it basically means that any two variables of the same type can be used in this swap function. What the swap function does is that it switches the value of the two variables given. So if int a = 5, int b = 6, swap(a, b) will make a = 6, and b = 5.</p>
+            <pre><code class="language-cpp">
+T min({T a, T b, …})
+            </code></pre>
+            <p>Returns the minimum element of the given list, however ‘&lt;’ must be defined for that object. Also, for two elements, the curly braces are not required, and you should just instead give two parameters by themselves.</p>
+            <pre><code class="language-cpp">
+T max({T a, T b, …})
+            </code></pre>
+            <p>Returns the maximum element of the given list, similar to min.</p>
+            <pre><code class="language-cpp">
+__gcd(int a, int b)
+            </code></pre>
+            <p>Returns the greatest common divisor of the two given integers (the largest number that divides both a and b).</p>
+            <pre><code class="language-cpp">
+T abs(T a)
+            </code></pre>
+            <p>Returns the absolute value of the object a, if the absolute value is defined (some examples that work are doubles and integers).</p>
+
+            <h3>Long Longs</h3>
+            <p>There is actually another number data type called long long. This data type has the exact same feature as integers except they take up more memory, and thus can be much larger. Integers go from -2^31 to 2^31-1 and long longs go from -2^63 to 2^63-1. They are used in the following manner: </p>
+            <pre><code class="language-cpp">
+long long x = 17;
+            </code></pre>
+            <p>However, typing out long long every time is kind of annoying so we can make this a bit shorter by adding a define statement at the top of our code, like the following: </p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define ll long long
+
+int main() {
+    ll x = 17;
+}
+            </code></pre>
+            <p>All this is basically doing is that it letting us type ll instead of long long to represent the data type long long.</p>
+        </fieldset>
+    </div>
+</body>

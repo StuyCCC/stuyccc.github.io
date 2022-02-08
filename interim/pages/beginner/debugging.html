@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2022-01-26</h4>
+        <fieldset>
+            <legend>DEBUGGING</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Compilation Errors</h3>
+            <p>Compilation errors are errors that occur when we try to compile the program using g++ [name].cpp. They will stop the program from compiling, whereas other types of error will only present themselves upon running the executable. The main types of compilation errors are syntax errors, incorrect function references, and data type incompatibility errors. There are a few others, but they are more rare and manageable if you know how to deal with the three main ones.</p>
+
+            <h4>Syntax Errors</h4>
+            <p>Syntax errors are basically typos made by programmers. Common ones include forgetting semicolons, misspelling keywords or variable names, and not matching parentheses, curly braces, and other delimiters. Below are some examples.</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main () {
+    int b = 0
+    cout &lt;&lt; b &lt;&lt; "\n";
+}
+            </code></pre>
+            <img src="../../data/beginner/debug1.png">
+            <p>We are missing a semicolon at the end of this line, and the error message will tell us exactly where we messed up:
+            test.cpp:5:11 means it’s on line 5, character 11.</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main () {
+    int bob = 0;
+    cout &lt;&lt; bab &lt;&lt; "\n";
+}
+            </code></pre>
+            <img src="../../data/beginner/debug2.png">
+            <p>C++ is pretty smart, and it will make some suggestions on how to fix the mistake, like above.</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main () {
+    int bob = 0;
+    cout &lt;&lt; bob &lt;&lt; "\n";
+            </code></pre>
+            <img src="../../data/beginner/debug3.png">
+            <p>C++ has noted that there should be a curly brace to match the top brace in the main function, and it will say where the error is as well.</p>
+
+            <h4>Data Type Incompatibility</h4>
+            <p>This type of error occurs when you assign values to variables that are incompatible.</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main () {
+    string s = 6;
+}
+            </code></pre>
+            <img src="../../data/beginner/debug4.png">
+            <p>We tried to assign an integer value to a string, and now the compiler is sprouting a bunch of gibberish. Not to fear! We really only need to look at the first few lines (this is generally true for any long error messages). All it means is that we can’t put an int into a string, which makes sense.</p>
+
+            <h4>Incorrect Function References</h4>
+            <p>This is similar to misspelling a variable, as the compiler is looking for a function that is called but it is not found within the code or any imported libraries. Make sure function calls are spelled right and they exist somewhere in your code or the imported libraries. In competitive programming, it’s often because you forgot to import bits/stdc++.h.</p>
+            <pre><code class="language-cpp">
+using namespace std;
+
+int main () {
+    int bob = 0;
+    cout &lt;&lt; bob &lt;&lt; "\n";
+}
+            </code></pre>
+            <img src="../../data/beginner/debug5.png">
+            <p>In the above code, we have not imported bits/stdc++.h, which is necessary for us to use cout. Thus, an error is generated.</p>
+
+            <h3>Runtime Errors</h3>
+            <p>Runtime errors are errors that occur after compilation and execution, namely, after you perform ./a.out. The main types are memory errors and arithmetic errors.</p>
+
+            <h4>Memory Errors</h4>
+            <p>The main type of memory error is the dreaded segmentation fault (segfault for short). They occur when you try to access a piece of memory that either does not exist or the program doesn’t have access to. The error message won’t tell you anything, so the best way to fix these is to look over your code and make sure everything is clearly defined and you are operating within the bounds of your own program.</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int arr[50];
+    int a = 5;
+    arr[51] = 7;
+}
+            </code></pre>
+            <img src="../../data/beginner/debug6.png">
+            <img src="../../data/beginner/debug7.png">
+            <p>Trying to run the above program will show one of these 2 messages depending on what version of C++ you are using. We set the size of the array arr to 50, but we are trying to access the 51st element, which does not exist.</p>
+
+            <h4>Arithmetic Errors</h4>
+            <p>Arithmetic errors are errors that occur when we mishandle numbers. This primarily happens when we try to divide by 0, and is usually quite obvious. Like other error messages, it will provide a line number.</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&lt;
+using namespace std;
+
+int main() {
+    int a = 1/0;
+}
+            </code></pre>
+            <img src="../../data/beginner/debug8.png">
+            <p>In the above code the division by 0 was pretty obvious, but there are definitely times where it isn't as obvious like when you are getting input from terminal, so make sure to be careful.</p>
+
+            <h4>Logical Errors (Incorrectness)</h4>
+            <p>Logical errors occur when your code works, but not as you intended. These are often a lot harder to fix, as you have to reconsider the logic and flow of your algorithm. One example might be that you intended to add up all the numbers from 1 to n, but you missed the last one without knowing, so your answer is a bit off. You have to either reread or rewrite your entire program to catch these errors.</p>
+
+            <h3>How To Debug</h3>
+            <p>Below are just some basic tips to follow when writing/debugging.</p>
+            <ul>
+                <li><p>First tip is to not write a massive program all at once, because this means that you will have a bunch of errors combined at the end, which is harder to deal with because it is harder to find where the bugs are coming from. The better strategy is to write like 5-10 lines at once, then compile to make sure your program works so far, and then write the next 5-10 lines and repeat the process.</p></li>
+                <li><p>Another one important thing to do is to follow the instructions given in the error message that C++ throws at you. You don’t have to read the entire thing but read the first few lines, then go to the line where that error is occurring and then fix it, compile again, and move on to the next error.</p></li>
+                <li><p>If you have an error where it doesn’t tell you the line at which it is occurring, another important thing that you can do is comment out your entire code, then bring it back bit by bit and keep compiling/running to see where the error occurred.</p></li>
+                <li><p>Finally if there is no error but your code still doesn’t work as intended that means you have a logical error somewhere and in this case try printing out the variables that you are using to see if they have the same value as you intended them to have, and if you find one where it doesn’t your error is probably nearby there.</p></li>
+            </ul>
+        </fieldset>
+    </div>
+</body>
