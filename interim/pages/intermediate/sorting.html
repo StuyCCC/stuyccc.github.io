@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-02-07</h4>
+        <h4>Last Updated 2022-02-09</h4>
         <fieldset>
             <legend>Sorting</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -31,8 +31,12 @@
             <h3>Sorting Quesitons</h3>
             <h4><a href="https://codeforces.com/problemset/problem/1561/C">Sort (and sort again, or binary search)</a></h4>
             <p>In the interest of not repeating what is already on the internet I will link to the editorial <a href="https://codeforces.com/blog/entry/94216">here</a>. I will write though that the strategy of finding a way to check a solution and then binary searching over the answer is a common strategy. In this problem it manifests as finding the best order to visit caves in, what level the hero must be to enter a cave, and how many levels the hero will gain from clearing a cave and then binary searching over all possible starting levels.</p>
-            <!--<h4><a href="https://codeforces.com/problemset/problem/1545/A">Sorting and a Clever Observation</a></h4>
-            <p>This question requires is hard-->
+            <h4><a href="https://codeforces.com/problemset/problem/1545/A">Sorting and a Clever Observation</a></h4>
+            <p>This question can be pretty hard. I'd start with it by playing around with swapping people to the left and to the right. The thing to notice, is for a person to continue facing right it must be the case they are swapped an even number of times. Every time a person is swapped they change the direction they are facing so to keep them facing the same direction they haved to be swapped twice, once for one change in direction and another time to fix that change.</p>
+            <p>The clever realization is realizing what this means about the parity (evenness or oddness) of the index of a person. It is invarient! If a person starts at an even index, they must end at an even index if they are to face right. This is because they must be swapped twice. Two swaps means the person moves either 2 indexes to the left, 2 indexes to the right, or doesn't move at all. 2 plus (or minus) an odd number is odd, and 2 plus (or minus) an even number is even, so the parity is invariant.</p>
+            <p>Therefore after the people are sorted in non-decreasing order and are all facing to the right, each person at an odd index will still have an odd index and each person with an even index will still have an even index. This means after sorting all the numbers at odd indices and then sorting all the numbers at even indices, it should be the case the array is in non-decreasing order. If so then the rearrangement desired by the question is possible, if not it is impossible.</p>
+            <p>This can be implemented by splitting the array into two, one of evens index numbers and one of odd index numbers, and sorting each of those arrays separately. Then these arrays can be recombined element by element into one array.</p>
+            <p>One thing I brushed over is how it is known there exists an algorithm to sort only the even indexed elements in an array. It is the case that algorithm exists. Consider an algorithm like insertion sort (or even bubble sort). The only way it modifies the array is by swapping adjacent elements and yet it can still finish sorting the array. That means if it is possible to swap any two elements with indices two apart, it should be possible to sort only the elements with even (or odd) indices. I'll leave showing this to you, dear reader. It isn't that hard too show by looking at a sequence of three numbers and playing around trying to swap the two numbers with a number in the middle of them. Just playing around with small samples like is often incredibly useful when solving problems, even if the end goal isn't in site at that moment.</p>
         </fieldset>
     </div>
 </body>
