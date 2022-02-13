@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-02-07</h4>
+        <h4>Last Updated 2022-02-13</h4>
         <fieldset>
             <legend>EASY FEBRUARY 2022</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -51,13 +51,52 @@
             <a target="_blank" href="https://codeforces.com/gym/352982/problem/22_02FEB05">Problem 05</a>
             <details>
                 <summary>Solution</summary>
-                <p>WILL BE HERE SOON</p>
+                <p>First notice N can only be up to 100, so this screams a O(n^4) algorithm. We can use this to brute force all of the corner points of the subrectangle. However after this, we do not have the time limit to loop through another time. This hints some precalculation.</p>
+                <p>Let there be two grids, the original grid v and another grid b. If v[i][j] &gt;= K, b[i][j] = 1, else set it to 0. Now this turns into a basic 2d prefix sums problem.</p>
+                <p>A subrectangle is valid if the precalculated sum of the the subrectangle is &gt;= T and the sum for grid b is equal to its area.</p>
+                <p>Therefore its sum can be precalculated in O(n^2) and check all subrectangles in O(n^4)</p>
             </details>
             <br>
             <a target="_blank" href="https://codeforces.com/problemset/problem/1582/A">Problem 06</a>
             <details>
                 <summary>Solution</summary>
                 <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/96267">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=689">Problem 07</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="http://www.usaco.org/current/data/sol_cowtip_bronze_jan17.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1541/problem/B">Problem 08</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/92199">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=916">Problem 09</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="http://www.usaco.org/current/data/sol_revegetate_bronze_feb19.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1406/problem/A">Problem 10</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/82560">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc210/tasks/abc210_c">Problem 11</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc210/editorial/2304">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/gym/352982/problem/22_02FEB12">Problem 12</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
             </details>
         </fieldset>
     </div>

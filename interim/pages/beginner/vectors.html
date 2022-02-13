@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-02-07</h4>
+        <h4>Last Updated 2022-02-13</h4>
         <fieldset>
             <legend>VECTORS AND BASIC STL</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -126,6 +126,155 @@ int main() {
 }
             </code></pre>
             <p>All this is basically doing is that it letting us type ll instead of long long to represent the data type long long.</p>
+
+            <h3>Practice</h3>
+            <p>Below are some links to problems related to vectors and their corresponding solutions. Note that some of these problems can be done without vectors and STL, but it is better to use them so that you can get used to them.</p>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1631/A">Problem 01</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int t; cin &gt;&gt; t; while (t--) {
+        int n; cin &gt;&gt; n;
+        vector&lt;int&gt; A(n), B(n);
+        for (int i = 0; i &lt; n; i++) cin &gt;&gt; A[i];
+        for (int i = 0; i &lt; n; i++) cin &gt;&gt; B[i];
+        int mx1 = 0, mx2 = 0;
+        for (int i = 0; i &lt; n; i++) {
+            if (A[i] &gt; B[i]) swap(A[i], B[i]);
+            mx1 = max(mx1, A[i]);
+            mx2 = max(mx2, B[i]);
+        }
+        cout &lt;&lt; mx1 * mx2 &lt;&lt; "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>The optimal strategy for this problem, is too put all the smaller values of each pair in one array and all the larger values of each pair into the other, now lets see why this works</p>
+                <p>Notice that one of the maximums that we will multiple at the end must be the maximum of all 2*N values present in each testcase. Since we can't change this maximum we need to make the other maximum as small as possible. Lets say that the largest maximum is found in vector B, now in order to decrease the maximum of vector A, we want to make sure all the smallest values possible go into vector A.</p>
+                <p>Now to implement this we can use the method above of swapping the smaller values into vector A and the larger values into vector B, and then take the maximums of those two vectors and cout their product at the end.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1512/A">Problem 02</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int t; cin &gt;&gt; t; while (t--) {
+        int n; cin &gt;&gt; n;
+        vector&lt;int&gt; V(n);
+        for (int i = 0; i &lt; n; i++) cin &gt;&gt; V[i];
+        int ans = -1;
+        for (int i = 0; i &lt; n; i++) {
+            if (i == 0) {
+                if (V[i] != V[i+1] && V[i] != V[i+2]) {
+                    ans = i; break;
+                }
+            } else if (i == 1) {
+                if (V[i] != V[i-1] && V[i] != V[i+1]) {
+                    ans = i; break;
+                }
+            } else {
+                if (V[i] != V[i-1] && V[i] != V[i-2]) {
+                    ans = i; break;
+                }
+            }
+        }
+        cout &lt;&lt; ans+1 &lt;&lt; "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>If exactly one of the elements in a vector is not equal to the others, then this means that there exists some triple in this vector, where two of the elements are the same, and one of them is different. The one that is different is the odd one out, and whose position needs to be returned.</p>
+                <p>So basically just loop through all triples in the vector, and check to see if there is an element that is the odd one out. The code above is one example of looping through the vector.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1296/A">Problem 03</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int t; cin &gt;&gt; t; while (t--) {
+        int n; cin &gt;&gt; n;
+        vector&lt;int&gt; V(n);
+        for (int i = 0; i &lt; n; i++) cin &gt;&gt; V[i];
+        int odd = 0, even = 0;
+        for (int i = 0; i &lt; n; i++) {
+            if (V[i]%2) odd++;
+            else even++;
+        }
+        if (odd == 0) cout &lt;&lt; "NO" &lt;&lt; "\n";
+        else if (odd%2 == 0 && even == 0) cout &lt;&lt; "NO" &lt;&lt; "\n";
+        else cout &lt;&lt; "YES" &lt;&lt; "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>First thing we are going to do is count the number of odd numbers and the number of even numbers in the array, lets call them O and E respectively. Now that we have O and E, this problem becomes basic casework.</p>
+                <p>If O = 0, then this means there are no odd numbers in the array, and in order for the array to have an odd sum, there needs to be at least one odd number (and you can't convert any even numbers to odd because you dont have any odd numbers). So this case turns out to be impossible and your print "NO".</p>
+                <p>If O = 2N, and E = 0, then this means there is an even number of odd numbers and no even numbers. This case also become impossible because the even number off odd numbers will add to an even sum, and we can't convert any even numbers to odd numbers because we don't have any even numbers to convert.</p>
+                <p>Now for every other case, it is possible and you return "YES". This is because now we know there is at least 1 odd number and at least 1 even number which can be converted into each other and form an odd sum.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1234/A">Problem 04</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int t; cin &gt;&gt; t; while (t--) {
+        int n; cin &gt;&gt; n;
+        vector&lt;int&gt; V(n);
+        for (int i = 0; i &lt; n; i++) cin &gt;&gt; V[i];
+        int sum = 0;
+        for (int i = 0; i &lt; n; i++) sum += V[i];
+        cout &lt;&lt; (sum%n == 0 ? sum/n : sum/n+1) &lt;&lt; "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>We need to find a price p, such that p*n &gt;= sum, where sum represents the sum of the original price. This leads us to the simple equation of price &gt; sum/n. So we can just find the sum and divide by n, but we have to be careful to see if sum is divisible by n, because price has to be an integer. So if sum is not divisible by n, price won't be an integer and then we have to find the ceiling of the price instead.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1152/A">Problem 05</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;its/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n, m; cin &gt;&gt; n &gt;&gt; m;
+    vector&lt;int&gt; A(n), B(m);
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; A[i];
+    for (int i = 0; i &lt; m; i++) cin &gt;&gt; B[i];
+    int odd = 0, even = 0, odd2 = 0, even2 = 0;
+    for (int i = 0; i &lt; n; i++) {
+        if (A[i]%2 == 0) even++;
+        else odd++;
+    }
+    for (int i = 0; i &lt; m; i++) {
+        if (B[i]%2 == 0) even2++;
+        else odd2++;
+    }
+    cout &lt;&lt; min(even,odd2) + min(odd,even2) &lt;&lt; "\n";
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>In order for two numbers to add up to an odd number, one of them has to be even and one of them has to be odd. So the possible pairs that can be opened have to be one of the following: has odd chest and an even key or has even chest an odd key. Our answer will be the number of these two pairs.</p>
+                <p>To implement these we can count the odd in vector 1 and the even in vector 2 and then add the minimum of those two. We can then count the even in vector 1 and the odd in vector 2 and then add the minimum of those two. The answer is the sum of the previous two numbers and we can then just print it out.</p>
+            </details>
         </fieldset>
     </div>
 </body>
