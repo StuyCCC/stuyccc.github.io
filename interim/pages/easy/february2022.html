@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-02-13</h4>
+        <h4>Last Updated 2022-02-25</h4>
         <fieldset>
             <legend>EASY FEBRUARY 2022</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -96,7 +96,98 @@
             <a target="_blank" href="https://codeforces.com/gym/352982/problem/22_02FEB12">Problem 12</a>
             <details>
                 <summary>Solution</summary>
+                <p>For every query, we are checking each subarray and determining whether it's possible to fill a chosen subarray with the number x with at most y replacements. For each query, the naive approach is to loop through every possible subarray and check if the number of elements in the subarray not equal to x is at most y. However, O(n^2*q) is too slow.</p>
+                <p>Solution 1: Precomputation with Brute Force</p>
+                <p>The constraints for N and x are small, but the number of queries is big. This signals some precomputation. Specifically, for every possibility of x we can precompute the answer for y. Let mx[max(x)+1][N] be a 2d array. The first dimension will be for the value of x you are computing, and the second dimension is the number of elements you are replacing, and let it's value be the length of the longest subarray that it satisfies. We can compute the array by looping through every x and every possible subarray. Afterwards for each x, take the prefix max, since the answer for a greater y cannot be smaller than a query with a smaller y with the same x. We can answer queries in O(1) time using mx[x][y]. Complexity is O(n^2*x + q)</p>
+                <p>Solution 2: Sliding Window</p>
+                <p>For every query, we can use sliding window to find the longest subarray that has at most y elements that are not equal to x. This is pretty standard. Complexity is O(nq). Implementation in C++ for this solution is <a href="https://ideone.com/nYQGbN" target="_blank">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc182/tasks/abc182_c">Problem 13</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc182/editorial/324">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1561/problem/A">Problem 14</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/94216">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc171/tasks/abc171_d">Problem 15</a>
+            <details>
+                <summary>Solution</summary>
                 <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1605/B">Problem 16</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/96866">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc184/tasks/abc184_c">Problem 17</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc184/editorial/374">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1406/problem/B">Problem 18</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/82560">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/gym/352982/problem/22_02FEB19">Problem 19</a>
+            <details>
+                <summary>Solution</summary>
+                <p>Believe it or not, but this is a graph problem! Hear me out, Let the nodes of the graph be numbers that satisfy the adjacent numbers requirement. We can build the nodes in order and as we go using our favorite graph traversal algorithm: BFS!</p>
+                <p>Let the current node be x. We can build edges that will connect x to larger valid numbers. Let v be the last digit of x:</p>
+                <p>if v &gt;= 2: add an edge between x and x*10 + v-2</p>
+                <p>if v &gt;= 1: add an edge between x and x*10 + v-1</p>
+                <p>add an edge between x and x * 10 + v</p>
+                <p>if v &lt;= 8: add an edge between x and x*10 + v+1</p>
+                <p>if v &lt;= 9: add an edge between x and x*10 + v+2</p>
+                <p>Now, x is connected to all valid numbers that you can establish from its digits and are bigger. We can use BFS to traverse the nodes in increasing order. First, add numbers 1 to 9 to the queue since they will always be valid. Also, make sure you are adding the edges in order from smallest to greatest.</p>
+                <p>The N'th node you access is the answer.</p>
+                <p>Complexity: O(N)</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1422/problem/A">Problem 20</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/83452">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc187/tasks/abc187_c">Problem 21</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc187/editorial/506">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/1585/C">Problem 22</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/97845">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/gym/352982/problem/22_02FEB23">Problem 23</a>
+            <details>
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1422/problem/B">Problem 24</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/83452">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/problemset/problem/758/B">Problem 25</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://codeforces.com/blog/entry/49880">here</a>.</p>
             </details>
         </fieldset>
     </div>

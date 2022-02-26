@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2022-02-25</h4>
+        <fieldset>
+            <legend>INTRO TO SETS</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Sets</h3>
+            <p>Sets in C++ are very similar to sets in mathematics; it is a collection of unique elements. Elements in sets may not be directly accessed like in a vector, but it carries a unique set of advantages when compared to vectors.</p>
+            <p>The first is that we can check for membership within a set much more quickly than in a vector. The second is that elements in a set are automatically sorted, or put into the correct order, as soon as they are inserted, and that ordering is maintained. This means the first element is always the least and the last element is always the greatest.</p>
+            <p>But what does “least” mean, exactly? It’s possible to customize set orderings, but by default, number types are ordered from least to greatest and strings are ordered lexicographically, which basically means alphabetically but by including the entire ascii table not just the alphabet.</p>
+            <p>Declaring sets is similar to declaring vectors:</p>
+            <pre><code class="language-cpp">
+set&lt;int&gt; s;
+            </code></pre>
+            <p>This will initialize an empty set named ‘s’ which holds integers. Instead of being accessed directly, elements of sets are accessed through <i>iterators</i>.</p>
+
+            <h3>Iterators</h3>
+            <p>An iterator “points to” an element in an object, like a vector, which holds elements. The iterator for a class T is T::iterator</p>
+            <p>However, since it’s long, most of the time we can just replace it with auto, which can infer the type based on context. Most of the time, auto should not be abused.</p>
+            <p>The iterators to the beginning and end of a vector v is</p>
+            <pre><code class="language-cpp">
+auto first = v.begin();
+auto last = v.end();
+            </code></pre>
+            <p>v.begin() points to the first first element of v, but v.end() actually points to the box after the last element of v, not the last element itself. Thus, we must be a bit careful. This concept is also show in the image below.</p>
+            <img src="../../data/beginner/iterator.png">
+            <p>However, if we think of a variable as a value inside of a box, the iterator refers to the box only, not its contents. The way we get the contents is by <i>dereferencing</i> the iterators, as follows:</p>
+            <pre><code class="language-cpp">
+int p = *first;
+            </code></pre>
+            <p>Since for a vector, all the “boxes” are in a row, we can also add or subtract from the iterator to get the next box. Thus, another way we can for-loop through a vector is</p>
+            <pre><code class="language-cpp">
+for (auto itr = v.begin(); itr != v.end(); itr++) {
+    cout &lt;&lt; *itr &lt;&lt; “ “;
+}
+            </code></pre>
+            <p>Other objects can have iterators too, some being more useful than others.</p>
+            <p>Vectors also have reverse iterators, which point to the nth-to-last element in a vector. When we add 1 to the reverse iterator, it will advance one position in reverse. v.rbegin() points to the last element, while v.rend() points to the box before the first element.</p>
+            <pre><code class="language-cpp">
+auto last = v.rbegin();
+            </code></pre>
+            <p>We can iterate through a vector backwards as follows:</p>
+            <pre><code class="language-cpp">
+for (auto itr = v.rbegin(); itr != v.rend(); itr++) {
+    cout &lt;&lt; *itr &lt;&lt; “ “;
+}
+            </code></pre>
+            <p>We will see more examples of how iterators can be useful when we explore more data structures in the standard library.</p>
+
+            <h3>Set Methods</h3>
+            <p>Given a set S, here are some common methods you can use on S.</p>
+            <pre><code class="language-cpp">
+set::iterator begin()
+            </code></pre>
+            <p>Returns an iterator to the first (least) element in a set. This iterator can then be modified to move along the set.</p>
+            <pre><code class="language-cpp">
+void clear()
+            </code></pre>
+            <p>Removes all elements from a set, making it of size 0.</p>
+            <pre><code class="language-cpp">
+int count(T val)
+            </code></pre>
+            <p>Returns the number of elements that are equal to the parameter val in the set.</p>
+            <pre><code class="language-cpp">
+bool empty()
+            </code></pre>
+            <p>Return true if the set is empty (of size 0) and false otherwise.</p>
+            <pre><code class="language-cpp">
+set::iterator end()
+            </code></pre>
+            <p>Return an iterator to the position directly after the last element in a set.</p>
+            <pre><code class="language-cpp">
+void erase(T val)
+            </code></pre>
+            <p>Removes all values equal to the parameter val in the set.</p>
+            <pre><code class="language-cpp">
+void erase(set::iterator itr)
+            </code></pre>
+            <p>Removes the value at the position specified by the iterator from the set.</p>
+            <pre><code class="language-cpp">
+void erase(set::iterator itr1, set::iterator itr2)
+            </code></pre>
+            <p>Removes all values in the range from itr1 to itr2 from the set.</p>
+            <pre><code class="language-cpp">
+set::iterator find(T val)
+            </code></pre>
+            <p>Returns an iterator to the first occurrence of a val in a set.</p>
+            <pre><code class="language-cpp">
+void insert(T val)
+            </code></pre>
+            <p>Adds the element val to the set in the correct ordering.</p>
+            <pre><code class="language-cpp">
+set::iterator lower_bound(T val)
+            </code></pre>
+            <p>Returns an iterator to the first occurrence of an element that is greater than or equal to the val given.</p>
+            <pre><code class="language-cpp">
+set::iterator rbegin()
+            </code></pre>
+            <p>Returns an iterator to the last element of a set. </p>
+            <pre><code class="language-cpp">
+set::iterator rend()
+            </code></pre>
+            <p>Return an iterator to the position directly before the first element in a set.</p>
+            <pre><code class="language-cpp">
+int size()
+            </code></pre>
+            <p>Return an integer representing the current size of a set.</p>
+            <pre><code class="language-cpp">
+set::iterator upper_bound(T val)
+            </code></pre>
+            <p>Returns an iterator to the first occurrence of an element that is greater than the val given.</p>
+
+            <h3>Multisets</h3>
+            <p>A multiset is like an ordinary set, except it can contain multiple occurrences of a single element. For instance, {1, 2, 2, 3, 4} is a valid multiset but is not a valid set. Multisets have the same methods and ordering property as normal sets, and elements are also accessed through iterators. They are declared as follows:</p>
+            <pre><code class="language-cpp">
+multiset&lt;int&gt; ms;
+            </code></pre>
+
+            <h3>Unordered Sets</h3>
+            <p>Like the name suggests, unordered sets do not have the property that the elements are ordered. As such, it does not support search functionality. It is only possible to check if an element is present in the set, but doing this with an unordered set as opposed to a regular set is considerably faster. Unordered multisets exist as well for this purpose.</p>
+            <p>Elements of unordered sets must be hashable, or capable of being turned into a pure number. In general, all primitive data types, including strings, are hashable, but not data structures like vectors and other sets. Unordered sets are declared as follows:</p>
+            <pre><code class="language-cpp">
+unordered_set&lt;int&gt; us;
+unordered_multiset&lt;int&gt; ums;
+            </code></pre>
+
+            <h3>Problems</h3>
+            <a target="_blank" href="https://cses.fi/problemset/task/1621">Problem 01</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+#define ll long long
+
+int main() {
+    int n; cin &gt;&gt; n;
+    set&lt;int&gt; S;
+    for (int i = 0; i &lt; n; i++) {
+        int x; cin &gt;&gt; x;
+        S.insert(x);
+    }
+    cout &lt;&lt; S.size() &lt;&lt; "\n";
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>A set only stores distinct elements, so to get the number of distinct elements given, we can just put all the elements in the set and return the size of the set afterwards.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1312/problem/B">Problem 02</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int t; cin &gt;&gt; t; while (t--) {
+        int n; cin &gt;&gt; n;
+        multiset&lt;int&gt; MS;
+        for (int i = 0; i &lt; n; i++) {
+            int x; cin &gt;&gt; x;
+            MS.insert(x);
+        }
+        for (auto itr = MS.rbegin(); itr != MS.rend(); itr++) {
+            cout &lt;&lt; *itr &lt;&lt; " ";
+        }
+        cout &lt;&lt; "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>There are many ways to solve this problem but one way is to realize that if we have an element x and an element y, where x &lt; y, it is optimal to put x at pos i after y at pos j. This is because x - i != y - j, no matter what because y &gt; x and i &lt; j. So this generalizes to us having to put the numbers in reverse order. One way we can do this is by putting all the numbers in a multiset (there can be duplicates) and then printing them out in reverse order.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1277/problem/B">Problem 03</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int t; cin &gt;&gt; t; while (t--) {
+        int n; cin &gt;&gt; n;
+        set&lt;int&gt; S;
+        for (int i = 0; i &lt; n; i++) {
+            int x; cin &gt;&gt; x;
+            S.insert(x);
+        }
+        int ans = 0;
+        while (!S.empty()) {
+            int mx = *S.rbegin();
+            S.erase(mx);
+            if (mx % 2 == 0) {
+                ans++;
+                S.insert(mx/2);
+            }
+        }
+        cout &lt;&lt; ans &lt;&lt; "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>First thing to notice that if we were to cut a certain number in half, it is optimal to cut the largest current number, mx, in half. This is because there is the chance in which mx/2 is also in the array, and in this case we want to remove both the original mx/2 and the mx/2 coming from splitting mx at the same time because we would be wasting moves if we did them separately.</p>
+                <p>So now that we have this subproblem solved we can see that we don't need to keep track of each number we only have to keep track of distinct numbers. So we can put all the numbers in a set, then cut the largest one in half (if possible), and put the result back into the set, adding one to our total moves. If the largest number ends up being odd we can just remove it without performing a move because we don't have anything to do with it. Once the set is empty that means we have no more moves to perform, so we just print the number of moves done.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/1392/problem/A">Problem 04</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int t; cin &gt;&gt; t; while (t--) {
+        set&lt;int&gt; count;
+        int n; cin &gt;&gt; n;
+        for (int q = 0; q &lt; n; q++) {
+            int x; cin &gt;&gt; x;
+            count.insert(x);
+        }
+        if (count.size() &gt; 1) cout &lt;&lt; 1 &lt;&lt; "\n";
+        else cout &lt;&lt; n &lt;&lt; "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>Ok so first lets solve a subproblem. Lets prove that as long as a subarray of size 3 with elements x, y, z, isn't so that x == y == z, then we can operate on it until it becomes 1 element. We can prove this through casework.</p>
+                <p>If x != y != z, we can add x and y and then add that to z, or if x+y == z, we can add z and y and then add to x. So this will allow us to simplify to 1 number.</p>
+                <p>If x == y != z, we can add y and z and then add that to x, to reduce to 1 number.</p>
+                <p>If x != y == z, we can add x and y and then add that to z, to reduce to 1 number.</p>
+                <p>If x == z != y, we can add z and y and then add that to x, to reduce to 1 number.</p>
+                <p>However, if x == y == z, we can't perform any operation. So this means that any size 3 subarray of an array where the elements aren't equal to each other can be reduced. Now this casework can be generalized to subarrays greater than size 3, by taking subarrays of size 3 inside of them.</p>
+                <p>All in all, we get that as long as there are at least two distinct elements in the total array we can reduce it to a single number, else we cant. So we can just put all elements in a set and see if the set is size 1 or greater than and print the corresponding answer.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/contest/844/problem/A">Problem 05</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    string s; cin &gt;&gt; s;
+    int n; cin &gt;&gt; n;
+    if (sz(s) &lt; n) {
+        cout &lt;&lt; "impossible" &lt;&lt; "\n";
+    } else {
+        set&lt;char&gt; v;
+        for (auto x : s) v.insert(x);
+        if (v.size() &gt; n) cout &lt;&lt; 0 &lt;&lt; "\n";
+        else cout &lt;&lt; n-v.size() &lt;&lt; "\n";
+    }
+}
+                </code></pre>
+                <h4>Explanation</h4>
+                <p>If the size of the string s is smaller than the required number of distinct letters then it is impossible to modify the string s to the goal wanted. If the string s is greater than the number of distinct characters required, we can just count the number of distinct characters present already and then provide either 0 if it is greater than the amount needed, or the difference if it is less than the amount needed.</p>
+            </details>
+        </fieldset>
+    </div>
+</body>
