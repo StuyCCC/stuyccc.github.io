@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2022-01-25</h4>
+        <fieldset>
+            <legend>Graphs</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Definitions</h3>
+            <p>A graph is composed of a set of vertices (or nodes) and a set of edges. Edges can be defined as pairs of two nodes, one pair representing a connection between the two nodes. The nodes are often drawn as disks with the edges lines connecting them.</p>
+            <p>Each node has a degree, the number of edges containing that node. Two nodes are called adjacent if there is an edge connecting them. Two adjacent nodes are called neighbors.</p>
+            <p>There can be paths, or sequences of edges, between nodes. If a path only contains each node at most once it is called simple. A special type of path is a cycle: a path which starts and ends with the same node.</p>
+            <p>The graph described above is called an undirected graph, convaying that the edges are undirected: if there are nodes `a` and `b`, an edge allowing a path of one edge from `a` to `b` will also allow a similar path from `b` to `a`.</p>
+            <p>A directed graph similarly composed of nodes and edges, however the edges are directed. They are "one-way", they either make a path from `a` to `b` possible or a path from `b` to `a`. Not both (though two edges, one connecting `a` to `b` and another connecting `b` to `a` is possible). These are normally draw as lines connecting two nodes with an arrow on one side indicating the direction of the node. If `a` to `b` is a possible path across an edge, the edge would be drawn with an arrow into the `b`.</p>
+            <p>With different edges, directed graphs have a different measure of degree, and indegree and an outdegree. The indegree is the number of edges pointing into the node and the outdegree is hte number of edges pointing out of it.</p>
+            <h3>Representations</h3>
+            <p>There are a couple common graph representations used in competitive programming. The one I use most is representing graphs as adjacency lists. In it each node is given its own list of nodes adjacent to it. If nodes are indexed by a number this can be stored as a 2d dynamic array (vector in c++, Arraylist in java, list in python, Vec in rust, ...). Here if the adjacency list is called `adj`, adj[u] = list of nodes adjacent to node u.</p>
+            <p>The space complexity for this representation is <script type="math/tex">\mathcal{O}(E + V)</script> where <script type="math/tex">E, V</script> are the number of edges and nodes respectively. The time complexity for checking if two nodes are adjacent is <script type="math/tex">\mathcal{O}(E)</script> as it is possible for a node to be adjacent to all other nodes. Then the entire list of adjacent noes to that one node would have to be scanned to see if it is adjacent to another node. However this doesn't inflate the time to list all nodes adjacent to a given node, that is simply reading a list.</p>
+            <p>An adjacency matrix is used when a program needs to quickly check if two nodes in a graph are adjacent. An adjacency matrix is a matrix (or 2d array) of booleans. If we call this matrix adj, adj[u][v] = true if nodes u and v are adjacent, else false. This is great as checking adjacent nodes is now an <script type="math/tex">\mathcal{O}(1)</script>, however it sacrifices space. The data structure is stored as an <script type="math/tex">V \times V</script> matrix, now taking <script type="math/tex">\mathcal{O}(V^2)</script> space.</p>
+            <p>Graphs can also be represented as an edge list, simply a list of all the edges in the graph. When iterating through every edge is needed this can be useful (though an adjacency list can also work for the same purpose). Similarly more ad-hoc ways of representing the graph occur as well. One super common thing is having a grid and treating it as a graph where each sqaure is a node which is adjacent to the squares sharing an edge with it.</p>
+        </fieldset>
+    </div>
+</body>
