@@ -19,18 +19,18 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-01-25</h4>
+        <h4>Last Updated 2022-03-23</h4>
         <fieldset>
-            <legend>Graphs</legend>
+            <legend>GRAPHS</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
             <h3>Definitions</h3>
             <p>A graph is composed of a set of vertices (or nodes) and a set of edges. Edges can be defined as pairs of two nodes, one pair representing a connection between the two nodes. The nodes are often drawn as disks with the edges lines connecting them.</p>
             <p>Each node has a degree, the number of edges containing that node. Two nodes are called adjacent if there is an edge connecting them. Two adjacent nodes are called neighbors.</p>
             <p>There can be paths, or sequences of edges, between nodes. If a path only contains each node at most once it is called simple. A special type of path is a cycle: a path which starts and ends with the same node.</p>
-            <p>The graph described above is called an undirected graph, convaying that the edges are undirected: if there are nodes `a` and `b`, an edge allowing a path of one edge from `a` to `b` will also allow a similar path from `b` to `a`.</p>
+            <p>The graph described above is called an undirected graph, conveying that the edges are undirected: if there are nodes `a` and `b`, an edge allowing a path of one edge from `a` to `b` will also allow a similar path from `b` to `a`.</p>
             <p>A directed graph similarly composed of nodes and edges, however the edges are directed. They are "one-way", they either make a path from `a` to `b` possible or a path from `b` to `a`. Not both (though two edges, one connecting `a` to `b` and another connecting `b` to `a` is possible). These are normally draw as lines connecting two nodes with an arrow on one side indicating the direction of the node. If `a` to `b` is a possible path across an edge, the edge would be drawn with an arrow into the `b`.</p>
-            <p>With different edges, directed graphs have a different measure of degree, and indegree and an outdegree. The indegree is the number of edges pointing into the node and the outdegree is hte number of edges pointing out of it.</p>
+            <p>With different edges, directed graphs have a different measure of degree, an indegree and an outdegree. The indegree is the number of edges pointing into the node and the outdegree is the number of edges pointing out of it.</p>
             <h3>Representations</h3>
             <p>There are a couple common graph representations used in competitive programming. The one I use most is representing graphs as adjacency lists. In it each node is given its own list of nodes adjacent to it. If nodes are indexed by a number this can be stored as a 2d dynamic array (vector in c++, Arraylist in java, list in python, Vec in rust, ...). Here if the adjacency list is called `adj`, adj[u] = list of nodes adjacent to node u.</p>
             <p>The space complexity for this representation is <script type="math/tex">\mathcal{O}(E + V)</script> where <script type="math/tex">E, V</script> are the number of edges and nodes respectively. The time complexity for checking if two nodes are adjacent is <script type="math/tex">\mathcal{O}(E)</script> as it is possible for a node to be adjacent to all other nodes. Then the entire list of adjacent noes to that one node would have to be scanned to see if it is adjacent to another node. However this doesn't inflate the time to list all nodes adjacent to a given node, that is simply reading a list.</p>
