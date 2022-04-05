@@ -36,6 +36,62 @@
             <p>The space complexity for this representation is <script type="math/tex">\mathcal{O}(E + V)</script> where <script type="math/tex">E, V</script> are the number of edges and nodes respectively. The time complexity for checking if two nodes are adjacent is <script type="math/tex">\mathcal{O}(E)</script> as it is possible for a node to be adjacent to all other nodes. Then the entire list of adjacent noes to that one node would have to be scanned to see if it is adjacent to another node. However this doesn't inflate the time to list all nodes adjacent to a given node, that is simply reading a list.</p>
             <p>An adjacency matrix is used when a program needs to quickly check if two nodes in a graph are adjacent. An adjacency matrix is a matrix (or 2d array) of booleans. If we call this matrix adj, adj[u][v] = true if nodes u and v are adjacent, else false. This is great as checking adjacent nodes is now an <script type="math/tex">\mathcal{O}(1)</script>, however it sacrifices space. The data structure is stored as an <script type="math/tex">V \times V</script> matrix, now taking <script type="math/tex">\mathcal{O}(V^2)</script> space.</p>
             <p>Graphs can also be represented as an edge list, simply a list of all the edges in the graph. When iterating through every edge is needed this can be useful (though an adjacency list can also work for the same purpose). Similarly more ad-hoc ways of representing the graph occur as well. One super common thing is having a grid and treating it as a graph where each sqaure is a node which is adjacent to the squares sharing an edge with it.</p>
+            <h3>Graph Traversals</h3>
+            <p>The two most common algorithms for traversing a graph, or iterating through all the nodes in the graph in some order, are BFS, breadth first search, and DFS, depth first search. Resources for these algorithms are numerouse (ex: cp-algorithms, competitive progammer's handbook, any algorithms textbook,...) so here I'll just go over stuff in brief.</p>
+            <p>As it sounds, breadth first seach traverses nodes starting with a starting node and then visiting nodes closest to that given node first. There is a queue of nodes to be visited, nodes added to that queue in an order such that closest nodes to the starting node are added first. Psuedocode for a bfs when the graph is stored as an adjacency list follows. A very similar algorithm can be used for a bfs on a graph stored differently, such as a bfs on a grid.</p>
+            <pre><code>
+            let adj be an adjacency list where each node is index with a number
+            let vis be a visited array (or map) such that vis[node] = true if node visited else false
+            let s be the starting node
+            let q be a queue
+            while q is non-empty:
+                let u = front of q
+                pop to front off of q
+                if vis[u]: continue to next iteration of loop
+                vis[u] = true
+                for v in adj[u]:
+                    push v to back of q
+            </code></pre>
+            <p>A main use of bfs is finding the distance of all the nodes in a graph from a starting node.<.p>
+            <p>A dfs similarly traverses a graph however this time going depth first, as in the name. It will iterate over nodes along a path through the graph until there are no more nodes which can be added to that path. Then it will recursivly backtrack to other nodes on the path and try out moving through those. A good visulization (and also a good comic strip) of a dfs and bfs on a tree is <a href="https://xkcd.com/2407/">here</a>.</p>
+            <p>The implementation can be recursive or iterative. An iterative implementation is identical to a bfs except the queue is replaced with a stack. The recursive implementation is a bit shorter and is as follows:</p>
+            <pre><code>
+            let adj be an adjacency list where each node is index with a number
+            let vis be a visited array (or map) such that vis[node] = true if node visited else false
+            let s be the starting node
+            dfs(u):
+                if vis[u]: return
+                vis[u] = true
+                for v in adj[u]:
+                    dfs(v)
+
+            //this can then be called with
+            dfs(s)
+            </code></pre>
+            <p>Other implementations exist for both a dfs and bfs where it is a precondition that the node being visited has not been visited (i.e. vis[node] = false) instead of it being checked in the body of the function (or inside the while loop) as done here. It is a matter of style which version to use.</p>
+            <h3>Some Uses</h3>
+            <p>DFS and BFS are super useful when deal with problems where you are given an unweighted graph. Doing lots of problems is the best way to get a feel for what these uses are. The two applications I'll give here are a tiny tiny subset of what a DFS and BFS can be used for. Some stuff to take a look at though (not even close to a full list, if that is even possible) is cycle finding (and topological sort) and dp on trees.</p>
+            <h4>Connected Componenets</h4>
+            <p>It is often useful to find components, or sections of a graph where all the nodes in a section can be reached from every other node in that component, and no other nodes can be reached. This can arise naturally where connected components of nodes arive naturally from a given graph, or these groups can be more constructed. Often nodes in a component can be considered together, all sharing some property and then components can be reasoned about instead of individual nodes which can help in soling problems. A rough idea of how an implementation would look follows</p>
+            <pre><code>
+            let adj be an adjacency list where each node is index with a number
+            let comp be an array such that initially comp[node] = -1 however 
+            after being filled comp[node] = index of the componenent the node is in
+            comp is what we want to construct
+            dfs(u, component):
+                if comp[u] != -1: return
+                comp[u] = component
+                for v in adj[u]:
+                    dfs(v, component)
+            for u in nodes:
+                //I'll name the components after some element of the component
+                dfs(u, u)
+            //the component array should now be complete
+            </code></pre>
+            
+            <p>To make this more concrete, consider the problem <a href="http://www.usaco.org/index.php?page=viewproblem2&cpid=968">Milk Visits</a>. Here farms can be grouped into components by what type of milk they offer. There can be connected components of "H"s or connected components of "G"s for example. Once these components are created answering the queries in the question becomes much easier. A more detailed solution and implementation can be found on the USACO website.</p>
+            <h4>Diameter of Tree</h4>
+            <p>This is a nice tree problem to think about and shows both an elegant use of graph traverals and a pretty way of writing out a tree. The diameter of a tree is the length of the longest path in the tree. Take a bit of time to think of this question. An algorithm and sketch of why the algorithm is true can be found in the competitive programmer's handbook. It is worth while trying to formalize that proof of correctness a bit more though. (If I find time I might expand on what is given there on this site).</p>
         </fieldset>
     </div>
 </body>
