@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-04-11</h4>
+        <h4>Last Updated 2022-04-23</h4>
         <fieldset>
             <legend>EASY APRIL 2022</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -82,6 +82,85 @@
             <details>
                 <summary>Solution</summary>
                 <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/arc112/editorial/745">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc238/tasks/abc238_c">Problem 11</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc238/editorial/3365">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1037">Problem 12</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="http://www.usaco.org/current/data/sol_tracing_bronze_open20.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/arc098/tasks/arc098_a">Problem 13</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://img.atcoder.jp/arc098/editorial.pdf">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc190/tasks/abc190_d">Problem 14</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc190/editorial/692">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc228/tasks/abc228_d">Problem 15</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc228/editorial/2953">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc235/tasks/abc235_d">Problem 16</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc235/editorial/3264">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="http://www.usaco.org/index.php?page=viewproblem2&cpid=1035">Problem 17</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="http://www.usaco.org/current/data/sol_socdist1_bronze_open20.html">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/gym/352982/problem/22_04APR18">Problem 18</a>
+            <details>
+                <summary>Solution</summary>
+                <p>First let’s take N moves to bring player 1 to first place and keep them there. Notice that after this the last player will immediately be frozen in place, the second to last player will maybe take 1 move to beat the last player and then stay in place. And so on. This might be bad though since there may be a case (and there are cases) in which the n-th to last player can actually move more than n times. At most right now we have an upper bound for player N of N + (time for players 1…N-1 last players to get in place). To reduce this lets think of this as a slot machine. Players 1 and N+1 to 2N are coins and players 2 to N are empty spaces. Note that coins always beat empty spaces no matter what position they are in. In particular if we have a match between two spaces, it will also end with a space being left over in the court. If we have a match between two coins it will end with a coin being left over in the court. If we have a match between a coin and a space the coin always stays (like a slot machine). Thus we can imagine what happens after N rounds. After these N rounds all the coins will eventually fill up the slots and now we will have one coin per slot meaning that each court has exactly one coin and one space. From now on the coin players stay in their locations and the space players do cyclic shifts. To compute where the space players are after K rounds we can use properties of modular arithmetic to prove that this is equivalent to where the players will be after K % N rounds when K &gt; 2n. (In reality this actually works if we make the K &gt; N only because the conditions for getting player 1 to the king court and getting the slots filled are independent.)</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/arc120/tasks/arc120_b">Problem 19</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/arc120/editorial/1936">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/abc204/tasks/abc204_c">Problem 20</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/abc204/editorial/2034">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/arc114/tasks/arc114_b">Problem 21</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://atcoder.jp/contests/arc114/editorial/917">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://atcoder.jp/contests/cf16-exhibition-final/tasks/cf16_exhibition_final_a">Problem 22</a>
+            <details>
+                <summary>Solution</summary>
+                <p>The solution can be found <a target="_blank" href="https://img.atcoder.jp/data/other/cf16-exhibition-final/editorial.pdf">here</a>.</p>
+            </details>
+            <br>
+            <a target="_blank" href="https://codeforces.com/gym/103110/problem/H">Problem 23</a>
+            <details>
+                <img src="../../data/easy/april23.png" width="725" height="800">
+                <summary>Solution</summary>
+                <p>WILL BE HERE SOON</p>
             </details>
         </fieldset>
     </div>
