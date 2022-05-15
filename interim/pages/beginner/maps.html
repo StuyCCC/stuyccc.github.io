@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2022-05-15</h4>
+        <fieldset>
+            <legend>MAPS AND PAIRS</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+			<h3>Pairs</h3>
+			<p>Before we move on to the main topic for today: maps. We should quickly learn about another useful data structure called a pair. A pair is basically what it sounds like: a pair of two variables put into one. They are defined in the following way:</p>
+			<pre><code class="language-cpp">
+pair&lt;T1, T2&gt; p;
+			</code></pre>
+			<p>Where T1 and T2 can be any data type you want. You can also instantiate a pair using the make_pair function like below.</p>
+			<pre><code class="language-cpp">
+pair&lt;T1, T2&gt; p = make_pair(T1 val1, T2 val2);
+			</code></pre>
+			<p>The usefulness of a pair comes from the fact that you can put two related quantities together even though they might not be of the same data type. Notice how a vector, array, and sets (the data structures we have gone through so far) all only allow one data type to be stored at a time.</p>
+			<p>However, occasionally you may want to put related values of two different types in a vector or an array (lets say we want to put a double and int together), but there is no way to do this, until now that is. Using a vector of pair&lt;int, double&gt;'s you could store these related values efficiently.</p>
+			<p>One final thing about pairs is that to access the values inside of a pair (lets call it p) you can't use the usual bracket notation of p[0] and p[1]. Instead you have to access the values in the following way.</p>
+			<pre><code class="language-cpp">
+p.first // the 0th value
+p.second // the 1st value
+			</code></pre>
+
+			<h3>Maps</h3>
+			<p>Now we can get to the main topic of maps. A map is a data structure that "maps" one variable to another. You can think of them like vectors, but instead of using integer indices to access values, you use variables called keys to access other variables called values. You can declare a map using the following syntax:</p>
+			<pre><code class="language-cpp">
+map&lt;T1, T2&gt; M;
+            </code></pre>
+			<p>Where T1 and T2 are any data type you want them to be. This syntax sets T1 to be the data type of the keys (or the indices) of the map, and it makes T2 the data type of the values of the map. You can insert elements into a map by using the following syntax:</p>
+			<pre><code class="language-cpp">
+M[key] = value;
+            </code></pre>
+			<p>This puts a pair inside of the map where the first element in the pair is the key and the second element in the pair is the value. So basically a map is made out of a list of pairs, where you can get the second element of the pair by inputting the first element of the pair. Syntatically, you can get value by doing M[key].</p>
+			<p>Some common properties of maps are that they are automatically sorted (only the keys are compared in this process, not the values). They also do not allow for duplicate keys, which means if you did M[key] = value1 and then M[key] = value2, when you next access the value that is mapped to by key it will be equivalent to value2.</p>
+			<p>Iterating over maps is basically the same as iterating over vectors and sets, the only thing you have to be careful with is that when you dereference your iterator you get a pair not a single value. Note that pairs can not be printed out by themselves, so if you want to print out all the keys and values in a map, you would have to do something like the following:</p>
+			<pre><code class="language-cpp">
+for (auto x : M) {
+    cout &lt;&lt; x.first &lt;&lt; x.second &lt;&lt; "\n";
+}
+			</code></pre>
+
+			<h3>Map Methods</h3>
+			<p>Given a map M, here are some common methods you can use on M.</p>
+			<pre><code class="language-cpp">
+map::iterator begin()
+            </code></pre>
+			<p>Returns an iterator to the first key-value pair in a map.</p>
+			<pre><code class="language-cpp">
+void clear()
+            </code></pre>
+			<p>Clears all key-value pairs from a map.</p>
+			<pre><code class="language-cpp">
+int count(T key)
+			</code></pre>
+			<p>Returns the number of keys in the map equivalent to "key". This can only be 1 or 0.</p>
+			<pre><code class="language-cpp">
+bool empty()
+            </code></pre>
+			<p>Returns true if the map is empty and false otherwise.</p>
+			<pre><code class="language-cpp">
+map::iterator end()
+            </code></pre>
+			<p>Returns an iterator to the position directly after the last element in the map.</p>
+			<pre><code class="language-cpp">
+void erase(map::iterator itr)
+            </code></pre>
+			<p>Erases the key-value pair pointed at by the map iterator</p>
+			<pre><code class="language-cpp">
+void erase(T key)
+            </code></pre>
+			<p>Erases the key-value pair that contains key.</p>
+			<pre><code class="language-cpp">
+void erase(map::iterator itr1, map::iterator itr2)
+            </code></pre>
+			<p>Erases all key-value pairs from itr1 inclusive to itr2 exclusive.</p>
+			<pre><code class="language-cpp">
+map::iterator find(T key)
+            </code></pre>
+			<p>Return an iterator pointing to the key-value pair containing key if it is found, and M.end() otherwise.</p>
+			<pre><code class="language-cpp">
+map::iterator lower_bound(T key)
+            </code></pre>
+			<p>Returns an iterator pointing to the first occurence of a key-value pair whose key is greater than or equal to the inputted key, and map.end() if such a key-value pair doesn't exist.</p>
+			<pre><code class="language-cpp">
+map::iterator rbegin()
+            </code></pre>
+			<p>Returns an iterator pointing to the last key-value pair in a map.</p>
+			<pre><code class="language-cpp">
+map::iterator rend()
+            </code></pre>
+			<p>Returns an iterator pointing to the position right before the first key-value pair in a map.</p>
+			<pre><code class="language-cpp">
+int size()
+            </code></pre>
+			<p>Returns the number of key-value pairs in the map.</p>
+			<pre><code class="language-cpp">
+map::iterator upper_bound(T key)
+            </code></pre>
+			<p>Returns an iterator pointing to the first occurence of a key-value pair whose key is greater than the inputted key, and map.end() if such a key-value pair doesn't exist.</p>
+
+			<h3>Unordered Maps</h3>
+			<p>Just like an unordered_set, the unordered_map is a version of the map that doesn't order its data (which in this case are the variable pairs stored inside of the map). The unordered_map is considerably faster than a regular map, and can be iterated through just like a regular map. The unordered_map is defined like the following:</p>
+			<pre><code class="language-cpp">
+unordered_map&lt;T1, T2&gt; m;
+			</code></pre>
+			<p>In C++ the data structures are called unordered_map and map, but in other languages they are called different things. In Java they are called HashMap and TreeMap, respectively. And in Python the map is called a dictionary. Other than these naming convention differences the data structures act almost identically.</p>
+			<p>Similar to maps, sets are also called different things in different languages but act almost identically. In Java the unordered_set is called a HashSet and the set is called a TreeSet. In Python the set is called a set as well. These naming conventions are related to the techniques that are used to create these data structures. The set/map data structures use a Tree and the unordered_set/unordered_map data structures use hashes. You will probably learn about these things at a future date because they are definitely not beginner topics.</p>
+
+			<h3>Practice</h3>
+			<a target="_blank" href="https://codeforces.com/contest/1003/problem/A">Problem 01</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n; cin &gt;&gt; n;
+    map&lt;int,int&gt; M;
+    for (int i = 0; i &lt; n; i++) {
+        int x; cin &gt;&gt; x;
+        M[x]++;
+    }
+    int ans = 0;
+    for (auto x : M) {
+        ans = max(x.second, ans);
+    }
+    cout &lt;&lt; ans &lt;&lt; "\n";
+}
+				</code></pre>
+                <h4>Explanation</h4>
+				<p>Two coins of the same value can not be put into the same pocket, but otherwise there is no restriction to the number of values put into a pocket. So this means that only when we encounter a value that is already in all previous pockets do we need to create a new pocket. Instead of simulating the entire process out, we can realize that if we count the frequency (lets call it f) of a value that appears in the input, that value requires a total of f pockets. Then the minimum required number of pockets is is the maximum of f over all the values in the input. I used a map to count the frequencies, but the bounds of the problem also allows for the use of a vectors if we wanted to.</p>
+			</details>
+			<br>
+			<a target="_blank" href="https://codeforces.com/contest/1397/problem/A">Problem 02</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;its/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int t; cin &gt;&gt; t; while (t--) {
+        int n; cin &gt;&gt; n;
+        map&lt;char,int&gt; M;
+        for (int i = 0; i &lt; n; i++) {
+            string s; cin &gt;&gt; s;
+            for (auto x : s) {
+                M[x]++;
+            }
+        }
+        bool br = false;
+        for (auto x : M) {
+            if (x.second % n != 0) {
+                br = true;
+                break;
+            }
+        }
+        if (br) {
+            cout &lt;&lt; "NO" &lt;&lt; "\n";
+        } else {
+            cout &lt;&lt; "YES" &lt;&lt; "\n";
+        }
+    }
+}
+				</code></pre>
+                <h4>Explanation</h4>
+				<p>The operation given to us allows us to arrange the letters in the strings in anyway we want. If we want all n strings to be the same, then all the characters in the ith slot of the strings must be equal. If this is the case there must be at least n of those ith characters in the original strings we have. However, notice that if we have n+1 or n+2 of those ith characters, then those extra 1 or 2 characters would cause some of the strings to be unequal. So from these observations we can see that each character in the final string must be in the initial strings k times, where k % n = 0. This is because these k characters can be split up evenly among the n strings and thus be matching. We can use a map to count the frequency of these characters and then iterate through the map to figure out if there is a character whose frequency is not divisible by n. If there is one, then we output NO and if there isn't one, the we output YES.</p>
+			</details>
+
+			<br>
+			<a target="_blank" href="https://atcoder.jp/contests/arc087/tasks/arc087_a">Problem 03</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n; cin &gt;&gt; n;
+    map&lt;int, int&gt; M;
+    for (int i = 0; i &lt; n; i++) {
+        int a; cin &gt;&gt; a;
+        M[a]++;
+    }
+    int ans = 0;
+    for (auto x : M) {
+        if (x.first &gt; x.second) {
+            ans += x.second;
+        } else {
+            ans += (x.second - x.first);
+        }
+    }
+    cout &lt;&lt; ans &lt;&lt; "\n";
+}
+
+				</code></pre>
+                <h4>Explanation</h4>
+				<p>To check if a sequence is good we need to check the frequencies of the numbers that appear in that sequence. We can use a map to store these frequencies. Now if the frequency of a number is less than the number itself, we have to get rid of all instances of those numbers, (this is because we can't add numbers, we can only delete them, and so the frequency will never equal number itself). These takes f (f is the frequency of that number) operations to do, and so we add f to our answer. Now if the frequency of a number is greater than the number (lets call it x) itself, we can get rid of (f - x) of that number to make f = x. This takes (f - x) operations to do, so we add f to our answer. We can iterate over the map and add to the answer as appropiate and then at the end print our answer.</p>
+			</details>
+        </fieldset>
+    </div>
+</body>
