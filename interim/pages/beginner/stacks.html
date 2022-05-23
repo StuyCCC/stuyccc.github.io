@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2022-05-23</h4>
+        <fieldset>
+            <legend>STACKS</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+			<h3>Stacks</h3>
+			<p>A stack is a data structure that stores elements like a vector but in a way that is slightly different. It stores them using the concept of a real life stack. Imagine you had a stack of books, you can add a book to the top of the stack, and you can remove a book from the top of the stack. However, you can't insert a book into the middle/bottom of stack or remove from the middle/bottom of the stack, this is because to insert there you have to move all the books on top of that position, which may be feasible in real life, but for our case is impossible.</p>
+            <p>This type of storage can be summarized by the acronyms FILO and LIFO, which stand for "first in last out" and "last in first out" respectively. Which basically means that the first book put into the stack will be at the bottom of the stack and thus the last one taken out, and the last book put into the stack will be at the top of the stack and thus the first one taken out. Remember this is given the fact that things can be only added and removed from the top.</p>
+            <p>A stack in C++ can be instantiated using the following syntax:</p>
+			<pre><code class="language-cpp">
+stack&lt;T&gt; S;
+            </code></pre>
+			<p>where T is any datatype you want. This will then create a data structure that acts in the way described above.</p>
+
+			<h3>Stack Methods</h3>
+			<pre><code class="language-cpp">
+bool empty()
+            </code></pre>
+			<p>Returns true if the stack is empty and false otherwise.</p>
+            <pre><code class="language-cpp">
+void pop()
+            </code></pre>
+			<p>Removes the top element from the stack, without returning it.</p>
+            <pre><code class="language-cpp">
+void push(T val)
+            </code></pre>
+			<p>Inserts a copy of the element val into the stack, placed at the top position.</p>
+			<pre><code class="language-cpp">
+int size()
+            </code></pre>
+			<p>Returns the number of elements in the stack.</p>
+            <pre><code class="language-cpp">
+T top()
+            </code></pre>
+			<p>Returns the element at the top of the stack, without removing it from the stack.</p>
+            <p>You can check for more methods for stacks and other data structures <a href="https://www.cplusplus.com/reference/stack/stack/">here</a>.</p>
+
+			<h3>Practice</h3>
+			<a target="_blank" href="https://www.hackerrank.com/challenges/balanced-brackets/problem?isFullScreen=true">Problem 01</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+string isBalanced(string s) {
+    stack&lt;char&gt; S;
+    for (int i = 0; i &lt; s.size(); i++) {
+        if (s[i] == '(' || s[i] == '[' || s[i] == '{') S.push(s[i]);
+        else {
+           if (S.empty()) return "NO";
+           if (s[i] == ')' && S.top() == '(') S.pop();
+           else if (s[i] == ']' && S.top() == '[') S.pop();
+           else if (s[i] == '}' && S.top() == '{') S.pop();
+           else return "NO";
+        }
+    }
+    if (S.empty()) return "YES";
+    else return "NO";
+}
+				</code></pre>
+                <h4>Explanation</h4>
+				<p>We are going to iterate through the string and check if each of the grouping symbols in the string are matched. Our stack represents the grouping symbols we have to match, so as we iterate through the string, if we see one of ([{ we add it to the stack. Now if we run into one of the closing symbols we have a variety of cases to check.</p>
+                <p>First, if the stack is empty that means there is no opening symbol to match this closing symbol, so the string is unbalanced and we return NO. If we get past this check, that means there is at least one open symbol in the stack. If that opening symbol matches the closing symbol we have currently, then the pair is valid, and we can remove the opening symbol from the stack and continue on. If they don't match, then we have a case of mismatching grouping symbols and then the string isn't balanced and we return NO.</p>
+                <p>Now if we get past the entire iteration, we still have one more check to do. If we still have symbols in the stack, then there are opening symbols that haven't been matched and so we return NO. if the stack is empty all symbols have been matched and so we return YES.</p>
+			</details>
+			<br>
+			<a target="_blank" href="https://www.hackerrank.com/challenges/equal-stacks/problem?isFullScreen=true">Problem 02</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+
+				</code></pre>
+                <h4>Explanation</h4>
+				<p></p>
+			</details>
+			<br>
+			<a target="_blank" href="https://www.hackerrank.com/challenges/game-of-two-stacks/problem?isFullScreen=true">Problem 03</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+
+				</code></pre>
+                <h4>Explanation</h4>
+				<p></p>
+			</details>
+        </fieldset>
+    </div>
+</body>

@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2022-05-15</h4>
+        <h4>Last Updated 2022-05-23</h4>
         <fieldset>
             <legend>MAPS AND PAIRS</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -117,6 +117,7 @@ int size()
 map::iterator upper_bound(T key)
             </code></pre>
 			<p>Returns an iterator pointing to the first occurence of a key-value pair whose key is greater than the inputted key, and map.end() if such a key-value pair doesn't exist.</p>
+            <p>You can check for more methods for maps and other data structures <a href="https://www.cplusplus.com/reference/map/map/">here</a>.</p>
 
 			<h3>Unordered Maps</h3>
 			<p>Just like an unordered_set, the unordered_map is a version of the map that doesn't order its data (which in this case are the variable pairs stored inside of the map). The unordered_map is generally faster than a regular map, and can be iterated through just like a regular map. The unordered_map is defined like the following:</p>
@@ -187,7 +188,6 @@ int main() {
                 <h4>Explanation</h4>
 				<p>The operation given to us allows us to arrange the letters in the strings in anyway we want. If we want all n strings to be the same, then all the characters in the ith slot of the strings must be equal. If this is the case there must be at least n of those ith characters in the original strings we have. However, notice that if we have n+1 or n+2 of those ith characters, then those extra 1 or 2 characters would cause some of the strings to be unequal. So from these observations we can see that each character in the final string must be in the initial strings k times, where k % n = 0. This is because these k characters can be split up evenly among the n strings and thus be matching. We can use a map to count the frequency of these characters and then iterate through the map to figure out if there is a character whose frequency is not divisible by n. If there is one, then we output NO and if there isn't one, the we output YES.</p>
 			</details>
-
 			<br>
 			<a target="_blank" href="https://atcoder.jp/contests/arc087/tasks/arc087_a">Problem 03</a>
             <details>
@@ -213,7 +213,6 @@ int main() {
     }
     cout &lt;&lt; ans &lt;&lt; "\n";
 }
-
 				</code></pre>
                 <h4>Explanation</h4>
 				<p>To check if a sequence is good we need to check the frequencies of the numbers that appear in that sequence. We can use a map to store these frequencies. Now if the frequency of a number is less than the number itself, we have to get rid of all instances of those numbers, (this is because we can't add numbers, we can only delete them, and so the frequency will never equal number itself). These takes f (f is the frequency of that number) operations to do, and so we add f to our answer. Now if the frequency of a number is greater than the number (lets call it x) itself, we can get rid of (f - x) of that number to make f = x. This takes (f - x) operations to do, so we add f to our answer. We can iterate over the map and add to the answer as appropiate and then at the end print our answer.</p>
