@@ -125,14 +125,56 @@ int equalStacks(vector&lt;int&gt; h1, vector&lt;int&gt; h2, vector&lt;int&gt; h3
                 <p>Now that we know its optimal to remove from the stack with the maximum current sum, we have to calculate it, and then simulate removing the top of it, which is done by deleting from the sum and increasing the current index. Now when the sums are equal, we can just return any one of them as our final answer.</p>
 			</details>
 			<br>
-			<a target="_blank" href="https://www.hackerrank.com/challenges/game-of-two-stacks/problem?isFullScreen=true">Problem 03</a>
+			<a target="_blank" href="https://codeforces.com/contest/158/problem/C">Problem 03</a>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
 
+void print(vector&lt;string&gt;& S) {
+    cout &lt;&lt; "/";
+    for (auto x : S) cout &lt;&lt; x &lt;&lt; "/";
+    cout &lt;&lt; "\n";
+}
+
+vector&lt;string&gt; split(string path, char delim) {
+    vector&lt;string&gt; V;
+    int prev = 0;
+    for (int i = 0; i &lt; path.size(); i++) {
+        if (path[i] == '/') {
+            V.push_back(path.substr(prev, i-prev));
+            prev = i+1;
+        }
+    }
+    V.push_back(path.substr(prev, path.size()-prev));
+    return V;
+}
+
+int main() {
+    int n; cin &gt;&gt; n;
+    vector&lt;string&gt; S;
+    for (int i = 0; i &lt; n; i++) {
+        string s; cin &gt;&gt; s;
+        if (s == "pwd") print(S);
+        else {
+            string path; cin &gt;&gt; path;
+            vector&lt;string&gt; SP = split(path, '/');
+            for (string x : SP) {
+                if (x == "") S.clear();
+                else if (x == "..") S.pop_back();
+                else S.push_back(x);
+            }
+        }
+    }
+}
 				</code></pre>
                 <h4>Explanation</h4>
-				<p></p>
+				<p>The hardest part of this problem is understanding how cd and pwd works. Pwd is the simpler of the two, it starts from the root directory which is '/' and then lists the name of all subfolders until the folder you are currently in. And it separates the names of these folders using '/' as well. Finally is prints a '\n' to end off the directory.</p>
+                <p>Now we have to worry about the cd command. cd takes a path and then goes into the directory described by the path. Specifically, if the path starts with a '/', that means this is an absolute path (one that starts from the root directory), and then we will recursively go down folders from there. However, if the path starts without a '/', that means this is a relative path and we will start at our current directory, and then we will recursively go down folders from there. Also the .. is a special folder that represents we are going backwards 1 folder instead of going forward.</p>
+                <p>Now that the functionality for both pwd and cd is described we can represent our current directory using a stack (note I used a vector here instead of a stack because it made printing easier, but I am still using stack concepts). The print function represents all the functionality of the pwd command, and the else statement represents all functionality of the cd command.</p>
+                <p>To specify the process of the cd command, we are first taking an input string representing the path and then splitting it into a vector of the folder names using a split function (go <a href="https://www.geeksforgeeks.org/how-to-split-a-string-in-cc-python-and-java/" target="_blank">here</a> to learn more about splitting a string in C++). If there is a "" (an empty string) in the vector, that means that this path is an absolute path, so we clear the stack (representing starting at the root directory). If there is a ".." in the vector, that means that we are going backwards one, so we remove the top of the stack. And if there is a regular folder name in the vector, that means we are going forward one, so add to the top of the stack.</p>
+                <p>Now that we can simulate these commands, all we got to do is follow whatever the input wants us to do. Remember to watch out for segmentation faults when solving this problem (especially in the split function).</p>
 			</details>
         </fieldset>
     </div>
