@@ -25,13 +25,23 @@
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
 			<h3>Stacks</h3>
-			<p>A stack is a data structure that stores elements like a vector but in a way that is slightly different. It stores them using the concept of a real life stack. Imagine you had a stack of books, you can add a book to the top of the stack, and you can remove a book from the top of the stack. However, you can't insert a book into the middle/bottom of stack or remove from the middle/bottom of the stack, this is because to insert there you have to move all the books on top of that position, which may be feasible in real life, but for our case is impossible.</p>
+			<p>A stack is a data structure that stores elements like a vector but in a way that is slightly different. It stores them using the concept of a real life stack. Imagine you had a stack of books, you can add a book to the top of the stack, and you can remove a book from the top of the stack. However, you can't insert a book into the middle/bottom of stack or remove from the middle/bottom of the stack, this is because to insert or remove there you have to move all the books on top of that position, which may be feasible in real life, but for our case is impossible.</p>
             <p>This type of storage can be summarized by the acronyms FILO and LIFO, which stand for "first in last out" and "last in first out" respectively. Which basically means that the first book put into the stack will be at the bottom of the stack and thus the last one taken out, and the last book put into the stack will be at the top of the stack and thus the first one taken out. Remember this is given the fact that things can be only added and removed from the top.</p>
             <p>A stack in C++ can be instantiated using the following syntax:</p>
 			<pre><code class="language-cpp">
 stack&lt;T&gt; S;
             </code></pre>
-			<p>where T is any datatype you want. This will then create a data structure that acts in the way described above.</p>
+			<p>where T is any datatype you want. This will then create a data structure that acts in the way described above. Originally the stack is empty, but you can add to the top of the stack by using the push(val) method, and you can also remove from the top of the stack using the pop() method, described below.</p>
+            <p>One thing to realize when dealing with stacks is that because you can only access the top element, there is no such thing as iterators when it comes to stacks. Instead of indexing or going through a stack using iterators, you have to repeatedly print the top element using top(), and then pop the top element to get to the next one below it, and repeat this until the stack is empty. This process is illustrated below:</p>
+            <pre><code class="language-cpp">
+while (!S.empty()) {
+    cout &lt;&lt; S.top() &lt;&lt; "\n";
+    S.pop();
+}
+            </code></pre>
+            <p>One final note about stacks is that in most problems stacks aren't used as an actual data structure and instead is used like a concept. More often than note the problem will discuss the properties of a stack, and then use a vector to represent the stack, instead of using the actual stack itself. This is often because vectors are nicer to use, but can still represent stack behavior.</p>
+            <p>If you have a vector and an iterator (you could also use an integer variable storing the current index) pointing to the last element of the vector, that more or less represents all the functionality of a stack. The front of the vector is the bottom of the stack, while the back of the vector is the top of the stack. To represent pushing something to the stack, the vector would add an element to the back and increase the iterator/index by one. To represent popping, the vector would remove an element and decrease the iterator/index by one. Finally to get the top of the stack, you would derefence the iterator/V[index] and get the value it is currently pointing at.</p>
+            <p>Note that this vector representation of a stack does have access to more things that a stack doesn't like vector iterators, but we ignore these things if we are using the vector like a stack. Also note that occasionally the front of a vector will be the top of the stack instead of the back in some problems, so watch out for that.</p>
 
 			<h3>Stack Methods</h3>
 			<pre><code class="language-cpp">
@@ -87,10 +97,32 @@ string isBalanced(string s) {
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
-
+int equalStacks(vector&lt;int&gt; h1, vector&lt;int&gt; h2, vector&lt;int&gt; h3) {
+    int sm1 = 0, sm2 = 0, sm3 = 0;
+    int pos1 = 0, pos2 = 0, pos3 = 0;
+    for (int x : h1) sm1 += x;
+    for (int x : h2) sm2 += x;
+    for (int x : h3) sm3 += x;
+    while (sm1 != sm2 || sm1 != sm3) {
+        int mx = max(sm1, max(sm2, sm3));
+        if (sm1 == mx) {
+            sm1 -= h1[pos1];
+            pos1++;
+        } else if (sm2 == mx) {
+            sm2 -= h2[pos2];
+            pos2++;
+        } else {
+            sm3 -= h3[pos3];
+            pos3++;
+        }
+    }
+    return sm1;
+}
 				</code></pre>
                 <h4>Explanation</h4>
-				<p></p>
+				<p>In this problem the stack concept is represented by a vector with the front of the stack being the front of the vector. And we want to make the sum of all the elements in each stack the same. So first we need to calculate the current sum of each of the stack by iterating through them (note that this is made much easier because the stack is represented by a vector with can be iterated through). Now until these sums are equal, we need to remove something from one of the stacks.</p>
+                <p>It is optimal to remove the element from the stack with the largest sum at the moment. This is because if we remove from the stack without the largest sum, we are potentially making this stack smaller than it has to be. However, the stack with maximum sum must be removed from because if not then the game would never reach an end, as that maximum sum would never decrease until its equal to the others.</p>
+                <p>Now that we know its optimal to remove from the stack with the maximum current sum, we have to calculate it, and then simulate removing the top of it, which is done by deleting from the sum and increasing the current index. Now when the sums are equal, we can just return any one of them as our final answer.</p>
 			</details>
 			<br>
 			<a target="_blank" href="https://www.hackerrank.com/challenges/game-of-two-stacks/problem?isFullScreen=true">Problem 03</a>
