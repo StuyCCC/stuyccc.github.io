@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2022-06-07</h4>
+        <fieldset>
+            <legend>QUEUES</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+			<h3>Queues</h3>
+            <p>Similar to a stack, a queue is a data structure that stores elements like a vector but in a way that is slightly different. The data structure works similar to a real life queue/line. Imagine you are in line to get your favorite drink at Starbucks, you can enter the line at the very end, and you can exit the line when you are at the very front. However, you can't enter or leave anywhere else in the queue. While leaving may be possible in real life, we will assume that you can't exit from the queue for the purposes of this lesson.</p>
+            <p>This type of storage can be summarized by the acronyms FIFO and LILO, which stand for "first in first out" and "last in last out" respectively. Which basically means that the first customer in the queue will be at the front of the queue and thus the first one to order, and the last customer put into the queue will be at the back of the queue and thus the last one to order. Remember this is given the fact that customers can be only join at the back and leave from the front.</p>
+            <p>A queue in C++ can be instantiated using the following syntax:</p>
+			<pre><code class="language-cpp">
+queue&lt;T&gt; Q;
+            </code></pre>
+			<p>where T is any datatype you want. This will then create a data structure that acts in the way described above. Originally the queue is empty, but you can add to the end of the queue by using the push(val) method, and you can also remove from the front of the queue using the pop() method, described below.</p>
+            <p>One thing to realize when dealing with queues is that because you can only modfiy/access the first and last element, there is no such thing as iterators when it comes to queues. Instead of indexing or going through a queues using iterators, you have to repeatedly print the first element using front(), and then pop the front element to get to the next one behind it, and repeat this until the queue is empty. This process is illustrated below:</p>
+            <pre><code class="language-cpp">
+while (!Q.empty()) {
+    cout &lt;&lt; Q.front() &lt;&lt; "\n";
+    Q.pop();
+}
+            </code></pre>
+            <p>One final note about queues is that in most problems queues aren't used as an actual data structure and instead is used like a concept. More often than not the problem will discuss the properties of a queue, and then use a vector to represent the queue, instead of using the actual queue itself. This is often because vectors are nicer to use, but can still represent queue behavior.</p>
+            <p>If you have a vector and two iterators (you could also use two integer variables storing indices) pointing to the first and last element of the vector, that more or less represents all the functionality of a queue. The front of the vector is the front of the queue, while the back of the vector is the back of the queue. To represent pushing something to the queue, the vector would add an element to the back and increase the back iterator/index by one. To represent popping, the vector would remove the element from the front and decrease the back iterator/index by one (representing everyone shifting forward after the first person in the queue leaves). Finally to get the front or back of the queue, you would derefence the front or back iterator/V[index] and get the value it is currently pointing at.</p>
+            <p>Note that this vector representation of a queue does have access to more things that a queue doesn't like vector iterators, but we ignore these things if we are using the vector like a queue. Also note that occasionally the front of a vector will be the back of the queue instead of the front in some problems, so watch out for that.</p>
+
+			<h3>Queue Methods</h3>
+            <pre><code class="language-cpp">
+T back()
+            </code></pre>
+            <p>Returns the back element of the queue, without removing it from the queue.</p>
+			<pre><code class="language-cpp">
+bool empty()
+            </code></pre>
+			<p>Returns true if the queue is empty and false otherwise.</p>
+            <pre><code class="language-cpp">
+T front()
+            </code></pre>
+            <p>Returns the front element of the queue, without removing it from the queue.</p>
+            <pre><code class="language-cpp">
+void pop()
+            </code></pre>
+			<p>Removes the front element from the queue, without returning it.</p>
+            <pre><code class="language-cpp">
+void push(T val)
+            </code></pre>
+			<p>Inserts a copy of the element val into the queue, placed at the back position.</p>
+			<pre><code class="language-cpp">
+int size()
+            </code></pre>
+			<p>Returns the number of elements in the queue.</p>
+            <p>You can check for more methods for queues and other data structures <a href="https://www.cplusplus.com/reference/queue/queue/">here</a>.</p>
+
+            <h3>Priority Queues</h3>
+            <p>Priority queues are another version of a queue with the main difference being that they dont follow FIFO or LILO, and instead they order the elements in the queue with the greatest element being the front of the queue and the least element being the back of the queue. So when you pop from a priority queue you will pop the greatest element currently in the priority queue instead of the first element that was inserted. You can declare a priority queue using the following syntax.</p>
+            <pre><code class="language-cpp">
+priority_queue&lt;T&gt; PQ;
+            </code></pre>
+            <p>where T is any datatype with a ordering, (this is because the priority queue needs to know how to order the datatype to put the greatest first). Also note that a priority queue does not implement the front or back methods a regular queue implements and instead it implements the top method which prints the front/greatest element in the priority queue.</p>
+
+			<h3>Practice</h3>
+
+			<a target="_blank" href="https://www.hackerearth.com/practice/data-structures/queues/basics-of-queues/practice-problems/algorithm/empty-array-31ed638c/">Problem 01</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n; cin >> n;
+    vector&lt;int&gt; A(n), B(n);
+    for (int i = 0; i &lt; n; i++) cin >> A[i];
+    for (int i = 0; i &lt; n; i++) cin >> B[i];
+    int ans = 0;
+    for (int i = 0; i &lt; n; i++) {
+        while (A[0] != B[0]) {
+            A.push_back(A[0]);
+            A.erase(A.begin());
+            ans++;
+        }
+        A.erase(A.begin());
+        B.erase(B.begin());
+        ans++;
+    }
+    cout &lt;&lt; ans &lt;&lt; "\n";
+}
+				</code></pre>
+                <h4>Explanation</h4>
+				<p>To simulate the process described in the problem we can use think of both vectors A and B as queues. We are going to store the time elapsed in the variable ans. Before we can remove any elements we need to make sure that the front elements of A and B are the same. If they are not the same we can just repeat the process of moving the front element of A to the back of A (this represents the vector being rotated clockwise), until they are equal. This while loop will cost 1 second every iteration. Now that the front elements are equal we can remove them both and increase the total time by 1 again. Now do this process N times, and both vectors will be empty and then we can return the total time elapsed to finish off the problem.</p>
+			</details>
+			<br>
+            <a target="_blank" href="https://www.techiedelight.com/generate-binary-numbers-1-n/">Problem 02</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+void generate(int n) {
+    queue&lt;string&gt; Q;
+    Q.push("1");
+    for (int i = 1; i &lt;= n; i++) {
+        Q.push(Q.front() + "0");
+        Q.push(Q.front() + "1");
+        cout &lt;&lt; Q.front() &lt;&lt; " ";
+        Q.pop();
+    }
+    cout &lt;&lt; "\n";
+}
+
+int main() {
+    int n; cin &gt;&gt; n;
+    generate(n);
+}
+				</code></pre>
+                <h4>Explanation</h4>
+				<p>One of the main prerequisites to solving this problem is just learning what binary is, and you can do that <a href="https://www.techtarget.com/whatis/definition/binary">here</a>. Once you figure out what binary is you can start thinking about how to solve this problem using a queue.</p>
+                <p>Now you can make the observation that any binary number (lets say for example 10101) is just a prefix binary number + a 1 or a 0 appended to it, which in our case would be 1010 + 1. we can continue this process (101 + 0, 10 + 1, 1 + 0) until our prefix ends up being just 1. So now we can make the observation that if we store a 1 somewhere, and then print it out and put back 1 + 0, and 1 + 1 in that container and repeated this appending process with those new numbers, we would eventually get every number possible.</p>
+                <p>However we don't need every number possible (that would take too much memory) and if we did this appending process without any ordering all the numbers would be printed in a scrambled order, which we do not want. So to fix the second issue, we will be using a queue to store the numbers and we will always be appending 0 before 1. This combination of techniques makes sure the smallest number is put in the queue first and thus is the first one out. To fix the first problem, we will only be running this appending process N times, which is why we used a for loop. Now this algorithm will print out the first N numbers in binary successfully.</p>
+			</details>
+			<br>
+			<a target="_blank" href="https://www.hackerearth.com/practice/data-structures/queues/basics-of-queues/practice-problems/algorithm/disk-tower-b7cc7a50/">Problem 03</a>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n; cin &gt;&gt; n;
+    vector&lt;int&gt; V(n);
+    for (int i = 0; i &lt; n; i++) cin >> V[i];
+    priority_queue&lt;int&gt; PQ;
+    int mx = n;
+    for (int i = 0; i &lt; n; i++) {
+        PQ.push(V[i]);
+        while (mx == PQ.top()) {
+            cout &lt;&lt; mx &lt;&lt; " ";
+            PQ.pop();
+            mx--;
+        }
+        cout &lt;&lt; "\n";
+    }
+}
+				</code></pre>
+                <h4>Explanation</h4>
+                <p>First we need to read in our data which I do by getting the size of the data and then putting the data into a vector. I also store the maximum size tile that is still not used inside the variable mx. Now we are going to simulate the process described in the problem statement using a priority queue to represent the tiles we have at any given moment that are not used. So we need to loop through all the days and put the ith tile into the PQ during the ith day.</p>
+                <p>Now we realize that if the maximum tile is currently in the priority queue it will be the top, so we can compare mx to the top of the priority queue, and if it is there we can "place"/print it and update our data accordingly (by removing it from PQ and reducing the max by 1). And we will do this for as long as possible (using a while loop) because we want to place as many as we can on a single day. Once this process is done on all days our queue will be empty and we will have finished simulating the process.</p>
+			</details>
+        </fieldset>
+    </div>
+</body>
