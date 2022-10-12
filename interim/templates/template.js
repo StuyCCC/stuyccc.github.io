@@ -20,5 +20,7 @@ function SideBar() {
    '<br>'+
    '<nav><a href="../main/resources.html">resources</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/writeups.html">writeups</a></nav>';
+   '<nav><a href="../main/writeups.html">writeups</a></nav>'+
+   '<br>'+
+   '<nav><a href="../main/lessons_archive.html">lessons archive</a></nav>';
 }

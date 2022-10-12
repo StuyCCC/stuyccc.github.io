@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-12-18</h4>
+        <fieldset>
+            <legend>HELLO WORLD!</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>What is a programming language?</h3>
+            <p>A programming language is a way for humans to communicate with computers. A computer cannot understand English (or any other human languages), but it can understand machine languages. Some common programming languages include Python, Java, C/C++.</p>
+
+            <h3>Why C++?</h3>
+            <p>C++ is uber fast, relatively flexible, and has a large standard library. Even if that doesn't make sense, just know that C++ is the most popular coding language used in competitive programming for very good reasons. So if we are going to teach you guys a coding language, why not teach the best of the best. </p>
+
+            <h3>Replit setup</h3>
+            <p>To run C++ code, you need a code editor to write the code and a compiler to run the code. A website called Replit combines an editor and compiler. It's really use for beginners to use.</p>
+            <ol>
+                <li>Go to <a href="http://replit.com">Replit</a> and create an account</li>
+                <li>Go to <a href="https://replit.com/@ybenp/CCC-Beginner-Lesson-1">this link</a> to access your first repository</li>
+                <li>Click Fork Repl to start coding</li>
+            </ol>
+
+            <h3>Hello World</h3>
+            <p>The code for your first file, which is typically Hello World (copy and paste this into your editor and save it):</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    cout << "Hello World!\n";
+}
+			</code></pre>
+            <p>The first line "includes" a large file with prewritten functions. Programmers are lazy! They don't want to rewrite commonly used functions over and over again. The bits/stdc++.h file is included in the C++ compiler we suggest you to use.</p>
+            <p>This include file has a HUGE number of functions-the names of these functions could easily overlap with those from other libraries. Thus, another level of organization we use is <b>namespaces</b>. The second line identifies that we're using a specific family of functions: in this case, functions from the standard library.</p>
+            <p>'int main()' is always the first function that's called when the program is run. It is also the computer's only point of entry-all other functions must be called from main. Thus, this is where we put the contents of our code.</p>
+            <p>The one line we have inside the main program is just an instruction to print "Hello World!". We will talk more about printing in the future.</p>
+            <p>Note that this line is ended with a ';'. Notice as well that using namespace std is also ended with a ';'. ;'s are used to mark the end of a line in a c++ program, and almost every line you type will be ended with a ';', so better get used to them soon.</p>
+
+            <h3>Running Programs</h3>
+            <p>Click "Run" at the top of the page. Complete exercise 1.</p>
+        </fieldset>
+    </div>
+</body>
