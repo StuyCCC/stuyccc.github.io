@@ -56,6 +56,73 @@ int main() {
 
             <h3>Running Programs</h3>
             <p>Click "Run" at the top of the page. Complete exercise 1.</p>
+
+            <h3>cout</h3>
+            <p>In C++, "cout" tells the computer to start outputting. For words and text in general, enclose them in double quotes "". We will talk about what the double quotes do later. For numbers like 35, there's no need for double quotes. </p>
+            <p>Each thing you want to output should be separated by "<<". To start a newline (like the Enter/Return key on your keyboard), use "\n", where n stands for newline. </p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    cout << "Hello World!\n";
+    cout << 35 << "\n";
+}
+            </code></pre>
+
+            <h3>Mathematical Expressions</h3>
+            <p>Mathematical expressions work the same way as regular math, with one exception in division that we will discuss next lesson.</p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    cout << "Hello World!\n";
+    cout << 3 + 5 << "\n"; // 8
+    cout << 3 * 5 << "\n"; // 15
+    cout << 6 / 3 << "\n"; // 2
+    cout << (3 + 5) * 6 / 2 << "\n"; // 24
+}
+            </code></pre>     
+            
+            <h3>Variables</h3>
+            <p>In math, you learned about variables in an equation. They represent a number. For example, if x + 3 = 5, then x = 2. But what if we use them in an expression instead? For x + 3, x can be any number we would like, since x doesn't have to satisfy any equations. </p>
+            <p>In C++, we can use variables to represent numbers. Let's start with integers (We'll discuss other types in the next lesson). To use variables, we must first let the computer know that we are starting a variable: "int x". Then we can use the equal sign = to assign values to it. </p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    cout << "Hello World!\n";
+    int x, y;
+    x = 3;
+    y = 5;
+    // Shortcut: we can also write
+    // int x = 3, y = 5;
+    cout << x + y << "\n"; // 8
+    cout << x * y << "\n"; // 15
+    cout << 6 / x << "\n"; // 2
+    cout << (x + y) * 6 / 2 << "\n"; // 24
+}
+                </code></pre>  
+            
+            <h3>cin</h3>
+            <p>Finally, we will discuss how to input stuff in C++. Since we want the computer to store (remember) what we type in, we need to initialize (start) variables first. After that, we can use the "cin" command, similar to the "cout" command we learned earlier. However, we use ">>" instead of "<<". </p>
+            <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    cout << "Hello World!\n";
+    int x, y;
+    cin >> x >> y;
+    // You type "3 5" and press enter on your keyboard
+    cout << x + y << "\n"; // 8
+    cout << x * y << "\n"; // 15
+    cout << 6 / x << "\n"; // 2
+    cout << (x + y) * 6 / 2 << "\n"; // 24
+}
+            </code></pre>  
         </fieldset>
     </div>
 </body>
