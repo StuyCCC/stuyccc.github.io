@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2022-10-17</h4>
+        <fieldset>
+            <legend>VARIABLES</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>
+                <a href="helloworld.html">Review</a>
+            </h3>
+            <p>Complete the review exercises!</p>
+                
+            <h3>
+                <a href="https://replit.com/@ybenp/CCC-Beginner-Lesson-2">Replit Link</a>
+            </h3>
+            <p>Click on the link. Log in and fork repository</p>
+
+            <h3>Variable Types</h3>
+            <ul>
+                <li>Integer
+                    <code class="language-cpp">int i = 3; </code>
+                </li>
+                <li>Double
+                    <code class="language-cpp">double d = 3.1415; </code>
+                </li>
+                <li>Character
+                    <code class="language-cpp">char ch = 'a'; </code>
+                </li>
+                <li>String
+                    <code class="language-cpp">string str = "abcdef"; </code>
+                </li>
+                <li>Boolean
+                    <code class="language-cpp">bool b = true; </code>
+                    <code class="language-cpp">bool b = false; </code>
+                </li>
+            </ul>
+
+            <h3>Converting between types</h3>
+            <p>Variables can be converted from one type to another fairly easily. The first way is using the equal sign (assignment operator). </p>
+            <pre>
+                <code class="language-cpp">
+double x = 9.9;
+int y;
+y = x;
+// x = 9.9, y = 9 (after converting from integer x)
+                </code>
+            </pre>
+
+            <h3>Casting</h3>
+            <p>Alternatively, you can manually "cast" a variable to the desired data type.</p>
+            <pre>
+                <code class="language-cpp">
+double x = 9.9;
+int y;
+y = (int)x;
+// x = 9.9, y = 9 (after being cast from integer x)
+                </code>
+            </pre>
+
+        </fieldset>
+    </div>
+</body>
