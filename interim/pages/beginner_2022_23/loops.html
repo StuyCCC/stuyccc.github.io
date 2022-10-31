@@ -67,7 +67,18 @@ cout &lt;&lt; sum &lt;&lt; ‘\n’;
 			<p><b>The <i>break</i> and <i>continue</i> keywords</b></p>
             <p>The keywords <i>break</i> and <i>continue</i> have an effect on the flow of a loop. When <i>break</i> is run, the loop exits entirely, and whatever code comes after the loop starts running. When <i>continue</i> is run, it skips the remainder of the looped code to the [OPERATION] portion, after which the <i>next iteration</i> of the loop is run.</p>
             <p>Putting <i>break</i> and <i>continue</i> directly within the loop is a bit pointless. They’re usually put within if-statements so the skipping of iterations or exiting the loop is controlled by some condition.</p>
-
+			<pre><code class="language-cpp">
+// Example code that prints all odd numbers from 1 to 71 (inclusive) except for 7
+for(int i = 1; i &lt;=99; i += 2){
+	if(i == 7){ // if i is 7, don't do the rest of the loop, ie don't print it and jump to i = 9 case
+		continue;
+	}
+	cout &lt;&lt; i &lt;&lt; `\n`;
+	if(i == 71){ // if i is 71, exit the loop entirely
+		break;
+	}
+}
+			</code></pre>
             <h3>While Loops</h3>
             <p>While loops are a bit simpler than for loops. It is formulated as such:</p>
             <pre><code class="language-cpp">
