@@ -173,6 +173,27 @@ int main() {
 }
                 </code></pre>
             </details>
+			<h3>Just because you can, doesn't mean you should:</h3>
+			<p>This is an easy way to implement the Fibonacci function with functions, just do it recursively like you do in math class:</p>
+			<pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int fib(int n){
+	if(n == 0 || n == 1){
+		return 1;
+	} else {
+		return fib(n-1) + fib(n-2);
+	}
+}
+
+int main() {
+    cout &lt;&lt; fib(5) &lt;&lt; "\n";
+	// Try this by uncommenting the next line
+	//cout &lt;&lt; fib(30) &lt;&lt; "\n";
+}
+            </code></pre>
+			<p>However, if you try this code out, you'd see that it's <b>incredibly</b> slow. As in, if you tried to do fib(30), it will crash. The reason is, unlike the for loop method of generating fibonacci numbers we did in the past, here, every time you call the fib function, it calls itself twice. This means that if you increase n by 1, you're calling fib(n) double the amount of times, making it incredibly slow. Therefore, just because you <i>can</i> use a function, doesn't mean you <i>should</i>, and you have to balance different tools and methods of solving a problem.</p>
         </fieldset>
     </div>
 </body>
