@@ -67,6 +67,16 @@ int arr[10][10];
             <img src="../../data/beginner/2d-array.png" width="520">
             <p>The syntax for accessing elements is similar: we use arr[i][j]. The first index, i, refers to the index in the bigger array of arrays. The second index, j, refers to the index in the constituent array, arr[i]. You can also use other coordinate systems to think about arrays in 2 dimensions or higher dimensions, as long as it stays consistent.</p>
 
+			<h3>Variable-Length Arrays</h3>
+			<p>In the original specifications for C++ (and C), arrays can only be declared with constant expressions, as follows:</p>
+			<pre><code class="language-cpp">
+int a[10]; // no problem
+int n;
+cin >> n;
+int b[n]; // bad under original standard, now mostly fine but be careful with versions
+			</code></pre>
+			<p>However, with the C++14 standard (and most recent compilers under c++0x or their own extensions), arrays can have variable length based on the size of the variable when its initialized. Therefore, when using a modern version of g++ or online IDEs, this code should work. However note that when you get to choose a C++ version or are working locally, you need to <b>make sure you choose a up-to-date version of C++ / g++ / clang</b>.
+
             <h3>Extra Tips And Tricks</h3>
             <p>You can get the size of an array by doing the following:</p>
             <pre><code class="language-cpp">
