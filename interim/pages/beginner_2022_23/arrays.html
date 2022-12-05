@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-12-18</h4>
+        <fieldset>
+            <legend>Yer A Wizard, ‘Array!</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>Array Basics</h3>
+            <p>We’ve talked about “sequences of numbers” a lot, and that’s what arrays represent—an ordered sequence of numbers, or strings, or really anything. In theory, they look something like this: A = [a1, a2, … , an], where n is the length of the array.</p>
+            <p>Arrays can only hold objects of a single data type. We must specify what that type is, its size, and its name, as such: type name[size]; For instance, an integer array of size 50 named “arr” is defined like this: </p>
+            <pre><code class="language-cpp">
+int arr[50];
+            </code></pre>
+            <p>To access the element at the k-th position of the sequence, we can use arr[k]. This can be either changed or used any way you like, and can be treated like a variable. For instance, if you wanted to add 2 to arr[k] and print the sum of arr[k] and arr[k-1], we can do</p>
+            <pre><code class="language-cpp">
+arr[k] += 2;
+cout &lt;&lt; arr[k] + arr[k-1] &lt;&lt; ‘\n’;
+            </code></pre>
+
+            <h3>Zero-Indexing</h3>
+            <p>One key thing to remember about arrays is that they are 0-indexed and not 1-indexed. When we order a list of numbers we usually say this is the first number, then the 2nd number, then the third, and so on. That is called 1-indexing because we start our counting at 1. So now what do you think 0-indexing is?</p>
+            <p>0-indexing means that arrays start at 0 and not 1 so this means our valid index positions are 0 to 49 if we create an array of size 50. If we go below 0 or above 49 then we will get something that we don’t want. </p>
+
+            <h3>Iteration</h3>
+            <p>The main way to go through an array is using a for loop like the following:</p>
+            <pre><code class="language-cpp">
+for (int i = 0; i &lt; n; i++) {
+    // do something to arr[i].
+}
+            </code></pre>
+            <p>Where n is the size of the array. Remember if you are given an array of size n, the valid indexes are from 0 to n-1, so this for loop is going through all those valid positions. But there is another way:</p>
+            <pre><code class="language-cpp">
+for (int i : arr) {
+    // do something to i.
+}
+            </code></pre>
+            <p>In this example we go through all the ints in the array and our variable i gets represented as those ints.</p>
+            <p>However, the key difference between this and the first one is that if we do i = 5, this won’t affect the array, but if we do arr[i] = 5 in the first example this will change the array.</p>
+
+            <h3>N Dimensional Arrays</h3>
+            <p>What we just discussed are 1-dimensional arrays, or simple lists. What if we wanted a 2-dimensional grid, or 3-dimensional box of numbers?</p>
+            <p>We can initialize a 2-d array of integers like so: </p>
+            <pre><code class="language-cpp">
+int arr[10][10];
+            </code></pre>
+            <p>Which creates a 10 by 10 box. We can create arrays with more dimensions just by putting more brackets with numbers at the end.</p>
+            <p>We can think of a 2-d array as a 1-d array of 1-d arrays. We can think of the big array of arrays as going from up to down, and each constituent array as going from left to right. Here is an image for convenience:</p>
+            <img src="../../data/beginner/2d-array.png" width="520">
+            <p>The syntax for accessing elements is similar: we use arr[i][j]. The first index, i, refers to the index in the bigger array of arrays. The second index, j, refers to the index in the constituent array, arr[i]. You can also use other coordinate systems to think about arrays in 2 dimensions or higher dimensions, as long as it stays consistent.</p>
+
+            <h3>Extra Tips And Tricks</h3>
+            <p>You can get the size of an array by doing the following:</p>
+            <pre><code class="language-cpp">
+int arr[10];
+int n = sizeof(arr)/sizeof(arr[0]);
+// n will be 10.
+            </code></pre>
+            <p>What this code is doing is that it finds the total amount of memory for the entire array and then the total amount of memory for a single element and then divides the two to get the number of elements. In most circumstances you don't have to worry about not knowing the size of an array, as they are usually provided, but this is just in case you do.</p>
+            <p>Notice the last element of an array is in the position length - 1 of the array, this is helpful in many cases.</p>
+            <p>You can initialize arrays by creating a comma separated list of elements surrounded by curly braces like the following: </p>
+            <pre><code class="language-cpp">
+int arr[5] = {1, 2, 3, 4, 5};
+            </code></pre>
+            <p>Or you can loop through the array and set the value of each element in the loop from standard input like the following: </p>
+            <pre><code class="language-cpp">
+int n; cin &gt;&gt; n;
+int arr[n];
+for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
+            </code></pre>
+            <p>Warning! Arrays are very easy to mess up, you can do a whole number of things like going out of the valid ranges of an array and messing stuff up, so just be careful that your accessing the correct elements of an array in your code.</p>
+            <p>Warning! Don't pass arrays to functions unless you really have to. They are a pain to deal with in functions.</p>
+
+            <h3>Practice Problems</h3>
+            <p>Note for these problems try to come up with test cases yourselves and test them out in your code to see if they work.</p>
+            <p><b>Problem 1:</b> Given an array of ints with a known size from standard input, print true if the array is length 1 or more, and the first element and the last element are equal, else print false.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n; cin &gt;&gt; n;
+    int arr[n];
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
+    if (n == 0) cout &lt;&lt; "false\n";
+    else if (arr[0] == arr[n-1]) cout &lt;&lt; "true\n";
+    else cout &lt;&lt; "false\n";
+}
+                </code></pre>
+            </details>
+            <p><b>Problem 2:</b> Given an array of known size from standard input, print the difference between the largest and smallest values in the array. Note: the built-in min(v1, v2) and max(v1, v2) methods return the smaller or larger of two values.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n; cin &gt;&gt; n;
+    int arr[n];
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
+    int mn = 1000000000, mx = -1000000000;
+    for (int i = 0; i &lt; n; i++) {
+        mn = min(mn, arr[i]);
+        mx = max(mx, arr[i]);
+    }
+    cout &lt;&lt; mx-mn &lt;&lt; "\n";
+    return 0;
+}
+                </code></pre>
+            </details>
+            <p><b>Problem 3:</b> Given an array of known size from standard input, print the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the next 7 (every 6 will be followed by at least one 7). Print 0 for no numbers.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n; cin &gt;&gt; n;
+    int arr[n];
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
+    int sm = 0;
+    bool add = true;
+    for (int i = 0; i &lt; n; i++) {
+        if (arr[i] == 6) add = false;
+        if (add) sm += arr[i];
+        if (arr[i] == 7) add = true;
+    }
+    cout &lt;&lt; sm &lt;&lt; "\n";
+    return 0;
+}
+
+                </code></pre>
+            </details>
+            <p><b>Problem 4:</b> Given an array of ints of known size from standard input, print true if the number of 1's is greater than the number of 4's, else print false.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n; cin &gt;&gt; n;
+    int arr[n];
+    for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
+    int c1 = 0, c4 = 0;
+    for (int i = 0; i &lt; n; i++) {
+        if (arr[i] == 1) c1++;
+        if (arr[i] == 4) c4++;
+    }
+    if (c1 &gt; c4) cout &lt;&lt; "true\n";
+    else cout &lt;&lt; "false\n";
+    return 0;
+}
+                </code></pre>
+            </details>
+            <p><b>Problem 5:</b> Given a non-empty array of known size, print true if there is a place to split the array so that the sum of the numbers on one side is equal to the sum of the numbers on the other side, else print false.</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n = sizeof(arr)/sizeof(arr[0]);
+    bool found = true;
+    for (int i = 0; i &lt; n; i++) {
+        int sm1 = 0, sm2 = 0;
+        for (int q = 0; q &lt; i; q++) {
+            sm1 += arr[q];
+        }
+        for (int q = i; q &lt; n; q++) {
+            sm2 += arr[q];
+        }
+        if (sm1 == sm2) {
+            cout &lt;&lt; "true\n";
+            return 0;
+        }
+    }
+    cout &lt;&lt; "false\n";
+    return 0;
+}
+                </code></pre>
+            </details>
+            <p><b>Problem 6:</b> Given an n by m 2D array, arr, create a new array of size n, sum, where sum[i] contains the sum of elements of arr[i].</p>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    int n, m; cin &gt;&gt; n &gt;&gt; m;
+    int arr[n][m];
+    for (int i = 0; i &lt; n; i++) {
+        for (int q = 0; q &lt; m; q++) {
+            cin &gt;&gt; arr[i][q];
+        }
+    }
+    int sum[n];
+    for (int i = 0; i &lt; n; i++) {
+        int sm = 0;
+        for (int q = 0; q &lt; m; q++) {
+            sm += arr[i][q];
+        }
+        sum[i] = sm;
+    }
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; sum[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; "\n";
+}
+                </code></pre>
+            </details>
+        </fieldset>
+    </div>
+</body>
