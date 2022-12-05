@@ -76,7 +76,19 @@ cin >> n;
 int b[n]; // bad under original standard, now mostly fine but be careful with versions
 			</code></pre>
 			<p>However, with the C++14 standard (and most recent compilers under c++0x or their own extensions), arrays can have variable length based on the size of the variable when its initialized. Therefore, when using a modern version of g++ or online IDEs, this code should work. However note that when you get to choose a C++ version or are working locally, you need to <b>make sure you choose a up-to-date version of C++ / g++ / clang</b>.
+			<p>To intentionally replicate this error on modern g++ versions, try doing (if you have a local compiler):</p>
+			<pre><code class="language-cpp">
+/* compile with:
+g++ -std=c++98 -pedantic test.cpp
+*/
+#include &lt;iostream&gt;
 
+using namespace std;
+
+int n;
+cin &gt;&gt; n;
+int a[n];
+			</code></pre>
             <h3>Extra Tips And Tricks</h3>
             <p>You can get the size of an array by doing the following:</p>
             <pre><code class="language-cpp">
