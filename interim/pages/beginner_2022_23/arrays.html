@@ -19,21 +19,25 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2021-12-18</h4>
+        <h4>Last Updated 2022-12-06</h4>
         <fieldset>
-            <legend>Yer A Wizard, ‘Array!</legend>
+            <legend>Yer A Wizard, 'Array!</legend>
             <!-- use <script type="math/tex"> to use latex
                 and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3>
+                <a href="https://replit.com/@ybenp/CCC-Beginner-Lesson-5">Replit Link</a>
+            </h3>
+            <p>Click on the link above. Log in and fork repository</p>
             <h3>Array Basics</h3>
-            <p>We’ve talked about “sequences of numbers” a lot, and that’s what arrays represent—an ordered sequence of numbers, or strings, or really anything. In theory, they look something like this: A = [a1, a2, … , an], where n is the length of the array.</p>
-            <p>Arrays can only hold objects of a single data type. We must specify what that type is, its size, and its name, as such: type name[size]; For instance, an integer array of size 50 named “arr” is defined like this: </p>
+            <p>We've talked about "sequences of numbers" a lot, and that's what arrays represent-an ordered sequence of numbers, or strings, or really anything. In theory, they look something like this: A = [a1, a2, ... , an], where n is the length of the array.</p>
+            <p>Arrays can only hold objects of a single data type. We must specify what that type is, its size, and its name, as such: type name[size]; For instance, an integer array of size 50 named "arr" is defined like this: </p>
             <pre><code class="language-cpp">
 int arr[50];
             </code></pre>
             <p>To access the element at the k-th position of the sequence, we can use arr[k]. This can be either changed or used any way you like, and can be treated like a variable. For instance, if you wanted to add 2 to arr[k] and print the sum of arr[k] and arr[k-1], we can do</p>
             <pre><code class="language-cpp">
 arr[k] += 2;
-cout &lt;&lt; arr[k] + arr[k-1] &lt;&lt; ‘\n’;
+cout &lt;&lt; arr[k] + arr[k-1] &lt;&lt; '\n';
             </code></pre>
 
             <h3>Zero-Indexing</h3>
@@ -54,7 +58,7 @@ for (int i : arr) {
 }
             </code></pre>
             <p>In this example we go through all the ints in the array and our variable i gets represented as those ints.</p>
-            <p>However, the key difference between this and the first one is that if we do i = 5, this won’t affect the array, but if we do arr[i] = 5 in the first example this will change the array.</p>
+            <p>However, the key difference between this and the first one is that if we do i = 5, this won't affect the array, but if we do arr[i] = 5 in the first example this will change the array.</p>
 
             <h3>N Dimensional Arrays</h3>
             <p>What we just discussed are 1-dimensional arrays, or simple lists. What if we wanted a 2-dimensional grid, or 3-dimensional box of numbers?</p>
@@ -67,28 +71,6 @@ int arr[10][10];
             <img src="../../data/beginner/2d-array.png" width="520">
             <p>The syntax for accessing elements is similar: we use arr[i][j]. The first index, i, refers to the index in the bigger array of arrays. The second index, j, refers to the index in the constituent array, arr[i]. You can also use other coordinate systems to think about arrays in 2 dimensions or higher dimensions, as long as it stays consistent.</p>
 
-			<h3>Variable-Length Arrays</h3>
-			<p>In the original specifications for C++ (and C), arrays can only be declared with constant expressions, as follows:</p>
-			<pre><code class="language-cpp">
-int a[10]; // no problem
-int n;
-cin >> n;
-int b[n]; // bad under original standard, now mostly fine but be careful with versions
-			</code></pre>
-			<p>However, with the C++14 standard (and most recent compilers under c++0x or their own extensions), arrays can have variable length based on the size of the variable when its initialized. Therefore, when using a modern version of g++ or online IDEs, this code should work. However note that when you get to choose a C++ version or are working locally, you need to <b>make sure you choose a up-to-date version of C++ / g++ / clang</b>.
-			<p>To intentionally replicate this error on modern g++ versions, try doing (if you have a local compiler):</p>
-			<pre><code class="language-cpp">
-/* compile with:
-g++ -std=c++98 -pedantic test.cpp
-*/
-#include &lt;iostream&gt;
-
-using namespace std;
-
-int n;
-cin &gt;&gt; n;
-int a[n];
-			</code></pre>
             <h3>Extra Tips And Tricks</h3>
             <p>You can get the size of an array by doing the following:</p>
             <pre><code class="language-cpp">
@@ -111,7 +93,7 @@ for (int i = 0; i &lt; n; i++) cin &gt;&gt; arr[i];
             <p>Warning! Arrays are very easy to mess up, you can do a whole number of things like going out of the valid ranges of an array and messing stuff up, so just be careful that your accessing the correct elements of an array in your code.</p>
             <p>Warning! Don't pass arrays to functions unless you really have to. They are a pain to deal with in functions.</p>
 
-            <h3>Practice Problems</h3>
+            <h3>Extra Practice Problems. Do the ones in Replit first!</h3>
             <p>Note for these problems try to come up with test cases yourselves and test them out in your code to see if they work.</p>
             <p><b>Problem 1:</b> Given an array of ints with a known size from standard input, print true if the array is length 1 or more, and the first element and the last element are equal, else print false.</p>
             <details>
