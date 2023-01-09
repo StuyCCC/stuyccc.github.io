@@ -46,7 +46,9 @@
 			</ol>
 
 			<h3>Using sorting in C++</h3>
-			<p>Thankfully, C++ has built-in sorting algorithms so you don't have to implement it yourself, there's <code>qsort(pointer, element count, size of element) // &ltcstdio&gt</code> for arrays and <code>sort(iterator, iterator) // &ltalgorithm&gt</code> for other classes, examples:</p>
+			<p>Thankfully, C++ has built-in sorting algorithms so you don't have to implement it yourself, there's <code>qsort(pointer, element count, size of element, comp) // &ltcstdio&gt</code> for arrays and <code>sort(start, end, [comp]) // &ltalgorithm&gt</code> for other classes (and arrays, see note below), examples:</p>
+			<p><code>comp</code> here refers to a comparator function that you can ignore for now. However, as qsort <b>requires</b> a comparator function, you should use sort for now, where a comparator function is optional.</p>
+			<p>Note: <code>sort(start,end)</code> for arrays: Because of how arrays are internally represented as memory addresses, the <i>start</i> of an array is just the array variable (eg. <code>arr</code>), and the <i>end</i> of an array is just the array variable added to its size (eg. <code>arr+6</code>), which might not make sense as arrays aren't numbers so it isn't intuitive you can add a number to them, but unfortunately it is beyond the scope of this lesson to explain.</p>
 <pre><code class="language-cpp">
 #include &ltalgorithm&gt
 #include &ltcstdio&gt
@@ -56,7 +58,7 @@
 using namespace std;
 
 int a[6] = {7, -1, 2, 6, -10, 4};
-qsort(a, 6, sizeof(int));
+sort(a, a+6);
 for(int i = 0; i &lt 6; ++i){
 	cout &lt&lt a[i] &lt&lt ", ";
 }
