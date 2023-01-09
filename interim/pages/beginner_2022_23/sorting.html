@@ -19,7 +19,7 @@
 <body>
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2023-01-03</h4>
+        <h4>Last Updated 2023-01-09</h4>
         <fieldset>
             <legend>SORTING</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -45,7 +45,37 @@
 				<li>Otherwise, decrease j by 1 to get a[j] correct, then repeat Steps 2-6 until j is 0 (ie. loop while j >= 1)</li>
 			</ol>
 
-			<h3>Sorting Quesitons</h3>
+			<h3>Using sorting in C++</h3>
+			<p>Thankfully, C++ has built-in sorting algorithms so you don't have to implement it yourself, there's <code>qsort(pointer, element count, size of element</code> for arrays and <code>sort(iterator, iterator)</code> for other classes, examples:</p>
+<pre><code class="language-cpp">
+#include &ltalgorithm&gt
+#include &ltvector&gt
+#include &ltiostream&gt
+
+using namespace std;
+
+int a[6] = {7, -1, 2, 6, -10, 4};
+qsort(a, 6, sizeof(int));
+for(int i = 0; i &lt 6; ++i){
+	cout &lt&lt a[i] &lt&lt ", ";
+}
+cout &lt&lt endl;
+// should print [-10, -1, 2, 4, 6, 7]
+vector&ltint&gt v;
+v.push_back(7);
+v.push_back(-1);
+v.push_back(2);
+v.push_back(6);
+v.push_back(-10);
+v.push_back(4);
+sort(v.begin(), v.end());
+for(auto it = v.begin(); it != v.end(); it++){
+	cout &lt&lt *it &lt&lt ", ";
+}
+cout &lt&lt endl;
+// should print [-10, -1, 2, 4, 6, 7]
+</code></pre>
+			<h3>Sorting Questions</h3>
             <h4><a href="https://codeforces.com/problemset/problem/1561/C">Sort (and sort again, or binary search)</a></h4>
             <p>In the interest of not repeating what is already on the internet I will link to the editorial <a href="https://codeforces.com/blog/entry/94216">here</a>. I will write though that the strategy of finding a way to check a solution and then binary searching over the answer is a common strategy. In this problem it manifests as finding the best order to visit caves in, what level the hero must be to enter a cave, and how many levels the hero will gain from clearing a cave and then binary searching over all possible starting levels.</p>
             <h4><a href="https://codeforces.com/problemset/problem/1545/A">Sorting and a Clever Observation</a></h4>
