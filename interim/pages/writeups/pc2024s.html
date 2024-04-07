@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2024-4-7</h4>
+        <fieldset>
+            <legend>PCLASSIC 2024 Spring</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <p>
+                If you'd like to view the problems:<br>
+                <a href="https://tinyurl.com/pcl24SPclassic">PClassic 2024 Spring Classic</a><br>
+                <a href="https://tinyurl.com/pcl24SPadvanced">PClassic 2024 Spring Advanced</a><br>
+                Classic has problems 1 through 8, while Advanced has problems 5 through 12.<br>
+            </p>
+            <h2><a target="_blank" href="">Problem 08</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">//written by Matthew Chen
+#include <bits/stdc++.h>
+using namespace std;
+#define sz(x) (int)(x).size()
+#define FOR(i,s,e) for (int i = (s); i < (e); ++i) 
+#define F0R(i,e) FOR(i,0,e) 
+template<typename T> istream& operator>>(istream& in, vector<T>& a) {for(auto &x: a) in >> x; return in;};
+    
+int mx(array<int,4> x) {//max of 0,1,2 color freq's
+    return max(x[0], max(x[1], x[2]));
+}
+void solve() {
+    int n; cin >> n;
+    vector<vector<int>> grid(n, vector<int>(n));
+    cin >> grid;
+
+    //{0, 1, 2, total}
+    vector<array<int,4>> row(n), col(n);//frequencies
+    vector<pair<int,int>> sweep;
+    F0R(i,n) {
+        row[i][3] = col[i][3] = n;
+        F0R(j,n) {
+            row[i][grid[i][j]]++;
+            col[j][grid[i][j]]++;
+        }
+    }
+    //populate sweep
+    F0R(i,n) {
+        if (mx(row[i]) == row[i][3] && mx(row[i]) != row[i][0]) {
+            sweep.push_back({i,0ll});
+        }
+    }
+    F0R(j,n) {
+        if (mx(col[j]) == col[j][3] && mx(col[j]) != col[j][0]) {
+            sweep.push_back({j,1ll});
+        }
+    }
+    vector<array<int,3>> ans;//{row/col type, ind, color}
+    while (sz(sweep)) {
+        for (auto [ind,typ]: sweep) {
+            if (typ == 0) {//process row
+                F0R(j,n) if (col[j][3] != 0) {//update cols
+                    col[j][grid[ind][j]]--;
+                    col[j][3]--;
+                }
+                int color = 0;
+                if (row[ind][1] == mx(row[ind])) color = 1;
+                else if (row[ind][2] == mx(row[ind])) color = 2;
+                ans.push_back({typ, ind+1, color});
+                row[ind] = {0,0,0,0};//delete row
+            }
+            else {//process col
+                F0R(i,n) if (row[i][3] != 0){//update rows
+                    row[i][grid[i][ind]]--;
+                    row[i][3]--;
+                }
+                int color = 0;
+                if (col[ind][1] == mx(col[ind])) color = 1;
+                else if (col[ind][2] == mx(col[ind])) color = 2;
+                ans.push_back({typ, ind+1, color});
+                col[ind] = {0,0,0,0};//delete col
+            }
+        }
+        sweep.clear();
+        //repopulate sweep with new rows/cols
+        F0R(i,n) {
+            if (mx(row[i]) == row[i][3] && mx(row[i]) != row[i][0]) {
+                sweep.push_back({i, 0});
+            }
+        }
+        F0R(j,n) {
+            if (mx(col[j]) == col[j][3] && mx(col[j]) != col[j][0]) {
+                sweep.push_back({j, 1});
+            }
+        }
+    }
+    //check for impossible case
+    F0R(i,n) {
+        if (row[i][1] || row[i][2] || col[i][1] || col[i][2]) {
+            cout << -1 << '\n'; return;
+        }
+    }
+    reverse(ans.begin(), ans.end());
+    cout << sz(ans) << '\n';
+    for (auto [a,b,c]: ans) {
+        cout << a << ' ' << b << ' ' << c << '\n';
+    }
+}
+</code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <span style="white-space: pre-line"><p>The problem wants you to reconstruct a sequence of transformations which color a row or column as 1 or 2 such that the resulting grid matches with the given grid. 
+                    
+                    Our solution will go backwards to revert the given grid into a blank grid of 0's. For simplicity, let's assume the grid is guaranteed to have a solution and we'll deal with the impossible case later.
+                    
+                    Obviously, there will be some rows or columns with only one color which we can process first. You can imagine that "processing" a row or column as just completely eliminating that row/col from the grid, and snipping the two halves of the grid back together. This is because we can just uncolor that row/col and arbitrarily set the color underneath to fit our situation. 
+                    
+                    After processing the "obvious" row/col's, it is guaranteed that the concatenated grid will have new "obvious" row/col's to eliminate since the grid has a guaranteed solution. Now, we can rinse and repeat: eliminate those row/col's and snip the grid back together.
+                    
+                    As for the case where a solution does not exist, that will be when after eliminating a set of "obvious" row/col's, there exists no more row/col's to process and the grid itself has not become 0.
+                    
+                    Overall, the visualization is decently intuitive, the implementation is a bit more tedious though.
+                
+                    Let's maintain 4 additional vectors, <code>row</code>, <code>col</code>, <code>sweep</code>, and <code>ans</code>, aside from our given input grid.
+
+                    <code>row</code> and <code>col</code> will store 4 numbers per row/col, the color frequencies of 0,1,2, and the total number of cells in that row/col (you'll see why we want to keep track of this).
+                    <code>sweep</code> will store the rows and columns that we will want to eliminate from the grid.
+                    <code>ans</code> will store the sequence of moves that will be our answer.
+                    
+                    Initially, <code>sweep</code> will contain the "obvious" rows and columns that we can easily eliminate. 
+                    We will run through iterations until <code>sweep</code> becomes empty
+                    
+                    In each iteration, process each of the row/col's in <code>sweep</code>. When we process row <code>i</code> for example, we have to update all of the columns. Let the color of that row be <code>c</code> and each column be <code>j</code>, we will decrement both the frequency of <code>c</code> and the total number of cells in <code>col[j]</code> by 1. Processing a column is also similar but swapped.
+                    
+                    When we process a row/col, we will delete that from <code>sweep</code> and also push that information into <code>ans</code>
+                    
+                    Then, we will go through each row and column and see if all of the total cells are a single color. If so, we will push those new rows and columns into <code>sweep</code>.
+                    
+                    Once there are no more new rows and columns to push into sweep, we are done.
+                    All that is left to check is whether there are any nonzero colors in <code>row</code> and <code>col</code>.
+                    
+                    The time complexity is <script type="math/tex">\mathcal{O}(n^2)</script> since there are <script type="math/tex">n</script> rows, each of which affects <script type="math/tex">n</script> cols, + <script type="math/tex">n</script> cols, each of which affects <script type="math/tex">n</script> rows, summing to <script type="math/tex">2n^2</script> operations
+                </p>
+            </details>
+
+
+            <h2><a target="_blank" href="">Problem 11</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">//written by Matthew Chen
+#pragma region
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+#define int ll
+using pii = pair<int,int>;
+#define vt vector
+#ifndef LOCAL
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
+#define debug(...)
+#endif
+#define fi first
+#define se second
+#define pb push_back 
+#define lb lower_bound
+#define ub upper_bound
+#define sz(x) (int)(x).size()
+#define all(v) v.begin(), v.end()
+#define rall(v) v.rbegin(), v.rend()
+#define YES cout << "YES" << '\n'
+#define NO cout << "NO" << '\n'
+#define IMP cout << "IMPOSSIBLE" << '\n'
+#define FOR(i,s,e) for (int i = (s); i < (e); ++i) 
+#define F0R(i,e) FOR(i,0,e) 
+#define ROF(i,s,e) for (int i = (e)-1; i >= (s); --i) 
+#define R0F(i,e) ROF(i,0,e) 
+#define printv(v,s,e) FOR(i,s,e+1) cout << v[i] << ' '; cout << '\n'
+#define ir(...) int __VA_ARGS__; re(__VA_ARGS__);
+template<class T> using min_priority_queue = priority_queue<T, vector<T>, greater<T>>;
+template<class T, class H> istream& operator>>(istream& in, pair<H, T>& a) {in >> a.fi >> a.se; return in;};
+template<typename T> istream& operator>>(istream& in, vector<T>& a) {for(auto &x: a) in >> x; return in;};
+template<class T> void re(T &x) {cin >> x;}
+template<class H, class... T> void re(H &h, T &...t) { re(h); re(t...); }
+#pragma endregion
+
+const int N = 1E5+10;
+vt<int> adj[N];
+void func(map<int,vt<int>>& mp, vt<array<int,4>>& stor, int typ) {
+    for (auto [key,val]: mp) {
+        vt<array<int,3>> v;
+        for (int i: val) {
+            if (typ == 0) v.pb({stor[i][1],stor[i][3]+1,i});
+            else v.pb({stor[i][0],stor[i][2]+1,i});
+        }
+        sort(all(v));//sorted by left
+        for (auto [l,r,i]: v) {
+            auto a = lb(all(v), array<int,3>{l,0,0});
+            auto b = lb(all(v), array<int,3>{r,(int)2e9,(int)2e9});//?
+            for (auto it = a; it != b && it != v.end(); it++) {
+                if (i != (*it)[2]) {
+                    adj[i].pb((*it)[2]);
+                    adj[(*it)[2]].pb(i);
+                }
+            }
+        }
+        v.clear();
+        for (int i: val) {
+            if (typ == 0) v.pb({stor[i][3]+1,stor[i][1],i});
+            else v.pb({stor[i][2]+1,stor[i][0],i});
+        }
+        sort(all(v));//sorted by right
+        for (auto [r,l,i]: v) {
+            auto a = lb(all(v), array<int,3>{l,0,0});
+            auto b = lb(all(v), array<int,3>{r,(int)2E9,(int)2E9});//?
+            for (auto it = a; it != b && it != v.end(); it++) {
+                if (i != (*it)[2]) {
+                    adj[i].pb((*it)[2]);
+                    adj[(*it)[2]].pb(i);
+                }
+            }
+        }
+    }
+}
+void solve() {
+    ir(n,m,k);
+    vt<array<int,4>> stor(k);
+    F0R(i,k) {
+        ir(a,b,c,d);
+        stor[i] = {a,b,c,d};
+    }
+    map<int, vt<int>> x, y;
+    F0R(i,k) {
+        x[stor[i][0]].pb(i);
+        x[stor[i][2]+1].pb(i);
+        y[stor[i][1]].pb(i);
+        y[stor[i][3]+1].pb(i);
+    }
+    
+    func(x, stor, 0);
+    func(y, stor, 1);
+    
+    //multi bfs
+    queue<int> q;
+    vt<bool> vis(k,0);
+    vt<pii> pa_dist(k, {-1,0});
+    F0R(i,k) {
+        auto [bx, by, tx, ty] = stor[i];
+        if (bx == 0 || ty == m-1) {
+            q.push(i);
+            vis[i] = 1;
+            pa_dist[i] = {-1,0};
+        }
+    }
+    while (sz(q)) {
+        int v = q.front();
+        q.pop();
+        for (int i: adj[v]) if (!vis[i]) {
+            vis[i] = 1;
+            q.push(i);
+            pa_dist[i].fi = v;
+            pa_dist[i].se = pa_dist[v].se+1;
+        }
+    }
+    int mn = -1;
+    F0R(i,k) {
+        auto [bx, by, tx, ty] = stor[i];
+        if (vis[i] && (tx == n-1 || by == 0)) {
+            if (mn == -1 || pa_dist[mn].se > pa_dist[i].se) {
+                mn = i;
+            }
+        }
+    }
+    if (mn == -1) {
+        cout << -1 << '\n';
+        return;
+    }
+    vt<int> ans = {mn};
+    while (pa_dist[mn].fi != -1) {
+        mn = pa_dist[mn].fi;
+        ans.pb(mn);
+    }
+    cout << sz(ans) << ' ';
+    for (int i: ans) cout << i+1 << ' ';
+}
+signed main() {
+    #ifdef LOCAL
+    freopen("txt.in","r",stdin);
+    freopen("txt.out","w",stdout);
+    #else
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    #endif
+    int t = 1;
+    //cin >> t;
+    while (t--) {
+        solve();
+    }
+}
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <span style="white-space: pre-line"><p>
+                    In essence, we want to choose a set of rectangles such that we can't go from (0,0) to (n-1,m-1)
+
+A useful visualization is turning the set of rectangles a graph. Each rectangle becomes a node and two nodes are connected if their corresponding rectangles share a border (even including just a corner).
+
+Let's label any node with a rectangle that shares a border to the top or left borders of the grid as our "start" nodes. Likewise, label any node with a rectangle that shares a border to the bottom or right borders as "end" nodes.
+
+The problem boils down to finding a path from a "start" to "end" node with minimum length. This can be easily done through a multi-source BFS.
+
+BFS from all the start nodes, then iterate through each "end" node and find the one with minimum distance from the start nodes. Keep in mind that u have to maintain both a distance array and a parent array. The problem also asks for a valid set of rectangles that satisfies the requirement, so we have to find all the nodes on that path.
+
+Now the question is, how do we generate the edges between the nodes?
+
+First, iterate through each distinct x/y value, and find the set, S, of all rectangles that share a border to that same x/y value. This can be done through a <code>map<int,vector<int>></code> where the key is the x/y value, and the value is a vector of indices of the rectangles (which we will also use as our node labelling).
+
+Convert each rectangle in S to just [y1,y2] borders of the opposite dimension. For example, if we had rectangles that share a border to x = 5, then look at their corresponding y bounds.
+Two rectangles share an x border/corner if there is an intersection of their [y1,y2].
+
+This problem further boils down to finding intersecting intervals per each distinct x and y value.
+This can be easily done with binary search for each interval to find other intervals with a left/right border within the current interval.
+Then, manually iterate through them to generate edges.
+
+After, just follow the strategy of BFS and minimizing the path.
+                </p>
+            </details>
+        </fieldset>
+    </div>
+</body>
