@@ -13,11 +13,14 @@
     <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
     <script src="../../templates/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
+	
 
     <title>StuyCCC</title>
 </head>
 
 <body>
+
+  
     <div id="side"></div>
     <div id="main">
         <h4>Last Updated 2024-4-7</h4>
@@ -34,7 +37,8 @@
             <h2><a target="_blank" href="">Problem 08</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">//written by Matthew Chen
+                <pre><code class="language-cpp">
+//written by Matthew Chen
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(x) (int)(x).size()
@@ -158,6 +162,237 @@ void solve() {
                     All that is left to check is whether there are any nonzero colors in <code>row</code> and <code>col</code>.
                     
                     The time complexity is <script type="math/tex">\mathcal{O}(n^2)</script> since there are <script type="math/tex">n</script> rows, each of which affects <script type="math/tex">n</script> cols, + <script type="math/tex">n</script> cols, each of which affects <script type="math/tex">n</script> rows, summing to <script type="math/tex">2n^2</script> operations
+                </p>
+            </details>
+			
+			<h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/F">Problem 10 - Rigging Revolver Rounds</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// written by Chongtian Ma 
+
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+using ll = long long;
+const int MOD = 1e9 + 7;
+#define all(x) x.begin(), x.end()
+
+// returns a vector of length n, smallest prime that it can be divided by
+// runs in O(nloglogn) time.
+vector&lt;int&gt; primesieve(int n) {
+    vector&lt;int&gt; sieve(n);
+    iota(sieve.begin(), sieve.end(), 0);
+    for (int i = 2; i &lt; n; i++)
+        if (sieve[i] == i)
+            for (int j = 2*i; j &lt; n; j += i)
+                sieve[j] = min(sieve[j], i);
+    return sieve;
+}
+
+// only works for numbers &lt;= sieve len
+vector&lt;int&gt; primefactors(int x){
+	static auto sieve = primesieve(2e5 + 5);
+	vector&lt;int&gt; ret;
+	while(x &gt; 1){
+		int cur = sieve[x];
+		while(x % cur == 0){
+			 x /= cur;
+			 ret.push_back(cur); 
+		}
+	}
+	return ret;
+}
+
+ll modpow(ll a, ll b, ll m){
+	ll res = 1;
+	while(b){
+		if(b & 1) res = (res * a) % m;
+		a = (a * a) % m;
+		b /= 2;
+	}
+	return res;
+}
+
+
+void solve(){
+	int n; cin &gt;&gt; n;
+	vector&lt;int&gt; P(n);
+	for(int& i: P){
+		cin &gt;&gt; i;
+		--i;
+	}
+	vector&lt;bool&gt; vis(n);
+	vector&lt;pair&lt;int, int&gt;&gt; cycles;
+	map&lt;int, int&gt; mp;
+	for(int i = 0; i &lt; n; i++){
+		if(!vis[i]){
+			int cyc_len = 0;
+			int j = i;
+			while(!vis[j]){
+				cyc_len++;
+				vis[j] = 1;
+				j = P[j];
+			}
+			if(mp[cyc_len] &lt; 2){
+				cycles.push_back({cyc_len, i});
+				mp[cyc_len]++;
+			}
+			
+		}
+	}
+	
+	int m = cycles.size();
+	vector&lt;vector&lt;int&gt;&gt; prime_factors(n + 1);
+	for(int i = 1; i &lt;= n; i++){
+		prime_factors[i] = primefactors(i);
+	}
+	vector&lt;multiset&lt;int&gt;&gt; prime_factor_ms(n + 1);
+	
+	set&lt;int&gt; prime_matter;
+	
+	array&lt;ll, 3&gt; ans = {-1, -1, -1};
+	
+	auto re_eval = [&](vector&lt;int&gt; sus, int i, int j) -&gt; void{
+		vector&lt;int&gt; new_added_p;
+		for(int su : sus) {
+			map&lt;int, int&gt; cnt;
+			for(int l: prime_factors[su]){
+				cnt[l]++;
+			}
+			for(auto [p, v] : cnt){
+				auto& s = prime_factor_ms[p];
+				s.insert(v);
+				if(prime_matter.insert(p).second){
+					new_added_p.push_back(p);
+				}
+		    }
+	    }
+	    
+	    ll _lcm = 1;
+	    for(int k: prime_matter){
+	    	if(prime_factor_ms[k].size() &gt; 0){
+	    		_lcm *= modpow(k, *prev(prime_factor_ms[k].end()), MOD);
+	    		_lcm %= MOD;
+	    	}
+	    }
+		ans = max(ans, {_lcm, i, j});
+	    for(int su : sus) {
+			map&lt;int, int&gt; cnt;
+			for(int l: prime_factors[su]){
+				cnt[l]++;
+			}
+		     for(auto [p, v] : cnt){
+		    	auto& s = prime_factor_ms[p];
+				s.erase(s.find(v));
+		    }
+	    }
+	    for(int i: new_added_p){
+	    	prime_matter.erase(i);
+	    }
+	};
+	
+	auto remove = [&](int k){
+		map&lt;int, int&gt; cnt;
+		for(int l: prime_factors[k]){
+			cnt[l]++;
+		}
+		for(auto [p, v] : cnt){
+			auto& s = prime_factor_ms[p];
+			if(s.count(v)){
+				s.erase(s.find(v));
+			}
+		}
+	};
+	
+	auto readd = [&](int k){
+		map&lt;int, int&gt; cnt;
+		for(int l: prime_factors[k]){
+			cnt[l]++;
+		}
+		for(auto [p, v] : cnt){
+			prime_matter.insert(p);
+			auto& s = prime_factor_ms[p];
+			s.insert(v);
+		}
+	};
+	
+	for(int i = 0; i &lt; m; i++){
+		readd(cycles[i].first);
+	}
+	
+	for(int i = 0; i &lt; m; i++){
+		for(int j = i + 1; j &lt; m; j++){
+			// combine these two cycles
+			for(int k: {cycles[i].first, cycles[j].first}){
+				remove(k);
+			}
+			int su = cycles[i].first + cycles[j].first;
+			re_eval({su}, cycles[i].second, cycles[j].second);
+		    
+		    for(int k: {cycles[i].first, cycles[j].first}){
+				readd(k);
+			}
+		}
+	}
+	
+	for(int i = 0; i &lt; m; i++){
+		int cur = cycles[i].second;
+		int cyc_len = cycles[i].first;
+		remove(cyc_len);
+		
+		for(int j = 1; j &lt; cyc_len; j++){
+			cur = P[cur];
+			re_eval({j, cyc_len - j}, cycles[i].second, cur);
+		}
+		readd(cyc_len);
+	}
+	
+	cout &lt;&lt; ans[0] &lt;&lt; " " &lt;&lt; ans[1] + 1 &lt;&lt; " " &lt;&lt; ans[2] + 1 &lt;&lt; "\n";
+}
+
+
+int main(){
+	cin.tie(0) -&gt; sync_with_stdio(0);
+	int t = 1;
+	cin &gt;&gt; t;
+	while(t--){
+		solve();
+	}
+}
+
+                </code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+                <span style="white-space: pre-line"><p>
+                    There are a lot to consider for this problem. First, let's consider the answer if we can perform no operations. We can model the problem is a graph where there is an edge from every <script type="math/tex">i</script> to <script type="math/tex">p_i</script>. Since there are <script type="math/tex">n</script> edges and <script type="math/tex">n</script> vertices, this graph can be decomposed into a functional graph. Since all <script type="math/tex">p_i</script> are guaranteed distinct, we are guaranteed that every vertex <script type="math/tex">i</script> is part of distinct cycle. So essentially, you are given a graph with a bunch of non-intersecting cycles. 
+
+Next, we can see that the answer to the problem is the least common multiple (lcm) of all cycle lengths. Why? For each cycle, if its length is <script type="math/tex">c_i</script>, you will need to fire exactly <script type="math/tex">c_i</script> rounds for it to end up at the chamber you started at. Since you want this to apply to all cycles, the least number of times you can ensure this is its lcm.
+
+We can rephrase the questions as the following: Given <script type="math/tex">c_1, c_2, ... c_m</script> where <script type="math/tex">m</script> is the number of cycles, we want to find lcm(<script type="math/tex">c_1, c_2, ... c_m</script>). Now, we can consider the operations.
+
+The operation swap exactly two edges in the graph. From this, we have two cases: Swap two edges that are not in the same cycle or two edges in the same cycle. The first case essentially merges two cycles together (performing this operation on cycles <script type="math/tex">i</script> and <script type="math/tex">j</script> creates a new cycle <script type="math/tex">k</script> such that <script type="math/tex">c_k = c_i + c_j</script>. What this does to array <script type="math/tex">c</script> is the following: erase <script type="math/tex">c_i</script> and <script type="math/tex">c_j</script> from <script type="math/tex">c</script> and insert <script type="math/tex">c_k</script>, and recompute the lcm and take the max of all such possible merges. However, if we were to loop through all cycles <script type="math/tex">i</script> and <script type="math/tex">j</script>, then our algorithm will take worst case <script type="math/tex">\mathcal{O}(n^2)</script> time, which is bad. This is where a clever optimization from a common technique comes in.
+
+It can be shown that if we have an array of numbers <script type="math/tex">a_1, a_2, ... a_M</script> that sum up to <script type="math/tex">s</script>, then there can be at most <script type="math/tex">\sqrt{s}</script> distinct numbers among array <script type="math/tex">a</script>. Why? consider the worst case, that is, if <script type="math/tex">a</script> consisted of <script type="math/tex">1, 2, 3, ..., k</script>. Since the sum of these natural numbers is <script type="math/tex">\frac{k \cdot (k + 1)}{2} = s</script>, we get that <script type="math/tex">k</script> must be approximately <script type="math/tex">\sqrt{s}</script>. 
+
+Let's apply this idea to array <script type="math/tex">c</script>. We know that <script type="math/tex">c_1 + c_2 + ... + c_m</script> must be <script type="math/tex">n</script>, since there are <script type="math/tex">n</script> total vertices, there can be at most <script type="math/tex">\sqrt{n}</script> distinct numbers among <script type="math/tex">c</script>. Since merging the same <script type="math/tex">c_i</script> and <script type="math/tex">c_j</script> multiple times does not affect our answer (since we are taking lcm of the same number), we only have to track a certain number of each distinct <script type="math/tex">c_i</script>. It can be proven that we need to track at most <script type="math/tex">2</script> of each distinct <script type="math/tex">c_i</script>!. This is because, in the worst case, we can still merge <script type="math/tex">c_i</script> and <script type="math/tex">c_j</script> if <script type="math/tex">c_i = c_j</script>.
+
+Let's prune <script type="math/tex">c_i</script> of numbers where there are more than <script type="math/tex">2</script> duplicates (or you can do this when you originally construct <script type="math/tex">c</script>). We have guaranteed that <script type="math/tex">m</script> is approximately at most <script type="math/tex">\sqrt{n}</script>. Now, when we run our previous <script type="math/tex">\mathcal{O}(m^2)</script> algorithm, this will take at most <script type="math/tex">\mathcal{O}(m^2 = n)</script> time!
+
+Let's now focus on the second case: where we swap two edges from the same cycle. This essentially breaks the cycle apart into two pieces of lengths <script type="math/tex">a</script> and <script type="math/tex">c_i - a</script>. This is possible if we pick two vertices <script type="math/tex">x</script> and <script type="math/tex">y</script> from the same cycle and <script type="math/tex">y</script> is <script type="math/tex">a</script> vertices away from <script type="math/tex">x</script>, and swap their edges. Rephrasing the operation in terms of our version of the problem, this operation does the following: erase <script type="math/tex">c_i</script> from <script type="math/tex">c</script>, and insert <script type="math/tex">a</script> and <script type="math/tex">c_i - a</script> into <script type="math/tex">c</script>. We can focus on one cycle at at time, fix the first vertex in the cycle in which we will do the operation on (it does not matter what vertex), and loop through all other vertices in the cycle. This will take <script type="math/tex">\mathcal{O}(n)</script> time. 
+
+Now, all that's left is to efficiently calculate the lcm! Obviously, we can't take <script type="math/tex">lcm(c_1, c_2,  ... , c_m)</script> naively becuase the lcm can large enough to 64-bit integer overflow. We have to resort to breaking down the lcm function. It is a common technique in number theory that, taking the lcm of a list of numbers is equivalent to multiplying the largest powers of the union of prime factors that make up each number in the list (for a more detailed explanation, refer to <a href="https://math.libretexts.org/Bookshelves/PreAlgebra/Prealgebra_1e_(OpenStax)/02%3A_Introduction_to_the_Language_of_Algebra/2.10%3A_Prime_Factorization_and_the_Least_Common_Multiple_(Part_2)">this article</a>). This means that in our algorithm, we needs to keep track of the prime factors that make up each <script type="math/tex">c_i</script> and the maximum power of each prime factor. Let's denote an array of distinct prime factors as <script type="math/tex">p_1, p_2, ..., p_k</script>. Note that <script type="math/tex">k</script> is at most <script type="math/tex">\log(n)</script>, since each <script type="math/tex">c_i</script> is bounded by <script type="math/tex">n</script>. To keep track of the maximum power for each <script type="math/tex">p_i</script>, we can track all possible powers in a multiset. 
+
+Thus, for this problem, it is necessary to create your own data structure that needs to efficently track <script type="math/tex">p</script> from <script type="math/tex">c</script> and can efficiently do the following:
+	- Insert a number <script type="math/tex">x</script>. When <script type="math/tex">x</script> is inserted, it should be immediately broken down to its prime factorization. We then have to loop through all the prime factors and insert its power into the multiset for that prime.
+	- Remove a number <script type="math/tex">x</script>. When <script type="math/tex">x</script> is removed, it also should be prime factorized, and its prime powers are erased from its respective multisets.
+	- Efficiently re-evaluate the lcm of all prime factors present in <script type="math/tex">p</script>, taken mod <script type="math/tex">10^9+7</script>. This should loop through all elements of <script type="math/tex">p</script> and compute <script type="math/tex">p_1^{m_1} \cdot p_2^{m_2} \cdot ... \cdot p_k^{m_k}</script> where <script type="math/tex">m_i</script> is the largest power for prime <script type="math/tex">p_i</script>.
+
+The rest is left up to implementation details. A number can be efficiently prime factorized if we precompute Sieve of Eratosthenes beforehand in <script type="math/tex">\mathcal{O}(n \log^2 n)</script> time and track the largest prime that divides each number from <script type="math/tex">1, 2, 3, ..., n</script>. Since a number can have at most <script type="math/tex">\log(n) </script> prime factors, prime factorizing each number will take at most <script type="math/tex">\log(n)</script> time. 
+
+Putting everything together, the final complexity should be around <script type="math/tex">\mathcal{O}(n \log^2 n)</script> time from the Sieve of Eratosthenes and when we insert each prime power into its respective multiset.
                 </p>
             </details>
 
