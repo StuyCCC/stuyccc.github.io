@@ -2,17 +2,18 @@
 
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
-    background-color: #303030;
+    background-color: #2D354A;
     display: grid;
     gap: 1em;
     grid-template-columns: 10em 1fr;
     margin-left: 200px;
     margin-right: 200px;
-    color: #458588;
+    color: #AAABB8;
 }
 
+
 #side {
-    background-color: #262626;
+    background-color: #1C202E;
     padding: 1em;
     float:left;
 }
@@ -31,12 +32,12 @@ body {
 }
 
 a {
-    color: #689d6a;
+    color: #268cd0;
     text-decoration: none;
 }
 
 a:hover {
-    color: #cc241d;
+    color: #845ecb;
     text-decoration: none;
 }
 
@@ -45,12 +46,12 @@ img.logo:hover {
 }
 
 #main {
-    background-color: #262626;
+    background-color: #1C202E;
     padding: 1em;
 }
 
 #main p {
-    color: #83a598;
+    color: #90C3EA;
 }
 
 #main div#left_box {
@@ -68,7 +69,7 @@ img.logo:hover {
 }
 
 legend {
-    color: #d65d0e;
+    color: #7ffffd;
 }
 
 fieldset {

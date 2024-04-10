@@ -6,7 +6,7 @@ function SideBar() {
     document.getElementById("side").innerHTML =
    '<div id="icon">'+
        '<h1><a href="../main/index.html">'+
-           '<img class="logo" src="../../templates/CCCLogo.png" alt="CCC logo" width="142px">'+
+           '<img class="logo" src="../../templates/circleCCCcow.png" alt="CCC logo" width="147px">'+
        '</a></h1>'+
    '</div>'+
    '<br>'+
