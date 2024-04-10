@@ -34,7 +34,62 @@
                 <a href="https://tinyurl.com/pcl24SPadvanced">PClassic 2024 Spring Advanced</a><br>
                 Classic has problems 1 through 8, while Advanced has problems 5 through 12.<br>
             </p>
-            <h2><a target="_blank" href="">Problem 08</a></h2>
+			
+			<h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/B">Problem 06 - Stupid Slow Stagecoaches</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// written by Chongtian Ma 
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+void solve(){
+	int n; cin &gt;&gt; n;
+	vector&lt;pair&lt;int, int&gt;&gt; v(n);
+	for(int i = 0; i &lt; n; i++){
+		cin &gt;&gt; v[i].first;
+	}
+	for(int i = 0; i &lt; n; i++){
+		cin &gt;&gt; v[i].second;
+	}
+	int slowest_speed = 1e9, ans = 0;
+	for(int i = n - 1; i &gt;= 0; i--){
+		if(v[i].second &lt; slowest_speed){
+			ans++;
+			slowest_speed = v[i].second;
+		}
+	}
+	cout &lt;&lt; ans &lt;&lt; "\n";
+}
+
+int main(){
+	cin.tie(0) -&gt; sync_with_stdio(0);
+	int t = 1;
+	cin &gt;&gt; t;
+	while(t--){
+		solve();
+	}
+}
+
+/*   /\_/\
+*   (= ._.)
+*   / &gt;  \&gt;
+*/
+</code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+				<span style="white-space: pre-line"><p>
+                Observe that a stagecoach will only join a cluster if the stagecoach infront has a strictly slower speed. Once it joins the cluster, its velocity will inherit the slower stagecoach's. Note that the x-positions of the stagecoaches does not actually matter because with infinite amount of time, a faster stagecoach behind a slower stagecoach will always catch up. Let's generalize this to all stagecoaches.
+				
+				If there is a series of <script type="math/tex">k</script> stagecoaches with velocities <script type="math/tex">v_1, v_2, ... v_k</script> such that <script type="math/tex">v_k < \min(v_1, v_2, ... v_{k-1})</script>, then the <script type="math/tex">k</script> stagecoaches will form a cluster moving at velocity <script type="math/tex">v_k</script>. With infinite amount of time, with each cluster <script type="math/tex">k</script> should be as big as possible. Since only the velocity of the last stagecoach matter, this prompts us to loop backwards - from the rightmost stagecoach to the left.
+				
+				We can track a global minimum velocity <script type="math/tex">v_{min}</script>. In our loop, if we encounter a stagecoach with velocity less than <script type="math/tex">v_{min}</script>, then that stagecoach must form a separate cluster. Thus, we can solve this problem in <script type="math/tex">\mathcal{O}(n)</script> time.
+                </p>
+            </details>
+			
+            <h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/D">Problem 08 - Tantilizing Tile Transformations</a></h2>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">
@@ -375,17 +430,17 @@ We can rephrase the questions as the following: Given <script type="math/tex">c_
 
 The operation swap exactly two edges in the graph. From this, we have two cases: Swap two edges that are not in the same cycle or two edges in the same cycle. The first case essentially merges two cycles together (performing this operation on cycles <script type="math/tex">i</script> and <script type="math/tex">j</script> creates a new cycle <script type="math/tex">k</script> such that <script type="math/tex">c_k = c_i + c_j</script>. What this does to array <script type="math/tex">c</script> is the following: erase <script type="math/tex">c_i</script> and <script type="math/tex">c_j</script> from <script type="math/tex">c</script> and insert <script type="math/tex">c_k</script>, and recompute the lcm and take the max of all such possible merges. However, if we were to loop through all cycles <script type="math/tex">i</script> and <script type="math/tex">j</script>, then our algorithm will take worst case <script type="math/tex">\mathcal{O}(n^2)</script> time, which is bad. This is where a clever optimization from a common technique comes in.
 
-It can be shown that if we have an array of numbers <script type="math/tex">a_1, a_2, ... a_M</script> that sum up to <script type="math/tex">s</script>, then there can be at most <script type="math/tex">\sqrt{s}</script> distinct numbers among array <script type="math/tex">a</script>. Why? consider the worst case, that is, if <script type="math/tex">a</script> consisted of <script type="math/tex">1, 2, 3, ..., k</script>. Since the sum of these natural numbers is <script type="math/tex">\frac{k \cdot (k + 1)}{2} = s</script>, we get that <script type="math/tex">k</script> must be approximately <script type="math/tex">\sqrt{s}</script>. 
+It can be shown that if we have an array of numbers <script type="math/tex">a_1, a_2, ... </script> that sum up to <script type="math/tex">s</script>, then there can be at most <script type="math/tex">\sqrt{s}</script> distinct numbers among array <script type="math/tex">a</script>. Why? consider the worst case, that is, if <script type="math/tex">a</script> consisted of <script type="math/tex">1, 2, 3, ..., k</script>. Since the sum of these natural numbers is <script type="math/tex">\frac{k \cdot (k + 1)}{2} = s</script>, we get that <script type="math/tex">k</script> must be approximately <script type="math/tex">\sqrt{s}</script>. 
 
-Let's apply this idea to array <script type="math/tex">c</script>. We know that <script type="math/tex">c_1 + c_2 + ... + c_m</script> must be <script type="math/tex">n</script>, since there are <script type="math/tex">n</script> total vertices, there can be at most <script type="math/tex">\sqrt{n}</script> distinct numbers among <script type="math/tex">c</script>. Since merging the same <script type="math/tex">c_i</script> and <script type="math/tex">c_j</script> multiple times does not affect our answer (since we are taking lcm of the same number), we only have to track a certain number of each distinct <script type="math/tex">c_i</script>. It can be proven that we need to track at most <script type="math/tex">2</script> of each distinct <script type="math/tex">c_i</script>!. This is because, in the worst case, we can still merge <script type="math/tex">c_i</script> and <script type="math/tex">c_j</script> if <script type="math/tex">c_i = c_j</script>.
+Let's apply this idea to array <script type="math/tex">c</script>. We know that <script type="math/tex">c_1 + c_2 + ... + c_m = n</script>, since there are <script type="math/tex">n</script> total vertices. This means that there can be at most <script type="math/tex">\sqrt{n}</script> distinct numbers among <script type="math/tex">c</script>. Since merging the same <script type="math/tex">c_i</script> and <script type="math/tex">c_j</script> multiple times does not affect our answer (since we are taking lcm of the same number), we only have to track a certain number of each distinct <script type="math/tex">c_i</script>. It can be proven that we need to track at most <script type="math/tex">2</script> of each distinct <script type="math/tex">c_i</script>!. This is because, in the worst case, we can still merge <script type="math/tex">c_i</script> and <script type="math/tex">c_j</script> if <script type="math/tex">c_i = c_j</script>.
 
 Let's prune <script type="math/tex">c_i</script> of numbers where there are more than <script type="math/tex">2</script> duplicates (or you can do this when you originally construct <script type="math/tex">c</script>). We have guaranteed that <script type="math/tex">m</script> is approximately at most <script type="math/tex">\sqrt{n}</script>. Now, when we run our previous <script type="math/tex">\mathcal{O}(m^2)</script> algorithm, this will take at most <script type="math/tex">\mathcal{O}(m^2 = n)</script> time!
 
 Let's now focus on the second case: where we swap two edges from the same cycle. This essentially breaks the cycle apart into two pieces of lengths <script type="math/tex">a</script> and <script type="math/tex">c_i - a</script>. This is possible if we pick two vertices <script type="math/tex">x</script> and <script type="math/tex">y</script> from the same cycle and <script type="math/tex">y</script> is <script type="math/tex">a</script> vertices away from <script type="math/tex">x</script>, and swap their edges. Rephrasing the operation in terms of our version of the problem, this operation does the following: erase <script type="math/tex">c_i</script> from <script type="math/tex">c</script>, and insert <script type="math/tex">a</script> and <script type="math/tex">c_i - a</script> into <script type="math/tex">c</script>. We can focus on one cycle at at time, fix the first vertex in the cycle in which we will do the operation on (it does not matter what vertex), and loop through all other vertices in the cycle. This will take <script type="math/tex">\mathcal{O}(n)</script> time. 
 
-Now, all that's left is to efficiently calculate the lcm! Obviously, we can't take <script type="math/tex">lcm(c_1, c_2,  ... , c_m)</script> naively becuase the lcm can large enough to 64-bit integer overflow. We have to resort to breaking down the lcm function. It is a common technique in number theory that, taking the lcm of a list of numbers is equivalent to multiplying the largest powers of the union of prime factors that make up each number in the list (for a more detailed explanation, refer to <a href="https://math.libretexts.org/Bookshelves/PreAlgebra/Prealgebra_1e_(OpenStax)/02%3A_Introduction_to_the_Language_of_Algebra/2.10%3A_Prime_Factorization_and_the_Least_Common_Multiple_(Part_2)">this article</a>). This means that in our algorithm, we needs to keep track of the prime factors that make up each <script type="math/tex">c_i</script> and the maximum power of each prime factor. Let's denote an array of distinct prime factors as <script type="math/tex">p_1, p_2, ..., p_k</script>. Note that <script type="math/tex">k</script> is at most <script type="math/tex">\log(n)</script>, since each <script type="math/tex">c_i</script> is bounded by <script type="math/tex">n</script>. To keep track of the maximum power for each <script type="math/tex">p_i</script>, we can track all possible powers in a multiset. 
+Now, all that's left is to efficiently calculate the lcm! Obviously, we can't take <script type="math/tex">lcm(c_1, c_2,  ... , c_m)</script> naively becuase the lcm can large enough to 64-bit integer overflow. We have to resort to breaking down the lcm function. It is a common technique in number theory that, taking the lcm of an array of numbers is equivalent to multiplying the largest powers of the union of prime factors that make up each number in the array (for a more detailed explanation, refer to <a href="https://math.libretexts.org/Bookshelves/PreAlgebra/Prealgebra_1e_(OpenStax)/02%3A_Introduction_to_the_Language_of_Algebra/2.10%3A_Prime_Factorization_and_the_Least_Common_Multiple_(Part_2)">this article</a>). This means that in our algorithm, we needs to keep track of the prime factors that make up each <script type="math/tex">c_i</script> and the maximum power of each prime factor. Let's denote an array of distinct prime factors as <script type="math/tex">p_1, p_2, ..., p_k</script>. Note that <script type="math/tex">k</script> is at most <script type="math/tex">\log(n)</script>, since each <script type="math/tex">c_i</script> is bounded by <script type="math/tex">n</script>. To keep track of the maximum power for each <script type="math/tex">p_i</script>, we can track all possible powers in a multiset. 
 
-Thus, for this problem, it is necessary to create your own data structure that needs to efficently track <script type="math/tex">p</script> from <script type="math/tex">c</script> and can efficiently do the following:
+Thus, for this problem, it is necessary to create a data structure that needs to efficently track <script type="math/tex">p</script> from <script type="math/tex">c</script> and can efficiently do the following:
 	- Insert a number <script type="math/tex">x</script>. When <script type="math/tex">x</script> is inserted, it should be immediately broken down to its prime factorization. We then have to loop through all the prime factors and insert its power into the multiset for that prime.
 	- Remove a number <script type="math/tex">x</script>. When <script type="math/tex">x</script> is removed, it also should be prime factorized, and its prime powers are erased from its respective multisets.
 	- Efficiently re-evaluate the lcm of all prime factors present in <script type="math/tex">p</script>, taken mod <script type="math/tex">10^9+7</script>. This should loop through all elements of <script type="math/tex">p</script> and compute <script type="math/tex">p_1^{m_1} \cdot p_2^{m_2} \cdot ... \cdot p_k^{m_k}</script> where <script type="math/tex">m_i</script> is the largest power for prime <script type="math/tex">p_i</script>.
@@ -397,7 +452,7 @@ Putting everything together, the final complexity should be around <script type=
             </details>
 
 
-            <h2><a target="_blank" href="">Problem 11</a></h2>
+            <h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/G">Problem 11 - Scary Sagging Stalactites</a></h2>
             <details>
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">//written by Matthew Chen
@@ -577,6 +632,26 @@ This can be easily done with binary search for each interval to find other inter
 Then, manually iterate through them to generate edges.
 
 After, just follow the strategy of BFS and minimizing the path.
+                </p>
+            </details>
+			
+			<h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/H">Problem 12 - Bye Bye! We out! - MAKING HAM KEK</a></h2>
+            <details>
+                <summary>Rough Solution Sketch</summary>
+                <span style="white-space: pre-line"><p>
+                    (written by Chongtian Ma)
+					
+					We can find all the vertices which are not included in the answer (let's call them bad). A vertex is bad if it can reach another vertex using the edges of the graph that is not included in the tree. In other words, if an edge in the graph provides a "shortcut" compared to the edges in the tree to another vertex, then it is bad. Let dist(<script type="math/tex">u</script>, <script type="math/tex">v</script>) denote the sum of weights from the path from vertices <script type="math/tex">u</script> to <script type="math/tex">v</script> in the tree. For each edge <script type="math/tex">(u, v, w)</script> in the graph, if <script type="math/tex">w < dist(u, v)</script>, then we need to process this edge.
+					
+					To process each of these shortcut edges, we need to find all the vertices they affect. Note that the property of a tree is so that there is at most one path between every pair of vertices. Let's consider the following cases:
+					
+					1. The affected node is on the path from <script type="math/tex">u</script> to <script type="math/tex">v</script>. We can binary search for these vertices from <script type="math/tex">u</script> to <script type="math/tex">v</script>. For instance, vertex <script type="math/tex">s</script> is bad if <script type="math/tex">dist(u, s) + w < dist(s, v)</script> or <script type="math/tex">dist(s, v) + w < dist(u, s)</script>. Let's denote two vertices as <script type="math/tex">x</script> and <script type="math/tex">y</script> if the vertices on the path from <script type="math/tex">u</script> to <script type="math/tex">x</script> are all bad and the vertices on the path from <script type="math/tex">v</script> to <script type="math/tex">y</script> are bad.
+					
+					2. Let's denote a "hanging tree" off a node <script type="math/tex">k</script> on the path from <script type="math/tex">u</script> to <script type="math/tex">v</script> as a subtree rooted at <script type="math/tex">k</script> and no node in the subtree are on the path from <script type="math/tex">u</script> to <script type="math/tex">v</script>. All vertices in hanging trees rooted at any vertex from the path from <script type="math/tex">u</script> to <script type="math/tex">x</script> or the path from <script type="math/tex">v</script> to <script type="math/tex">y</script> should be marked as bad.
+
+					We can efficiently calculate the dist function using generic binary lifting. We can mark each hanging tree using prefix-sums, then apply to each node in the subtree through post-processing. Note that the implementation is relatively unpleasant, as there are several cases to consider with LCA (least common ancestor) problems like these (for example, if <script type="math/tex">u</script> is already an ancestor of <script type="math/tex">y</script> or vice versa).
+					
+					The answer is all of the unmarked vertices.
                 </p>
             </details>
         </fieldset>
