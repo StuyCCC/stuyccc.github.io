@@ -23,7 +23,7 @@
   
     <div id="side"></div>
     <div id="main">
-        <h4>Last Updated 2024-4-7</h4>
+        <h4>Last Updated 2024-04-10</h4>
         <fieldset>
             <legend>PCLASSIC 2024 Spring</legend>
             <!-- use <script type="math/tex"> to use latex
@@ -92,26 +92,25 @@ int main(){
             <h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/D">Problem 08 - Tantilizing Tile Transformations</a></h2>
             <details>
                 <summary>Solution</summary>
-                <pre><code class="language-cpp">
-//written by Matthew Chen
-#include <bits/stdc++.h>
+                <pre><code class="language-cpp">//written by Matthew Chen
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 #define sz(x) (int)(x).size()
-#define FOR(i,s,e) for (int i = (s); i < (e); ++i) 
+#define FOR(i,s,e) for (int i = (s); i &lt; (e); ++i) 
 #define F0R(i,e) FOR(i,0,e) 
-template<typename T> istream& operator>>(istream& in, vector<T>& a) {for(auto &x: a) in >> x; return in;};
+template&lt;typename T&gt; istream& operator&gt;&gt;(istream& in, vector&lt;T&gt;& a) {for(auto &x: a) in &gt;&gt; x; return in;};
     
-int mx(array<int,4> x) {//max of 0,1,2 color freq's
+int mx(array&lt;int,4&gt; x) {//max of 0,1,2 color freq's
     return max(x[0], max(x[1], x[2]));
 }
 void solve() {
-    int n; cin >> n;
-    vector<vector<int>> grid(n, vector<int>(n));
-    cin >> grid;
+    int n; cin &gt;&gt; n;
+    vector&lt;vector&lt;int&gt;&gt; grid(n, vector&lt;int&gt;(n));
+    cin &gt;&gt; grid;
 
     //{0, 1, 2, total}
-    vector<array<int,4>> row(n), col(n);//frequencies
-    vector<pair<int,int>> sweep;
+    vector&lt;array&lt;int,4&gt;&gt; row(n), col(n);//frequencies
+    vector&lt;pair&lt;int,int&gt;&gt; sweep;
     F0R(i,n) {
         row[i][3] = col[i][3] = n;
         F0R(j,n) {
@@ -130,7 +129,7 @@ void solve() {
             sweep.push_back({j,1ll});
         }
     }
-    vector<array<int,3>> ans;//{row/col type, ind, color}
+    vector&lt;array&lt;int,3&gt;&gt; ans;//{row/col type, ind, color}
     while (sz(sweep)) {
         for (auto [ind,typ]: sweep) {
             if (typ == 0) {//process row
@@ -172,13 +171,13 @@ void solve() {
     //check for impossible case
     F0R(i,n) {
         if (row[i][1] || row[i][2] || col[i][1] || col[i][2]) {
-            cout << -1 << '\n'; return;
+            cout &lt;&lt; -1 &lt;&lt; '\n'; return;
         }
     }
     reverse(ans.begin(), ans.end());
-    cout << sz(ans) << '\n';
+    cout &lt;&lt; sz(ans) &lt;&lt; '\n';
     for (auto [a,b,c]: ans) {
-        cout << a << ' ' << b << ' ' << c << '\n';
+        cout &lt;&lt; a &lt;&lt; ' ' &lt;&lt; b &lt;&lt; ' ' &lt;&lt; c &lt;&lt; '\n';
     }
 }
 </code></pre>
@@ -457,11 +456,11 @@ Putting everything together, the final complexity should be around <script type=
                 <summary>Solution</summary>
                 <pre><code class="language-cpp">//written by Matthew Chen
 #pragma region
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 using ll = long long;
 #define int ll
-using pii = pair<int,int>;
+using pii = pair&lt;int,int&gt;;
 #define vt vector
 #ifndef LOCAL
 #pragma GCC optimize("O3,unroll-loops")
@@ -476,35 +475,35 @@ using pii = pair<int,int>;
 #define sz(x) (int)(x).size()
 #define all(v) v.begin(), v.end()
 #define rall(v) v.rbegin(), v.rend()
-#define YES cout << "YES" << '\n'
-#define NO cout << "NO" << '\n'
-#define IMP cout << "IMPOSSIBLE" << '\n'
-#define FOR(i,s,e) for (int i = (s); i < (e); ++i) 
+#define YES cout &lt;&lt; "YES" &lt;&lt; '\n'
+#define NO cout &lt;&lt; "NO" &lt;&lt; '\n'
+#define IMP cout &lt;&lt; "IMPOSSIBLE" &lt;&lt; '\n'
+#define FOR(i,s,e) for (int i = (s); i &lt; (e); ++i) 
 #define F0R(i,e) FOR(i,0,e) 
-#define ROF(i,s,e) for (int i = (e)-1; i >= (s); --i) 
+#define ROF(i,s,e) for (int i = (e)-1; i &gt;= (s); --i) 
 #define R0F(i,e) ROF(i,0,e) 
-#define printv(v,s,e) FOR(i,s,e+1) cout << v[i] << ' '; cout << '\n'
+#define printv(v,s,e) FOR(i,s,e+1) cout &lt;&lt; v[i] &lt;&lt; ' '; cout &lt;&lt; '\n'
 #define ir(...) int __VA_ARGS__; re(__VA_ARGS__);
-template<class T> using min_priority_queue = priority_queue<T, vector<T>, greater<T>>;
-template<class T, class H> istream& operator>>(istream& in, pair<H, T>& a) {in >> a.fi >> a.se; return in;};
-template<typename T> istream& operator>>(istream& in, vector<T>& a) {for(auto &x: a) in >> x; return in;};
-template<class T> void re(T &x) {cin >> x;}
-template<class H, class... T> void re(H &h, T &...t) { re(h); re(t...); }
+template&lt;class T&gt; using min_priority_queue = priority_queue&lt;T, vector&lt;T&gt;, greater&lt;T&gt;&gt;;
+template&lt;class T, class H&gt; istream& operator&gt;&gt;(istream& in, pair&lt;H, T&gt;& a) {in &gt;&gt; a.fi &gt;&gt; a.se; return in;};
+template&lt;typename T&gt; istream& operator&gt;&gt;(istream& in, vector&lt;T&gt;& a) {for(auto &x: a) in &gt;&gt; x; return in;};
+template&lt;class T&gt; void re(T &x) {cin &gt;&gt; x;}
+template&lt;class H, class... T&gt; void re(H &h, T &...t) { re(h); re(t...); }
 #pragma endregion
 
 const int N = 1E5+10;
-vt<int> adj[N];
-void func(map<int,vt<int>>& mp, vt<array<int,4>>& stor, int typ) {
+vt&lt;int&gt; adj[N];
+void func(map&lt;int,vt&lt;int&gt;&gt;& mp, vt&lt;array&lt;int,4&gt;&gt;& stor, int typ) {
     for (auto [key,val]: mp) {
-        vt<array<int,3>> v;
+        vt&lt;array&lt;int,3&gt;&gt; v;
         for (int i: val) {
             if (typ == 0) v.pb({stor[i][1],stor[i][3]+1,i});
             else v.pb({stor[i][0],stor[i][2]+1,i});
         }
         sort(all(v));//sorted by left
         for (auto [l,r,i]: v) {
-            auto a = lb(all(v), array<int,3>{l,0,0});
-            auto b = lb(all(v), array<int,3>{r,(int)2e9,(int)2e9});//?
+            auto a = lb(all(v), array&lt;int,3&gt;{l,0,0});
+            auto b = lb(all(v), array&lt;int,3&gt;{r,(int)2e9,(int)2e9});//?
             for (auto it = a; it != b && it != v.end(); it++) {
                 if (i != (*it)[2]) {
                     adj[i].pb((*it)[2]);
@@ -519,8 +518,8 @@ void func(map<int,vt<int>>& mp, vt<array<int,4>>& stor, int typ) {
         }
         sort(all(v));//sorted by right
         for (auto [r,l,i]: v) {
-            auto a = lb(all(v), array<int,3>{l,0,0});
-            auto b = lb(all(v), array<int,3>{r,(int)2E9,(int)2E9});//?
+            auto a = lb(all(v), array&lt;int,3&gt;{l,0,0});
+            auto b = lb(all(v), array&lt;int,3&gt;{r,(int)2E9,(int)2E9});//?
             for (auto it = a; it != b && it != v.end(); it++) {
                 if (i != (*it)[2]) {
                     adj[i].pb((*it)[2]);
@@ -532,12 +531,12 @@ void func(map<int,vt<int>>& mp, vt<array<int,4>>& stor, int typ) {
 }
 void solve() {
     ir(n,m,k);
-    vt<array<int,4>> stor(k);
+    vt&lt;array&lt;int,4&gt;&gt; stor(k);
     F0R(i,k) {
         ir(a,b,c,d);
         stor[i] = {a,b,c,d};
     }
-    map<int, vt<int>> x, y;
+    map&lt;int, vt&lt;int&gt;&gt; x, y;
     F0R(i,k) {
         x[stor[i][0]].pb(i);
         x[stor[i][2]+1].pb(i);
@@ -549,9 +548,9 @@ void solve() {
     func(y, stor, 1);
     
     //multi bfs
-    queue<int> q;
-    vt<bool> vis(k,0);
-    vt<pii> pa_dist(k, {-1,0});
+    queue&lt;int&gt; q;
+    vt&lt;bool&gt; vis(k,0);
+    vt&lt;pii&gt; pa_dist(k, {-1,0});
     F0R(i,k) {
         auto [bx, by, tx, ty] = stor[i];
         if (bx == 0 || ty == m-1) {
@@ -574,22 +573,22 @@ void solve() {
     F0R(i,k) {
         auto [bx, by, tx, ty] = stor[i];
         if (vis[i] && (tx == n-1 || by == 0)) {
-            if (mn == -1 || pa_dist[mn].se > pa_dist[i].se) {
+            if (mn == -1 || pa_dist[mn].se &gt; pa_dist[i].se) {
                 mn = i;
             }
         }
     }
     if (mn == -1) {
-        cout << -1 << '\n';
+        cout &lt;&lt; -1 &lt;&lt; '\n';
         return;
     }
-    vt<int> ans = {mn};
+    vt&lt;int&gt; ans = {mn};
     while (pa_dist[mn].fi != -1) {
         mn = pa_dist[mn].fi;
         ans.pb(mn);
     }
-    cout << sz(ans) << ' ';
-    for (int i: ans) cout << i+1 << ' ';
+    cout &lt;&lt; sz(ans) &lt;&lt; ' ';
+    for (int i: ans) cout &lt;&lt; i+1 &lt;&lt; ' ';
 }
 signed main() {
     #ifdef LOCAL
@@ -599,7 +598,7 @@ signed main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
     #endif
     int t = 1;
-    //cin >> t;
+    //cin &gt;&gt; t;
     while (t--) {
         solve();
     }
@@ -632,6 +631,7 @@ This can be easily done with binary search for each interval to find other inter
 Then, manually iterate through them to generate edges.
 
 After, just follow the strategy of BFS and minimizing the path.
+A proof to the bounds of the graph and time complexity is left as an exercise to the reader.
                 </p>
             </details>
 			
