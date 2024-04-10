@@ -10,17 +10,17 @@ function SideBar() {
        '</a></h1>'+
    '</div>'+
    '<br>'+
-   '<nav><a href="../main/about.html">about</a></nav>'+
+   '<nav><a href="../main/about.html">About</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/calendar.html">calendar</a></nav>'+
+   //'<nav><a href="../main/calendar.html">Calendar</a></nav>'+
+   //'<br>'+
+   '<nav><a href="../main/lessons.html">Lessons</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/lessons.html">lessons</a></nav>'+
+   '<nav><a href="../main/problems.html">Problems</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/problems.html">problems</a></nav>'+
+   '<nav><a href="../main/resources.html">Resources</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/resources.html">resources</a></nav>'+
+   '<nav><a href="../main/writeups.html">Writeups</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/writeups.html">writeups</a></nav>'+
-   '<br>'+
-   '<nav><a href="../main/lessons_archive.html">lessons archive</a></nav>';
+   '<nav><a href="../main/lessons_archive.html">Lessons Archive</a></nav>';
 }
