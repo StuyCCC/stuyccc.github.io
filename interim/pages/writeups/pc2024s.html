@@ -35,6 +35,94 @@
                 Classic has problems 1 through 8, while Advanced has problems 5 through 12.<br>
             </p>
 			
+						<h2><a target="_blank" href="https://codeforces.com/gym/516048/problem/A">Problem 01 - Great Golden 'Graph</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// written by Chongtian Ma 
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main(){
+	string s; int k; cin &gt;&gt; s &gt;&gt; k;
+	cout &lt;&lt; s[(k - 1) % s.length()] &lt;&lt; endl;
+}
+</code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+				<span style="white-space: pre-line"><p>
+                We are looking for the character at position <script type="math/tex">r</script> where <script type="math/tex">r</script> is the remainder when <script type="math/tex">k</script> is divided by the length of <script type="math/tex">s</script>. Note that since strings are 0-indexed, you must subtract <script type="math/tex">1</script> from <script type="math/tex">k</script> before you take modulo.
+                </p>
+            </details>
+			
+			
+			<h2><a target="_blank" href="https://codeforces.com/gym/516048/problem/B">Problem 02 - Cowculated Cattle Combining</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// written by Chongtian Ma 
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+	int a, b, c; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+	if((a * b) - c == 0 || (a * c) - b == 0 || (b * c) - a == 0 ||
+	   a * (b - c) == 0 || a * (c - b) == 0 || b * (c - a) == 0 || (a - b) * c == 0){
+		cout &lt;&lt; "YES" &lt;&lt; endl;
+	}
+	else{
+		cout &lt;&lt; "NO" &lt;&lt; endl;
+	}
+}
+</code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+				<span style="white-space: pre-line"><p>
+                There are several approaches to this problem. You could either list out all the possible cases and orderings like I did, or use std::next_permutation to iterate through all permutations of an array with elements {a, b, c}, and take the maximum of the expressions over all permutations.
+                </p>
+            </details>
+			
+			</code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+				<span style="white-space: pre-line"><p>
+                We are looking for the character at position <script type="math/tex">r</script> where <script type="math/tex">r</script> is the remainder when <script type="math/tex">k</script> is divided by the length of <script type="math/tex">s</script>. Note that since strings are 0-indexed, you must subtract <script type="math/tex">1</script> from <script type="math/tex">k</script> before you take modulo.
+                </p>
+            </details>
+			
+			
+	<h2><a target="_blank" href="https://codeforces.com/gym/516048/problem/C">Problem 03 - Shooter Sheriff Showdown</a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// written by Chongtian Ma 
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+	int n, x; cin &gt;&gt; n &gt;&gt; x;
+	cout &lt;&lt; n / (x + 1) &lt;&lt; endl;
+}
+</code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+				<span style="white-space: pre-line"><p>
+					Let's denote the answer to be  <script type="math/tex">c</script>. From the samples, you could probably see that since you could leave a length <script type="math/tex">c</script> gap at the start, <script type="math/tex">n</script> could actually be shortened by <script type="math/tex">c</script>, assuming we are to place a D on the first slot. So, we want to solve for the maximum <script type="math/tex">c</script> such that <script type="math/tex">\frac{n - c}{c} \geq x</script>.
+					
+					Rearraging the equation we will arrive at <script type="math/tex">\frac{n}{x+1} \geq c</script>. Since  <script type="math/tex">c</script> can be at most <script type="math/tex">\frac{n}{x+1}</script>, that is our answer.
+                </p>
+            </details>
+			
+			
 			<h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/B">Problem 06 - Stupid Slow Stagecoaches</a></h2>
             <details>
                 <summary>Solution</summary>
@@ -88,6 +176,61 @@ int main(){
 				We can track a global minimum velocity <script type="math/tex">v_{min}</script>. In our loop, if we encounter a stagecoach with velocity less than <script type="math/tex">v_{min}</script>, then that stagecoach must form a separate cluster. Thus, we can solve this problem in <script type="math/tex">\mathcal{O}(n)</script> time.
                 </p>
             </details>
+			
+<h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/C">Problem 07 - Dire Debt Dilemma </a></h2>
+            <details>
+                <summary>Solution</summary>
+                <pre><code class="language-cpp">
+// written by Victor Casado
+#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;array&gt; 
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main()
+{
+    int n;
+    cin &gt;&gt; n;
+    bool nOdd;
+
+    int array[n];
+
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; array[i];
+    }
+
+    int med;
+    int h = sizeof(array)/sizeof(array[0]);
+    sort(array,array+h);
+    if(n % 2 == 1){
+        med = array[n/2];
+    }
+    else{
+        med = (array[n/2] + array[(n/2)-1])/2;
+    }
+
+    int r = 0;
+    for(int i = 0; i &lt; n; i++){
+        r+= abs((array[i]-med));
+    }
+    cout&lt;&lt;r&lt;&lt;"\n";
+}
+</code></pre>
+            </details>
+            <br>
+            <details>
+                <summary>Explanation</summary>
+				<span style="white-space: pre-line"><p>
+                Essentially, the problem gives you a list of numbers, and wants you to find the minimum amount of total change done to these numbers to make them all the same number. Thus, you have to pick a number to make them all become.
+
+Crucially, it can be shown that this number is the median of all the numbers. (For any 2 numbers, any number between them will create the same amount of change. Extending this pattern to more numbers makes it clear the median is the optimal choice). 
+
+Thus, we loop through the numbers and store them in an array, and then we find the median. Then, we loop through the array and find the differences to the median. The sum of these differences is our result. 
+                </p>
+            </details>
+			
 			
             <h2><a target="_blank" href="https://codeforces.com/gym/516050/problem/D">Problem 08 - Tantilizing Tile Transformations</a></h2>
             <details>
@@ -639,7 +782,7 @@ A proof to the bounds of the graph and time complexity is left as an exercise to
             <details>
                 <summary>Rough Solution Sketch</summary>
                 <span style="white-space: pre-line"><p>
-                    (written by Chongtian Ma)
+                    (written by Chongtian Ma, idea contributed by Patrick Deng)
 					
 					We can find all the vertices which are not included in the answer (let's call them bad). A vertex is bad if it can reach another vertex using the edges of the graph that is not included in the tree. In other words, if an edge in the graph provides a "shortcut" compared to the edges in the tree to another vertex, then it is bad. Let dist(<script type="math/tex">u</script>, <script type="math/tex">v</script>) denote the sum of weights from the path from vertices <script type="math/tex">u</script> to <script type="math/tex">v</script> in the tree. For each edge <script type="math/tex">(u, v, w)</script> in the graph, if <script type="math/tex">w < dist(u, v)</script>, then we need to process this edge.
 					
