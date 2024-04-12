@@ -13,6 +13,7 @@ body {
 
 
 #side {
+    border-radius: 15px;
     background-color: #1C202E;
     padding: 1em;
     float:left;
@@ -46,6 +47,7 @@ img.logo:hover {
 }
 
 #main {
+    border-radius: 15px;
     background-color: #1C202E;
     padding: 1em;
 }
