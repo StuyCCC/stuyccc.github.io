@@ -1,0 +1,95 @@
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2024-06-26</h4>
+        <fieldset>
+            <legend>CONDITIONALS</legend>
+            <h1>Library Functions:</h1>
+
+
+    <h2>Math:</h2>
+    <p><strong>max/min</strong><br>
+    max and min of two numbers, commutative.<br>
+    Java & Python allow for different types as long as able to be casted e.g., int with double.<br>
+    Only Python allows for an arbitrary number of elements e.g., min(2,3,4,5).</p>
+
+    <p><strong>ceil/floor</strong><br>
+    rounds up and down, respectively, for a single number.<br>
+    Python and C++ return integers.<br>
+    Java returns the same type as inputted.</p>
+
+    <p><strong>abs</strong><br>
+    absolute value.<br>
+    returns the same type as inputted but always positive.</p>
+
+    <p><strong>sqrt/pow/log</strong><br>
+    square root, exponent, log.<br>
+    usually returns double.<br>
+    unreliable sometimes because floating point is sometimes janky, rarely used.<br>
+    All of these functions are O(1).</p>
+
+    <h2>Lists:</h2>
+    <p><strong>add</strong><br>
+    adds element to end of list.<br>
+    Python: <code>append (list)</code><br>
+    C++: <code>push_back (vector)</code><br>
+    Java: <code>add (ArrayList)</code><br>
+    O(1) if you are appending to the back of the list.<br>
+    Otherwise, O(n) where n is the number of elements after the index being inserted between.</p>
+
+    <p><strong>fill</strong><br>
+    fills a list with values.<br>
+    Python: <code>ls = [0]*n</code><br>
+    Java: <code>Arrays.fill(arr, val)</code> for arrays, <code>Collections.fill(arr, val)</code> for arraylists.<br>
+    C++: <code>fill(arr.begin(), arr.end(), val)</code><br>
+    O(n).</p>
+
+    <p><strong>remove</strong><br>
+    removes element from list.<br>
+    Python:<br>
+    remove by index: <code>arr.pop(ind)</code><br>
+    remove by value: <code>arr.remove(val)</code><br>
+    Java:<br>
+    both remove by value and index are <code>.remove()</code><br>
+    if you want to remove by index, parameter must be an int.<br>
+    if you want to remove by value, parameter must be the same type as arraylist's type (e.g., Integer).<br>
+    C++:<br>
+    remove by index: <code>arr.erase(arr.begin()+ind)</code><br>
+    remove by value: <code>arr.erase(find(arr.begin(), arr.end(), val))</code><br>
+    O(1) if you are removing the last element of the list.<br>
+    Otherwise, O(n) where n is the number of elements after the index being inserted between.</p>
+
+    <p><strong>find index of</strong><br>
+    finds the first index whose value is equal to the value given.<br>
+    Python: <code>arr.index(val)</code><br>
+    Java: <code>arr.indexOf(val)</code><br>
+    C++: <code>find(arr.begin(), arr.end(), val)-arr.begin()</code><br>
+    O(n).</p>
+
+    <h2>Sorts:</h2>
+    <p>Insertion sort O(n^2), Merge sort O(n*logn), Quick sort average: O(nlogn), worst case O(n^2).<br>
+    Python uses Tim sort (merge + insertion).<br>
+    Java uses Quick sort on primitives and Merge sort for nonprimitives.<br>
+    Java's quick sort may be O(n^2) for versions of Java before Java 14.<br>
+    C++ uses Intro sort (quick sort + insertion + heap sort if takes too long).</p>
+        </fieldset>
+    </div>
+</body>

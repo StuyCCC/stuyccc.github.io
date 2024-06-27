@@ -21,6 +21,9 @@ function SideBar() {
    '<nav><a href="../main/resources.html">Resources</a></nav>'+
    '<br>'+
    '<nav><a href="../main/writeups.html">Writeups</a></nav>'+
+   '<br><br>'+
+   '<h3><legend> Archives </legend></h3><br>'+
+   '<nav><a href="../main/lessons_archive.html">Lessons Archive</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/lessons_archive.html">Lessons Archive</a></nav>';
+   '<nav><a href="../main/problems_archive.html">Problems Archive</a></nav>';
 }
