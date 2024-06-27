@@ -1,0 +1,823 @@
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+
+<body>
+<div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2024-06-27</h4>
+        <fieldset>
+            <legend>Problems and Solutions for Novice Meets</legend>
+			<h3 id="10_19">10/19 Review with input/output (IO) and lists</h3>
+            <p>
+                Review with input/output (IO) and lists<br>
+                <br>
+                <a href="https://cses.fi/problemset/task/1068">https://cses.fi/problemset/task/1068</a><br>
+                <p>Python:</p>
+                <pre><code class="language-python">n = int(input())
+while n != 1:
+    print(n,end=" ")
+    if n%2 == 0:
+        n //= 2
+        #n = n//2
+    else:
+        n = 3*n + 1
+        #n *= 3
+        #n += 1
+
+print(1)</code></pre>
+                <p>Java:</p>
+                <pre><code class="language-java">import java.util.*;
+public class weird {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //in case the number exceeds 2 billion
+        long n = sc.nextLong();
+        while (n != 1) {
+            if (n%2 == 0) {
+                n /= 2;
+            }
+            else {
+                n = 3*n+1;
+            }
+            System.out.print(n);
+            System.out.print(" ");
+        }
+        System.out.print(1);
+    }
+}</code></pre>
+                <p>C++:</p>
+                <pre><code class="language-cpp">#include &ltbits/stdc++.h&gt
+using namespace std;
+
+int main() {
+    long long n;
+    cin &gt&gt n;
+    while (n != 1) {
+        if (n%2 == 0) {
+            n /= 2;
+        }
+        else {
+            n = 3*n+1;
+        }
+        cout &lt&lt n &lt&lt " ";
+    }
+    cout &lt&lt 1;
+}</code></pre>
+                <br><br>
+                <a href="https://cses.fi/problemset/task/1094">https://cses.fi/problemset/task/1094</a><br>
+                <p>Python:</p>
+                <pre><code lang="language-python">n = int(input()) # taking in size of the array
+arr = list(map(int, input().split())) # taking in the numbers in the array
+
+moves = 0
+for i in range(1, n):
+    if arr[i] &lt arr[i - 1]:
+        moves += arr[i - 1] - arr[i]
+        arr[i] = arr[i - 1]
+        
+print(moves)</code></pre>
+                    <p>Java:</p>
+                    <pre><code lang="language-java">import java.util.*;
+public class test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+        for (int i = 0; i &lt n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        long moves = 0;
+        for(int i = 1; i &lt n; i++) {
+            if(arr[i] &lt arr[i - 1]) {
+                moves += arr[i - 1] - arr[i];
+                arr[i] = arr[i - 1];
+            }
+        }
+        System.out.println(moves);
+    }
+}</code></pre>
+                        <p>C++:</p>
+                        <pre><code lang="language-cpp">#include &ltbits/stdc++.h&gt
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt&gt n;
+    int arr[n];
+    for(int i = 0; i &lt n; i++) {
+        cin &gt&gt arr[i];
+    }
+
+    long long moves = 0;
+    for(int i = 1; i &lt n; i++) {
+        if(arr[i] &lt arr[i - 1]) {
+            moves += arr[i - 1] - arr[i];
+            arr[i] = arr[i - 1];
+        }
+    }
+
+    cout &lt&lt moves;
+}</code></pre>
+            <br><br>
+            <h3 id="11_09">11/9 Novice Meet #4 Practice Problems</h3>
+            <a href="https://codeforces.com/contest/1841/problem/B">https://codeforces.com/contest/1841/problem/B</a>
+            <p>Python:</p>
+            <pre><code lang="language-python">t = int(input())
+for tt in range(t):
+    n = int(input())
+    ls = input().split()
+    
+    goodindexes = 0
+    for m in range(1,n):
+        temp = []
+        for i in range(2*n-2):
+            if len(ls[i]) == m:
+                temp.append(ls[i])
+        
+        if len(temp) == 2:
+            if temp[0][::-1] == temp[1]:
+                goodindexes += 1
+    
+    if goodindexes == n-1:
+        print("YES")
+    else:
+        print("NO")</code></pre>
+            <p>Java:</p>
+            <pre><code lang="language-java">import java.util.*;
+public class demo {
+    public static String reverse(String a) {
+        String b = "";
+        for (int i = a.length()-1; i  >= 0; i--) b += a.charAt(i);
+        return b;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int test = sc.nextInt();
+        for (int t = 0; t < test; t++) {
+            int n = sc.nextInt();
+            ArrayList&ltString&gt arr = new ArrayList<>();
+            for (int i = 0; i < 2*n-2; i++) {
+                String s = sc.next();
+                arr.add(s);
+            }
+            Collections.sort(arr, Comparator.comparing(s -> s.length()));
+            boolean ans = true;
+            for (int i = 0; i < arr.size(); i+=2) {
+                if (!arr.get(i).equals(reverse(arr.get(i+1)))) {
+                    ans = false;
+                    break;
+                }
+            }
+            if (ans) System.out.println("Yes");
+            else System.out.println("no");
+        }
+    }
+}</code></pre>
+            <p>C++:</p>
+            <pre><code lang="language-cpp">#include &ltbits/stdc++.h&gt
+using namespace std;
+
+int main() {
+    int t; cin >> t;
+    for (int tt = 0; tt < t; tt++) {
+        int n; cin >> n;
+        vector&ltstring&gt arr;
+        for (int i = 0; i < 2*n-2; i++) {
+            string s; cin >> s;
+            arr.push_back(s);
+        }
+
+        int goodindexes = 0;
+        for (int m = 1; m < n; m++) {//lengths of string
+            //find the strings with length m
+            vector&ltstring&gt temp;
+            for (int i = 0; i < 2*n-2; i++) {
+                if (arr[i].size() == m) {
+                    temp.push_back(arr[i]);
+                }
+            }
+
+            if (temp.size() == 2) {
+                reverse(temp[0].begin(), temp[0].end());
+                if (temp[0] == temp[1]) goodindexes++;
+            }
+        }
+
+        if (goodindexes == n-1) cout << "yes\n";
+        else cout << "no\n";
+    }
+}</code></pre>
+            <br>
+            <a href="https://codeforces.com/contest/1794/problem/A">https://codeforces.com/contest/1794/problem/A</a>
+            <p>Python:</p>
+            <pre><code lang="language-python">t = int(input())
+for tt in range(t):
+    q = int(input())
+    arr = [int(i) for i in input().split()]
+    
+    curr = [arr[0]]
+    isSorted = True
+    print(1,end="")
+    for i in range(1,q):
+        ans = 0
+        
+        if isSorted:
+            if curr[-1] <= arr[i]:#curr[-1] gives last element
+                ans = 1
+                curr.append(arr[i])
+            elif (arr[i] <= curr[0]):
+                isSorted = 0
+                ans = 1
+                curr.append(arr[i])
+        else:
+            if curr[-1] <= arr[i] and arr[i] <= curr[0]:
+                ans = 1
+                curr.append(arr[i])
+        
+        print(ans,end="")
+        
+    print()</code></pre>
+            <p>Java:</p>
+            <pre><code lang="language-java">import java.util.*;
+public class demo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for (int tt = 0; tt < t; tt++) {
+            int q = sc.nextInt();
+            int[] arr = new int[q];
+            for (int i = 0; i < q; i++) arr[i] = sc.nextInt();
+
+            ArrayList&ltInteger&gt curr = new ArrayList<>();
+            curr.add(arr[0]);
+            boolean isSorted = true;
+            System.out.print(1);
+            for (int i = 1; i < q; i++) {
+                int ans = 0;
+
+                if (isSorted) {
+                    if (curr.get(curr.size()-1) <= arr[i]) {
+                        ans = 1;
+                        curr.add(arr[i]);
+                    }
+                    else if (arr[i] <= curr.get(0)) {
+                        isSorted = false;
+                        ans = 1;
+                        curr.add(arr[i]);
+                    }
+                }
+                else {
+                    //guaranteed to still be a beautiful array
+                    if (curr.get(curr.size()-1) <= arr[i] && arr[i] <= curr.get(0)) {
+                        ans = 1;
+                        curr.add(arr[i]);
+                    }
+                }
+                System.out.print(ans);
+            }
+            System.out.println();
+        }
+    }
+}</code></pre>
+            <p>C++:</p>
+            <pre><code lang="language-cpp">#include &ltbits/stdc++.h&gt
+using namespace std;
+
+int main() {
+    int t; cin >> t;
+    for (int tt = 0; tt < t; tt++) {
+        int q; cin >> q;
+        vector&ltint&gt arr(q);
+        for (int i = 0; i < q; i++) cin >> arr[i];
+
+        vector&ltint&gt curr = {arr[0]};
+        bool isSorted = 1;//duh
+        cout << 1;//we can always add the first query
+        for (int i = 1; i < q; i++) {
+            int ans = 0;
+
+            if (isSorted) {
+                if (curr.back() <= arr[i]) {
+                    ans = 1;
+                    curr.push_back(arr[i]);
+                }
+                else if (arr[i] <= curr.front()) {
+                    isSorted = 0;
+                    ans = 1;
+                    curr.push_back(arr[i]);
+                }
+            }
+            else {
+                //guaranteed to still be a beautiful array
+                if (curr.back() <= arr[i] && arr[i] <= curr.front()) {
+                    ans = 1;
+                    curr.push_back(arr[i]);
+                }
+            }
+            cout << ans;
+        }
+        cout << '\n';
+    }
+}</code></pre>
+            <br><br>
+            <h3 id="1_04">1/04 General Practice Problem</h3>
+            <a href="https://codeforces.com/contest/1843/problem/E">https://codeforces.com/contest/1843/problem/E</a>
+            <pre><code lang="language-python">import sys
+t = int(sys.stdin.readline())
+for x in range(t):
+    n, m = list(map(int, sys.stdin.readline().split()))
+    segments = []
+    for y in range(m):
+        segments.append(list(map(int, sys.stdin.readline().split())))
+    q = int(sys.stdin.readline())
+    changes = []
+    for z in range(q):
+        changes.append(int(sys.stdin.readline()))
+    
+    left = 0
+    right = q + 1
+    
+    while left < right:
+        mid = (left + right) // 2
+        good_segments = 0
+        array_mid = [0] * (n + 1)
+
+        #performs changes from [0,mid)
+        for i in range(mid):
+            array_mid[changes[i]] = 1
+        #converts to array_mid to prefix sum array
+        for i in range(len(array_mid) - 1):
+            array_mid[i + 1] = array_mid[i + 1] + array_mid[i]
+    
+        for segment in segments:
+            #LHS corresponds to # of ones from [segment[0],segment[1]]
+            if array_mid[segment[1]] - array_mid[segment[0] - 1] > (segment[1] - segment[0] + 1) // 2:
+                good_segments += 1
+    
+        if good_segments == 0:
+            left = mid + 1
+        else:
+            right = mid
+    #left = right after while loop, left = first index such that the first L modifications turns a segment "beautiful"
+    if left == q + 1:
+        print(-1)
+    else:
+        print(left)</code></pre>
+            <br><br>
+            <h3 id="3_07">3/07 Math Practice</h3>
+            <a href="https://codeforces.com/problemset/problem/1514/C">https://codeforces.com/problemset/problem/1514/C</a><br>
+            <a href="https://codeforces.com/contest/1225/problem/D">https://codeforces.com/contest/1225/problem/D</a><br>
+            <br>
+            <h3 id="4_04">4/04 DFS Practice</h3>
+            <a href="https://usaco.org/index.php?page=viewproblem2&cpid=895">https://usaco.org/index.php?page=viewproblem2&cpid=895</a>
+            <p>Python:</p>
+            <pre><code lang="language-python">import sys
+sys.setrecursionlimit(10**6)
+sys.stdin = open("perimeter.in", "r")
+sys.stdout = open("perimeter.out", "w")
+
+
+n = int(input())
+grid = [""] * n
+visited = [[0]*n for _ in range(n)]
+blobs = []
+dx = [1,-1,0,0]
+dy = [0,0,1,-1]
+for i in range(n):
+    grid[i] = input()
+
+area = 0
+perimeter = 0
+
+def dfs(r,c):
+    global perimeter, area
+    area += 1
+    for k in range(4):
+        nr = r+dx[k]
+        nc = c+dy[k]
+        if (0 > nr or nr >= n or 0 > nc or nc >= n or grid[nr][nc] == '.'):
+            perimeter += 1
+        elif (not visited[nr][nc]):
+            visited[nr][nc] = 1
+            dfs(nr,nc)
+
+for i in range(n):
+    for j in range(n):
+        if (not visited[i][j] and grid[i][j] == '#'):
+            visited[i][j] = 1
+            dfs(i,j)
+            blobs.append((-area, perimeter))
+            area = perimeter = 0
+
+blobs.sort()
+print(-blobs[0][0], blobs[0][1])</code></pre>
+            <p>C++:</p>
+            <pre><code lang="language-cpp">#include &ltbits/stdc++.h>
+using namespace std;
+
+vector&ltstring> grid;
+vector&ltvector&ltbool>> visited;
+vector&ltpair&ltint,int>> blobs;//stores (area,perimeter) pairs
+int dx[] = {-1,1,0,0};
+int dy[] = {0,0,1,-1};
+int n, area = 0, perimeter = 0;
+
+void dfs(int r, int c) {
+    area++;
+    for (int k = 0; k < 4; k++) {
+        int nr = r+dx[k], nc = c+dy[k];
+        //out of bounds or empty cell
+        if (0 > nr || nr >= n || 0 > nc || nc >= n || grid[nr][nc] == '.') {
+            perimeter++;
+        }
+        //not empty cell and unvisited
+        else if (visited[nr][nc] == 0) {
+            visited[nr][nc] = 1;
+            dfs(nr,nc);
+        }
+    }
+}
+
+int main() {
+    freopen("perimeter.in", "r", stdin);
+    freopen("perimeter.out", "w", stdout);
+
+    cin >> n;
+    visited.resize(n, vector&ltbool>(n));
+    for (int i = 0; i < n; i++) {
+        string s; cin >> s;
+        grid.push_back(s);
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (visited[i][j] == 0 && grid[i][j] == '#') {
+                visited[i][j] = 1;
+                dfs(i,j);
+                //negate area to get maximum since it sorts from least to greatest
+                blobs.push_back({-area, perimeter});
+                area = perimeter = 0;
+            }
+        }
+    }
+    
+    sort(blobs.begin(), blobs.end());
+    cout << -blobs[0].first << ' ' << blobs[0].second << '\n';
+}</code></pre>
+            <h3 id="4_11">4/11 Tree Algorithms (Bottom Up DFS and Tree Diameter)</h3>
+            <a href="https://cses.fi/problemset/task/1131">https://cses.fi/problemset/task/1131</a><br>
+            <a href="https://cses.fi/problemset/task/1674">https://cses.fi/problemset/task/1674</a>
+            <p>Python:</p>
+            <pre><code lang="language-python">import sys
+sys.setrecursionlimit(int(1E6))
+read = sys.stdin.readline
+write = sys.stdout.write
+
+n = int(read())
+ls = list(map(int, read().split()))
+adj = [[] for _ in range(n+1)]
+subtree = [0 for _ in range(n+1)]
+
+for i in range(2,n+1):
+    adj[i].append(ls[i-2])
+    adj[ls[i-2]].append(i)
+
+def dfs(v, p):
+    subtree[v] = 1
+    for i in adj[v]:
+        if i != p:
+            dfs(i,v)
+            subtree[v] += subtree[i]
+
+dfs(1,0)
+for i in range(1,len(subtree)):
+    print(subtree[i]-1, end=' ')</code></pre>
+            <p>C++:</p>
+            <pre><code lang="language-cpp">#include &ltbits/stdc++.h>
+using namespace std;
+
+const int N = 2E5+1;
+vector&ltint> adj[N];
+int sub[N];
+void dfs(int v, int p) {
+    int sum = 1;
+    for (int i: adj[v]) if (i != p) {
+        dfs(i,v);
+        sum += sub[i];
+    }
+    sub[v] = sum;
+}
+int main() {
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    int n; cin >> n;
+    for (int i = 2; i <= n; i++) {
+        int a; cin >> a;
+        adj[a].push_back(i);
+        adj[i].push_back(a);
+    }
+    dfs(1,0);
+    for (int i = 1; i <= n; i++) {
+        cout << sub[i]-1 << ' ';
+    }
+}</code></pre>
+            <h3 id="4_18">4/18 Tree Algorithm Practice</h3>
+            <a href="https://codeforces.com/problemset/problem/1946/C">https://codeforces.com/problemset/problem/1946/C</a>
+            <pre><code lang="language-cpp">#include &ltbits/stdc++.h>
+using namespace std;
+
+#ifndef ONLINE_JUDGE
+#include "/home/naowal/Desktop/code/competitive-programming/debug.h"
+#else
+#define dbg(x)
+#endif
+
+#define int long long
+template&ltclass T> using V = vector&ltT>;
+using vi = V&ltint>;
+using pii = pair&ltint, int>;
+#define sz(x) (int)((x).size())
+#define all(x) begin(x), end(x)
+#define rall(x) rbegin(x), rend(x)
+
+#define FOR(i,a,b) for (int i = (a); i < (b); ++i)
+#define F0R(i,a) FOR(i,0,a)
+#define ROF(i,a,b) for (int i = (b)-1; i >= (a); --i)
+#define R0F(i,a) ROF(i,0,a)
+
+template&ltclass T> bool ckmin(T& a, const T& b) {
+    return b < a ? a = b, 1 : 0; } // set a = min(a,b)
+template&ltclass T>  bool ckmax(T& a, const T& b) {
+    return a < b ? a = b, 1 : 0; } // set a = max(a,b)
+
+void solve() {
+    int n, k, a, b; cin >> n >> k;
+    V&ltvi> adj(n);
+    F0R(i, n - 1) {
+        cin >> a >> b;
+        --a; --b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+
+    auto can_form_k = [&](int x) -> bool {
+        int cc = 0;
+        auto dfs = [&](auto&& dfs, int cur, int parent) -> int {
+            int size = 1;
+            for(int u : adj[cur]) if(u != parent) size += dfs(dfs, u, cur);
+            // handles cutting off edge + starting condition
+            if(size >= x && cur != parent) ++cc, size = 0;
+            return size;
+        };
+        int root_cc_size = dfs(dfs, 0, 0);
+        return cc + (root_cc_size >= x) > k;
+    };
+
+    int lo = 1, hi = 1e5+1, x;
+    while(lo <= hi) {
+        x = lo + (hi - lo) / 2;
+        bool works = can_form_k(x);
+        if(works) lo = x + 1;
+        else hi = x - 1;
+    }
+
+    cout << lo - 1 << "\n";
+}
+
+signed main() {
+    cin.tie(0)->sync_with_stdio(0);
+
+    int t; cin >> t;
+    while(t--) solve();
+
+    return 0;
+}</code></pre>
+            <h3 id="5_02">5/02 Multi-source BFS</h3>
+            <a href="https://cses.fi/problemset/task/1194">https://cses.fi/problemset/task/1194</a>
+            <p>Python:</p>
+            <pre><code lang="language-python">import sys
+from collections import deque
+n,m = map(int,input().split())
+visited = [[False]*m for i in range(n)]
+parent = [[0]*m for i in range(n)]
+grid = []
+for i in range(n):
+    grid.append(input())
+q = deque()
+for i in range(n):
+    for j in range(m):
+        if grid[i][j]=="M":
+            q.append((i,j,"M"))
+            visited[i][j]=True
+for i in range(n):
+    for j in range(m):
+        if grid[i][j]=="A":
+            start = (i,j)
+            q.append((i,j,"A"))
+    
+if start[0]==0 or start[0]==n-1 or start[1] == 0 or start[1]==m-1:
+    print("YES")
+    print(0)
+    exit()
+    
+    
+def good(r,c):
+    return r >= 0 and r < n and c >= 0 and c < m and grid[r][c] != "#" and not visited[r][c]
+while q:
+    r,c,char = q.popleft()
+    for i in [(r-1,c), (r+1,c), (r,c-1),(r,c+1)]:
+        i0 = i[0]
+        i1 = i[1]
+        if good(i0,i1):
+            q.append((i0,i1,char))
+            visited[i0][i1]=True
+            if char == "A":
+                parent[i0][i1]=(r,c)
+            if (i0 == 0 or i1 == 0 or i0 == n-1 or i1 == m-1) and char == "A":
+                print("YES")
+                curr_x = i0
+                curr_y = i1
+                ans = []
+                while curr_x!=start[0] or curr_y!=start[1]:
+                    if parent[curr_x][curr_y][0]-curr_x == 1:
+                        ans.append("U")
+                        curr_x+=1
+                    elif parent[curr_x][curr_y][0]-curr_x == -1:
+                        ans.append("D")
+                        curr_x-=1
+                    elif parent[curr_x][curr_y][1]-curr_y == 1:
+                        ans.append("L")
+                        curr_y+=1
+                    else:
+                        ans.append("R")
+                        curr_y-=1
+                sys.stdout.write(str(len(ans))+"\n")
+                sys.stdout.write("".join(ans[::-1])+"\n")
+                sys.exit(0)
+print("NO")</code></pre>
+            <p>C++:</p>
+            <pre><code lang="language-cpp">#include &ltbits/stdc++.h>
+using namespace std;
+
+char dir[] = {'D', 'U', 'R', 'L'};
+int dx[] = {1,-1,0,0}, dy[] = {0,0,1,-1};
+
+int main() {
+    ios_base::sync_with_stdio(0); cin.tie(0);
+
+    int n,m; cin >> n >> m;
+    //trick instead of vector&ltvector&ltchar>>
+    vector&ltstring> grid(n);
+    for (int i = 0; i < n; i++) cin >> grid[i];
+    
+    vector&ltvector&ltint>> distAtoE(n, vector&ltint>(m,-1)), disttoM(n, vector&ltint>(m,-1));
+    vector&ltvector&ltbool>> vis(n, vector&ltbool>(m));
+    //directions from A to exit
+    vector&ltvector&ltchar>> direction(n, vector&ltchar>(m, 'Z'));
+    vector&ltvector&ltpair&ltint,int>>> parent(n, vector&ltpair&ltint,int>>(m));
+
+    pair&ltint,int> A;
+    vector&ltpair&ltint,int>> exits, monsters;
+    //find the exits on border
+    for (int i = 0; i < n; i++) {
+        if (grid[i][0] == '.' || grid[i][0] == 'A') {
+            exits.push_back({i,0});
+        }
+        if (grid[i][m-1] == '.' || grid[i][m-1] == 'A') {
+            exits.push_back({i,m-1});
+        }
+    }
+    for (int j = 1; j < m-1; j++) {
+        if (grid[0][j] == '.' || grid[0][j] == 'A') {
+            exits.push_back({0,j});
+        }
+        if (grid[n-1][j] == '.' || grid[n-1][j] == 'A') {
+            exits.push_back({n-1,j});
+        }
+    }
+    
+    //find monsters
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (grid[i][j] == 'M') {
+                monsters.push_back({i,j});
+            }
+            else if (grid[i][j] == 'A') {
+                A = {i,j};
+            }
+        }
+    }
+
+    //BFS from A to other nodes
+    queue&ltpair&ltint,int>> q;
+    q.push(A);
+    vis[A.first][A.second] = 1;
+    distAtoE[A.first][A.second] = 0;
+    while (!q.empty()) {
+        auto [r,c] = q.front();
+        q.pop();
+
+        for (int k = 0; k < 4; k++) {
+            int nr = r+dx[k], nc = c+dy[k];
+            if (0 <= nr && nr < n && 0 <= nc && nc < m && !vis[nr][nc] && grid[nr][nc] == '.') {
+                vis[nr][nc] = 1;
+                distAtoE[nr][nc] = distAtoE[r][c]+1;
+                direction[nr][nc] = dir[k];
+                parent[nr][nc] = {r,c};
+                q.push({nr,nc});
+            }
+        }        
+    }
+
+    vis = vector&ltvector&ltbool>>(n, vector&ltbool>(m));
+    //multi-source BFS from all monsters to other nodes
+    for (auto [r,c]: monsters) {
+        q.push({r,c});
+        vis[r][c] = 1;
+        disttoM[r][c] = 0;
+    }
+    while (!q.empty()) {
+        auto [r,c] = q.front();
+        q.pop();
+
+        for (int k = 0; k < 4; k++) {
+            int nr = r+dx[k], nc = c+dy[k];
+            if (0 <= nr && nr < n && 0 <= nc && nc < m && !vis[nr][nc] && grid[nr][nc] != '#') {
+                vis[nr][nc] = 1;
+                disttoM[nr][nc] = disttoM[r][c]+1;
+                q.push({nr,nc});
+            }
+        }
+    }
+
+    //compare dist from E to A and E to closest M
+    for (auto [r,c]: exits) {
+        if (distAtoE[r][c] != -1 && (disttoM[r][c] == -1 || distAtoE[r][c] < disttoM[r][c])) {
+            string ans;
+            pair&ltint,int> cur = {r,c};
+            while (direction[cur.first][cur.second] != 'Z') {
+                ans += direction[cur.first][cur.second];
+                cur = parent[cur.first][cur.second];
+            }
+            reverse(ans.begin(), ans.end());
+            cout << "YES\n";
+            cout << distAtoE[r][c] << '\n';
+            cout << ans << '\n';
+            return 0;
+        }
+    }
+    cout << "NO\n";
+}</code></pre>
+            <h3 id="5_09">5/09 More General Practice</h3>
+            <a href="https://codeforces.com/contest/1876/problem/B">https://codeforces.com/contest/1876/problem/B</a><br>
+            <a href="https://codeforces.com/contest/1336/problem/A">https://codeforces.com/contest/1336/problem/A</a><br>
+            <br>
+            <h3 id="5_16">5/16 Directed Graphs (Topological Sort and Functional Graphs)</h3>
+            <p>Topo sort: <a href="https://cses.fi/problemset/task/1679">https://cses.fi/problemset/task/1679</a><br>
+            Solution: <a href="https://cses.fi/paste/bedec309f873ee1a8c8a71/">https://cses.fi/paste/bedec309f873ee1a8c8a71/</a><br><br>
+            Functional graphs: <a href="https://usaco.org/current/index.php?page=viewproblem2&cpid=1014">https://usaco.org/current/index.php?page=viewproblem2&cpid=1014</a><br>
+            Cycles solution: <a href="https://github.com/MC3297/usaco-solutions-silver/blob/main/swap_cycle.cpp">https://github.com/MC3297/usaco-solutions-silver/blob/main/swap_cycle.cpp</a><br>
+            Binary expo solution: <a href="https://github.com/MC3297/usaco-solutions-silver/blob/main/swap.cpp">https://github.com/MC3297/usaco-solutions-silver/blob/main/swap.cpp</a><br>
+            </p>
+            <h3 id="5_23">5/23 More Tree Algorithm Practice</h3>
+            <p>Lesson Notes:<br><a href="https://usaco.org/index.php?page=viewproblem2&cpid=1254">https://usaco.org/index.php?page=viewproblem2&cpid=1254</a><br>
+                Barn Tree:<br>
+                -total sum of haybales doesn't change<br>
+                -solution is always guaranteed so each node should have the avg of all values as its final val<br>
+                -no matter size of haybales transported, it still counts as 1 operation<br>
+                -each move should be cumulative, group haybales together instead of transporting them separately<br>
+                -each edge should be used to transport at most once<br>
+                -take an edge, split tree into two subtrees<br>
+                -whichever subtree with not enough haybales would tell us which direction the edge goes in<br>
+                -difference in the lack/excess of haybales gives us the amount of haybales needed to transport through that edge<br>
+                -each edge becomes directed and tree becomes a directed graph<br>
+                -now we just have to choose the order to use each edge, we can do that with topo sort<br>
+                Code: <a href="https://github.com/MC3297/usaco-solutions-silver/blob/main/barntree.cpp">https://github.com/MC3297/usaco-solutions-silver/blob/main/barntree.cpp</a><br>
+                <br>
+                <a href="https://usaco.org/index.php?page=viewproblem2&cpid=1375">https://usaco.org/index.php?page=viewproblem2&cpid=1375</a><br>
+                Potion Farming:<br>
+                -the minimum # of traversals bounded by # of leafs, lets call K<br>
+                -potions should be assigned to leafs to maximize answer<br>
+                -we only need to consider the first K potions<br>
+                -each potion should be assigned to closest leaf so higher up potions can be assigned to other leafs<br>
+                Code: <a href="https://github.com/MC3297/usaco-solutions-silver/blob/main/potionfarming.cpp">https://github.com/MC3297/usaco-solutions-silver/blob/main/potionfarming.cpp</a></p>
+            </p>
+        </fieldset>
+    </div>
+</body>
