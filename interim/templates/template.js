@@ -4,7 +4,7 @@ window.onload = function() {
 
 function SideBar() {
     document.getElementById("side").innerHTML =
-   '<div id="icon">'+
+   '<div class="balls"><div id="icon">'+
        '<h1><a href="../main/index.html">'+
            '<img class="logo" src="../../templates/circleCCCcow.png" alt="CCC logo" width="147px">'+
        '</a></h1>'+
@@ -25,5 +25,5 @@ function SideBar() {
    '<h3><legend> Archives </legend></h3><br>'+
    '<nav><a href="../main/lessons_archive.html">Lessons Archive</a></nav>'+
    '<br>'+
-   '<nav><a href="../main/problems_archive.html">Problems Archive</a></nav>';
+   '<nav><a href="../main/problems_archive.html">Problems Archive</a></nav></div>';
 }

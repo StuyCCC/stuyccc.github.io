@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+.balls {
+    position: fixed;
+}
+
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     background-color: #2D354A;
