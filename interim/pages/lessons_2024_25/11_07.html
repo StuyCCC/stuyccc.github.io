@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../templates/template.css" type="text/css">
+    <link rel="icon" href="../../templates/favicon.ico">
+    <script src="../../templates/template.js"></script>
+
+    <!--KaTeX in <script type="math/tex"> tags -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/mathtex-script-type.min.js" integrity="sha384-lfASb0Jhxn21qr4pih+Mx6uK2+JEKTtnpMnsCo+PTmb3n/iSUhox6v7eGkBfi47O" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../../templates/gruvbox-dark-pale.min.css">
+    <script src="../../templates/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <title>StuyCCC</title>
+</head>
+<body>
+    <div id="side"></div>
+    <div id="main">
+        <h4>Last Updated 2021-12-18</h4>
+        <fieldset>
+            <legend>Solutions</legend>
+            <!-- use <script type="math/tex"> to use latex
+                and <pre><code class="language-cpp"> (or whatever language) for code-->
+            <h3><a href="https://cses.fi/problemset/task/1068">Weird Algorithm, CSES</a></h3>
+            <details>
+                <summary>Solution C++</summary>
+                <pre><code class="language-cpp">
+#include &ltbits/stdc++.h&gt
+using namespace std;
+
+int main() {
+    long long n; cin &gt&gt n;
+    cout &lt&lt n &lt&lt ' ';
+    while (n != 1) {
+        if (n%2 == 0) n /= 2;
+        else {
+            n = n*3+1;
+        }
+        cout &lt&lt n &lt&lt ' ';
+    }
+}
+                </code></pre>
+            </details>
+            <details>
+                <summary>Solution Python</summary>
+                <pre><code class="language-python">
+n = int(input())
+print(n, end=' ')
+while n != 1:
+    if n%2 == 0:
+        n //= 2
+    else:
+        n = 3*n+1
+    print(n, end=' ')
+                </code></pre>
+            </details>
+            <h3><a href="https://codeforces.com/contest/1676/problem/B">1676B, Codeforces</a></h3>
+            <details>
+                <summary>Solution C++</summary>
+                <pre><code class="language-cpp">
+#include &ltbits/stdc++.h&gt
+using namespace std;
+
+int main() {
+    int t; cin &gt&gt t;
+    for (int z = 0; z &lt n; z++) {
+        int n; cin &gt&gt n;
+        vector&ltint> arr(n);
+        for (int i = 0; i &lt n; i++) {
+            cin &gt&gt arr[i];
+        }
+        int m = arr[0];
+        for (int i = 0; i &lt n; i++) {
+            m = min(m, arr[i]);
+        }
+        int ans = 0;
+        for (int i = 0; i &lt n; i++) {
+            arr[i] -= m;
+            ans += arr[i];
+        }
+        cout &lt&lt ans &lt&lt '\n';
+    }
+}
+                </code></pre>
+            </details>
+            <details>
+                <summary>Solution Python</summary>
+                <pre><code class="language-python">
+t = int(input())
+for z in range(t):
+    n = int(input())
+    ls = [int(i) for i in input().split()]
+    
+    m = ls[0]
+    for i in range(n):
+        m = min(m, ls[i])
+        
+    ans = 0
+    for i in range(n):
+        ls[i] -= m
+        ans += ls[i]
+    print(ans)
+                </code></pre>
+            </details>
+            <h3><a href="https://cses.fi/problemset/task/1094">Increasing Array, CSES</a></h3>
+            <details>
+                <summary>Solution C++</summary>
+                <pre><code class="language-cpp">
+#include &ltbits/stdc++.h&gt
+using namespace std;
+
+int main() {
+        int n; cin &gt&gt n;
+        vector&ltint&gt arr(n);
+        for (int i = 0; i &lt n; i++) {
+                cin &gt&gt arr[i];
+        }
+
+        long long ans = 0;
+        for (int i = 1; i &lt n; i++) {
+                if (arr[i-1] &gt arr[i]) {
+                        ans += arr[i-1] - arr[i];
+                        arr[i] = arr[i-1];
+                }
+        }
+        cout &lt&lt ans &lt&lt '\n';
+}
+                </code></pre>
+            </details>
+            <details>
+                <summary>Solution Python</summary>
+                <pre><code class="language-python">
+n = int(input())
+ls = [int(i) for i in input().split()]
+
+ans = 0
+for i in range(1, n):
+    if ls[i-1] > ls[i]:
+        ans += ls[i-1] - ls[i]
+        ls[i] = ls[i-1]
+print(ans)
+                </code></pre>
+            </details>
+        </fieldset>
+    </div>
+</body>
