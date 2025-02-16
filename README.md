@@ -1,6 +1,6 @@
 ##### StuyCCC
 
-Repo for [this website](http://www.stuyccc.com).
+Repo for [this website](http://old.stuyccc.com).
 
 ##### Notes:
 
